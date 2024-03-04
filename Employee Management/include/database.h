@@ -12,6 +12,7 @@ public:
     }
 
     bool open();
+    bool createTables();
     void close();
 
     bool executeQuery(const std::string& query);
@@ -19,7 +20,7 @@ public:
     void setError(const std::string& errorMessage);
 
 private:
-    sqlite3* db{};
+    sqlite3* db;
     std::string dbName{};
     std::string Error{};
 
