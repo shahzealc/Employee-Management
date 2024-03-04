@@ -1,4 +1,6 @@
-#pragma once
+#ifndef eng_flag
+#define eng_flag
+
 #include "Employee.h"
 class Engineer : public Employee {
 public:
@@ -36,3 +38,5 @@ private:
 	std::string programming_language {};
 	std::string specialization{};
 };
+
+#endif

@@ -1,8 +1,10 @@
-#pragma once
+#ifndef salary_flag
+#define salary_flag
 
 #include <iostream>
 #include "database.h"
-\
+
+
 class Salary {
 public:
 
@@ -39,3 +41,5 @@ private:
     std::string date {};
     int bonus{};
 };
+
+#endif

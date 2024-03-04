@@ -1,4 +1,6 @@
-#pragma once
+#ifndef dept_flag
+#define dept_flag
+
 #include <iostream>
 #include <string>
 #include "database.h"
@@ -35,3 +37,6 @@ private:
     int manager_id {};
     std::string description{};
 };
+
+
+#endif

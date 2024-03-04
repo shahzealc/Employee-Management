@@ -2,73 +2,104 @@
 #include "../include/Employee.h"
 #include "../include/validate.h"
 
-void Employee::insertEmployee() { 
-    
-    std::cout << "Enter Employee Details:\n";
-
+void Employee::setId() {
     std::cout << "ID: ";
     std::cin >> id;
+}
+void Employee::setFirstname() {
     std::cout << "First Name: ";
     std::cin >> firstname;
-
+}
+void Employee::setLastname() {
     std::cout << "Last Name: ";
     std::cin >> lastname;
-
-backDOB:
+}
+void Employee::setDob() {
     std::cout << "Date of Birth (DD-MM-YYYY): ";
     std::string inputDOB;
     std::cin >> inputDOB;
     if (!validateDateOfBirth(inputDOB)) {
         std::cout << "Invalid Format !!, Enter again :\n";
-        goto backDOB;
+        Employee::setDob();
     }
     else {
         dob = inputDOB;
     }
-
-backMob:
+}
+void Employee::setMobile() {
     std::cout << "Mobile number : ";
     std::string inputMob;
     std::cin >> inputMob;
     if (!validatePhoneNumber(inputMob)) {
         std::cout << "Invalid Format !!, Enter again :\n";
-        goto backMob;
+        Employee::setMobile();
     }
     else {
         mobile = inputMob;
     }
-
-backEmail:
+}
+void Employee::setEmail() {
     std::cout << "Email address : ";
     std::string inputMail;
     std::cin >> inputMail;
     if (!validateEmail(inputMail)) {
         std::cout << "Invalid Format !!, Enter again :\n";
-        goto backEmail;
+        Employee::setEmail();
     }
     else {
         email = inputMail;
     }
-
+}
+void Employee::setAddress() {
     std::cout << "Address: ";
     std::cin.ignore();
     std::getline(std::cin, address);
-
-    int genderChoice;
+}
+void Employee::setGender() {
     std::cout << "Gender (Male, Female, Other): ";
     std::cin >> gender;
-    
+}
+void Employee::setDoj() {
     std::cout << "Date of Joining (DD-MM-YYYY): ";
-    std::cin >> doj;
-
+    std::string inputDOJ;
+    std::cin >> inputDOJ;
+    if (!validateDateOfBirth(inputDOJ)) {
+        std::cout << "Invalid Format !!, Enter again :\n";
+        Employee::setDoj();
+    }
+    else {
+        doj = inputDOJ;
+    }
+}
+void Employee::setWLocation() {
     std::cout << "Work Location: ";
     std::cin >> w_location;
-
+}
+void Employee::setManagerId() {
     std::cout << "Manager ID: ";
     std::cin >> manager_id;
-
+}
+void Employee::setDepartmentId() {
     std::cout << "Department ID: ";
     std::cin >> department_id;
+}
+
+void Employee::insertEmployee() { 
+    
+    std::cout << "Enter Employee Details:\n";
+
+    setId();
+    setFirstname();
+    setLastname();
+    setDob();
+    setMobile();
+    setEmail();
+    setAddress();
+    setGender();
+    setDoj();
+    setWLocation();
+    setManagerId();
+    setDepartmentId();
 
     std::string insertQuery = "INSERT INTO Employee (id, firstname, lastname, dob, mobile, email, address, gender, doj, w_location, manager_id, department_id) VALUES ("
         "'" + std::to_string(id) + "', '" +
@@ -92,7 +123,26 @@ backEmail:
 };
 void Employee::deleteEmployee() { return; };
 void Employee::updateEmployee() { return; };
-void Employee::viewEmployee() { return; };
+void Employee::viewEmployee() { 
+
+    std::vector<std::vector<std::string>> results;
+
+    std::string selectQuery = "SELECT * FROM Employee";
+
+    if (db_emp.executeQuery(selectQuery, results)) {
+        
+        for (const auto& row : results) {
+            for (const auto& column : row) {
+                std::cout << column << " ";
+            }
+            std::cout << std::endl;
+        }
+    }
+    else {
+        std::cerr << "Error executing query: " << db_emp.getError() << std::endl;
+    }
+
+};
 
 
 void Employee::action() {

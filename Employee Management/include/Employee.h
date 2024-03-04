@@ -1,10 +1,14 @@
 
-#pragma once
+#ifndef emp_flag
+#define emp_flag
 
 #include <iostream>
 #include <string>
+#include<vector>
 #include "database.h"
 
+
+//#include "validate.h"
 //enum class Gender { Male, Female, Other };
 
 class Employee {
@@ -29,18 +33,18 @@ public:
     int getManagerId() const { return manager_id; }
     int getDepartmentId() const { return department_id; }
 
-    void setId(int ID) { id = ID; }
-    void setFirstname(const std::string& Firstname) { firstname = Firstname; }
-    void setLastname(const std::string& Lastname) { lastname = Lastname; }
-    void setDob(const std::string& Dob) { dob = Dob; }
-    void setMobile(const std::string& Mobile) { mobile = Mobile; }
-    void setEmail(const std::string& Email) { email = Email; }
-    void setAddress(const std::string& Address) { address = Address; }
-    void setGender(std::string Gender) { gender = Gender; }
-    void setDoj(const std::string& Doj) { doj = Doj; }
-    void setWLocation(int WLocation) { w_location = WLocation; }
-    void setManagerId(int ManagerId) { manager_id = ManagerId; }
-    void setDepartmentId(int DepartmentId) { department_id = DepartmentId; }
+    void setId();
+    void setFirstname();
+    void setLastname();
+    void setDob();
+    void setMobile();
+    void setEmail();
+    void setAddress();
+    void setGender();
+    void setDoj();
+    void setWLocation();
+    void setManagerId();
+    void setDepartmentId();
 
     void insertEmployee();
     void deleteEmployee();
@@ -64,3 +68,5 @@ private:
     int manager_id{};
     int department_id{};
 };
+
+#endif

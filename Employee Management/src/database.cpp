@@ -122,19 +122,25 @@ std::string Database::getError() const {
     return Error;
 }
 
+bool Database::executeQuery(const std::string& query, std::vector<std::vector<std::string>>& results) {
+    char* errMsg = nullptr;
+    results.clear(); 
+    int rc = sqlite3_exec(db, query.c_str(), callback, &results, &errMsg);
+    if (rc != SQLITE_OK) {
+        setError(errMsg);
+        sqlite3_free(errMsg);
+        return false;
+    }
+    return true;
+}
+
+
 int Database::callback(void* data, int argc, char** argv, char** azColName) {
     auto* results = static_cast<std::vector<std::vector<std::string>>*>(data);
     std::vector<std::string> row;
-
     for (int i = 0; i < argc; ++i) {
-        if (argv[i]) {
-            row.push_back(argv[i]);
-        }
-        else {
-            row.push_back("NULL");
-        }
+        row.push_back(argv[i] ? argv[i] : "NULL");
     }
-
     results->push_back(row);
     return 0;
 }

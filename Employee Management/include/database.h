@@ -1,6 +1,7 @@
 #pragma once
 #include "../sqlite/sqlite3.h"
 #include<string>
+#include<vector>
 
 class Database {
 public:
@@ -16,6 +17,7 @@ public:
     void close();
 
     bool executeQuery(const std::string& query);
+    bool executeQuery(const std::string& query, std::vector<std::vector<std::string>>& results);
     std::string getError() const;
     void setError(const std::string& errorMessage);
 

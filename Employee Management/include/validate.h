@@ -1,4 +1,6 @@
-#pragma once
+#ifndef validate_flag
+#define validate_flag
+
 #include<regex>
 bool validateEmail(const std::string& email) {
 
@@ -51,3 +53,5 @@ bool validateDateOfBirth(const std::string& dob) {
 
     return true;
 }
+
+#endif // !validate_flag

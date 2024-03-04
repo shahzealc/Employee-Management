@@ -1,4 +1,5 @@
-#pragma once
+#ifndef manager_flag
+#define manager_flag
 #include "Employee.h"
 
 class Manager : public Employee {
@@ -34,3 +35,5 @@ private:
     int management_experience{};
     std::string project_title{};
 };
+
+#endif
