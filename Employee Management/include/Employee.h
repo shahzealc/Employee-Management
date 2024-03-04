@@ -5,7 +5,7 @@
 #include <string>
 #include "database.h"
 
-enum class Gender { Male, Female, Other };
+//enum class Gender { Male, Female, Other };
 
 class Employee {
 
@@ -23,7 +23,7 @@ public:
     std::string getMobile() const { return mobile; }
     std::string getEmail() const { return email; }
     std::string getAddress() const { return address; }
-    Gender getGender() const { return gender; }
+    std::string getGender() const { return gender; }
     std::string getDoj() const { return doj; }
     std::string getWLocation() const { return w_location; }
     int getManagerId() const { return manager_id; }
@@ -36,7 +36,7 @@ public:
     void setMobile(const std::string& Mobile) { mobile = Mobile; }
     void setEmail(const std::string& Email) { email = Email; }
     void setAddress(const std::string& Address) { address = Address; }
-    void setGender(Gender Gender) { gender = Gender; }
+    void setGender(std::string Gender) { gender = Gender; }
     void setDoj(const std::string& Doj) { doj = Doj; }
     void setWLocation(int WLocation) { w_location = WLocation; }
     void setManagerId(int ManagerId) { manager_id = ManagerId; }
@@ -58,7 +58,7 @@ private:
     std::string mobile{};
     std::string email{};
     std::string address{};
-    Gender gender{};
+    std::string gender{};
     std::string doj{};
     std::string w_location{};
     int manager_id{};

@@ -8,7 +8,6 @@
 #include "include/department.h"
 
 
-
 int main() {
 
 	Database db("employee.db");
