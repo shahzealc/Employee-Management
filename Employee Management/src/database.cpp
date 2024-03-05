@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 
-
+int Database::rows = 0;
 bool Database::open() {
     if (sqlite3_open(dbName.c_str(), &db) == SQLITE_OK) {
 
@@ -128,6 +128,8 @@ bool Database::executeQueryCallback(const std::string& query) {
     char* errMsg = nullptr;
     
     int rc = sqlite3_exec(db, query.c_str(), callback, 0, &errMsg);
+    std::cout << rows << " rows returned \n\n";
+    rows = 0;
     if (rc != SQLITE_OK) {
         setError(errMsg);
         sqlite3_free(errMsg);
@@ -138,6 +140,7 @@ bool Database::executeQueryCallback(const std::string& query) {
 
 
 int Database::callback(void* data, int argc, char** argv, char** azColName) {
+    ++rows;
     for (int i = 0; i < argc; ++i) {
         std::cout<< azColName[i] << ": " << (argv[i] ? argv[i] : "NULL") << " ";
         std::cout << "\n";

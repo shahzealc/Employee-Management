@@ -35,7 +35,7 @@ int main() {
 
 
 		std::cin >> choice;
-
+		std::cout << "\n";
 
 		switch (choice) {
 		case 1:

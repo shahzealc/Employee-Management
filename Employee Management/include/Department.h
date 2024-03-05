@@ -8,7 +8,7 @@
 class Department {
 public:
     Department() = default;
-    Department(Database& db)  {
+    Department(Database& db) {
         db_department = db;
     }
 
@@ -17,10 +17,10 @@ public:
     int getManagerId() const { return manager_id; }
     std::string getDescription() const { return description; }
 
-    void setId(int ID) { id = ID; }
-    void setName(const std::string& Name) { name = Name; }
-    void setManagerId(int ManagerId) { manager_id = ManagerId; }
-    void setDescription(const std::string& Description) { description = Description; }
+    void setId();
+    void setName();
+    void setManagerId();
+    void setDescription();
 
     void insertDepartment();
     void deleteDepartment();
@@ -32,9 +32,9 @@ public:
 private:
 
     Database db_department;
-    int id {};
-    std::string name {};
-    int manager_id {};
+    int id{};
+    std::string name{};
+    int manager_id{};
     std::string description{};
 };
 
