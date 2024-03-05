@@ -1,6 +1,8 @@
 #include "../include/database.h"
 #include<string>
 #include <vector>
+#include <iostream>
+
 
 bool Database::open() {
     if (sqlite3_open(dbName.c_str(), &db) == SQLITE_OK) {
@@ -29,7 +31,7 @@ bool Database::createTables() {
         "address VARCHAR,"
         "gender VARCHAR CHECK (gender IN ('Male', 'Female', 'Other')),"
         "doj DATE,"
-        "W_LOCATION VARCHAR,"
+        "w_location VARCHAR,"
         "manager_id INTEGER,"
         "department_id INTEGER,"
         "FOREIGN KEY (department_id) REFERENCES Department(id),"
@@ -122,10 +124,10 @@ std::string Database::getError() const {
     return Error;
 }
 
-bool Database::executeQuery(const std::string& query, std::vector<std::vector<std::string>>& results) {
+bool Database::executeQueryCallback(const std::string& query) {
     char* errMsg = nullptr;
-    results.clear(); 
-    int rc = sqlite3_exec(db, query.c_str(), callback, &results, &errMsg);
+    
+    int rc = sqlite3_exec(db, query.c_str(), callback, 0, &errMsg);
     if (rc != SQLITE_OK) {
         setError(errMsg);
         sqlite3_free(errMsg);
@@ -136,12 +138,11 @@ bool Database::executeQuery(const std::string& query, std::vector<std::vector<st
 
 
 int Database::callback(void* data, int argc, char** argv, char** azColName) {
-    auto* results = static_cast<std::vector<std::vector<std::string>>*>(data);
-    std::vector<std::string> row;
     for (int i = 0; i < argc; ++i) {
-        row.push_back(argv[i] ? argv[i] : "NULL");
+        std::cout<< azColName[i] << ": " << (argv[i] ? argv[i] : "NULL") << " ";
+        std::cout << "\n";
     }
-    results->push_back(row);
+    std::cout << "\n";
     return 0;
 }
 

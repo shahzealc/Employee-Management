@@ -17,7 +17,7 @@ public:
     void close();
 
     bool executeQuery(const std::string& query);
-    bool executeQuery(const std::string& query, std::vector<std::vector<std::string>>& results);
+    bool executeQueryCallback(const std::string& query);
     std::string getError() const;
     void setError(const std::string& errorMessage);
 
