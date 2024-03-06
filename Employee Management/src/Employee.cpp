@@ -117,7 +117,7 @@ void Employee::insertEmployee() {
 		std::to_string(department_id) + ");";
 
 	if (db_emp.executeQuery(insertQuery))
-		std::cout << "Inserted Employee Succesfully ! \n";
+		std::cout << "Inserted Employee Succesfully ! \n\n";
 	else
 		std::cout << db_emp.getError() << "\n";
 
@@ -169,7 +169,7 @@ void Employee::deleteEmployee() {
 
 		std::cout << changes << " row affected \n\n";
 		if (changes != 0) {
-			std::cout << "Employee Deleted Succesfully ! \n";
+			std::cout << "Employee Deleted Succesfully ! \n\n";
 		}
 
 	}
@@ -263,7 +263,7 @@ void Employee::updateEmployee() {
 
 		std::cout << changes << " row affected \n\n";
 		if (changes != 0) {
-			std::cout << "Employee Updated Succesfully ! \n";
+			std::cout << "Employee Updated Succesfully ! \n\n";
 		}
 	}
 	else

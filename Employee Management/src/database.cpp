@@ -10,7 +10,8 @@ bool Database::open() {
         if (!createTables()) {
             return false;
         }
-
+        std::string pragmaQuery = { "PRAGMA foreign_keys = ON;" };
+        executeQuery(pragmaQuery);
         return true;
     }
     else {
@@ -47,7 +48,7 @@ bool Database::createTables() {
         "name VARCHAR,"
         "manager_id INTEGER,"
         "description VARCHAR,"
-        "FOREIGN KEY (manager_id) REFERENCES Employee(id))";
+        "FOREIGN KEY (manager_id) REFERENCES Employee(id) ON DELETE CASCADE)";
 
 
     if (!executeQuery(sql2))
@@ -61,7 +62,7 @@ bool Database::createTables() {
         "id INTEGER PRIMARY KEY,"
         "programming_language VARCHAR,"
         "specialization VARCHAR,"
-        "FOREIGN KEY (id) REFERENCES Employee(id))";
+        "FOREIGN KEY (id) REFERENCES Employee(id) ON DELETE CASCADE)";
 
     if (!executeQuery(sql3))
     {
@@ -73,7 +74,7 @@ bool Database::createTables() {
         "id INTEGER PRIMARY KEY,"
         "management_experience INTEGER,"
         "project_title VARCHAR,"
-        "FOREIGN KEY (id) REFERENCES Employee(id))";
+        "FOREIGN KEY (id) REFERENCES Employee(id) ON DELETE CASCADE)";
 
 
     if (!executeQuery(sql4))
@@ -84,10 +85,10 @@ bool Database::createTables() {
 
     const char* sql5 = "CREATE TABLE IF NOT EXISTS Salary ("
         "id INTEGER PRIMARY KEY,"
-        "amount INTEGER,"
-        "base_salary INTEGER,"
-        "bonus INTEGER,"
-        "FOREIGN KEY (id) REFERENCES Employee(id))";
+        "amount REAL,"
+        "base_salary REAL,"
+        "bonus REAL,"
+        "FOREIGN KEY (id) REFERENCES Employee(id) ON DELETE CASCADE)";
 
     if (!executeQuery(sql5))
     {

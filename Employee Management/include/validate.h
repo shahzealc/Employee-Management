@@ -2,6 +2,17 @@
 #define validate_flag
 
 #include<regex>
+
+bool validateAlphabetic(const std::string& str) {
+    std::regex pattern("^[A-Za-z]+$");
+    return std::regex_match(str, pattern);
+}
+
+bool validateNumeric(const std::string& str) {
+    std::regex pattern("^\\d+$");
+    return std::regex_match(str, pattern);
+}
+
 bool validateEmail(const std::string& email) {
 
     std::regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
@@ -53,5 +64,7 @@ bool validateDateOfBirth(const std::string& dob) {
 
     return true;
 }
+
+
 
 #endif // !validate_flag

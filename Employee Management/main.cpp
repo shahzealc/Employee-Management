@@ -4,8 +4,8 @@
 #include "include/Employee.h"
 #include "include/Engineer.h"
 #include "include/Manager.h"
+#include "include/Department.h"
 #include "include/Salary.h"
-#include "include/department.h"
 
 
 int main() {

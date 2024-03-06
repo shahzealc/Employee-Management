@@ -1,19 +1,19 @@
 #include "../include/Department.h"
 //#include "../include/validate.h"
 void Department::setId() {
-	std::cout << "Dept. Id: ";
+	std::cout << "Enter Department Id: ";
 	std::cin >> id;
 }
 void Department::setName() {
-	std::cout << "Dept.Name: ";
+	std::cout << "Enter Department Name: ";
 	std::cin >> name;
 }
 void Department::setManagerId() {
-	std::cout << "Dept.ManagerId: ";
+	std::cout << "Enter Department ManagerId: ";
 	std::cin >> manager_id;
 }
 void Department::setDescription() {
-	std::cout << "Dept. Description: ";
+	std::cout << "Enter Department Description: ";
 	std::cin.ignore();
 	std::getline(std::cin, description);
 
@@ -33,7 +33,7 @@ void Department::insertDepartment() {
 		description + "');";
 
 	if (db_department.executeQuery(insertQuery))
-		std::cout << "Inserted Department Succesfully ! \n";
+		std::cout << "Inserted Department Succesfully ! \n\n";
 	else
 		std::cout << db_department.getError() << "\n";
 
@@ -46,7 +46,7 @@ void Department::deleteDepartment() {
 
 	std::cout << "Please select a column to delete an Department:\n";
 	std::cout << "1. ID\n";
-	std::cout << "2. Dept. Name\n";
+	std::cout << "2. Deptartment Name\n";
 	std::cout << "3. Exit\n";
 
 	std::cout << "Enter your choice (1-3): ";
@@ -79,7 +79,7 @@ void Department::deleteDepartment() {
 
 		std::cout << changes << " row affected \n\n";
 		if (changes != 0) {
-			std::cout << "Department Deleted Succesfully ! \n";
+			std::cout << "Department Deleted Succesfully ! \n\n";
 		}
 
 	}
@@ -95,8 +95,8 @@ void Department::updateDepartment() {
 
 
 	std::cout << "Please select an attribute to update:\n";
-	std::cout << "1. Dept. Name\n";
-	std::cout << "2. Dept. Manager_Id\n";
+	std::cout << "1. Deptartment Name\n";
+	std::cout << "2. Deptartment Manager_Id\n";
 	std::cout << "3. Description\n";
 	std::cout << "4. Exit\n";
 	std::cout << "Enter your choice (1-4): ";
@@ -131,7 +131,7 @@ void Department::updateDepartment() {
 
 		std::cout << changes << " row affected \n\n";
 		if (changes != 0) {
-			std::cout << "Department Updated Succesfully ! \n";
+			std::cout << "Department Updated Succesfully ! \n\n";
 		}
 
 	}
@@ -146,8 +146,8 @@ void Department::viewDepartment() {
 
 	std::cout << "Please select a column to view a Department:\n";
 	std::cout << "1. ALL\n";
-	std::cout << "2. Dept.Id\n";
-	std::cout << "3. Dept. Name\n";
+	std::cout << "2. Deptartment Id\n";
+	std::cout << "3. Deptartment Name\n";
 	std::cout << "4. Exit\n";
 
 	std::cout << "Enter your choice (1-4): ";
