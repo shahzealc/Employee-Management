@@ -24,7 +24,7 @@ void Department::insertDepartment() {
 	system("cls");
 
 	std::cout << "Insert Department Details:\n";
-	/*setId();
+	setId();
 	setName();
 	setManagerId();
 	setDescription();
@@ -33,9 +33,9 @@ void Department::insertDepartment() {
 		+ std::to_string(id) + ", '" +
 		name + "', '" +
 		std::to_string(manager_id) + "', '" +
-		description + "');";*/
+		description + "');";
 
-	std::string insertQuery = "INSERT INTO Department (id, name, manager_id, description) VALUES (1, 'Engineering', 1, 'Responsible for technical development'),(2, 'Human Resources', 2, 'Responsible for managing personnel'),(3, 'Marketing', 3, 'Responsible for promoting products'); ";
+	//std::string insertQuery = "INSERT INTO Department (id, name, manager_id, description) VALUES (1, 'Engineering', 1, 'Responsible for technical development'),(2, 'Human Resources', 2, 'Responsible for managing personnel'),(3, 'Marketing', 3, 'Responsible for promoting products'); ";
 
 	if (Database::getInstance().executeQuery(insertQuery))
 		std::cout << "Inserted Department Succesfully ! \n\n";

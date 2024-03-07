@@ -22,7 +22,7 @@ void Salary::insertSalary() {
 
 	system("cls");
 	std::cout << "Insert Salary Details:\n";
-	/*setId();
+	setId();
 	setAmount();
 	setBaseSalary();
 	setBonus();
@@ -31,9 +31,9 @@ void Salary::insertSalary() {
 		+ std::to_string(id) + ", '" +
 		std::to_string(amount )+ "', '" +
 		std::to_string(base_salary) + "', '" +
-		std::to_string(bonus) + "');";*/
+		std::to_string(bonus) + "');";
 
-	std::string insertQuery = "INSERT INTO Salary (id, amount, base_salary, bonus) VALUES (1, 70000, 60000, 10000),(2, 80000, 70000, 10000),(3, 90000, 80000, 10000); ";
+	//std::string insertQuery = "INSERT INTO Salary (id, amount, base_salary, bonus) VALUES (1, 70000, 60000, 10000),(2, 80000, 70000, 10000),(3, 90000, 80000, 10000); ";
 
 	if (Database::getInstance().executeQuery(insertQuery))
 		std::cout << "Inserted Salary Succesfully ! \n\n";

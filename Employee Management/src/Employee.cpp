@@ -91,20 +91,20 @@ void Employee::insertEmployee() {
 
 	std::cout << "Enter Employee Details:\n";
 
-	//setId();
-	//setFirstname();
-	//setLastname();
-	//setDob();
-	//setMobile();
-	//setEmail();
-	//setAddress();
-	//setGender();
-	//setDoj();
-	//setWLocation();
-	//setManagerId();
-	//setDepartmentId();
+	setId();
+	setFirstname();
+	setLastname();
+	setDob();
+	setMobile();
+	setEmail();
+	setAddress();
+	setGender();
+	setDoj();
+	setWLocation();
+	setManagerId();
+	setDepartmentId();
 
-	/*std::string insertQuery = "INSERT INTO Employee (id, firstname, lastname, dob, mobile, email, address, gender, doj, w_location, manager_id, department_id) VALUES ("
+	std::string insertQuery = "INSERT INTO Employee (id, firstname, lastname, dob, mobile, email, address, gender, doj, w_location, manager_id, department_id) VALUES ("
 		+ std::to_string(id) + ", '" +
 		firstname + "', '" +
 		lastname + "', '" +
@@ -116,22 +116,17 @@ void Employee::insertEmployee() {
 		doj + "', '" +
 		w_location + "', " +
 		std::to_string(manager_id) + ", " +
-		std::to_string(department_id) + ");";*/
+		std::to_string(department_id) + ");";
 
-	std::string insertQuery = "INSERT INTO Employee (id, firstname, lastname, dob, mobile, email, address, gender, doj, w_location, manager_id, department_id) VALUES"
-		"(4, 'Emily', 'Brown', '1987-04-25', '1112223333', 'emily.brown@example.com', '101 Pine St', 'Female', '2016-02-15', 'Office D', 3, 4), "
-		"(5, 'David', 'Wilson', '1993-09-30', '9998887777', 'david.wilson@example.com', '202 Maple St', 'Male', '2019-05-10', 'Office E', 4, 5), "
-		"(6, 'Sophia', 'Martinez', '1990-06-20', '3334445555', 'sophia.martinez@example.com', '303 Oak St', 'Female', '2014-07-01', 'Office F', 5, 6), "
-		"(7, 'James', 'Anderson', '1988-11-15', '7776665555', 'james.anderson@example.com', '404 Cedar St', 'Male', '2015-03-25', 'Office G', 6, 7), "
-		"(8, 'Olivia', 'Taylor', '1995-01-05', '5556667777', 'olivia.taylor@example.com', '505 Walnut St', 'Female', '2018-08-10', 'Office H', 7, 8), "
-		"(9, 'William', 'Thomas', '1986-07-10', '2223334444', 'william.thomas@example.com', '606 Birch St', 'Male', '2013-09-20', 'Office I', 8, 9), "
-		"(10, 'Ava', 'Hernandez', '1991-03-08', '8889990000', 'ava.hernandez@example.com', '707 Pine St', 'Female', '2017-11-05', 'Office J', 9, 10); ";
+	/*std::string insertQuery = "INSERT INTO Employee (id, firstname, lastname, dob, mobile, email, address, gender, doj, w_location, manager_id, department_id) VALUES"
+		"(1, 'Emily', 'Brown', '1987-04-25', '1112223333', 'emily.brown@example.com', '101 Pine St', 'Female', '2016-02-15', 'Office D', 1, 1), "
+		"(2, 'David', 'Wilson', '1993-09-30', '9998887777', 'david.wilson@example.com', '202 Maple St', 'Male', '2019-05-10', 'Office E', 1, 2), "
+		"(3, 'Sophia', 'Martinez', '1990-06-20', '3334445555', 'sophia.martinez@example.com', '303 Oak St', 'Female', '2014-07-01', 'Office F', 1, 2); ";*/
 
 	if (Database::getInstance().executeQuery(insertQuery))
 		std::cout << "Inserted Employee Succesfully ! \n\n";
-
 	else
-		std::cout << Database::getInstance().getError() << "\n";
+		std::cout << Database::getInstance().getError() << "\n\n";
 
 };
 void Employee::deleteEmployee() {
@@ -144,13 +139,12 @@ void Employee::deleteEmployee() {
 
 	std::cout << "Please select a column to delete an employee:\n";
 	std::cout << "1. ID\n";
-	std::cout << "2. Firstname\n";
-	std::cout << "3. Email\n";
-	std::cout << "4. Exit\n";
+	std::cout << "2. Email\n";
+	std::cout << "3. Exit\n";
 
-	std::cout << "Enter your choice (1-4): ";
+	std::cout << "Enter your choice (1-3): ";
 
-
+	std::string countQuery;
 	std::cin >> choice;
 	std::cout << "\n";
 
@@ -159,20 +153,16 @@ void Employee::deleteEmployee() {
 		setId();
 		deleteQuery = "DELETE FROM Employee WHERE id = " + std::to_string(getId());
 		break;
-	case 2:
-		setFirstname();
-		deleteQuery = "DELETE FROM Employee WHERE firstname = '" + getFirstname() + "'";
-		break;
 
-	case 3:
+	case 2:
 		setEmail();
 		deleteQuery = "DELETE FROM Employee WHERE email = '" + getEmail() + "'";
 		break;
 
-	case 4:
+	case 3:
 		break;
 	default:
-		std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+		std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
 		deleteEmployee();
 		break;
 	}
@@ -187,9 +177,13 @@ void Employee::deleteEmployee() {
 		}
 
 	}
-	else
-		std::cout << Database::getInstance().getError() << "\n";
-
+	else {
+		std::string errmsg = "FOREIGN KEY constraint failed";
+		if (Database::getInstance().getError() == errmsg) {
+			Database::getInstance().setError("Selected Employee is managing different employees, so you can not directly delete this employee !!! ");
+		}
+		std::cout << Database::getInstance().getError() << "\n\n";
+	}
 
 };
 
@@ -200,8 +194,6 @@ void Employee::updateEmployee() {
 	system("cls");
 
 	setId();
-
-
 
 	std::cout << "Please select an attribute to update:\n";
 	std::cout << "1. Firstname\n";

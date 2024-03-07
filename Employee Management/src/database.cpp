@@ -51,7 +51,7 @@ bool Database::createTables() {
         "name VARCHAR,"
         "manager_id INTEGER,"
         "description VARCHAR,"
-        "FOREIGN KEY (manager_id) REFERENCES Employee(id) ON DELETE CASCADE)";
+        "FOREIGN KEY (manager_id) REFERENCES Employee(id) )";
 
 
     if (!executeQuery(sql2))
@@ -65,7 +65,7 @@ bool Database::createTables() {
         "id INTEGER PRIMARY KEY,"
         "programming_language VARCHAR,"
         "specialization VARCHAR,"
-        "FOREIGN KEY (id) REFERENCES Employee(id) ON DELETE CASCADE)";
+        "FOREIGN KEY (id) REFERENCES Employee(id) ON DELETE CASCADE )";
 
     if (!executeQuery(sql3))
     {
