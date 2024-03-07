@@ -19,8 +19,10 @@ void Salary::setBonus() {
 }
 
 void Salary::insertSalary() {
+
+	system("cls");
 	std::cout << "Insert Salary Details:\n";
-	setId();
+	/*setId();
 	setAmount();
 	setBaseSalary();
 	setBonus();
@@ -29,23 +31,26 @@ void Salary::insertSalary() {
 		+ std::to_string(id) + ", '" +
 		std::to_string(amount )+ "', '" +
 		std::to_string(base_salary) + "', '" +
-		std::to_string(bonus) + "');";
+		std::to_string(bonus) + "');";*/
 
-	if (db_salary.executeQuery(insertQuery))
+	std::string insertQuery = "INSERT INTO Salary (id, amount, base_salary, bonus) VALUES (1, 70000, 60000, 10000),(2, 80000, 70000, 10000),(3, 90000, 80000, 10000); ";
+
+	if (Database::getInstance().executeQuery(insertQuery))
 		std::cout << "Inserted Salary Succesfully ! \n\n";
 	else
-		std::cout << db_salary.getError() << "\n";
+		std::cout << Database::getInstance().getError() << "\n";
 
 };
 void Salary::deleteSalary() {
 	
-		
+	system("cls");
+
 	setId();
 	std::string deleteQuery = "DELETE FROM Salary WHERE id = " + std::to_string(getId());
 
-	if (db_salary.executeQuery(deleteQuery)) {
+	if (Database::getInstance().executeQuery(deleteQuery)) {
 
-		int changes = sqlite3_changes(db_salary.db);
+		int changes = sqlite3_changes(Database::getInstance().db);
 
 		std::cout << changes << " row affected \n\n";
 		if (changes != 0) {
@@ -54,13 +59,14 @@ void Salary::deleteSalary() {
 
 	}
 	else
-		std::cout << db_salary.getError() << "\n";
+		std::cout << Database::getInstance().getError() << "\n";
 
 };
 void Salary::updateSalary() {
 
 	std::string updateQuery{};
 	int choice;
+	system("cls");
 	std::cout << "Enter Salary id to update: \n";
 	std::cin >> id;
 
@@ -96,9 +102,9 @@ void Salary::updateSalary() {
 		break;
 	}
 
-	if (db_salary.executeQuery(updateQuery)) {
+	if (Database::getInstance().executeQuery(updateQuery)) {
 
-		int changes = sqlite3_changes(db_salary.db);
+		int changes = sqlite3_changes(Database::getInstance().db);
 
 		std::cout << changes << " row affected \n\n";
 		if (changes != 0) {
@@ -107,14 +113,14 @@ void Salary::updateSalary() {
 
 	}
 	else
-		std::cout << db_salary.getError() << "\n";
+		std::cout << Database::getInstance().getError() << "\n";
 
 };
 void Salary::viewSalary() {
 	std::string selectQuery{};
 
 	int choice;
-
+	system("cls");
 	std::cout << "Please select a column to view a Salary:\n";
 	std::cout << "1. ALL\n";
 	std::cout << "2. Employee Id\n";
@@ -142,8 +148,8 @@ void Salary::viewSalary() {
 		break;
 	}
 
-	if (!db_salary.executeQueryCallback(selectQuery)) {
-		std::cout << db_salary.getError() << std::endl;
+	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
+		std::cout << Database::getInstance().getError() << std::endl;
 	}
 
 };
