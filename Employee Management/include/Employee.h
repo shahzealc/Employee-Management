@@ -43,7 +43,7 @@ public:
     void setDepartmentId();
 
     void insertEmployee();
-    void deleteEmployee();
+    void deleteEmployeeById(int);
     void updateEmployee();
     void viewEmployee();
 

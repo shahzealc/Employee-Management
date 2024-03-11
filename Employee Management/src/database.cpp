@@ -130,10 +130,10 @@ std::string Database::getError() const {
 
 bool Database::executeQueryCallback(const std::string& query) {
     char* errMsg = nullptr;
-    
+    rows = 0;
     int rc = sqlite3_exec(db, query.c_str(), callback, 0, &errMsg);
     std::cout << rows << " rows returned \n\n";
-    rows = 0;
+;
     if (rc != SQLITE_OK) {
         setError(errMsg);
         sqlite3_free(errMsg);
@@ -142,6 +142,9 @@ bool Database::executeQueryCallback(const std::string& query) {
     return true;
 }
 
+int Database::getRow() {
+    return rows;
+}
 
 int Database::callback(void* data, int argc, char** argv, char** azColName) {
     ++rows;
@@ -156,3 +159,4 @@ int Database::callback(void* data, int argc, char** argv, char** azColName) {
 void Database::setError(const std::string& errorMessage) {
     Error = errorMessage;
 }
+

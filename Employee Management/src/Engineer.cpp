@@ -16,6 +16,7 @@ void Engineer::setSpecialization()
 void Engineer::insertEngineer() { 
 
     insertEmployee();
+
     setProgrammingLanguage();
     setSpecialization();
 
@@ -34,7 +35,18 @@ void Engineer::insertEngineer() {
 
 void Engineer::deleteEngineer() {
         
-    deleteEmployee();
+    setId();
+    std::string checkEngineer = "SELECT id FROM Engineer WHERE id = "+std::to_string(getId());
+
+    if (!Database::getInstance().executeQueryCallback(checkEngineer)) {
+        std::cout << Database::getInstance().getError() << std::endl;
+    }
+
+    if (int rows = Database::getInstance().getRow(); rows > 0)
+        deleteEmployeeById(getId());
+    else
+        std::cout << "Engineer Not exist" << "\n\n";
+       
 
 };
 void Engineer::updateEngineer() {
@@ -120,11 +132,11 @@ void Engineer::viewEngineer() {
 
     switch (choice) {
     case 1:
-        selectQuery = "SELECT * FROM Engineer";
+        selectQuery = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id ";
         break;
     case 2:
         setId();
-        selectQuery = "SELECT * FROM Engineer WHERE id = " + std::to_string(getId());
+        selectQuery = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id AND Employee.id =" + std::to_string(getId());
         break;
     case 3:
         break;

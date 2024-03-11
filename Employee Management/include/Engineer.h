@@ -2,6 +2,9 @@
 #define eng_flag
 
 #include "Employee.h"
+#include "../sqlite/sqlite3.h"
+
+
 class Engineer : public Employee {
 public:
 	Engineer() = default;

@@ -123,66 +123,46 @@ void Employee::insertEmployee() {
 		"(2, 'David', 'Wilson', '1993-09-30', '9998887777', 'david.wilson@example.com', '202 Maple St', 'Male', '2019-05-10', 'Office E', 1, 2), "
 		"(3, 'Sophia', 'Martinez', '1990-06-20', '3334445555', 'sophia.martinez@example.com', '303 Oak St', 'Female', '2014-07-01', 'Office F', 1, 2); ";*/
 
-	if (Database::getInstance().executeQuery(insertQuery))
-		std::cout << "Inserted Employee Succesfully ! \n\n";
-	else
+	if (!Database::getInstance().executeQuery(insertQuery))
 		std::cout << Database::getInstance().getError() << "\n\n";
 
 };
-void Employee::deleteEmployee() {
+void Employee::deleteEmployeeById(int id) {
 
 	std::string deleteQuery{};
 
-	int choice;
-	system("cls");
 
+	std::string viewEmployee = "SELECT id,firstname,lastname,email FROM Employee WHERE id = " + std::to_string(id);
 
-	std::cout << "Please select a column to delete an employee:\n";
-	std::cout << "1. ID\n";
-	std::cout << "2. Email\n";
-	std::cout << "3. Exit\n";
-
-	std::cout << "Enter your choice (1-3): ";
-
-	std::string countQuery;
-	std::cin >> choice;
-	std::cout << "\n";
-
-	switch (choice) {
-	case 1:
-		setId();
-		deleteQuery = "DELETE FROM Employee WHERE id = " + std::to_string(getId());
-		break;
-
-	case 2:
-		setEmail();
-		deleteQuery = "DELETE FROM Employee WHERE email = '" + getEmail() + "'";
-		break;
-
-	case 3:
-		break;
-	default:
-		std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
-		deleteEmployee();
-		break;
+	if (!Database::getInstance().executeQueryCallback(viewEmployee)) {
+		std::cout << Database::getInstance().getError() << std::endl;
 	}
+	
+	std::cout << "Enter Y: to delete this Employee\nEnter N: to exit\n\n";
+	char confirm;
+	std::cin >> confirm;
 
-	if (Database::getInstance().executeQuery(deleteQuery)) {
+	if (confirm == 'Y' || confirm == 'y') {
 
-		int changes = sqlite3_changes(Database::getInstance().db);
+		deleteQuery = "DELETE FROM Employee WHERE id = " + std::to_string(id);
 
-		std::cout << changes << " row affected \n\n";
-		if (changes != 0) {
-			std::cout << "Employee Deleted Succesfully ! \n\n";
+		if (Database::getInstance().executeQuery(deleteQuery)) {
+
+			int changes = sqlite3_changes(Database::getInstance().db);
+
+			std::cout << changes << " row affected \n\n";
+			if (changes != 0) {
+				std::cout << "Employee Deleted Succesfully ! \n\n";
+			}
+
 		}
-
-	}
-	else {
-		std::string errmsg = "FOREIGN KEY constraint failed";
-		if (Database::getInstance().getError() == errmsg) {
-			Database::getInstance().setError("Selected Employee is managing different employees, so you can not directly delete this employee !!! ");
+		else {
+			std::string errmsg = "FOREIGN KEY constraint failed";
+			if (Database::getInstance().getError() == errmsg) {
+				Database::getInstance().setError("Selected Employee is managing different employees, so you can not directly delete this employee !!! ");
+			}
+			std::cout << Database::getInstance().getError() << "\n\n";
 		}
-		std::cout << Database::getInstance().getError() << "\n\n";
 	}
 
 };
@@ -362,7 +342,8 @@ void Employee::action() {
 			insertEmployee();
 			break;
 		case 2:
-			deleteEmployee();
+			setId();
+			deleteEmployeeById(getId());
 			break;
 		case 3:
 			updateEmployee();

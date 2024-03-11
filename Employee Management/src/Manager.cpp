@@ -13,7 +13,7 @@ void Manager::setProjectTitle() {
 
 void Manager::insertManager() {
     insertEmployee();
-    std::cout << "\nNow Enter Managing related details: \n";
+
     setManagementExperience();
     setProjectTitle();
 
@@ -30,7 +30,17 @@ void Manager::insertManager() {
 };
 void Manager::deleteManager() {
     
-    deleteEmployee();
+    setId();
+    std::string checkManager = "SELECT id FROM Manager WHERE id = " + std::to_string(getId());
+
+    if (!Database::getInstance().executeQueryCallback(checkManager)) {
+        std::cout << Database::getInstance().getError() << std::endl;
+    }
+
+    if (int rows = Database::getInstance().getRow(); rows > 0)
+        deleteEmployeeById(getId());
+    else
+        std::cout << "Manager Not exist" << "\n\n";
 
 };
 void Manager::updateManager() {
@@ -114,11 +124,11 @@ void Manager::viewManager() {
 
     switch (choice) {
     case 1:
-        selectQuery = "SELECT * FROM Manager";
+        selectQuery = "SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id ";
         break;
     case 2:
         setId();
-        selectQuery = "SELECT * FROM Manager WHERE id = " + std::to_string(getId());
+        selectQuery = "SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id AND Employee.id =" + std::to_string(getId());
         break;
     case 3:
         break;

@@ -25,54 +25,49 @@ int main() {
 		system("cls");
 		std::cout << "Welcome to the database management system!\n";
 		std::cout << "Please select a table to perform an action:\n";
-		std::cout << "1. Employee\n";
-		std::cout << "2. Department\n";
-		std::cout << "3. Salary\n";
-		std::cout << "4. Engineer\n";
-		std::cout << "5. Manager\n";
-		std::cout << "6. Exit\n";
-		std::cout << "Enter your choice (1-6): ";
+
+		std::cout << "1. Department\n";
+		std::cout << "2. Salary\n";
+		std::cout << "3. Engineer\n";
+		std::cout << "4. Manager\n";
+		std::cout << "5. Exit\n";
+		std::cout << "Enter your choice (1-5): ";
 
 
 		std::cin >> choice;
 		std::cout << "\n";
 
 		switch (choice) {
+
 		case 1:
-		{
-			Employee e1;
-			e1.action();
-		}
-		break;
-		case 2:
 		{
 			Department d1;
 			d1.action();
 		}
 		break;
-		case 3:
+		case 2:
 		{
 			Salary s1;
 			s1.action();
 		}
 		break;
-		case 4:
+		case 3:
 		{
 			Engineer en1;
 			en1.action();
 		}
 		break;
-		case 5:
+		case 4:
 		{
 			Manager m1;
 			m1.action();
 		}
 		break;
-		case 6: 
+		case 5: 
 			flag = false;
 			break;
 		default:
-			std::cerr << "Invalid choice. Please enter a number between 1 and 6.\n";
+			std::cerr << "Invalid choice. Please enter a number between 1 and 5.\n";
 			break;
 		}
 	}
