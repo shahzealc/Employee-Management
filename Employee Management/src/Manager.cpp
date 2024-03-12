@@ -33,7 +33,7 @@ void Manager::deleteManager() {
     setId();
     std::string checkManager = "SELECT id FROM Manager WHERE id = " + std::to_string(getId());
 
-    if (!Database::getInstance().executeQueryCallback(checkManager)) {
+    if (!Database::getInstance().executeQueryRows(checkManager)) {
         std::cout << Database::getInstance().getError() << std::endl;
     }
 

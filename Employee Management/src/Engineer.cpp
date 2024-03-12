@@ -38,7 +38,7 @@ void Engineer::deleteEngineer() {
     setId();
     std::string checkEngineer = "SELECT id FROM Engineer WHERE id = "+std::to_string(getId());
 
-    if (!Database::getInstance().executeQueryCallback(checkEngineer)) {
+    if (!Database::getInstance().executeQueryRows(checkEngineer)) {
         std::cout << Database::getInstance().getError() << std::endl;
     }
 

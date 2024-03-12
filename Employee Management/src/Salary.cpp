@@ -15,7 +15,6 @@ void Salary::setBaseSalary() {
 void Salary::setBonus() {
 	std::cout << "Enter Bonus: ";
 	std::cin >> bonus;
-
 }
 
 void Salary::insertSalary() {
@@ -127,7 +126,6 @@ void Salary::viewSalary() {
 	std::cout << "3. Exit\n";
 
 	std::cout << "Enter your choice (1-3): ";
-
 
 	std::cin >> choice;
 	std::cout << "\n";

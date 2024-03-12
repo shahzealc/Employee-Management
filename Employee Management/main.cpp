@@ -22,7 +22,7 @@ int main() {
 
 
 	while (flag) {
-		system("cls");
+
 		std::cout << "Welcome to the database management system!\n";
 		std::cout << "Please select a table to perform an action:\n";
 
@@ -33,45 +33,51 @@ int main() {
 		std::cout << "5. Exit\n";
 		std::cout << "Enter your choice (1-5): ";
 
-
 		std::cin >> choice;
+
 		std::cout << "\n";
 
 		switch (choice) {
 
 		case 1:
+
 		{
 			Department d1;
 			d1.action();
+			system("cls");
 		}
 		break;
 		case 2:
 		{
 			Salary s1;
 			s1.action();
+			system("cls");
 		}
 		break;
 		case 3:
 		{
 			Engineer en1;
 			en1.action();
+			system("cls");
 		}
 		break;
 		case 4:
 		{
 			Manager m1;
 			m1.action();
+			system("cls");
 		}
 		break;
-		case 5: 
+		case 5:
 			flag = false;
 			break;
 		default:
+			system("cls");
 			std::cerr << "Invalid choice. Please enter a number between 1 and 5.\n";
 			break;
 		}
 	}
-	
+
 	Database::getInstance().close();
 
 	return 0;

@@ -2,6 +2,7 @@
 #include<string>
 #include <vector>
 #include <iostream>
+#include <iomanip>
 
 int Database::rows = 0;
 bool Database::open(std::string db_name) {
@@ -133,7 +134,7 @@ bool Database::executeQueryCallback(const std::string& query) {
     rows = 0;
     int rc = sqlite3_exec(db, query.c_str(), callback, 0, &errMsg);
     std::cout << rows << " rows returned \n\n";
-;
+
     if (rc != SQLITE_OK) {
         setError(errMsg);
         sqlite3_free(errMsg);
@@ -142,18 +143,41 @@ bool Database::executeQueryCallback(const std::string& query) {
     return true;
 }
 
-int Database::getRow() {
-    return rows;
-}
-
 int Database::callback(void* data, int argc, char** argv, char** azColName) {
     ++rows;
+    int colWidth = 22;
+    int length;
+    std::cout << "----------------------------------------" << std::endl;
     for (int i = 0; i < argc; ++i) {
-        std::cout<< azColName[i] << ": " << (argv[i] ? argv[i] : "NULL") << " ";
-        std::cout << "\n";
+        length = strlen(azColName[i])-2;
+        std::cout << " " << azColName[i] << std::setw(colWidth - length) << ": " << (argv[i] ? argv[i] : "NULL") << "\n";
     }
-    std::cout << "\n";
+    std::cout << "----------------------------------------" << std::endl;
     return 0;
+}
+
+
+bool Database::executeQueryRows(const std::string& query) {
+    char* errMsg = nullptr;
+    rows = 0;
+    int rc = sqlite3_exec(db, query.c_str(), callbackRows, 0, &errMsg);
+
+    if (rc != SQLITE_OK) {
+        setError(errMsg);
+        sqlite3_free(errMsg);
+        return false;
+    }
+    return true;
+}
+
+int Database::callbackRows(void* data, int argc, char** argv, char** azColName) {
+    ++rows;
+    return 0;
+}
+
+
+int Database::getRow() {
+    return rows;
 }
 
 void Database::setError(const std::string& errorMessage) {

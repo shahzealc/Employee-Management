@@ -21,6 +21,7 @@ public:
     int getRow();
     std::string getError() const;
     void setError(const std::string& errorMessage);
+    bool executeQueryRows(const std::string& query);
 
 private:
     Database() {}
@@ -35,6 +36,7 @@ private:
     std::string Error{};
     static int rows;
     static int callback(void* data, int argc, char** argv, char** azColName);
+    static int callbackRows(void* data, int argc, char** argv, char** azColName);
     
 };
 
