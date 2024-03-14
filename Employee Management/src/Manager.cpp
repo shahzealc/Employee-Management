@@ -83,6 +83,8 @@ void Manager::updateManager() {
             break;
         default:
             std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             updateManager();
             break;
         }
@@ -100,8 +102,10 @@ void Manager::updateManager() {
         else
             std::cout << Database::getInstance().getError() << "\n";
         break;
-    default:
+   
         std::cout << "Invalid choice Please Enter a number 1 or 2 only\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         break;
     }
 
@@ -134,6 +138,8 @@ void Manager::viewManager() {
         break;
     default:
         std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         viewManager();
         break;
     }
@@ -143,6 +149,14 @@ void Manager::viewManager() {
     }
 };
 
+void Manager::describeManager()
+{
+
+    if (!Database::getInstance().executeQueryCallback("pragma table_info('Manager');")) {
+        std::cout << Database::getInstance().getError();
+    }
+
+}
 
 void Manager::action() {
     bool flag = true;
@@ -154,8 +168,9 @@ void Manager::action() {
         std::cout << "2. Delete\n";
         std::cout << "3. Update\n";
         std::cout << "4. View\n";
-        std::cout << "5. Exit\n";
-        std::cout << "Enter your choice (1-5): ";
+        std::cout << "5. Describe\n";
+        std::cout << "6. Exit\n";
+        std::cout << "Enter your choice (1-6): ";
 
         int choice;
         std::cin >> choice;
@@ -174,11 +189,16 @@ void Manager::action() {
         case 4:
             viewManager();
             break;
-        case 5: 
+        case 5:
+            describeManager();
+            break;
+        case 6: 
             flag = false;
             break;
         default:
-            std::cerr << "Invalid choice. Please enter a number between 1 and 5.\n";
+            std::cerr << "Invalid choice. Please enter a number between 1 and 6.\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             break;
         }
     }

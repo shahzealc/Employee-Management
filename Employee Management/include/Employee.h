@@ -46,6 +46,7 @@ public:
     void deleteEmployeeById(int);
     void updateEmployee();
     void viewEmployee();
+    void describeEmployee();
 
     void action();
 

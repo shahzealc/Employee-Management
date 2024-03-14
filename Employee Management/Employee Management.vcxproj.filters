@@ -65,5 +65,11 @@
     <ClInclude Include="include\validate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\askPrompt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\fpdfview.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -16,6 +16,11 @@ void Salary::setBonus() {
 	std::cout << "Enter Bonus: ";
 	std::cin >> bonus;
 }
+void Salary::setPercentage() {
+	std::cout << "Enter Increment Percentage: ";
+	std::cin >> percentage;
+	percentage = (percentage / 100) + 1;
+}
 
 void Salary::insertSalary() {
 
@@ -28,7 +33,7 @@ void Salary::insertSalary() {
 
 	std::string insertQuery = "INSERT INTO Salary (id, amount, base_salary, bonus) VALUES ("
 		+ std::to_string(id) + ", '" +
-		std::to_string(amount )+ "', '" +
+		std::to_string(amount) + "', '" +
 		std::to_string(base_salary) + "', '" +
 		std::to_string(bonus) + "');";
 
@@ -41,7 +46,7 @@ void Salary::insertSalary() {
 
 };
 void Salary::deleteSalary() {
-	
+
 	system("cls");
 
 	setId();
@@ -152,6 +157,27 @@ void Salary::viewSalary() {
 
 };
 
+void Salary::describeSalary()
+{
+
+	if (!Database::getInstance().executeQueryCallback("pragma table_info('Salary');")) {
+		std::cout << Database::getInstance().getError();
+	}
+
+}
+
+void Salary::incrementSalary() {
+
+	setId();
+	setPercentage();
+
+	std::string updateSalary = "UPDATE Salary SET base_salary = base_salary * " + std::to_string(getPercentage()) + ", amount = bonus + base_salary * " + std::to_string(getPercentage()) + " WHERE id = " + std::to_string(getId()) + "; ";
+
+	if (!Database::getInstance().executeQuery(updateSalary)) {
+		std::cout << Database::getInstance().getError();
+	}
+
+}
 
 void Salary::action() {
 	bool flag = true;
@@ -163,10 +189,13 @@ void Salary::action() {
 		std::cout << "2. Delete\n";
 		std::cout << "3. Update\n";
 		std::cout << "4. View\n";
-		std::cout << "5. Exit\n";
-		std::cout << "Enter your choice (1-5): ";
+		std::cout << "5. Describe\n";
+		std::cout << "6. Increment Salary\n";
+		std::cout << "7. Exit\n";
+		std::cout << "Enter your choice (1-7): ";
 
 		int choice;
+		
 		std::cin >> choice;
 		std::cout << "\n";
 
@@ -184,10 +213,18 @@ void Salary::action() {
 			viewSalary();
 			break;
 		case 5:
+			describeSalary();
+			break;
+		case 6:
+			incrementSalary();
+			break;
+		case 7:
 			flag = false;
 			break;
 		default:
-			std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
+			std::cout << "Invalid choice. Please enter a number between 1 and 7.\n";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		}
 	}

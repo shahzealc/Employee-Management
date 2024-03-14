@@ -147,6 +147,8 @@
     <ClCompile Include="src\Salary.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="external\fpdfview.h" />
+    <ClInclude Include="include\askPrompt.h" />
     <ClInclude Include="include\database.h" />
     <ClInclude Include="include\Department.h" />
     <ClInclude Include="include\Employee.h" />

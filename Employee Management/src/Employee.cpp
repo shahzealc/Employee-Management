@@ -159,7 +159,8 @@ void Employee::deleteEmployeeById(int id) {
 		else {
 			std::string errmsg = "FOREIGN KEY constraint failed";
 			if (Database::getInstance().getError() == errmsg) {
-				Database::getInstance().setError("Selected Employee is managing different employees, so you can not directly delete this employee !!! ");
+				std::string_view err = { "Selected Employee is managing different employees, so you can not directly delete this employee !!! " };
+				Database::getInstance().setError(err);
 			}
 			std::cout << Database::getInstance().getError() << "\n\n";
 		}
@@ -315,6 +316,14 @@ void Employee::viewEmployee() {
 
 };
 
+void Employee::describeEmployee()
+{
+
+	if (!Database::getInstance().executeQueryCallback("pragma table_info('Employee');")) {
+		std::cout << Database::getInstance().getError();
+	}
+
+}
 
 void Employee::action() {
 	bool flag = true;
@@ -331,8 +340,9 @@ void Employee::action() {
 		std::cout << "2. Delete\n";
 		std::cout << "3. Update\n";
 		std::cout << "4. View\n";
-		std::cout << "5. Exit\n";
-		std::cout << "Enter your choice (1-5): ";
+		std::cout << "5. Describe\n";
+		std::cout << "6. Exit\n";
+		std::cout << "Enter your choice (1-6): ";
 
 		std::cin >> choice;
 		std::cout << "\n";
@@ -352,10 +362,15 @@ void Employee::action() {
 			viewEmployee();
 			break;
 		case 5:
+			describeEmployee();
+			break;
+		case 6:
 			flag = false;
 			break;
 		default:
-			std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
+			std::cout << "Invalid choice. Please enter a number between 1 and 6.\n";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		}
 	}

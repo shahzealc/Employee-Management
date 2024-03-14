@@ -14,22 +14,29 @@ public:
     float getAmount() const { return amount; }
     float getBaseSalary() const { return base_salary; }
     float getBonus() const { return bonus; }
+    float getPercentage() const { return percentage; }
 
     void setId();
     void setAmount();
     void setBaseSalary();
     void setBonus();
+    void setPercentage();
 
     void insertSalary();
     void deleteSalary();
     void updateSalary();
     void viewSalary();
 
+    void describeSalary();
+
+    void incrementSalary();
+
     void action();
 
 private:
 
     int id{};
+    float percentage{};
     float amount {};
     float base_salary {};
     float bonus{};

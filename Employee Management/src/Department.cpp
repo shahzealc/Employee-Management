@@ -189,6 +189,14 @@ void Department::viewDepartment() {
 
 };
 
+void Department::describeDepartment()
+{
+
+	if (!Database::getInstance().executeQueryCallback("pragma table_info('Department');")) {
+		std::cout << Database::getInstance().getError();
+	}
+
+}
 
 void Department::action() {
 	bool flag = true;
@@ -201,8 +209,9 @@ void Department::action() {
 		std::cout << "2. Delete\n";
 		std::cout << "3. Update\n";
 		std::cout << "4. View\n";
-		std::cout << "5. Exit\n";
-		std::cout << "Enter your choice (1-5): ";
+		std::cout << "5. Describe\n";
+		std::cout << "6. Exit\n";
+		std::cout << "Enter your choice (1-6): ";
 
 		int choice;
 		std::cin >> choice;
@@ -222,10 +231,15 @@ void Department::action() {
 			viewDepartment();
 			break;
 		case 5:
+			describeDepartment();
+			break;
+		case 6:
 			flag = false;
 			break;
 		default:
-			std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
+			std::cout << "Invalid choice. Please enter a number between 1 and 6.\n";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		}
 	}
