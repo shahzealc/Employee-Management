@@ -1,22 +1,62 @@
 #include "../include/Department.h"
-//#include "../include/validate.h"
+#include "../include/log.h"
+#include "../include/validate.h"
+
+using logs::Log;
+
 void Department::setId() {
 	std::cout << "Enter Department Id: ";
-	std::cin >> id;
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (validateNumeric(inputValidate)) {
+		id = std::stoi(inputValidate);
+	}
+	else {
+		std::cout << "Wrong Input!\n";
+		setId();
+	}
 }
 void Department::setName() {
 	std::cout << "Enter Department Name: ";
-	std::cin >> name;
+
+	std::string inputValidate;
+	std::cin.ignore();
+	std::getline(std::cin, inputValidate);
+	if (validateAlphabetic(inputValidate)) {
+		name = inputValidate;
+	}
+	else {
+		std::cout << "Wrong Input!\n";
+		setName();
+	}
 }
 void Department::setManagerId() {
 	std::cout << "Enter Department ManagerId: ";
-	std::cin >> manager_id;
+
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (validateNumeric(inputValidate)) {
+		manager_id = std::stoi(inputValidate);
+	}
+	else {
+		std::cout << "Wrong Input!\n";
+		setManagerId();
+	}
 }
 void Department::setDescription() {
 	std::cout << "Enter Department Description: ";
-	std::cin.ignore();
-	std::getline(std::cin, description);
+	std::string inputValidate;
 
+	std::cin.ignore();
+	std::getline(std::cin, inputValidate);
+
+	if (validateAlphabetic(inputValidate)) {
+		description = inputValidate;
+	}
+	else {
+		std::cout << "Wrong Input!\n";
+		setDescription();
+	}
 }
 
 void Department::insertDepartment() {
@@ -35,10 +75,10 @@ void Department::insertDepartment() {
 		std::to_string(manager_id) + "', '" +
 		description + "');";
 
-	//std::string insertQuery = "INSERT INTO Department (id, name, manager_id, description) VALUES (1, 'Engineering', 1, 'Responsible for technical development'),(2, 'Human Resources', 2, 'Responsible for managing personnel'),(3, 'Marketing', 3, 'Responsible for promoting products'); ";
-
-	if (Database::getInstance().executeQuery(insertQuery))
+	if (Database::getInstance().executeQuery(insertQuery)) {
 		std::cout << "Inserted Department Succesfully ! \n\n";
+		Log::getInstance().Info("Department Inserted for id : ", id);
+	}
 	else
 		std::cout << Database::getInstance().getError() << "\n";
 
@@ -74,6 +114,8 @@ void Department::deleteDepartment() {
 		break;
 	default:
 		std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		deleteDepartment();
 		break;
 	}
@@ -85,6 +127,7 @@ void Department::deleteDepartment() {
 		std::cout << changes << " row affected \n\n";
 		if (changes != 0) {
 			std::cout << "Department Deleted Succesfully ! \n\n";
+			Log::getInstance().Info("Department Deleted for id : ", id);
 		}
 
 	}
@@ -126,7 +169,7 @@ void Department::updateDepartment() {
 		break;
 	case 4:
 		break;
-	default:
+	
 		std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
 		updateDepartment();
 		break;
@@ -139,6 +182,7 @@ void Department::updateDepartment() {
 		std::cout << changes << " row affected \n\n";
 		if (changes != 0) {
 			std::cout << "Department Updated Succesfully ! \n\n";
+			Log::getInstance().Info("Department Updated for id : ", id);
 		}
 
 	}
@@ -165,26 +209,31 @@ void Department::viewDepartment() {
 
 	switch (choice) {
 	case 1:
-		selectQuery = "SELECT * FROM Department";
+		selectQuery = "SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;";
 		break;
 	case 2:
 		setId();
-		selectQuery = "SELECT * FROM Department WHERE id = " + std::to_string(getId());
+		selectQuery = "SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id AND Department.id = " + std::to_string(getId());
 		break;
 	case 3:
 		setName();
-		selectQuery = "SELECT * FROM Department WHERE name = '" + getName() + "'";
+		selectQuery = "SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id AND name = '" + getName() + "'";
 		break;
 	case 4:
 		break;
 	default:
 		std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		viewDepartment();
 		break;
 	}
 
 	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
 		std::cout << Database::getInstance().getError() << std::endl;
+	}
+	else {
+		Log::getInstance().Info(selectQuery, " : Executed.");
 	}
 
 };
@@ -194,6 +243,9 @@ void Department::describeDepartment()
 
 	if (!Database::getInstance().executeQueryCallback("pragma table_info('Department');")) {
 		std::cout << Database::getInstance().getError();
+	}
+	else {
+		Log::getInstance().Info("Department Described.");
 	}
 
 }

@@ -42,6 +42,12 @@
     <ClCompile Include="src\Salary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\validate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Employee.h">
@@ -68,8 +74,14 @@
     <ClInclude Include="include\askPrompt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="external\fpdfview.h">
+    <ClInclude Include="include\log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\myexception.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

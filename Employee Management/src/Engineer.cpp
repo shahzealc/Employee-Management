@@ -1,4 +1,6 @@
 #include "../include/Engineer.h"
+#include "../include/log.h"
+using logs::Log;
 
 void Engineer::setProgrammingLanguage()
 {
@@ -15,22 +17,24 @@ void Engineer::setSpecialization()
 
 void Engineer::insertEngineer() { 
 
-    insertEmployee();
+    if (insertEmployee()) {
 
-    setProgrammingLanguage();
-    setSpecialization();
+        setProgrammingLanguage();
+        setSpecialization();
 
-    std::string insertQueryEngineer = "INSERT INTO Engineer (id, programming_language,specialization) VALUES ("
-        + std::to_string(getId()) + ", '" +
-        programming_language + "', '" +
-        specialization + "'" +
-        ");";
+        std::string insertQueryEngineer = "INSERT INTO Engineer (id, programming_language,specialization) VALUES ("
+            + std::to_string(getId()) + ", '" +
+            programming_language + "', '" +
+            specialization + "'" +
+            ");";
 
-    if (Database::getInstance().executeQuery(insertQueryEngineer))
-        std::cout << "Inserted Engineer Succesfully ! \n\n";
-    else
-        std::cout << Database::getInstance().getError() << "\n\n";
-
+        if (Database::getInstance().executeQuery(insertQueryEngineer)) {
+            std::cout << "Inserted Engineer Succesfully ! \n\n";
+            Log::getInstance().Info("Engineer Inserted for id : ", getId());
+        }
+        else
+            std::cout << Database::getInstance().getError() << "\n\n";
+    }
 };
 
 void Engineer::deleteEngineer() {
@@ -42,10 +46,14 @@ void Engineer::deleteEngineer() {
         std::cout << Database::getInstance().getError() << std::endl;
     }
 
-    if (int rows = Database::getInstance().getRow(); rows > 0)
+    if (int rows = Database::getInstance().getRow(); rows > 0) {
         deleteEmployeeById(getId());
-    else
+        Log::getInstance().Info("Engineer Deleted for id : ", getId());
+    }
+    else {
         std::cout << "Engineer Not exist" << "\n\n";
+        Log::getInstance().Warn("Engineer not exist for id : ", getId());
+    }
     
 };
 void Engineer::updateEngineer() {
@@ -102,6 +110,7 @@ void Engineer::updateEngineer() {
             std::cout << changes << " row affected \n\n";
             if (changes != 0) {
                 std::cout << "Engineer Updated Succesfully ! \n\n";
+                Log::getInstance().Info("Engineer Updated for id : ", getId());
             }
 
         }
@@ -153,6 +162,9 @@ void Engineer::viewEngineer() {
 
     if (!Database::getInstance().executeQueryCallback(selectQuery)) {
         std::cout << Database::getInstance().getError() << std::endl;
+    }
+    else {
+        Log::getInstance().Info(selectQuery," : Executed.");
     }
 
 };

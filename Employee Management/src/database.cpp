@@ -1,12 +1,16 @@
 #include "../include/database.h"
+#include "../include/log.h"
 #include<string>
+#include<sstream>
 #include <vector>
 #include <iostream>
 #include <iomanip>
 
+using logs::Log;
+
 int Database::rows = 0;
 bool Database::open(std::filesystem::path dbPath) {
-	
+
 	if (sqlite3_open(dbPath.string().c_str(), &db) == SQLITE_OK) {
 
 		if (!createTables()) {
@@ -21,6 +25,7 @@ bool Database::open(std::filesystem::path dbPath) {
 	else {
 		std::string_view err = { "Failed to open database" };
 		setError(err);
+		Log::getInstance().Error("Failed to open database.");
 		return false;
 	}
 }
@@ -90,9 +95,9 @@ bool Database::createTables() {
 
 	const char* sql5 = "CREATE TABLE IF NOT EXISTS Salary ("
 		"id INTEGER PRIMARY KEY,"
-		"amount REAL,"
 		"base_salary REAL,"
 		"bonus REAL,"
+		"amount REAL AS (base_salary + bonus),"
 		"FOREIGN KEY (id) REFERENCES Employee(id) ON DELETE CASCADE)";
 
 	if (!executeQuery(sql5))
@@ -108,6 +113,7 @@ void Database::close() {
 	if (db) {
 		sqlite3_close(db);
 		db = nullptr;
+		Log::getInstance().Info("Database Closed.");
 	}
 }
 
@@ -120,6 +126,7 @@ bool Database::executeQuery(const std::string& query) {
 	if (rc != SQLITE_OK) {
 		std::string_view err = { errMsg };
 		setError(err);
+		Log::getInstance().Error(errMsg);
 		//sqlite3_free(errMsg);
 		return false;
 	}
@@ -135,11 +142,12 @@ bool Database::executeQueryCallback(const std::string& query) {
 	char* errMsg = nullptr;
 	rows = 0;
 	int rc = sqlite3_exec(db, query.c_str(), callback, 0, &errMsg);
-	std::cout << rows << " rows returned \n\n";
+	std::cout << rows << " rows returned \n";
 
 	if (rc != SQLITE_OK) {
 		std::string_view err = { errMsg };
 		setError(err);
+		Log::getInstance().Error(errMsg);
 		//sqlite3_free(errMsg);
 		return false;
 	}
@@ -168,6 +176,7 @@ bool Database::executeQueryRows(const std::string& query) {
 	if (rc != SQLITE_OK) {
 		std::string_view err = { errMsg };
 		setError(err);
+		Log::getInstance().Error(errMsg);
 		//sqlite3_free(errMsg);
 		return false;
 	}
@@ -224,9 +233,10 @@ void Database::createTableQuery() {
 	}
 	sql += ");";
 
-	executeQuery(sql);
+	if (executeQuery(sql)) {
+		Log::getInstance().Info(tableName, " created.");
+	}
 
-	std::cout << sql << "\n\n";
 }
 
 void Database::showTables() {
@@ -234,11 +244,14 @@ void Database::showTables() {
 	std::string showQuery = " SELECT name FROM sqlite_schema ;";
 	if (!executeQueryCallback(showQuery))
 		std::cout << getError() << "\n\n";
+	else
+		Log::getInstance().Info("Show table Query Fetched.");
 
 }
 
 void Database::deleteTableQuery() {
 
+	system("cls");
 	int input;
 	std::cout << "Enter 1 to Drop table or Enter 2 to Delete data within the table:";
 	std::cin >> input;
@@ -252,10 +265,13 @@ void Database::deleteTableQuery() {
 		std::cin >> tableName;
 
 		deleteQuery = "DROP TABLE " + tableName + ";";
-		std::cout << deleteQuery << '\n\n';
+		std::cout << deleteQuery << "\n\n";
 
-		if (executeQuery(deleteQuery))
-			std::cout << "Table Droped Succesfully ! \n\n";
+		if (executeQuery(deleteQuery)) {
+			std::cout << "Table Dropped Succesfully ! \n\n";
+			Log::getInstance().Info(tableName, " Dropped.");
+
+		}
 		else
 			std::cout << Database::getInstance().getError() << "\n\n";
 
@@ -265,10 +281,12 @@ void Database::deleteTableQuery() {
 		std::cout << "Enter Table Name to Delete: ";
 		std::cin >> tableName;
 		deleteQuery = "DELETE FROM " + tableName + ";";
-		std::cout << deleteQuery << '\n\n';
+		std::cout << deleteQuery << "\n\n";
 
-		if (executeQuery(deleteQuery))
+		if (executeQuery(deleteQuery)) {
 			std::cout << "Table Deleted Succesfully ! \n\n";
+			Log::getInstance().Info(tableName, " Deleted.");
+		}
 		else
 			std::cout << Database::getInstance().getError() << "\n\n";
 
@@ -276,6 +294,8 @@ void Database::deleteTableQuery() {
 
 	default:
 		std::cout << "Wrong Input..!\n\n";
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		break;
 	}
 
@@ -289,7 +309,7 @@ void Database::userSqlQuery()
 	std::cout << "Enter sql query : ";
 	std::cin.ignore();
 	std::getline(std::cin, sqlQuery);
-	
+
 	for (int i = 0; i < sqlQuery.size(); i++) {
 		sqlQuery[i] = std::tolower(sqlQuery[i]);
 	}
@@ -298,17 +318,109 @@ void Database::userSqlQuery()
 
 
 	if (pos == 0) {
-		if (executeQueryCallback(sqlQuery))
+		if (executeQueryCallback(sqlQuery)) {
 			std::cout << "SQL Query Completed Successfully ! \n\n";
+			Log::getInstance().Info(sqlQuery, " : Executed.");
+		}
 		else
 			std::cout << getError() << "\n";
 	}
-	else{
-		if (executeQuery(sqlQuery))
+	else {
+		if (executeQuery(sqlQuery)) {
 			std::cout << "SQL Query Completed Successfully ! \n\n";
+			Log::getInstance().Info(sqlQuery, " : Executed.");
+		}
 		else
 			std::cout << getError() << "\n";
 	}
 
 }
 
+void Database::export_to_csv(const std::string& table, const std::filesystem::path& filename) {
+	std::ofstream file(filename);
+	if (!file.is_open()) {
+		std::cerr << "Failed to open file: " << filename << std::endl;
+		return;
+	}
+
+	std::string query = "SELECT * FROM " + table + ";";
+	if (!Database::getInstance().executeQuery(query)) {
+		std::cerr << "Failed to execute query." << std::endl;
+		return;
+	}
+
+	sqlite3_stmt* stmt = nullptr;
+	int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
+	if (rc != SQLITE_OK) {
+		std::cerr << "Failed to prepare statement: " << sqlite3_errmsg(db) << std::endl;
+		return;
+	}
+
+	int columns = sqlite3_column_count(stmt);
+	for (int i = 0; i < columns; ++i) {
+		file << sqlite3_column_name(stmt, i);
+		if (i < columns - 1)
+			file << ",";
+	}
+	file << "\n";
+
+	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+		for (int i = 0; i < columns; ++i) {
+			if (sqlite3_column_text(stmt, i)) {
+				file << sqlite3_column_text(stmt, i);
+			}
+			if (i < columns - 1)
+				file << ",";
+		}
+		file << "\n";
+	}
+
+	if (rc != SQLITE_DONE) {
+		std::cout << getError() << "\n\n";
+	}
+	else {
+		Log::getInstance().Info("Database Exported.");
+	}
+	sqlite3_finalize(stmt);
+}
+
+bool Database::import_from_csv(const std::string& table, const std::filesystem::path& filename) {
+	int count = 0;
+	std::ifstream file(filename);
+	if (!file.is_open()) {
+		std::cerr << "Failed to open file: " << filename << std::endl;
+		return false;
+	}
+
+	std::string line, query;
+	std::getline(file, line);  
+
+	while (std::getline(file, line)) {
+		std::stringstream ss(line);
+		std::string value;
+		std::vector<std::string> values;
+
+		while (std::getline(ss, value, ',')) {
+
+			if (!value.empty() && value.front() == '"' && value.back() == '"') {
+				value = value.substr(1, value.size() - 2);
+			}
+			values.push_back(value);
+		}
+
+		query = "INSERT INTO " + table + " VALUES (";
+		for (const auto& val : values) {
+			query += "'" + val + "',";
+		}
+		query.pop_back(); 
+		query += ");";
+
+		if (Database::getInstance().executeQuery(query)) {
+			++count;
+		}
+		
+	}
+	std::cout << table<< " Imported with "<< count<< " new rows\n\n";
+	Log::getInstance().Info(table, " Imported with ",count," new rows");
+	return true;
+}

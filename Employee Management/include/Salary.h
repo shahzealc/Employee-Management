@@ -11,13 +11,11 @@ public:
     Salary() = default;
 
     int getId() const { return id; }
-    float getAmount() const { return amount; }
     float getBaseSalary() const { return base_salary; }
     float getBonus() const { return bonus; }
     float getPercentage() const { return percentage; }
 
     void setId();
-    void setAmount();
     void setBaseSalary();
     void setBonus();
     void setPercentage();
@@ -37,7 +35,6 @@ private:
 
     int id{};
     float percentage{};
-    float amount {};
     float base_salary {};
     float bonus{};
 };

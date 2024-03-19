@@ -88,8 +88,9 @@ void askPromptMain() {
 		std::cout << "3. Show Tables \n";
 		std::cout << "4. Manipulate data within the table\n";
 		std::cout << "5. Run your own query\n";
-		std::cout << "6. Exit\n";
-		std::cout << "Enter your choice (1-6): ";
+		std::cout << "6. Backup Existing Database\n";
+		std::cout << "7. Exit\n";
+		std::cout << "Enter your choice (1-7): ";
 
 		std::cin >> choiceMain;
 
@@ -124,6 +125,14 @@ void askPromptMain() {
 		}
 		break;
 		case 6:
+			Database::getInstance().export_to_csv("Employee", "backup/Employee.csv");
+			Database::getInstance().export_to_csv("Engineer", "backup/Engineer.csv");
+			Database::getInstance().export_to_csv("Manager", "backup/Manager.csv");
+			Database::getInstance().export_to_csv("Salary", "backup/Salary.csv");
+			Database::getInstance().export_to_csv("Department", "backup/Department.csv");
+			std::cout << "All Tables Backed up successfully.\n";
+			break;
+		case 7:
 			flagMain = false;
 			break;
 		default:

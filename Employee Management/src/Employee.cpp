@@ -2,6 +2,8 @@
 #include "../include/Employee.h"
 #include "../include/database.h"
 #include "../include/validate.h"
+#include "../include/log.h"
+using logs::Log;
 
 void Employee::setId() {
 	std::cout << "ID: ";
@@ -85,7 +87,7 @@ void Employee::setDepartmentId() {
 	std::cin >> department_id;
 }
 
-void Employee::insertEmployee() {
+bool Employee::insertEmployee() {
 
 	system("cls");
 
@@ -118,13 +120,15 @@ void Employee::insertEmployee() {
 		std::to_string(manager_id) + ", " +
 		std::to_string(department_id) + ");";
 
-	/*std::string insertQuery = "INSERT INTO Employee (id, firstname, lastname, dob, mobile, email, address, gender, doj, w_location, manager_id, department_id) VALUES"
-		"(1, 'Emily', 'Brown', '1987-04-25', '1112223333', 'emily.brown@example.com', '101 Pine St', 'Female', '2016-02-15', 'Office D', 1, 1), "
-		"(2, 'David', 'Wilson', '1993-09-30', '9998887777', 'david.wilson@example.com', '202 Maple St', 'Male', '2019-05-10', 'Office E', 1, 2), "
-		"(3, 'Sophia', 'Martinez', '1990-06-20', '3334445555', 'sophia.martinez@example.com', '303 Oak St', 'Female', '2014-07-01', 'Office F', 1, 2); ";*/
 
-	if (!Database::getInstance().executeQuery(insertQuery))
+	if (!Database::getInstance().executeQuery(insertQuery)) {
 		std::cout << Database::getInstance().getError() << "\n\n";
+		return false;
+	}
+	else {
+		Log::getInstance().Info("Employee Inserted for id : ", getId());
+	}
+	return true;
 
 };
 void Employee::deleteEmployeeById(int id) {
@@ -137,7 +141,7 @@ void Employee::deleteEmployeeById(int id) {
 	if (!Database::getInstance().executeQueryCallback(viewEmployee)) {
 		std::cout << Database::getInstance().getError() << std::endl;
 	}
-	
+
 	std::cout << "Enter Y: to delete this Employee\nEnter N: to exit\n\n";
 	char confirm;
 	std::cin >> confirm;
@@ -153,14 +157,16 @@ void Employee::deleteEmployeeById(int id) {
 			std::cout << changes << " row affected \n\n";
 			if (changes != 0) {
 				std::cout << "Employee Deleted Succesfully ! \n\n";
+				Log::getInstance().Info("Employee Deleted for id : ", getId());
 			}
 
 		}
 		else {
-			std::string errmsg = "FOREIGN KEY constraint failed";
+			std::string_view errmsg = "FOREIGN KEY constraint failed";
 			if (Database::getInstance().getError() == errmsg) {
 				std::string_view err = { "Selected Employee is managing different employees, so you can not directly delete this employee !!! " };
 				Database::getInstance().setError(err);
+				Log::getInstance().Warn("Selected Employee is managing different employees : can not delete for id : ", getId());
 			}
 			std::cout << Database::getInstance().getError() << "\n\n";
 		}
@@ -244,6 +250,8 @@ void Employee::updateEmployee() {
 		break;
 	default:
 		std::cout << "Invalid choice. Please enter a number between 1 and 12.\n";
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		updateEmployee();
 		break;
 	}
@@ -255,11 +263,11 @@ void Employee::updateEmployee() {
 		std::cout << changes << " row affected \n\n";
 		if (changes != 0) {
 			std::cout << "Employee Updated Succesfully ! \n\n";
+			Log::getInstance().Info("Employee Updated for id : ", getId());
 		}
 	}
 	else
 		std::cout << Database::getInstance().getError() << "\n";
-
 }
 
 
@@ -304,7 +312,7 @@ void Employee::viewEmployee() {
 	case 5:
 		break;
 
-	default:
+	
 		std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
 		viewEmployee();
 		break;
@@ -312,6 +320,9 @@ void Employee::viewEmployee() {
 
 	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
 		std::cout << Database::getInstance().getError() << std::endl;
+	}
+	else {
+		Log::getInstance().Info(selectQuery, " : Executed.");
 	}
 
 };
@@ -321,6 +332,9 @@ void Employee::describeEmployee()
 
 	if (!Database::getInstance().executeQueryCallback("pragma table_info('Employee');")) {
 		std::cout << Database::getInstance().getError();
+	}
+	else {
+		Log::getInstance().Info("Employee Described.");
 	}
 
 }
