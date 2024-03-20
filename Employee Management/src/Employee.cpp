@@ -7,87 +7,156 @@ using logs::Log;
 
 void Employee::setId() {
 	std::cout << "ID: ";
-	std::cin >> id;
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (validateNumeric(inputValidate)) {
+		id = std::stoi(inputValidate);
+	}
+	else {
+		std::cout << "Invalid Input !!, Enter again :\n";
+		setId();
+	}
 }
+
 void Employee::setFirstname() {
 	std::cout << "First Name: ";
-	std::cin >> firstname;
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (validateAlphabetic(inputValidate)) {
+		firstname = inputValidate;
+	}
+	else {
+		std::cout << "Invalid Input !!, Enter again :\n";
+		setFirstname();
+	}
 }
+
 void Employee::setLastname() {
 	std::cout << "Last Name: ";
-	std::cin >> lastname;
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (validateAlphabetic(inputValidate)) {
+		lastname = inputValidate;
+	}
+	else {
+		std::cout << "Invalid Input !!, Enter again :\n";
+		setLastname();
+	}
 }
+
 void Employee::setDob() {
 	std::cout << "Date of Birth (DD-MM-YYYY): ";
-	std::string inputDOB;
-	std::cin >> inputDOB;
-	if (!validateDateOfBirth(inputDOB)) {
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (!validateDateOfBirth(inputValidate)) {
 		std::cout << "Invalid Format !!, Enter again :\n";
-		Employee::setDob();
+		setDob();
 	}
 	else {
-		dob = inputDOB;
+		dob = inputValidate;
 	}
 }
+
 void Employee::setMobile() {
 	std::cout << "Mobile number : ";
-	std::string inputMob;
-	std::cin >> inputMob;
-	if (!validatePhoneNumber(inputMob)) {
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (!validatePhoneNumber(inputValidate)) {
 		std::cout << "Invalid Format !!, Enter again :\n";
-		Employee::setMobile();
+		setMobile();
 	}
 	else {
-		mobile = inputMob;
+		mobile = inputValidate;
 	}
 }
+
 void Employee::setEmail() {
 	std::cout << "Email address : ";
-	std::string inputMail;
-	std::cin >> inputMail;
-	if (!validateEmail(inputMail)) {
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (!validateEmail(inputValidate)) {
 		std::cout << "Invalid Format !!, Enter again :\n";
-		Employee::setEmail();
+		setEmail();
 	}
 	else {
-		email = inputMail;
+		email = inputValidate;
 	}
 }
+
 void Employee::setAddress() {
 	std::cout << "Address: ";
 	std::cin.ignore();
 	std::getline(std::cin, address);
 }
+
 void Employee::setGender() {
 	std::cout << "Gender (Male, Female, Other): ";
-	std::cin >> gender;
-}
-void Employee::setDoj() {
-	std::cout << "Date of Joining (DD-MM-YYYY): ";
-	std::string inputDOJ;
-	std::cin >> inputDOJ;
-	if (!validateDateOfBirth(inputDOJ)) {
-		std::cout << "Invalid Format !!, Enter again :\n";
-		Employee::setDoj();
+	std::string input;
+	std::cin >> input;
+	if (input == "Male" || input == "Female" || input == "Other") {
+		gender = input;
 	}
 	else {
-		doj = inputDOJ;
+		std::cout << "Invalid Input !!, Enter again :\n";
+		setGender();
 	}
 }
-void Employee::setWLocation() {
-	std::cout << "Work Location: ";
-	std::cin >> w_location;
-}
-void Employee::setManagerId() {
-	std::cout << "Manager ID: ";
-	std::cin >> manager_id;
-}
-void Employee::setDepartmentId() {
-	std::cout << "Department ID: ";
-	std::cin >> department_id;
+
+void Employee::setDoj() {
+	std::cout << "Date of Joining (DD-MM-YYYY): ";
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (!validateDateOfBirth(inputValidate)) {
+		std::cout << "Invalid Format !!, Enter again :\n";
+		setDoj();
+	}
+	else {
+		doj = inputValidate;
+	}
 }
 
-bool Employee::insertEmployee() {
+void Employee::setWLocation() {
+	std::cout << "Work Location: ";
+	std::string input;
+	std::cin >> input;
+
+	if (validateAlphabetic(input)) {
+		w_location = input;
+	}
+	else {
+		std::cout << "Invalid Input !!, Enter again :\n";
+		setWLocation();
+	}
+}
+
+void Employee::setManagerId() {
+	std::cout << "Manager ID: ";
+	std::string input;
+	std::cin >> input;
+	if (validateNumeric(input)) {
+		manager_id = std::stoi(input);
+	}
+	else {
+		std::cout << "Invalid Input !!, Enter again :\n";
+		setManagerId();
+	}
+}
+
+void Employee::setDepartmentId() {
+	std::cout << "Department ID: ";
+	std::string input;
+	std::cin >> input;
+	if (validateNumeric(input)) {
+		department_id = std::stoi(input);
+	}
+	else {
+		std::cout << "Invalid Input !!, Enter again :\n";
+		setDepartmentId();
+	}
+}
+
+
+std::string Employee::insertEmployee() {
 
 	system("cls");
 
@@ -106,7 +175,7 @@ bool Employee::insertEmployee() {
 	setManagerId();
 	setDepartmentId();
 
-	std::string insertQuery = "INSERT INTO Employee (id, firstname, lastname, dob, mobile, email, address, gender, doj, w_location, manager_id, department_id) VALUES ("
+	std::string insertQueryEmployee = "INSERT INTO Employee (id, firstname, lastname, dob, mobile, email, address, gender, doj, w_location, manager_id, department_id) VALUES ("
 		+ std::to_string(id) + ", '" +
 		firstname + "', '" +
 		lastname + "', '" +
@@ -121,14 +190,8 @@ bool Employee::insertEmployee() {
 		std::to_string(department_id) + ");";
 
 
-	if (!Database::getInstance().executeQuery(insertQuery)) {
-		std::cout << Database::getInstance().getError() << "\n\n";
-		return false;
-	}
-	else {
-		Log::getInstance().Info("Employee Inserted for id : ", getId());
-	}
-	return true;
+	
+	return insertQueryEmployee;
 
 };
 void Employee::deleteEmployeeById(int id) {

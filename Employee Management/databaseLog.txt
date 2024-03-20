@@ -1,0 +1,180 @@
+[ 18-03-2024 12:52:12 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 12:52:33 ][Info ]: hr  created. 
+[ 18-03-2024 12:52:37 ][Info ]: Show table Query Fetched. 
+[ 18-03-2024 12:52:41 ][Info ]: hr  Deleted. 
+[ 18-03-2024 12:52:45 ][Info ]: hr  Dropped. 
+[ 18-03-2024 12:53:02 ][Error]: no such table: hr 
+[ 18-03-2024 12:53:11 ][Info ]: Database Closed. 
+[ 18-03-2024 14:13:25 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 14:13:44 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus From Employee NATURAL JOIN Salary  : Executed. 
+[ 18-03-2024 14:13:59 ][Info ]: Salary Incremented for id :  1 
+[ 18-03-2024 14:14:06 ][Info ]: Database Closed. 
+[ 18-03-2024 14:38:20 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 14:38:38 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 18-03-2024 14:38:52 ][Info ]: Salary Described. 
+[ 18-03-2024 14:39:10 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id AND Employee.id =1  : Executed. 
+[ 18-03-2024 14:39:22 ][Info ]: Manager Described. 
+[ 18-03-2024 14:39:31 ][Info ]: Database Closed. 
+[ 18-03-2024 14:51:23 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 14:51:29 ][Info ]: Database Closed. 
+[ 18-03-2024 14:58:46 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 14:59:31 ][Info ]: test  created. 
+[ 18-03-2024 14:59:37 ][Info ]: Show table Query Fetched. 
+[ 18-03-2024 14:59:55 ][Info ]: test  Dropped. 
+[ 18-03-2024 14:59:57 ][Info ]: Database Closed. 
+[ 18-03-2024 15:09:40 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 15:10:27 ][Info ]: select * from department;  : Executed. 
+[ 18-03-2024 15:11:26 ][Error]: no such column: emplyee.id 
+[ 18-03-2024 15:11:51 ][Error]: no such column: emplyee.id 
+[ 18-03-2024 15:12:13 ][Info ]: select firstname, lastname,name from employee natural join department where department.manager_id=employee.id;  : Executed. 
+[ 18-03-2024 15:59:09 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 16:00:26 ][Info ]: select count(*) from employee;  : Executed. 
+[ 18-03-2024 16:00:57 ][Error]: no such column: salary 
+[ 18-03-2024 16:01:18 ][Info ]: select max(amount),id from salary;  : Executed. 
+[ 18-03-2024 16:01:30 ][Info ]: Database Closed. 
+[ 18-03-2024 16:20:59 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 16:21:35 ][Info ]: select * from employee;  : Executed. 
+[ 18-03-2024 16:21:42 ][Info ]: Database Closed. 
+[ 18-03-2024 16:21:52 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 16:22:03 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 18-03-2024 16:22:27 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 18-03-2024 16:22:50 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id   : Executed. 
+[ 18-03-2024 16:23:23 ][Error]: FOREIGN KEY constraint failed 
+[ 18-03-2024 16:31:32 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 16:32:29 ][Error]: CHECK constraint failed: gender IN ('Male', 'Female', 'Other') 
+[ 18-03-2024 16:32:56 ][Info ]: Engineer Inserted for id :  10 
+[ 18-03-2024 16:33:13 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id AND Employee.id =10  : Executed. 
+[ 18-03-2024 16:34:13 ][Info ]: Salary Deleted for id :  10 
+[ 18-03-2024 16:35:35 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 16:35:53 ][Error]: FOREIGN KEY constraint failed 
+[ 18-03-2024 16:35:53 ][Error]: FOREIGN KEY constraint failed 
+[ 18-03-2024 16:35:53 ][Error]: FOREIGN KEY constraint failed 
+[ 18-03-2024 16:35:53 ][Error]: FOREIGN KEY constraint failed 
+[ 18-03-2024 16:42:56 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 16:43:55 ][Error]: FOREIGN KEY constraint failed 
+[ 18-03-2024 16:43:55 ][Error]: FOREIGN KEY constraint failed 
+[ 18-03-2024 16:43:55 ][Error]: FOREIGN KEY constraint failed 
+[ 18-03-2024 16:43:55 ][Error]: FOREIGN KEY constraint failed 
+[ 18-03-2024 17:07:13 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 17:09:13 ][Error]: unrecognized token: "'" 
+[ 18-03-2024 17:10:56 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 18-03-2024 17:12:01 ][Info ]: test  created. 
+[ 18-03-2024 17:12:06 ][Info ]: Show table Query Fetched. 
+[ 18-03-2024 17:31:36 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 17:31:46 ][Error]: no such table: testtt 
+[ 18-03-2024 17:31:52 ][Info ]: Database Closed. 
+[ 18-03-2024 17:32:39 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 17:32:47 ][Info ]: Database Closed. 
+[ 18-03-2024 17:39:14 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 17:39:22 ][Info ]: Database Closed. 
+[ 18-03-2024 17:42:20 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 17:42:28 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:42:28 ][Error]: near "Service": syntax error 
+[ 18-03-2024 17:42:28 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:42:28 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:43:50 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 17:43:56 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:43:56 ][Error]: near "Service": syntax error 
+[ 18-03-2024 17:43:56 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:43:56 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:45:15 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 17:45:23 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:45:23 ][Error]: near "Service": syntax error 
+[ 18-03-2024 17:45:23 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:45:23 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:46:07 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 17:46:12 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:46:12 ][Error]: near "Service": syntax error 
+[ 18-03-2024 17:46:12 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:46:12 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:46:31 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 17:46:37 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:46:37 ][Error]: near "Service": syntax error 
+[ 18-03-2024 17:46:37 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:46:37 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:47:14 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 17:47:19 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:47:19 ][Error]: near "Service": syntax error 
+[ 18-03-2024 17:47:19 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:47:19 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:47:19 ][Error]: near "Assurance": syntax error 
+[ 18-03-2024 17:47:19 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:47:19 ][Error]: near "Technology": syntax error 
+[ 18-03-2024 17:47:19 ][Error]: near "desc": syntax error 
+[ 18-03-2024 17:47:30 ][Info ]: Database Closed. 
+[ 18-03-2024 17:49:22 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 17:49:26 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:49:26 ][Error]: near "Service": syntax error 
+[ 18-03-2024 17:49:26 ][Error]: near "for": syntax error 
+[ 18-03-2024 17:49:26 ][Error]: near "for": syntax error 
+[ 18-03-2024 18:13:44 ][Info ]: Opened Database Succesfully 
+[ 18-03-2024 18:13:50 ][Error]: near "for": syntax error 
+[ 18-03-2024 18:13:50 ][Error]: near "Service": syntax error 
+[ 18-03-2024 18:13:50 ][Error]: near "for": syntax error 
+[ 18-03-2024 18:13:50 ][Error]: near "for": syntax error 
+[ 18-03-2024 18:13:50 ][Error]: near "Assurance": syntax error 
+[ 18-03-2024 18:13:50 ][Error]: near "for": syntax error 
+[ 18-03-2024 18:13:50 ][Error]: near "Technology": syntax error 
+[ 18-03-2024 18:13:50 ][Error]: near "desc": syntax error 
+[ 18-03-2024 18:14:04 ][Info ]: Database Closed. 
+[ 19-03-2024 12:20:16 ][Info ]: Opened Database Succesfully 
+[ 19-03-2024 12:20:19 ][Info ]: Database Closed. 
+[ 19-03-2024 12:25:32 ][Info ]: Opened Database Succesfully 
+[ 19-03-2024 12:25:41 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 19-03-2024 12:25:51 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id   : Executed. 
+[ 19-03-2024 12:26:13 ][Info ]: Database Closed. 
+[ 19-03-2024 12:58:06 ][Info ]: Opened Database Succesfully 
+[ 19-03-2024 12:58:09 ][Info ]: Database Closed. 
+[ 19-03-2024 14:47:14 ][Info ]: Opened Database Succesfully 
+[ 19-03-2024 14:47:36 ][Info ]: Department Inserted for id :  12 
+[ 19-03-2024 14:47:48 ][Info ]: Department Deleted for id :  12 
+[ 19-03-2024 14:48:25 ][Error]: CHECK constraint failed: gender IN ('Male', 'Female', 'Other') 
+[ 19-03-2024 14:48:36 ][Info ]: Database Closed. 
+[ 19-03-2024 14:55:45 ][Info ]: Opened Database Succesfully 
+[ 19-03-2024 14:55:48 ][Info ]: Show table Query Fetched. 
+[ 19-03-2024 14:56:02 ][Error]: near "fff": syntax error 
+[ 19-03-2024 14:56:06 ][Info ]: Database Closed. 
+[ 19-03-2024 15:01:23 ][Info ]: Opened Database Succesfully 
+[ 19-03-2024 15:01:32 ][Info ]: salary  Dropped. 
+[ 19-03-2024 15:01:36 ][Info ]: Show table Query Fetched. 
+[ 19-03-2024 15:01:44 ][Info ]: Database Closed. 
+[ 19-03-2024 15:18:03 ][Info ]: Opened Database Succesfully 
+[ 19-03-2024 15:18:11 ][Error]: UNIQUE constraint failed: Salary.id 
+[ 19-03-2024 15:18:11 ][Error]: UNIQUE constraint failed: Salary.id 
+[ 19-03-2024 15:18:11 ][Error]: UNIQUE constraint failed: Salary.id 
+[ 19-03-2024 15:18:11 ][Error]: UNIQUE constraint failed: Salary.id 
+[ 19-03-2024 15:21:37 ][Info ]: Opened Database Succesfully 
+[ 19-03-2024 15:21:45 ][Info ]: Database Exported. 
+[ 19-03-2024 15:21:45 ][Info ]: Database Exported. 
+[ 19-03-2024 15:21:45 ][Info ]: Database Exported. 
+[ 19-03-2024 15:21:45 ][Info ]: Database Exported. 
+[ 19-03-2024 15:24:04 ][Info ]: Opened Database Succesfully 
+[ 19-03-2024 15:24:09 ][Info ]: Salary  Imported with  9  new rows 
+[ 19-03-2024 15:24:21 ][Info ]: Database Closed. 
+[ 19-03-2024 16:01:38 ][Info ]: Opened Database Succesfully 
+[ 19-03-2024 16:01:50 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id   : Executed. 
+[ 19-03-2024 16:02:13 ][Info ]: Employee Deleted for id :  11 
+[ 19-03-2024 16:02:13 ][Info ]: Manager Deleted for id :  11 
+[ 19-03-2024 16:02:47 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id   : Executed. 
+[ 19-03-2024 16:03:01 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 19-03-2024 16:03:20 ][Error]: FOREIGN KEY constraint failed 
+[ 19-03-2024 16:03:20 ][Warn ]: Selected Employee is managing different employees : can not delete for id :  1 
+[ 19-03-2024 16:03:20 ][Info ]: Engineer Deleted for id :  1 
+[ 19-03-2024 16:03:32 ][Info ]: Database Closed. 
+[ 19-03-2024 16:04:17 ][Info ]: Opened Database Succesfully 
+[ 19-03-2024 16:04:24 ][Warn ]: Engineer not exist for id :  12 
+[ 19-03-2024 16:04:31 ][Info ]: Database Closed. 
+[ 20-03-2024 09:35:09 ][Info ]: Opened Database Succesfully 
+[ 20-03-2024 09:35:28 ][Info ]: select firstname from employee;  : Executed. 
+[ 20-03-2024 09:35:34 ][Info ]: Database Closed. 
+[ 20-03-2024 09:37:26 ][Info ]: Opened Database Succesfully 
+[ 20-03-2024 09:37:29 ][Info ]: Database Closed. 
+[ 20-03-2024 15:57:29 ][Info ]: Opened Database Succesfully 
+[ 20-03-2024 15:58:39 ][Info ]: Database Closed. 
+[ 20-03-2024 17:58:39 ][Info ]: Opened Database Succesfully 
+[ 20-03-2024 17:58:42 ][Info ]: Database Closed. 
+[ 20-03-2024 18:14:56 ][Info ]: Opened Database Succesfully 
+[ 20-03-2024 18:14:58 ][Info ]: Database Closed. 
+[ 20-03-2024 18:23:11 ][Info ]: Opened Database Succesfully 
+[ 20-03-2024 18:23:54 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 20-03-2024 18:24:37 ][Info ]: Database Closed. 

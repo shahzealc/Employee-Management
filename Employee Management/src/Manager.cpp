@@ -1,12 +1,20 @@
 #include "../include/Manager.h"
 #include "../include/Employee.h"
 #include "../include/log.h"
-
+#include "../include/validate.h"
 using logs::Log;
 
 void Manager::setManagementExperience() {
 	std::cout << "Enter Manager Experience in years: ";
-	std::cin >> management_experience;
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (validateNumeric(inputValidate)) {
+		management_experience = std::stoi(inputValidate);
+	}
+	else {
+		std::cout << "Invalid Input !!, Enter again :\n";
+		setManagementExperience();
+	}
 }
 void Manager::setProjectTitle() {
 	std::cout << "Enter Manager's Project Title: ";
@@ -16,23 +24,22 @@ void Manager::setProjectTitle() {
 
 void Manager::insertManager() {
 
-	if (insertEmployee()) {
+	std::string insertQueryEmployee = insertEmployee();
 
-		setManagementExperience();
-		setProjectTitle();
+	setManagementExperience();
+	setProjectTitle();
 
-		std::string insertQuery = "INSERT INTO Manager(id, management_experience , project_title) VALUES ("
-			+ std::to_string(Employee::getId()) + ","
-			+ std::to_string(management_experience) + ",'"
-			+ project_title + "');";
+	std::string insertQueryManager = "INSERT INTO Manager(id, management_experience , project_title) VALUES ("
+		+ std::to_string(Employee::getId()) + ","
+		+ std::to_string(management_experience) + ",'"
+		+ project_title + "');";
 
-		if (Database::getInstance().executeQuery(insertQuery)) {
-			std::cout << "Inserted Manager Succesfully ! \n\n";
-			Log::getInstance().Info("Manager Inserted for id : ", getId());
-		}
-		else
-			std::cout << Database::getInstance().getError() << "\n";
+	if (Database::getInstance().executeQuery(insertQueryEmployee) && Database::getInstance().executeQuery(insertQueryManager)) {
+		std::cout << "Inserted Manager Succesfully ! \n\n";
+		Log::getInstance().Info("Manager Inserted for id : ", getId());
 	}
+	else
+		std::cout << Database::getInstance().getError() << "\n\n";
 
 };
 void Manager::deleteManager() {

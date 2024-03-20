@@ -1,23 +1,56 @@
 #include "../include/Salary.h"
 #include "../include/log.h"
+#include "../include/validate.h"
 using logs::Log;
 
 void Salary::setId() {
 	std::cout << "Enter Employee Id: ";
-	std::cin >> id;
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (validateNumeric(inputValidate)) {
+		id = std::stoi(inputValidate);
+	}
+	else {
+		std::cout << "Invalid Input !!, Enter again :\n";
+		setId();
+	}
 }
 void Salary::setBaseSalary() {
 	std::cout << "Enter Base: ";
-	std::cin >> base_salary;
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (validateNumeric(inputValidate)) {
+		base_salary = std::stof(inputValidate);
+	}
+	else {
+		std::cout << "Invalid Input !!, Enter again :\n";
+		setBaseSalary();
+	}
 }
 void Salary::setBonus() {
 	std::cout << "Enter Bonus: ";
-	std::cin >> bonus;
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (validateNumeric(inputValidate)) {
+		bonus = std::stof(inputValidate);
+	}
+	else {
+		std::cout << "Invalid Input !!, Enter again :\n";
+		setBonus();
+	}
 }
 void Salary::setPercentage() {
 	std::cout << "Enter Increment Percentage: ";
-	std::cin >> percentage;
-	percentage = (percentage / 100) + 1;
+	std::string inputValidate;
+	std::cin >> inputValidate;
+	if (validateNumeric(inputValidate)) {
+		percentage = std::stof(inputValidate);
+		percentage = (percentage / 100) + 1;
+	}
+	else {
+		std::cout << "Invalid Input !!, Enter again :\n";
+		setPercentage();
+	}	
 }
 
 void Salary::insertSalary() {

@@ -42,7 +42,7 @@ public:
     void setManagerId();
     void setDepartmentId();
 
-    bool insertEmployee();
+    std::string insertEmployee();
     void deleteEmployeeById(int);
     void updateEmployee();
     void viewEmployee();
