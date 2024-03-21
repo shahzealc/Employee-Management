@@ -15,6 +15,12 @@ class Employee {
 
 public:
     Employee() = default;
+    Employee(int emp_id, const std::string& first, const std::string& last, const std::string& date_of_birth,
+        const std::string& phone, const std::string& mail, const std::string& addr, const std::string& gen,
+        const std::string& date_of_joining, const std::string& work_loc, int mgr_id, int dept_id)
+        : id(emp_id), firstname(first), lastname(last), dob(date_of_birth), mobile(phone), email(mail),
+        address(addr), gender(gen), doj(date_of_joining), w_location(work_loc), manager_id(mgr_id),
+        department_id(dept_id) {}
     
     int getId() const { return id; }
     std::string getFirstname() const { return firstname; }

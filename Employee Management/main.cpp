@@ -12,7 +12,7 @@ int main() {
 	std::filesystem::path dbPath = "employee.db";
 	
 	if (!Database::getInstance().open(dbPath)) {
-		std::cerr << "Error opening database: " << Database::getInstance().getError() << std::endl;
+		std::cerr << "Error opening database: " << Database::getInstance().getError() << "\n";
 		return 1;
 	}
 	else {

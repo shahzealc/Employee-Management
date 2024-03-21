@@ -31,12 +31,13 @@ void Department::setName() {
 	}
 }
 void Department::setManagerId() {
-	std::cout << "Enter Department ManagerId: ";
-
-	std::string inputValidate;
-	std::cin >> inputValidate;
-	if (validateNumeric(inputValidate)) {
-		manager_id = std::stoi(inputValidate);
+	std::cout << "Enter Department ManagerId (-1 for NULL): ";
+	std::string input;
+	std::cin >> input;
+	int tempId;
+	if (validateNumeric(input)) {
+		tempId = std::stoi(input);
+		manager_id = (tempId == -1) ? NULL : tempId;
 	}
 	else {
 		std::cout << "Wrong Input!\n";
@@ -59,29 +60,30 @@ void Department::setDescription() {
 	}
 }
 
+
+
 void Department::insertDepartment() {
-
 	system("cls");
-
 	std::cout << "Insert Department Details:\n";
 	setId();
 	setName();
 	setManagerId();
 	setDescription();
 
+	std::string managerIdString = (manager_id != NULL) ? std::to_string(manager_id) : "NULL";
+
 	std::string insertQuery = "INSERT INTO Department (id, name, manager_id, description) VALUES ("
 		+ std::to_string(id) + ", '" +
-		name + "', '" +
-		std::to_string(manager_id) + "', '" +
+		name + "', " +
+		managerIdString + ", '" +
 		description + "');";
 
 	if (Database::getInstance().executeQuery(insertQuery)) {
-		std::cout << "Inserted Department Succesfully ! \n\n";
+		std::cout << "Inserted Department Successfully! \n\n";
 		Log::getInstance().Info("Department Inserted for id : ", id);
 	}
 	else
 		std::cout << Database::getInstance().getError() << "\n";
-
 };
 void Department::deleteDepartment() {
 	std::string deleteQuery{};

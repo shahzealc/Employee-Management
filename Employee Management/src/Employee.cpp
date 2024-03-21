@@ -130,11 +130,13 @@ void Employee::setWLocation() {
 }
 
 void Employee::setManagerId() {
-	std::cout << "Manager ID: ";
+	std::cout << "Manager ID (-1 for null): ";
 	std::string input;
 	std::cin >> input;
+	int tempId;
 	if (validateNumeric(input)) {
-		manager_id = std::stoi(input);
+		tempId = std::stoi(input);
+		manager_id = (tempId == -1) ? NULL : tempId;
 	}
 	else {
 		std::cout << "Invalid Input !!, Enter again :\n";
@@ -143,11 +145,13 @@ void Employee::setManagerId() {
 }
 
 void Employee::setDepartmentId() {
-	std::cout << "Department ID: ";
+	std::cout << "Department ID (-1 for null): ";
 	std::string input;
 	std::cin >> input;
+	int tempId;
 	if (validateNumeric(input)) {
-		department_id = std::stoi(input);
+		tempId = std::stoi(input);
+		department_id = (tempId == -1) ? NULL : tempId;
 	}
 	else {
 		std::cout << "Invalid Input !!, Enter again :\n";
@@ -155,11 +159,8 @@ void Employee::setDepartmentId() {
 	}
 }
 
-
 std::string Employee::insertEmployee() {
-
 	system("cls");
-
 	std::cout << "Enter Employee Details:\n";
 
 	setId();
@@ -175,6 +176,9 @@ std::string Employee::insertEmployee() {
 	setManagerId();
 	setDepartmentId();
 
+	std::string managerIdString = (manager_id != NULL) ? std::to_string(manager_id) : "NULL";
+	std::string departmentIdString = (department_id != NULL) ? std::to_string(department_id) : "NULL";
+
 	std::string insertQueryEmployee = "INSERT INTO Employee (id, firstname, lastname, dob, mobile, email, address, gender, doj, w_location, manager_id, department_id) VALUES ("
 		+ std::to_string(id) + ", '" +
 		firstname + "', '" +
@@ -186,14 +190,12 @@ std::string Employee::insertEmployee() {
 		gender + "', '" +
 		doj + "', '" +
 		w_location + "', " +
-		std::to_string(manager_id) + ", " +
-		std::to_string(department_id) + ");";
+		managerIdString + ", " +
+		departmentIdString + ");";
 
-
-	
 	return insertQueryEmployee;
+}
 
-};
 void Employee::deleteEmployeeById(int id) {
 
 	std::string deleteQuery{};

@@ -1,17 +1,19 @@
 #include "../include/Engineer.h"
 #include "../include/log.h"
+#include "../include/Salary.h"
+
 using logs::Log;
 
 void Engineer::setProgrammingLanguage()
 {
-	std::cout << "Enter Programming Language (seperated by comma if multiple) : \n";
+	std::cout << "Enter Programming Language (seperated by comma if multiple) : ";
 	std::cin.ignore();
 	std::getline(std::cin, programming_language);
 }
 
 void Engineer::setSpecialization()
 {
-	std::cout << "Enter Specialization : \n";
+	std::cout << "Enter Specialization : ";
 	std::cin >> specialization;
 }
 
@@ -27,13 +29,17 @@ void Engineer::insertEngineer() {
 		programming_language + "', '" +
 		specialization + "'" +
 		");";
-	
-		if (Database::getInstance().executeQuery(insertQueryEmployee) && Database::getInstance().executeQuery(insertQueryEngineer)) {
-			std::cout << "Inserted Engineer Succesfully ! \n\n";
-			Log::getInstance().Info("Engineer Inserted for id : ", getId());
-		}
-		else
-			std::cout << Database::getInstance().getError() << "\n\n";
+
+	Salary s1;
+	std::string insertQuerySalary = s1.insertSalaryById(Employee::getId());
+
+	if (Database::getInstance().executeQuery(insertQueryEmployee) && Database::getInstance().executeQuery(insertQueryEngineer) && 
+			Database::getInstance().executeQuery(insertQuerySalary)) {
+		std::cout << "Inserted Engineer Succesfully ! \n\n";
+		Log::getInstance().Info("Engineer Inserted for id : ", getId());
+	}
+	else
+		std::cout << Database::getInstance().getError() << "\n\n";
 
 };
 

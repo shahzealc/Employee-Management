@@ -178,3 +178,27 @@
 [ 20-03-2024 18:23:11 ][Info ]: Opened Database Succesfully 
 [ 20-03-2024 18:23:54 ][Error]: UNIQUE constraint failed: Employee.id 
 [ 20-03-2024 18:24:37 ][Info ]: Database Closed. 
+[ 21-03-2024 10:57:25 ][Info ]: Opened Database Succesfully 
+[ 21-03-2024 10:59:20 ][Info ]: Engineer Inserted for id :  12 
+[ 21-03-2024 10:59:40 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id AND Employee.id =12  : Executed. 
+[ 21-03-2024 10:59:54 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus From Employee NATURAL JOIN Salary  : Executed. 
+[ 21-03-2024 11:00:19 ][Info ]: Database Closed. 
+[ 21-03-2024 11:38:23 ][Info ]: Opened Database Succesfully 
+[ 21-03-2024 11:38:28 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 21-03-2024 11:38:34 ][Info ]: Database Closed. 
+[ 21-03-2024 11:41:31 ][Info ]: Opened Database Succesfully 
+[ 21-03-2024 11:41:53 ][Info ]: Department Inserted for id :  10 
+[ 21-03-2024 11:42:13 ][Info ]: Department Inserted for id :  11 
+[ 21-03-2024 11:42:18 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 21-03-2024 11:42:30 ][Info ]: Department Deleted for id :  10 
+[ 21-03-2024 11:42:34 ][Info ]: Department Deleted for id :  11 
+[ 21-03-2024 11:42:39 ][Info ]: Database Closed. 
+[ 21-03-2024 11:44:03 ][Info ]: Opened Database Succesfully 
+[ 21-03-2024 11:44:06 ][Info ]: Database Closed. 
+[ 21-03-2024 11:48:29 ][Info ]: Opened Database Succesfully 
+[ 21-03-2024 11:49:46 ][Info ]: Database Exported. 
+[ 21-03-2024 11:49:46 ][Info ]: Database Exported. 
+[ 21-03-2024 11:49:46 ][Info ]: Database Exported. 
+[ 21-03-2024 11:49:46 ][Info ]: Database Exported. 
+[ 21-03-2024 11:49:46 ][Info ]: Database Exported. 
+[ 21-03-2024 11:49:48 ][Info ]: Database Closed. 

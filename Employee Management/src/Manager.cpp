@@ -2,6 +2,8 @@
 #include "../include/Employee.h"
 #include "../include/log.h"
 #include "../include/validate.h"
+#include "../include/Salary.h"
+
 using logs::Log;
 
 void Manager::setManagementExperience() {
@@ -34,7 +36,11 @@ void Manager::insertManager() {
 		+ std::to_string(management_experience) + ",'"
 		+ project_title + "');";
 
-	if (Database::getInstance().executeQuery(insertQueryEmployee) && Database::getInstance().executeQuery(insertQueryManager)) {
+	Salary s1;
+	std::string insertQuerySalary = s1.insertSalaryById(Employee::getId());
+
+	if (Database::getInstance().executeQuery(insertQueryEmployee) && Database::getInstance().executeQuery(insertQueryManager) &&
+			Database::getInstance().executeQuery(insertQuerySalary)) {
 		std::cout << "Inserted Manager Succesfully ! \n\n";
 		Log::getInstance().Info("Manager Inserted for id : ", getId());
 	}

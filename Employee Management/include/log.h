@@ -47,7 +47,7 @@ namespace logs {
 				}
 			}
 
-			std::cout << "\n";
+			/*std::cout << "\n";*/
 
 		}
 

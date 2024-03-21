@@ -9,6 +9,7 @@ class Salary {
 public:
 
     Salary() = default;
+    Salary(int id,float base ,float bonus):id(id),base_salary(base),bonus(bonus){}
 
     int getId() const { return id; }
     float getBaseSalary() const { return base_salary; }
@@ -20,7 +21,7 @@ public:
     void setBonus();
     void setPercentage();
 
-    void insertSalary();
+    std::string insertSalaryById(int id);
     void deleteSalary();
     void updateSalary();
     void viewSalary();

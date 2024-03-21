@@ -1,12 +1,12 @@
 #include "../include/validate.h"
 
 bool validateAlphabetic(const std::string& str) {
-    std::regex pattern("^[A-Za-z]+$");
+    std::regex pattern("^[A-Za-z ]+$");
     return std::regex_match(str, pattern);
 }
 
 bool validateNumeric(const std::string& str) {
-    std::regex pattern("^\\d{1,6}$");
+    std::regex pattern("^(-1|\\d{1,6})$");
     return std::regex_match(str, pattern);
 }
 

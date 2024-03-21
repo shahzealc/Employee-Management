@@ -4,27 +4,34 @@
 
 class Manager : public Employee {
 public:
-    Manager() = default;
+	Manager() = default;
 
-    int getManagementExperience() const { return management_experience; }
-    std::string getProjectTitle() const { return project_title; }
+	Manager(int emp_id, const std::string& first, const std::string& last, const std::string& date_of_birth,
+		const std::string& phone, const std::string& mail, const std::string& addr, const std::string& gen,
+		const std::string& date_of_joining, const std::string& work_loc, int mgr_id, int dept_id,
+		int experience, const std::string& title)
+		: Employee(emp_id, first, last, date_of_birth, phone, mail, addr, gen, date_of_joining, work_loc, mgr_id, dept_id),
+		management_experience(experience), project_title(title) {}
 
-    void setManagementExperience();
-    void setProjectTitle();
+	int getManagementExperience() const { return management_experience; }
+	std::string getProjectTitle() const { return project_title; }
 
-    void insertManager();
-    void deleteManager();
-    void updateManager();
-    void viewManager();
+	void setManagementExperience();
+	void setProjectTitle();
 
-    void describeManager();
+	void insertManager();
+	void deleteManager();
+	void updateManager();
+	void viewManager();
 
-    void action();
+	void describeManager();
+
+	void action();
 
 private:
 
-    int management_experience{};
-    std::string project_title{};
+	int management_experience{};
+	std::string project_title{};
 };
 
 #endif

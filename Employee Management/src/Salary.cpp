@@ -53,11 +53,7 @@ void Salary::setPercentage() {
 	}	
 }
 
-void Salary::insertSalary() {
-
-	system("cls");
-	std::cout << "Insert Salary Details:\n";
-	setId();
+std::string Salary::insertSalaryById(int id) {
 
 	setBaseSalary();
 	setBonus();
@@ -67,13 +63,7 @@ void Salary::insertSalary() {
 		std::to_string(base_salary) + "', '" +
 		std::to_string(bonus) + "');";
 
-	if (Database::getInstance().executeQuery(insertQuery)) {
-
-		std::cout << "Inserted Salary Succesfully ! \n\n";
-		Log::getInstance().Info("Salary Inserted for id : ",id);
-	}
-	else
-		std::cout << Database::getInstance().getError() << "\n";
+	return insertQuery;
 
 };
 
@@ -228,14 +218,12 @@ void Salary::action() {
 	while (flag) {
 		std::cout << "Salary Table\n";
 		std::cout << "Please select a value to perform actions:\n";
-		std::cout << "1. Insert\n";
-		std::cout << "2. Update\n";
-		std::cout << "3. View\n";
-		std::cout << "4. Describe\n";
-		std::cout << "5. Increment Salary\n";
-		std::cout << "6. Import from CSV\n";
-		std::cout << "6. Exit\n";
-		std::cout << "Enter your choice (1-6): ";
+		std::cout << "1. Update\n";
+		std::cout << "2. View\n";
+		std::cout << "3. Describe\n";
+		std::cout << "4. Increment Salary\n";
+		std::cout << "5. Exit\n";
+		std::cout << "Enter your choice (1-5): ";
 
 		int choice;
 		
@@ -244,31 +232,26 @@ void Salary::action() {
 
 		switch (choice) {
 		case 1:
-			insertSalary();
-			break;
-		case 2:
 			updateSalary();
 			break;
-		case 3:
+		case 2:
 			viewSalary();
 			break;
-		case 4:
+		case 3:
 			describeSalary();
 			break;
-		case 5:
+		case 4:
 			incrementSalary();
 			break;
-		case 6:
-			Database::getInstance().import_from_csv("Salary", "backup/Salary.csv");
-			break;
-		case 7:
+		case 5:
 			flag = false;
 			break;
 		default:
-			std::cout << "Invalid choice. Please enter a number between 1 and 6.\n";
+			std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break;
 		}
 	}
 }
+
