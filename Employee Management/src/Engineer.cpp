@@ -62,6 +62,7 @@ void Engineer::deleteEngineer() {
 	}
 
 };
+
 void Engineer::updateEngineer() {
 
 	int choice;
@@ -131,6 +132,7 @@ void Engineer::updateEngineer() {
 	}
 
 };
+
 void Engineer::viewEngineer() {
 
 	std::string selectQuery{};

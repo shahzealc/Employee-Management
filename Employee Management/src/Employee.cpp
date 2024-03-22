@@ -159,7 +159,7 @@ void Employee::setDepartmentId() {
 	}
 }
 
-std::string Employee::insertEmployee() {
+[[nodiscard]] std::string Employee::insertEmployee() {
 	system("cls");
 	std::cout << "Enter Employee Details:\n";
 
@@ -240,8 +240,9 @@ void Employee::deleteEmployeeById(int id) {
 };
 
 void Employee::updateEmployee() {
-	std::string updateQuery{};
+	std::string updateQuery = "UPDATE Employee SET";
 	int choice;
+	bool executeFlag = true;
 
 	system("cls");
 
@@ -264,77 +265,83 @@ void Employee::updateEmployee() {
 
 	std::cin >> choice;
 	std::cout << "\n";
-
+	std::cout << updateQuery << '\n';
 	switch (choice) {
 	case 1:
 		setFirstname();
-		updateQuery = "UPDATE Employee SET firstname = '" + getFirstname() + "' WHERE id = " + std::to_string(id);
+		updateQuery = updateQuery + " firstname = '" + getFirstname();
 		break;
 	case 2:
 		setLastname();
-		updateQuery = "UPDATE Employee SET lastname = '" + getLastname() + "' WHERE id = " + std::to_string(id);
+		updateQuery = updateQuery + "lastname = '" + getLastname();
 		break;
 	case 3:
 		setDob();
-		updateQuery = "UPDATE Employee SET dob = '" + getDob() + "' WHERE id = " + std::to_string(id);
+		updateQuery = updateQuery + "dob = '" + getDob();
 		break;
 	case 4:
 		setMobile();
-		updateQuery = "UPDATE Employee SET mobile = '" + getMobile() + "' WHERE id = " + std::to_string(id);
+		updateQuery = updateQuery + "mobile = '" + getMobile();
 		break;
 	case 5:
 		setEmail();
-		updateQuery = "UPDATE Employee SET email = '" + getEmail() + "' WHERE id = " + std::to_string(id);
+		updateQuery = updateQuery + "email = '" + getEmail();
 		break;
 	case 6:
 		setAddress();
-		updateQuery = "UPDATE Employee SET address = '" + getAddress() + "' WHERE id = " + std::to_string(id);
+		updateQuery = updateQuery + "address = '" + getAddress();
 		break;
 	case 7:
 		setGender();
-		updateQuery = "UPDATE Employee SET gender = '" + getGender() + "' WHERE id = " + std::to_string(id);
+		updateQuery = updateQuery + "gender = '" + getGender();
 		break;
 	case 8:
 		setDoj();
-		updateQuery = "UPDATE Employee SET doj = '" + getDoj() + "' WHERE id = " + std::to_string(id);
+		updateQuery = updateQuery + "doj = '" + getDoj();
 		break;
 	case 9:
 		setWLocation();
-		updateQuery = "UPDATE Employee SET w_location = '" + getWLocation() + "' WHERE id = " + std::to_string(id);
+		updateQuery = updateQuery + "w_location = '" + getWLocation();
 		break;
 	case 10:
 		setManagerId();
-		updateQuery = "UPDATE Employee SET manager_id = " + std::to_string(manager_id) + " WHERE id = " + std::to_string(id);
+		updateQuery = updateQuery + "manager_id = " + std::to_string(manager_id);
 		break;
 	case 11:
 		setDepartmentId();
-		updateQuery = "UPDATE Employee SET department_id = " + std::to_string
-		(department_id) +" WHERE id = " + std::to_string(id);
+		updateQuery = updateQuery + "department_id = " + std::to_string(department_id);
 		break;
 	case 12:
-		break;
+		return;
+
 	default:
 		std::cout << "Invalid choice. Please enter a number between 1 and 12.\n";
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		updateEmployee();
+		executeFlag = false;
 		break;
 	}
+	std::cout << updateQuery<<'\n';
 
-	if (Database::getInstance().executeQuery(updateQuery)) {
+	if (executeFlag) {
 
-		int changes = sqlite3_changes(Database::getInstance().db);
+		updateQuery = updateQuery + "' WHERE id = " + std::to_string(id)+";";
+		std::cout << updateQuery<<'\n';
+		if (Database::getInstance().executeQuery(updateQuery)) {
+			int changes = sqlite3_changes(Database::getInstance().db);
 
-		std::cout << changes << " row affected \n\n";
-		if (changes != 0) {
-			std::cout << "Employee Updated Succesfully ! \n\n";
-			Log::getInstance().Info("Employee Updated for id : ", getId());
+			std::cout << changes << " row affected \n\n";
+			if (changes != 0) {
+				std::cout << "Employee Updated Succesfully ! \n\n";
+				Log::getInstance().Info("Employee Updated for id : ", getId());
+			}
 		}
-	}
-	else
-		std::cout << Database::getInstance().getError() << "\n";
-}
+		else
+			std::cout << Database::getInstance().getError() << "\n";
 
+	}
+}
 
 void Employee::viewEmployee() {
 
@@ -377,7 +384,7 @@ void Employee::viewEmployee() {
 	case 5:
 		break;
 
-	
+
 		std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
 		viewEmployee();
 		break;

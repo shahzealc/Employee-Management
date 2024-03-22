@@ -7,13 +7,12 @@
 
 using logs::Log;
 
-// Log Class implementation of all function definations
 void Log::SetLogLevel(Level level) noexcept
 {
 	m_LogLevel = level;
 }
 
-std::string logs::Log::getDateTime() noexcept
+[[nodiscard]] std::string logs::Log::getDateTime() noexcept
 {
 	auto now = std::chrono::system_clock::now();
 	std::time_t time = std::chrono::system_clock::to_time_t(now);
@@ -33,6 +32,7 @@ std::string logs::Log::getDateTime() noexcept
 void Log::enableFileLog() noexcept {
 	writeToFile = true;
 }
+
 void Log::disableFileLog() noexcept {
 	writeToFile = false;
 }
@@ -59,44 +59,20 @@ void Log::writeBuffer_File() {
 	writeLog.close();
 }
 
-std::string Log::stringify(int value) noexcept {
+[[nodiscard]] std::string Log::stringify(int value) noexcept {
 	return std::to_string(value);
 }
 
-std::string Log::stringify(double value) noexcept {
+[[nodiscard]] std::string Log::stringify(double value) noexcept {
 	return std::to_string(value);
 }
 
-std::string Log::stringify(const std::string& value) noexcept {
+[[nodiscard]] std::string Log::stringify(const std::string& value) noexcept {
 	return value;
 }
 
-std::string Log::stringify(const char& value) noexcept {
+[[nodiscard]] std::string Log::stringify(const char& value) noexcept {
 	return std::to_string(value);
 }
 
-
-//void Log::Warn(const utility::String& message)
-//{
-//	logDate.refdate(); 
-//	if (m_LogLevel >= Level::LevelWarning) {
-//		std::cout << "[ " << logDate.getStringrep() <<" ]" << "[Warn]: " << message << "\n";
-//	}
-//}
-//
-//void Log::Error(const utility::String& message)
-//{
-//	logDate.refdate();
-//	if (m_LogLevel >= Level::LevelError) {
-//		std::cout << "[ " << logDate.getStringrep() << " ]" << "[Error]: " << message << "\n";
-//	}
-//}
-//
-//void Log::Info(const utility::String& message)
-//{
-//	logDate.refdate();
-//	if (m_LogLevel >= Level::LevelInfo) {
-//		std::cout << "[ " << logDate.getStringrep() << " ]" << "[Info]: " << message << "\n";
-//	}
-//}
 

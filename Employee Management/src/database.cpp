@@ -9,6 +9,7 @@
 using logs::Log;
 
 int Database::rows = 0;
+
 bool Database::open(std::filesystem::path dbPath) {
 
 	if (sqlite3_open(dbPath.string().c_str(), &db) == SQLITE_OK) {
@@ -118,8 +119,8 @@ void Database::close() {
 }
 
 bool Database::executeQuery(const std::string& query) {
+	
 	char* errMsg = nullptr;
-
 
 	int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &errMsg);
 
@@ -134,7 +135,7 @@ bool Database::executeQuery(const std::string& query) {
 	return true;
 }
 
-std::string_view Database::getError() const {
+[[nodiscard]] std::string_view Database::getError() const  {
 	return Error;
 }
 
@@ -167,7 +168,6 @@ int Database::callback(void* data, int argc, char** argv, char** azColName) {
 	return 0;
 }
 
-
 bool Database::executeQueryRows(const std::string& query) {
 	char* errMsg = nullptr;
 	rows = 0;
@@ -188,15 +188,13 @@ int Database::callbackRows(void* data, int argc, char** argv, char** azColName) 
 	return 0;
 }
 
-
-int Database::getRow() {
+[[nodiscard]] int Database::getRow() {
 	return rows;
 }
 
 void Database::setError(std::string_view& errorMessage) {
 	Error = errorMessage;
 }
-
 
 void Database::createTableQuery() {
 
@@ -379,7 +377,7 @@ void Database::export_to_csv(const std::string& table, const std::filesystem::pa
 		std::cout << getError() << "\n\n";
 	}
 	else {
-		Log::getInstance().Info("Database Exported.");
+		Log::getInstance().Info(table,"Exported.");
 	}
 	sqlite3_finalize(stmt);
 }

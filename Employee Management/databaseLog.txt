@@ -202,3 +202,34 @@
 [ 21-03-2024 11:49:46 ][Info ]: Database Exported. 
 [ 21-03-2024 11:49:46 ][Info ]: Database Exported. 
 [ 21-03-2024 11:49:48 ][Info ]: Database Closed. 
+[ 21-03-2024 14:17:54 ][Info ]: Opened Database Succesfully 
+[ 21-03-2024 14:17:56 ][Info ]: Employee  Exported. 
+[ 21-03-2024 14:17:56 ][Info ]: Engineer  Exported. 
+[ 21-03-2024 14:17:56 ][Info ]: Manager  Exported. 
+[ 21-03-2024 14:17:56 ][Info ]: Salary  Exported. 
+[ 21-03-2024 14:17:56 ][Info ]: Department  Exported. 
+[ 21-03-2024 14:18:01 ][Info ]: Database Closed. 
+[ 21-03-2024 14:18:50 ][Info ]: Opened Database Succesfully 
+[ 21-03-2024 14:18:51 ][Info ]: Employee Exported. 
+[ 21-03-2024 14:18:51 ][Info ]: Engineer Exported. 
+[ 21-03-2024 14:18:51 ][Info ]: Manager Exported. 
+[ 21-03-2024 14:18:51 ][Info ]: Salary Exported. 
+[ 21-03-2024 14:18:51 ][Info ]: Department Exported. 
+[ 21-03-2024 14:18:52 ][Info ]: Database Closed. 
+[ 21-03-2024 15:44:54 ][Info ]: Opened Database Succesfully 
+[ 21-03-2024 15:45:13 ][Info ]: select * from employee;  : Executed. 
+[ 21-03-2024 15:45:45 ][Info ]: Database Closed. 
+[ 21-03-2024 17:26:05 ][Info ]: Opened Database Succesfully 
+[ 21-03-2024 17:26:39 ][Info ]: Employee Updated for id :  1 
+[ 21-03-2024 17:26:44 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 21-03-2024 17:26:55 ][Info ]: Database Closed. 
+[ 21-03-2024 17:28:34 ][Info ]: Opened Database Succesfully 
+[ 21-03-2024 17:29:02 ][Info ]: Database Closed. 
+[ 21-03-2024 17:36:39 ][Info ]: Opened Database Succesfully 
+[ 21-03-2024 17:37:10 ][Error]: near "gender": syntax error 
+[ 21-03-2024 17:37:55 ][Info ]: Employee Updated for id :  1 
+[ 21-03-2024 17:38:04 ][Info ]: Database Closed. 
+[ 22-03-2024 09:52:34 ][Info ]: Opened Database Succesfully 
+[ 22-03-2024 09:52:39 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 22-03-2024 09:52:45 ][Info ]: Department Described. 
+[ 22-03-2024 09:52:50 ][Info ]: Database Closed. 

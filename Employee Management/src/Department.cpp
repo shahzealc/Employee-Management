@@ -61,7 +61,6 @@ void Department::setDescription() {
 }
 
 
-
 void Department::insertDepartment() {
 	system("cls");
 	std::cout << "Insert Department Details:\n";
@@ -85,6 +84,7 @@ void Department::insertDepartment() {
 	else
 		std::cout << Database::getInstance().getError() << "\n";
 };
+
 void Department::deleteDepartment() {
 	std::string deleteQuery{};
 
@@ -137,18 +137,20 @@ void Department::deleteDepartment() {
 		std::cout << Database::getInstance().getError() << "\n";
 
 };
+
 void Department::updateDepartment() {
-	std::string updateQuery{};
+	std::string updateQuery = "UPDATE Department SET";
 	int choice;
+	bool executeFlag = true;
+
 
 	system("cls");
 	std::cout << "Enter Department id to update: \n";
 	std::cin >> id;
 
-	system("cls");
 	std::cout << "Please select an attribute to update:\n";
-	std::cout << "1. Deptartment Name\n";
-	std::cout << "2. Deptartment Manager_Id\n";
+	std::cout << "1. Department Name\n";
+	std::cout << "2. Department Manager ID\n";
 	std::cout << "3. Description\n";
 	std::cout << "4. Exit\n";
 	std::cout << "Enter your choice (1-4): ";
@@ -159,39 +161,44 @@ void Department::updateDepartment() {
 	switch (choice) {
 	case 1:
 		setName();
-		updateQuery = "UPDATE Department SET name = '" + getName() + "' WHERE id = " + std::to_string(id);
+		updateQuery += " name = '" + getName() + "'";
 		break;
 	case 2:
 		setManagerId();
-		updateQuery = "UPDATE Department SET manager_id= '" + std::to_string(getManagerId()) + "' WHERE id = " + std::to_string(id);
+		updateQuery += " manager_id = " + std::to_string(getManagerId());
 		break;
 	case 3:
 		setDescription();
-		updateQuery = "UPDATE Department SET description = '" + getDescription() + "' WHERE id = " + std::to_string(id);
+		updateQuery += " description = '" + getDescription() + "'";
 		break;
 	case 4:
-		break;
-	
+		return;
+	default:
 		std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		updateDepartment();
+		executeFlag = false;
 		break;
 	}
 
-	if (Database::getInstance().executeQuery(updateQuery)) {
+	if (executeFlag) {
+		updateQuery += " WHERE id = " + std::to_string(id) + ";";
+		if (Database::getInstance().executeQuery(updateQuery)) {
+			int changes = sqlite3_changes(Database::getInstance().db);
 
-		int changes = sqlite3_changes(Database::getInstance().db);
-
-		std::cout << changes << " row affected \n\n";
-		if (changes != 0) {
-			std::cout << "Department Updated Succesfully ! \n\n";
-			Log::getInstance().Info("Department Updated for id : ", id);
+			std::cout << changes << " row affected \n\n";
+			if (changes != 0) {
+				std::cout << "Department Updated Successfully ! \n\n";
+				Log::getInstance().Info("Department Updated for id : ", id);
+			}
 		}
-
+		else {
+			std::cout << Database::getInstance().getError() << "\n";
+		}
 	}
-	else
-		std::cout << Database::getInstance().getError() << "\n";
+}
 
-};
 void Department::viewDepartment() {
 	std::string selectQuery{};
 

@@ -8,7 +8,7 @@ class Database {
 public:
     sqlite3* db{};
 
-    bool open(std::filesystem::path);
+    bool open(std::filesystem::path) ;
     bool createTables();
     void close();
 

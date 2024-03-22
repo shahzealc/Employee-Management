@@ -18,6 +18,7 @@ void Manager::setManagementExperience() {
 		setManagementExperience();
 	}
 }
+
 void Manager::setProjectTitle() {
 	std::cout << "Enter Manager's Project Title: ";
 	std::cin.ignore();
@@ -48,6 +49,7 @@ void Manager::insertManager() {
 		std::cout << Database::getInstance().getError() << "\n\n";
 
 };
+
 void Manager::deleteManager() {
 
 	setId();
@@ -67,6 +69,7 @@ void Manager::deleteManager() {
 	}
 
 };
+
 void Manager::updateManager() {
 	int choice;
 	std::string updateQuery{};

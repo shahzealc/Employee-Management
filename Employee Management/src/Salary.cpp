@@ -15,6 +15,7 @@ void Salary::setId() {
 		setId();
 	}
 }
+
 void Salary::setBaseSalary() {
 	std::cout << "Enter Base: ";
 	std::string inputValidate;
@@ -27,6 +28,7 @@ void Salary::setBaseSalary() {
 		setBaseSalary();
 	}
 }
+
 void Salary::setBonus() {
 	std::cout << "Enter Bonus: ";
 	std::string inputValidate;
@@ -39,6 +41,7 @@ void Salary::setBonus() {
 		setBonus();
 	}
 }
+
 void Salary::setPercentage() {
 	std::cout << "Enter Increment Percentage: ";
 	std::string inputValidate;
@@ -53,7 +56,7 @@ void Salary::setPercentage() {
 	}	
 }
 
-std::string Salary::insertSalaryById(int id) {
+[[nodiscard]] std::string Salary::insertSalaryById(int id) {
 
 	setBaseSalary();
 	setBonus();
