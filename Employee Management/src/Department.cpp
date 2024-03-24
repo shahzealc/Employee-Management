@@ -1,65 +1,28 @@
 #include "../include/Department.h"
 #include "../include/log.h"
 #include "../include/validate.h"
+#include "../include/attributeHelper.h"
 
 using logs::Log;
 
 void Department::setId() {
-	std::cout << "Enter Department Id: ";
-	std::string inputValidate;
-	std::cin >> inputValidate;
-	if (validateNumeric(inputValidate)) {
-		id = std::stoi(inputValidate);
-	}
-	else {
-		std::cout << "Wrong Input!\n";
-		setId();
-	}
+	setAttribute("Enter Department Id", id, validateNumeric);
 }
+
 void Department::setName() {
-	std::cout << "Enter Department Name: ";
-
-	std::string inputValidate;
-	std::cin.ignore();
-	std::getline(std::cin, inputValidate);
-	if (validateAlphabetic(inputValidate)) {
-		name = inputValidate;
-	}
-	else {
-		std::cout << "Wrong Input!\n";
-		setName();
-	}
+	setAttribute("Enter Department Name", name, validateAlphabetic);
 }
+
 void Department::setManagerId() {
-	std::cout << "Enter Department ManagerId (-1 for NULL): ";
-	std::string input;
-	std::cin >> input;
-	int tempId;
-	if (validateNumeric(input)) {
-		tempId = std::stoi(input);
-		manager_id = (tempId == -1) ? NULL : tempId;
-	}
-	else {
-		std::cout << "Wrong Input!\n";
-		setManagerId();
+	setAttribute<int>("Enter Department Manager ID (-1 for null)", manager_id, validateNumeric);
+	if (manager_id == -1) {
+		manager_id = NULL;
 	}
 }
+
 void Department::setDescription() {
-	std::cout << "Enter Department Description: ";
-	std::string inputValidate;
-
-	std::cin.ignore();
-	std::getline(std::cin, inputValidate);
-
-	if (validateAlphabetic(inputValidate)) {
-		description = inputValidate;
-	}
-	else {
-		std::cout << "Wrong Input!\n";
-		setDescription();
-	}
+	setAttribute("Enter Department Description", description, validateAlphabetic);
 }
-
 
 void Department::insertDepartment() {
 	system("cls");

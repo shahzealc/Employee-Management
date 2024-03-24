@@ -7,16 +7,7 @@
 using logs::Log;
 
 void Manager::setManagementExperience() {
-	std::cout << "Enter Manager Experience in years: ";
-	std::string inputValidate;
-	std::cin >> inputValidate;
-	if (validateNumeric(inputValidate)) {
-		management_experience = std::stoi(inputValidate);
-	}
-	else {
-		std::cout << "Invalid Input !!, Enter again :\n";
-		setManagementExperience();
-	}
+	setAttribute("Enter Manager Experience in years", management_experience, validateNumeric);
 }
 
 void Manager::setProjectTitle() {

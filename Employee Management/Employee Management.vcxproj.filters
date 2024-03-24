@@ -80,6 +80,9 @@
     <ClInclude Include="include\myexception.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\attributeHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

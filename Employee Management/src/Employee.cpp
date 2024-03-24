@@ -6,81 +6,27 @@
 using logs::Log;
 
 void Employee::setId() {
-	std::cout << "ID: ";
-	std::string inputValidate;
-	std::cin >> inputValidate;
-	if (validateNumeric(inputValidate)) {
-		id = std::stoi(inputValidate);
-	}
-	else {
-		std::cout << "Invalid Input !!, Enter again :\n";
-		setId();
-	}
+	setAttribute<int>("ID", id, validateNumeric);
 }
 
 void Employee::setFirstname() {
-	std::cout << "First Name: ";
-	std::string inputValidate;
-	std::cin >> inputValidate;
-	if (validateAlphabetic(inputValidate)) {
-		firstname = inputValidate;
-	}
-	else {
-		std::cout << "Invalid Input !!, Enter again :\n";
-		setFirstname();
-	}
+	setAttribute<std::string>("First Name", firstname, validateAlphabetic);
 }
 
 void Employee::setLastname() {
-	std::cout << "Last Name: ";
-	std::string inputValidate;
-	std::cin >> inputValidate;
-	if (validateAlphabetic(inputValidate)) {
-		lastname = inputValidate;
-	}
-	else {
-		std::cout << "Invalid Input !!, Enter again :\n";
-		setLastname();
-	}
+	setAttribute<std::string>("Last Name", lastname, validateAlphabetic);
 }
 
 void Employee::setDob() {
-	std::cout << "Date of Birth (DD-MM-YYYY): ";
-	std::string inputValidate;
-	std::cin >> inputValidate;
-	if (!validateDateOfBirth(inputValidate)) {
-		std::cout << "Invalid Format !!, Enter again :\n";
-		setDob();
-	}
-	else {
-		dob = inputValidate;
-	}
+	setAttribute<std::string>("Date of Birth (DD-MM-YYYY)", dob, validateDateOfBirth);
 }
 
 void Employee::setMobile() {
-	std::cout << "Mobile number : ";
-	std::string inputValidate;
-	std::cin >> inputValidate;
-	if (!validatePhoneNumber(inputValidate)) {
-		std::cout << "Invalid Format !!, Enter again :\n";
-		setMobile();
-	}
-	else {
-		mobile = inputValidate;
-	}
+	setAttribute<std::string>("Mobile number", mobile, validatePhoneNumber);
 }
 
 void Employee::setEmail() {
-	std::cout << "Email address : ";
-	std::string inputValidate;
-	std::cin >> inputValidate;
-	if (!validateEmail(inputValidate)) {
-		std::cout << "Invalid Format !!, Enter again :\n";
-		setEmail();
-	}
-	else {
-		email = inputValidate;
-	}
+	setAttribute<std::string>("Email address", email, validateEmail);
 }
 
 void Employee::setAddress() {
@@ -90,72 +36,30 @@ void Employee::setAddress() {
 }
 
 void Employee::setGender() {
-	std::cout << "Gender (Male, Female, Other): ";
-	std::string input;
-	std::cin >> input;
-	if (input == "Male" || input == "Female" || input == "Other") {
-		gender = input;
-	}
-	else {
-		std::cout << "Invalid Input !!, Enter again :\n";
-		setGender();
-	}
+	setAttribute<std::string>("Gender (Male, Female, Other)", gender, [](const std::string& input) {
+		return input == "Male" || input == "Female" || input == "Other";
+		});
 }
 
 void Employee::setDoj() {
-	std::cout << "Date of Joining (DD-MM-YYYY): ";
-	std::string inputValidate;
-	std::cin >> inputValidate;
-	if (!validateDateOfBirth(inputValidate)) {
-		std::cout << "Invalid Format !!, Enter again :\n";
-		setDoj();
-	}
-	else {
-		doj = inputValidate;
-	}
+	setAttribute<std::string>("Date of Joining (DD-MM-YYYY)", doj, validateDateOfBirth);
 }
 
 void Employee::setWLocation() {
-	std::cout << "Work Location: ";
-	std::string input;
-	std::cin >> input;
-
-	if (validateAlphabetic(input)) {
-		w_location = input;
-	}
-	else {
-		std::cout << "Invalid Input !!, Enter again :\n";
-		setWLocation();
-	}
+	setAttribute<std::string>("Work Location", w_location, validateAlphabetic);
 }
 
 void Employee::setManagerId() {
-	std::cout << "Manager ID (-1 for null): ";
-	std::string input;
-	std::cin >> input;
-	int tempId;
-	if (validateNumeric(input)) {
-		tempId = std::stoi(input);
-		manager_id = (tempId == -1) ? NULL : tempId;
-	}
-	else {
-		std::cout << "Invalid Input !!, Enter again :\n";
-		setManagerId();
+	setAttribute<int>("Manager ID (-1 for null)", manager_id, validateNumeric);
+	if (manager_id == -1) {
+		manager_id = NULL;
 	}
 }
 
 void Employee::setDepartmentId() {
-	std::cout << "Department ID (-1 for null): ";
-	std::string input;
-	std::cin >> input;
-	int tempId;
-	if (validateNumeric(input)) {
-		tempId = std::stoi(input);
-		department_id = (tempId == -1) ? NULL : tempId;
-	}
-	else {
-		std::cout << "Invalid Input !!, Enter again :\n";
-		setDepartmentId();
+	setAttribute<int>("Department ID (-1 for null)", department_id, validateNumeric);
+	if (department_id == -1) {
+		department_id = NULL;
 	}
 }
 
