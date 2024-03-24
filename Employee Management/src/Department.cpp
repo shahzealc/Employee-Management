@@ -1,7 +1,5 @@
 #include "../include/Department.h"
-#include "../include/log.h"
-#include "../include/validate.h"
-#include "../include/attributeHelper.h"
+
 
 using logs::Log;
 

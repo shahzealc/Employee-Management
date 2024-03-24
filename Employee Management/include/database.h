@@ -3,6 +3,10 @@
 #include<string>
 #include<vector>
 #include <filesystem>
+#include "log.h"
+#include<string>
+#include <iostream>
+#include <iomanip>
 
 class Database {
 public:

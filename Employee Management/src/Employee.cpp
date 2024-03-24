@@ -1,8 +1,6 @@
 
 #include "../include/Employee.h"
-#include "../include/database.h"
-#include "../include/validate.h"
-#include "../include/log.h"
+
 using logs::Log;
 
 void Employee::setId() {

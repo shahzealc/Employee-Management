@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include "database.h"
-
+#include "log.h"
+#include "validate.h"
+#include "attributeHelper.h"
 
 class Salary {
 public:

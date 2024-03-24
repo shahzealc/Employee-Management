@@ -1,10 +1,5 @@
 #include "../include/database.h"
-#include "../include/log.h"
-#include<string>
-#include<sstream>
-#include <vector>
-#include <iostream>
-#include <iomanip>
+
 
 using logs::Log;
 
@@ -263,7 +258,6 @@ void Database::deleteTableQuery() {
 		std::cin >> tableName;
 
 		deleteQuery = "DROP TABLE " + tableName + ";";
-		std::cout << deleteQuery << "\n\n";
 
 		if (executeQuery(deleteQuery)) {
 			std::cout << "Table Dropped Succesfully ! \n\n";
@@ -279,7 +273,6 @@ void Database::deleteTableQuery() {
 		std::cout << "Enter Table Name to Delete: ";
 		std::cin >> tableName;
 		deleteQuery = "DELETE FROM " + tableName + ";";
-		std::cout << deleteQuery << "\n\n";
 
 		if (executeQuery(deleteQuery)) {
 			std::cout << "Table Deleted Succesfully ! \n\n";
@@ -382,43 +375,43 @@ void Database::export_to_csv(const std::string& table, const std::filesystem::pa
 	sqlite3_finalize(stmt);
 }
 
-bool Database::import_from_csv(const std::string& table, const std::filesystem::path& filename) {
-	int count = 0;
-	std::ifstream file(filename);
-	if (!file.is_open()) {
-		std::cerr << "Failed to open file: " << filename << std::endl;
-		return false;
-	}
-
-	std::string line, query;
-	std::getline(file, line);  
-
-	while (std::getline(file, line)) {
-		std::stringstream ss(line);
-		std::string value;
-		std::vector<std::string> values;
-
-		while (std::getline(ss, value, ',')) {
-
-			if (!value.empty() && value.front() == '"' && value.back() == '"') {
-				value = value.substr(1, value.size() - 2);
-			}
-			values.push_back(value);
-		}
-
-		query = "INSERT INTO " + table + " VALUES (";
-		for (const auto& val : values) {
-			query += "'" + val + "',";
-		}
-		query.pop_back(); 
-		query += ");";
-
-		if (Database::getInstance().executeQuery(query)) {
-			++count;
-		}
-		
-	}
-	std::cout << table<< " Imported with "<< count<< " new rows\n\n";
-	Log::getInstance().Info(table, " Imported with ",count," new rows");
-	return true;
-}
+//bool Database::import_from_csv(const std::string& table, const std::filesystem::path& filename) {
+//	int count = 0;
+//	std::ifstream file(filename);
+//	if (!file.is_open()) {
+//		std::cerr << "Failed to open file: " << filename << std::endl;
+//		return false;
+//	}
+//
+//	std::string line, query;
+//	std::getline(file, line);  
+//
+//	while (std::getline(file, line)) {
+//		std::stringstream ss(line);
+//		std::string value;
+//		std::vector<std::string> values;
+//
+//		while (std::getline(ss, value, ',')) {
+//
+//			if (!value.empty() && value.front() == '"' && value.back() == '"') {
+//				value = value.substr(1, value.size() - 2);
+//			}
+//			values.push_back(value);
+//		}
+//
+//		query = "INSERT INTO " + table + " VALUES (";
+//		for (const auto& val : values) {
+//			query += "'" + val + "',";
+//		}
+//		query.pop_back(); 
+//		query += ");";
+//
+//		if (Database::getInstance().executeQuery(query)) {
+//			++count;
+//		}
+//		
+//	}
+//	std::cout << table<< " Imported with "<< count<< " new rows\n\n";
+//	Log::getInstance().Info(table, " Imported with ",count," new rows");
+//	return true;
+//}

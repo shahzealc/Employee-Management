@@ -25,7 +25,7 @@ void setAttribute(const std::string& attributeName, T& attribute, Validator vali
             break;
         }
         else {
-            std::cout << "Invalid input! Please try again.\n";
+            std::cout << "\033[31mInvalid input! Please try again.\033[0m\n";
         }
     }
 }
