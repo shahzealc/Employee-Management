@@ -27,7 +27,7 @@ public:
 	void updateEngineer();
 	void viewEngineer();
 
-	void describeEngineer();
+	void describeEngineer() const;
 
 	void action();
 

@@ -16,6 +16,7 @@ void Department::setId() {
 		setId();
 	}
 }
+
 void Department::setName() {
 	std::cout << "Enter Department Name: ";
 
@@ -30,6 +31,7 @@ void Department::setName() {
 		setName();
 	}
 }
+
 void Department::setManagerId() {
 	std::cout << "Enter Department ManagerId (-1 for NULL): ";
 	std::string input;
@@ -44,6 +46,7 @@ void Department::setManagerId() {
 		setManagerId();
 	}
 }
+
 void Department::setDescription() {
 	std::cout << "Enter Department Description: ";
 	std::string inputValidate;
@@ -59,7 +62,6 @@ void Department::setDescription() {
 		setDescription();
 	}
 }
-
 
 void Department::insertDepartment() {
 	system("cls");
@@ -247,7 +249,7 @@ void Department::viewDepartment() {
 
 };
 
-void Department::describeDepartment()
+void Department::describeDepartment() const
 {
 
 	if (!Database::getInstance().executeQueryCallback("pragma table_info('Department');")) {

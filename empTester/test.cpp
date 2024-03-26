@@ -21,10 +21,9 @@ TEST(TestValidators, DISABLED_Test_validate) {
 TEST(TestDB, DISABLED_Test_DB) {
 	EXPECT_TRUE(Database::getInstance().open("employee.db")) << "Database open error";
 	EXPECT_TRUE(Database::getInstance().createTables()) << "Table creating error";
-	EXPECT_FALSE(Database::getInstance().executeQuery("employee.db")) << "Execute Query error";
+	EXPECT_FALSE(Database::getInstance().executeQuery("select from blah")) << "Execute Query error";
 	EXPECT_TRUE(Database::getInstance().executeQuery("select * from employee;")) << "Execute Query error";
 	EXPECT_NO_THROW(Database::getInstance().export_to_csv("Department","department.csv")) << "Execute Query error";
-
 }
 
 TEST_F(employeeFixer, DISABLED_empTest) {

@@ -181,7 +181,7 @@ void Manager::viewManager() {
 	}
 };
 
-void Manager::describeManager()
+void Manager::describeManager() const
 {
 
 	if (!Database::getInstance().executeQueryCallback("pragma table_info('Manager');")) {

@@ -188,7 +188,7 @@ void Salary::viewSalary() {
 
 };
 
-void Salary::describeSalary()
+void Salary::describeSalary() const
 {
 
 	if (!Database::getInstance().executeQueryCallback("pragma table_info('Salary');")) {

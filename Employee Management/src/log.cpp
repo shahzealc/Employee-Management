@@ -59,19 +59,19 @@ void Log::writeBuffer_File() {
 	writeLog.close();
 }
 
-[[nodiscard]] std::string Log::stringify(int value) noexcept {
+[[nodiscard]] std::string Log::stringify(int value) const noexcept {
 	return std::to_string(value);
 }
 
-[[nodiscard]] std::string Log::stringify(double value) noexcept {
+[[nodiscard]] std::string Log::stringify(double value) const noexcept {
 	return std::to_string(value);
 }
 
-[[nodiscard]] std::string Log::stringify(const std::string& value) noexcept {
+[[nodiscard]] std::string Log::stringify(const std::string& value) const noexcept {
 	return value;
 }
 
-[[nodiscard]] std::string Log::stringify(const char& value) noexcept {
+[[nodiscard]] std::string Log::stringify(const char& value) const noexcept {
 	return std::to_string(value);
 }
 

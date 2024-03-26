@@ -188,7 +188,7 @@ int Database::callbackRows(void* data, int argc, char** argv, char** azColName) 
 	return 0;
 }
 
-[[nodiscard]] int Database::getRow() {
+[[nodiscard]] int Database::getRow() const {
 	return rows;
 }
 
@@ -237,7 +237,7 @@ void Database::createTableQuery() {
 
 }
 
-void Database::showTables() {
+void Database::showTables(){
 
 	std::string showQuery = " SELECT name FROM sqlite_schema ;";
 	if (!executeQueryCallback(showQuery))

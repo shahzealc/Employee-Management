@@ -31,10 +31,10 @@ namespace logs {
 		void disableFileLog() noexcept;
 		void writeBuffer_File();
 
-		std::string stringify(int value) noexcept;
-		std::string stringify(double value) noexcept;
-		std::string stringify(const std::string& value) noexcept;
-		std::string stringify(const char& value) noexcept;
+		std::string stringify(int value) const noexcept;
+		std::string stringify(double value) const noexcept;
+		std::string stringify(const std::string& value) const noexcept;
+		std::string stringify(const char& value) const noexcept;
 
 		void print_args() noexcept {
 

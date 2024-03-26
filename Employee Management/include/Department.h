@@ -26,7 +26,7 @@ public:
     void updateDepartment();
     void viewDepartment();
 
-    void describeDepartment();
+    void describeDepartment() const;
 
     void action();
 

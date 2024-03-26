@@ -177,7 +177,7 @@ void Engineer::viewEngineer() {
 
 };
 
-void Engineer::describeEngineer()
+void Engineer::describeEngineer() const
 {
 
 	if (!Database::getInstance().executeQueryCallback("pragma table_info('Engineer');")) {

@@ -26,7 +26,7 @@ public:
     void updateSalary();
     void viewSalary();
 
-    void describeSalary();
+    void describeSalary() const;
 
     void incrementSalary();
 

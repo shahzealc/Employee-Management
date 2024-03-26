@@ -49,10 +49,10 @@ public:
     void setDepartmentId();
 
     std::string insertEmployee();
-    void deleteEmployeeById(int);
+    void deleteEmployeeById(int) ;
     void updateEmployee();
     void viewEmployee();
-    void describeEmployee();
+    void describeEmployee() const;
 
     void action();
 

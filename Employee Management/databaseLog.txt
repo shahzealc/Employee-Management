@@ -233,3 +233,12 @@
 [ 22-03-2024 09:52:39 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
 [ 22-03-2024 09:52:45 ][Info ]: Department Described. 
 [ 22-03-2024 09:52:50 ][Info ]: Database Closed. 
+[ 22-03-2024 14:29:35 ][Info ]: Opened Database Succesfully 
+[ 22-03-2024 14:30:21 ][Info ]: Engineer Deleted for id :  1 
+[ 22-03-2024 14:30:28 ][Info ]: Database Closed. 
+[ 22-03-2024 15:21:14 ][Info ]: Opened Database Succesfully 
+[ 22-03-2024 15:21:38 ][Info ]: select * from employee;  : Executed. 
+[ 22-03-2024 15:21:54 ][Info ]: Database Closed. 
+[ 22-03-2024 15:47:09 ][Info ]: Opened Database Succesfully 
+[ 22-03-2024 15:47:26 ][Info ]: select * from employee;  : Executed. 
+[ 22-03-2024 15:48:05 ][Info ]: Database Closed. 

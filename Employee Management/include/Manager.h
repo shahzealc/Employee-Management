@@ -24,7 +24,7 @@ public:
 	void updateManager();
 	void viewManager();
 
-	void describeManager();
+	void describeManager() const;
 
 	void action();
 

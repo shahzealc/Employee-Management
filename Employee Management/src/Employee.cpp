@@ -399,7 +399,7 @@ void Employee::viewEmployee() {
 
 };
 
-void Employee::describeEmployee()
+void Employee::describeEmployee() const
 {
 
 	if (!Database::getInstance().executeQueryCallback("pragma table_info('Employee');")) {
