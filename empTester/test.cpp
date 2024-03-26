@@ -41,7 +41,7 @@ TEST_F(managerFixer, DISABLED_managerTest) {
 	EXPECT_EQ(manager1.getManagementExperience(),3)<<"Incorrect value.";
 }
 
-TEST_F(engineerFixer, DISABLED_engineerTest) {
+TEST_F(engineerFixer, engineerTest) {
 	EXPECT_EQ(engineer1.getId(), 1001)<<"Incorrect value.";
 	EXPECT_EQ(engineer1.getFirstname(), "Zeal")<<"Incorrect value.";
 	EXPECT_EQ(engineer1.getLastname(), "Shah")<<"Incorrect value.";
@@ -49,7 +49,7 @@ TEST_F(engineerFixer, DISABLED_engineerTest) {
 	EXPECT_EQ(engineer1.getSpecialization(), "C++")<<"Incorrect value.";
 }
 
-TEST_F(departmentFixer, departmentTest) {
+TEST_F(departmentFixer, DISABLED_departmentTest) {
 	EXPECT_EQ(dept1.getId(), 11)<<"Incorrect value.";
 	EXPECT_EQ(dept1.getName(), "HR")<<"Incorrect value.";
 	EXPECT_EQ(dept1.getManagerId(), 2)<<"Incorrect value.";

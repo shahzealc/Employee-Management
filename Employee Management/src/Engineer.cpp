@@ -1,6 +1,5 @@
 #include "../include/Engineer.h"
-#include "../include/log.h"
-#include "../include/Salary.h"
+
 
 using logs::Log;
 

@@ -6,145 +6,101 @@
 #include "Manager.h"
 #include "Department.h"
 #include "Salary.h"
+#include <map>
+#include <functional>
+#include <string>
 
 void askPromptTable() {
-
+	std::map<int, std::pair<std::string, std::function<void()>>> tableOptions = {
+		{1, {"Department", []() { Department d1; d1.action(); }}},
+		{2, {"Salary", []() { Salary s1; s1.action(); }}},
+		{3, {"Engineer", []() { Engineer en1; en1.action(); }}},
+		{4, {"Manager", []() { Manager m1; m1.action(); }}},
+		{5, {"Exit", []() {} }} 
+	};
 
 	bool flagTable = true;
 	int choiceTable;
 
-
 	while (flagTable) {
-
 		system("cls");
 		std::cout << "Please select a table to perform an action:\n";
 
-		std::cout << "1. Department\n";
-		std::cout << "2. Salary\n";
-		std::cout << "3. Engineer\n";
-		std::cout << "4. Manager\n";
-		std::cout << "5. Exit\n";
-		std::cout << "Enter your choice (1-5): ";
+		for (const auto& option : tableOptions) {
+			std::cout << option.first << ". " << option.second.first << "\n";
+		}
+		std::cout << "Enter your choice (1-" << tableOptions.size() << "): ";
 
 		std::cin >> choiceTable;
-
 		std::cout << "\n";
 
-		switch (choiceTable) {
-
-		case 1:
-
-		{
-			Department d1;
-			d1.action();
+		auto it = tableOptions.find(choiceTable);
+		if (it != tableOptions.end()) {
+			it->second.second(); 
 		}
-		break;
-		case 2:
-		{
-			Salary s1;
-			s1.action();
-		}
-		break;
-		case 3:
-		{
-			Engineer en1;
-			en1.action();
-		}
-		break;
-		case 4:
-		{
-			Manager m1;
-			m1.action();
-		}
-		break;
-		case 5:
-			flagTable = false;
-			break;
-		default:
+		else {
 			system("cls");
-			std::cerr << "Invalid choice. Please enter a number between 1 and 5.\n";
+			std::cerr << "Invalid choice. Please enter a number between 1 and " << tableOptions.size() << ".\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			break;
+		}
+
+		if (choiceTable == 5) {
+			flagTable = false; 
 		}
 	}
-
 }
 
 void askPromptMain() {
-
+	std::map<int, std::pair<std::string, std::function<void()>>> menuOptions = {
+	   {1, {"Create Table", []() { Database::getInstance().createTableQuery(); }}},
+	   {2, {"Delete Table", []() { Database::getInstance().deleteTableQuery(); }}},
+	   {3, {"Show Tables", []() { Database::getInstance().showTables(); }}},
+	   {4, {"Manipulate Data within Table", askPromptTable}},
+	   {5, {"Run Custom Query", []() { Database::getInstance().userSqlQuery(); }}},
+	   //{6, {"Backup Database", &Database::backupDatabase}},
+	   {7, {"Exit", nullptr}} 
+	};
 
 	bool flagMain = true;
 	int choiceMain;
 
-
 	while (flagMain) {
-
+		
 		std::cout << "Welcome to the Employee database management system!\n";
-		std::cout << "Please select a action to perform : \n";
+		std::cout << "Please select an action to perform:\n";
 
-		std::cout << "1. Create Table\n";
-		std::cout << "2. Delete Table\n";
-		std::cout << "3. Show Tables \n";
-		std::cout << "4. Manipulate data within the table\n";
-		std::cout << "5. Run your own query\n";
-		std::cout << "6. Backup Existing Database\n";
-		std::cout << "7. Exit\n";
-		std::cout << "Enter your choice (1-7): ";
-
-		std::cin >> choiceMain;
-
-		std::cout << "\n";
-
-		switch (choiceMain) {
-
-		case 1:
-
-		{
-			Database::getInstance().createTableQuery();
+		for (const auto& option : menuOptions) {
+			std::cout << option.first << ". " << option.second.first << "\n";
 		}
-		break;
-		case 2:
-		{
-			Database::getInstance().deleteTableQuery();
+		std::cout << "Enter your choice (1-" << menuOptions.size() << "): ";
+
+		std::string input;
+		std::cin >> input;
+
+		try {
+			choiceMain = std::stoi(input);
 		}
-		break;
-		case 3:
-		{
-			Database::getInstance().showTables();
+		catch (const std::exception& e) {
+			std::cerr << "Invalid input. Please enter a number.\n";
+			std::cin.clear(); 
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+			continue; 
 		}
-		break;
-		case 4:
-		{
-			askPromptTable();
+
+		auto it = menuOptions.find(choiceMain);
+		if (it != menuOptions.end()) {
+			if (it->second.second) {
+				it->second.second();
+			}
+			else {
+				flagMain = false;
+			}
 		}
-		break;
-		case 5:
-		{
-			Database::getInstance().userSqlQuery();
-		}
-		break;
-		case 6:
-			Database::getInstance().export_to_csv("Employee", "backup/Employee.csv");
-			Database::getInstance().export_to_csv("Engineer", "backup/Engineer.csv");
-			Database::getInstance().export_to_csv("Manager", "backup/Manager.csv");
-			Database::getInstance().export_to_csv("Salary", "backup/Salary.csv");
-			Database::getInstance().export_to_csv("Department", "backup/Department.csv");
-			std::cout << "All Tables Backed up successfully.\n";
-			break;
-		case 7:
-			flagMain = false;
-			break;
-		default:
-			system("cls");
-			std::cerr << "Invalid choice. Please enter a number between 1 and 6.\n";
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			break;
+		else {
+			std::cerr << "Invalid choice. Please enter a number between 1 and " << menuOptions.size() << ".\n";
 		}
 	}
-
-
 }
 
 #endif 

@@ -6,7 +6,10 @@
 #include <string>
 #include<vector>
 #include "database.h"
-
+#include "attributeHelper.h"
+#include "database.h"
+#include "validate.h"
+#include "log.h"
 
 //#include "validate.h"
 //enum class Gender { Male, Female, Other };

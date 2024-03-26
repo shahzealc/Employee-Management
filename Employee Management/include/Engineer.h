@@ -3,7 +3,8 @@
 
 #include "Employee.h"
 #include "../sqlite/sqlite3.h"
-
+#include "log.h"
+#include "Salary.h"
 
 class Engineer : public Employee {
 public:

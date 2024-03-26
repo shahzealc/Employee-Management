@@ -1,9 +1,5 @@
-#include <iostream>
-#include<string>
-#include<chrono>
-#include <ctime>
 #include "../include/log.h";
-#include "../include/myexception.h";
+
 
 using logs::Log;
 

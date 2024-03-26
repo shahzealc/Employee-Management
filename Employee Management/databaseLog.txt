@@ -233,12 +233,27 @@
 [ 22-03-2024 09:52:39 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
 [ 22-03-2024 09:52:45 ][Info ]: Department Described. 
 [ 22-03-2024 09:52:50 ][Info ]: Database Closed. 
-[ 22-03-2024 14:29:35 ][Info ]: Opened Database Succesfully 
-[ 22-03-2024 14:30:21 ][Info ]: Engineer Deleted for id :  1 
-[ 22-03-2024 14:30:28 ][Info ]: Database Closed. 
-[ 22-03-2024 15:21:14 ][Info ]: Opened Database Succesfully 
-[ 22-03-2024 15:21:38 ][Info ]: select * from employee;  : Executed. 
-[ 22-03-2024 15:21:54 ][Info ]: Database Closed. 
-[ 22-03-2024 15:47:09 ][Info ]: Opened Database Succesfully 
-[ 22-03-2024 15:47:26 ][Info ]: select * from employee;  : Executed. 
-[ 22-03-2024 15:48:05 ][Info ]: Database Closed. 
+[ 23-03-2024 17:08:17 ][Info ]: Opened Database Succesfully 
+[ 23-03-2024 17:10:48 ][Info ]: select * from employee;  : Executed. 
+[ 23-03-2024 17:11:06 ][Info ]: Database Closed. 
+[ 23-03-2024 18:34:36 ][Info ]: Opened Database Succesfully 
+[ 23-03-2024 18:35:01 ][Error]: no such table: employeee 
+[ 23-03-2024 18:35:12 ][Info ]: select * from employee;  : Executed. 
+[ 23-03-2024 18:35:16 ][Info ]: Show table Query Fetched. 
+[ 23-03-2024 18:35:27 ][Error]: no such table: g 
+[ 23-03-2024 18:35:41 ][Info ]: Database Closed. 
+[ 23-03-2024 18:47:52 ][Info ]: Opened Database Succesfully 
+[ 23-03-2024 18:48:04 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 23-03-2024 18:48:26 ][Info ]: Database Closed. 
+[ 24-03-2024 09:55:37 ][Info ]: Opened Database Succesfully 
+[ 24-03-2024 09:57:22 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 24-03-2024 09:58:10 ][Info ]: Engineer Inserted for id :  111 
+[ 24-03-2024 09:58:15 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 24-03-2024 09:58:25 ][Info ]: Database Closed. 
+[ 24-03-2024 10:36:40 ][Info ]: Opened Database Succesfully 
+[ 24-03-2024 10:37:12 ][Info ]: Department Updated for id :  1 
+[ 24-03-2024 10:37:15 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 24-03-2024 10:37:49 ][Info ]: Salary Incremented for id :  1 
+[ 24-03-2024 10:37:56 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus From Employee NATURAL JOIN Salary  : Executed. 
+[ 24-03-2024 10:38:39 ][Info ]: Salary Updated for id :  1 
+[ 24-03-2024 10:39:17 ][Info ]: Database Closed. 

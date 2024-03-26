@@ -1,6 +1,9 @@
 #ifndef manager_flag
 #define manager_flag
 #include "Employee.h"
+#include "log.h"
+#include "validate.h"
+#include "Salary.h"
 
 class Manager : public Employee {
 public:

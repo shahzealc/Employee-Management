@@ -33,7 +33,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\ZTI\OneDrive - ZURU INC\Desktop\C++\miniProject\Employee-Management-master\Employee Management;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>C:\Users\Zeel\source\repos\shahzealc\Employee-Management\Employee Management;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -65,8 +65,8 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>C:\Users\ZTI\OneDrive - ZURU INC\Desktop\C++\miniProject\Employee-Management-master\bin-int\x64\Debug</AdditionalLibraryDirectories>
-      <AdditionalDependencies>C:\Users\ZTI\OneDrive - ZURU INC\Desktop\C++\miniProject\Employee-Management-master\bin-int\x64\Debug\validate;C:\Users\ZTI\OneDrive - ZURU INC\Desktop\C++\miniProject\Employee-Management-master\bin-int\x64\Debug\Employee;C:\Users\ZTI\OneDrive - ZURU INC\Desktop\C++\miniProject\Employee-Management-master\bin-int\x64\Debug\Engineer;C:\Users\ZTI\OneDrive - ZURU INC\Desktop\C++\miniProject\Employee-Management-master\bin-int\x64\Debug\database;C:\Users\ZTI\OneDrive - ZURU INC\Desktop\C++\miniProject\Employee-Management-master\bin-int\x64\Debug\sqlite3;C:\Users\ZTI\OneDrive - ZURU INC\Desktop\C++\miniProject\Employee-Management-master\bin-int\x64\Debug\Department;C:\Users\ZTI\OneDrive - ZURU INC\Desktop\C++\miniProject\Employee-Management-master\bin-int\x64\Debug\Manager;C:\Users\ZTI\OneDrive - ZURU INC\Desktop\C++\miniProject\Employee-Management-master\bin-int\x64\Debug\salary;C:\Users\ZTI\OneDrive - ZURU INC\Desktop\C++\miniProject\Employee-Management-master\bin-int\x64\Debug\log;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Zeel\source\repos\shahzealc\Employee-Management\bin-int\x64\Debug</AdditionalLibraryDirectories>
+      <AdditionalDependencies>C:\Users\Zeel\source\repos\shahzealc\Employee-Management\bin-int\x64\Debug\validate;C:\Users\Zeel\source\repos\shahzealc\Employee-Management\bin-int\x64\Debug\Employee;C:\Users\Zeel\source\repos\shahzealc\Employee-Management\bin-int\x64\Debug\Engineer;C:\Users\Zeel\source\repos\shahzealc\Employee-Management\bin-int\x64\Debug\database;C:\Users\Zeel\source\repos\shahzealc\Employee-Management\bin-int\x64\Debug\sqlite3;C:\Users\Zeel\source\repos\shahzealc\Employee-Management\bin-int\x64\Debug\Department;C:\Users\Zeel\source\repos\shahzealc\Employee-Management\bin-int\x64\Debug\Manager;C:\Users\Zeel\source\repos\shahzealc\Employee-Management\bin-int\x64\Debug\salary;C:\Users\Zeel\source\repos\shahzealc\Employee-Management\bin-int\x64\Debug\log;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
