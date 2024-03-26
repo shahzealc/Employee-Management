@@ -12,29 +12,29 @@
 
 void askPromptTable() {
 	std::map<int, std::pair<std::string, std::function<void()>>> tableOptions = {
-		{1, {"Department", []() { system("cls"); Department d1; d1.action();}}},
+		{1, {"Department", []() { system("cls"); Department d1; d1.action(); }}},
 		{2, {"Salary", []() { system("cls"); Salary s1; s1.action(); }}},
 		{3, {"Engineer", []() { system("cls"); Engineer en1; en1.action(); }}},
 		{4, {"Manager", []() { system("cls"); Manager m1; m1.action(); }}},
 		{5, {"Main Menu", []() {system("cls"); }}}
 	};
 
-	bool flagTable = true;
-	int choiceTable;
+	bool flag = true;
+	int choice;
 
-	while (flagTable) {
-		system("cls");
+	while (flag) {
+
 		std::cout << "Please select a table to perform an action:\n";
 
-		for (const auto& option : tableOptions) {
-			std::cout << option.first << ". " << option.second.first << "\n";
+		for (const auto& [number, prompt] : tableOptions) {
+			std::cout << number << ". " << prompt.first << "\n";
 		}
 		std::cout << "Enter your choice (1-" << tableOptions.size() << "): ";
 
-		std::cin >> choiceTable;
+		std::cin >> choice;
 		std::cout << "\n";
 
-		auto it = tableOptions.find(choiceTable);
+		auto it = tableOptions.find(choice);
 		if (it != tableOptions.end()) {
 			it->second.second();
 		}
@@ -45,8 +45,8 @@ void askPromptTable() {
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 
-		if (choiceTable == 5) {
-			flagTable = false;
+		if (choice == 5) {
+			flag = false;
 		}
 	}
 }
@@ -59,7 +59,7 @@ void askPromptMain() {
 	   {4, {"Manipulate Data within Table", []() {system("cls"); askPromptTable(); }}},
 	   {5, {"Run Custom Query", []() { system("cls"); Database::getInstance().userSqlQuery(); }}},
 	   {6, {"Backup Database", []() {
-				system("cls"); 
+				system("cls");
 				Database::getInstance().export_to_csv("Employee", "backup/Employee.csv");
 				Database::getInstance().export_to_csv("Engineer", "backup/Engineer.csv");
 				Database::getInstance().export_to_csv("Manager", "backup/Manager.csv");
@@ -68,15 +68,13 @@ void askPromptMain() {
 				std::cout << "All Tables Backed up successfully.\n";
 			}
 			}},
-	   {7, {"Exit", nullptr}}
+	   {7, {"Exit", []() {system("cls"); }}}
 	};
 
-	bool flagMain = true;
-	int choiceMain;
+	bool flag = true;
+	int choice;
 
-	while (flagMain) {
-
-		std::cout << "--------------------Welcome To Employee Database Management System---------------------\n";
+	while (flag) {
 
 		std::cout << "Please select an action to perform:\n";
 
@@ -85,30 +83,22 @@ void askPromptMain() {
 		}
 		std::cout << "Enter your choice (1-" << menuOptions.size() << "): ";
 
-		std::string input;
-		std::cin >> input;
+		std::cin >> choice;
+		std::cout << "\n";
 
-		try {
-			choiceMain = std::stoi(input);
-		}
-		catch (const std::exception& e) {
-			std::cerr << "Invalid input. Please enter a number.\n";
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			continue;
-		}
-
-		auto it = menuOptions.find(choiceMain);
+		auto it = menuOptions.find(choice);
 		if (it != menuOptions.end()) {
-			if (it->second.second) {
-				it->second.second();
-			}
-			else {
-				flagMain = false;
-			}
+			it->second.second();
 		}
 		else {
+			system("cls");
 			std::cerr << "Invalid choice. Please enter a number between 1 and " << menuOptions.size() << ".\n";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+
+		if (choice == 7) {
+			flag = false;
 		}
 	}
 }

@@ -31,7 +31,7 @@ public:
     void showTables();
     void deleteTableQuery();
     void userSqlQuery();
-    bool import_from_csv(const std::string& table, const std::filesystem::path& filename);
+    bool checkExist(std::string table, int id);
     void export_to_csv(const std::string& table, const std::filesystem::path& filename);
 
 private:

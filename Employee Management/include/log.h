@@ -9,9 +9,7 @@
 #include<string>
 #include<chrono>
 #include <ctime>
-#include "myexception.h";
-
-
+#include "myexception.h"
 namespace logs {
 
 	class Log

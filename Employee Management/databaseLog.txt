@@ -314,3 +314,78 @@
 [ 26-03-2024 12:02:24 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
 [ 26-03-2024 12:02:32 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
 [ 26-03-2024 12:02:43 ][Info ]: Database Closed. 
+[ 26-03-2024 12:32:39 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 12:32:41 ][Info ]: Database Closed. 
+[ 26-03-2024 12:33:37 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 12:33:53 ][Info ]: Salary Incremented for id :  1 
+[ 26-03-2024 12:33:57 ][Info ]: Database Closed. 
+[ 26-03-2024 12:42:25 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 12:43:26 ][Info ]: Employee Updated for id :  13 
+[ 26-03-2024 12:43:56 ][Info ]: Database Closed. 
+[ 26-03-2024 12:54:10 ][Info ]: admin signed in. 
+[ 26-03-2024 12:54:10 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 12:54:15 ][Info ]: Database Closed. 
+[ 26-03-2024 14:16:23 ][Info ]: Database Opened. 
+[ 26-03-2024 14:16:33 ][Info ]: Database Closed. 
+[ 26-03-2024 14:25:50 ][Info ]: Database Opened. 
+[ 26-03-2024 14:25:52 ][Info ]: Database Closed. 
+[ 26-03-2024 14:25:55 ][Info ]: Database Opened. 
+[ 26-03-2024 14:25:56 ][Info ]: Show table Query Fetched. 
+[ 26-03-2024 14:25:59 ][Info ]: Database Closed. 
+[ 26-03-2024 14:26:55 ][Info ]: admin signed in. 
+[ 26-03-2024 14:26:55 ][Info ]: Database Opened. 
+[ 26-03-2024 14:27:02 ][Info ]: Database Closed. 
+[ 26-03-2024 14:27:37 ][Info ]: admin signed in. 
+[ 26-03-2024 14:27:37 ][Info ]: Database Opened. 
+[ 26-03-2024 14:27:40 ][Info ]: Show table Query Fetched. 
+[ 26-03-2024 14:27:49 ][Error]: no such table: eeee 
+[ 26-03-2024 14:27:58 ][Info ]: Database Closed. 
+[ 26-03-2024 16:56:04 ][Info ]: Database Opened. 
+[ 26-03-2024 16:56:20 ][Info ]: select * from employee;  : Executed. 
+[ 26-03-2024 16:57:26 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 26-03-2024 16:57:47 ][Info ]: Database Closed. 
+[ 26-03-2024 17:04:56 ][Info ]: Database Opened. 
+[ 26-03-2024 17:05:23 ][Info ]: select * from employee;  : Executed. 
+[ 26-03-2024 17:07:11 ][Info ]: Database Closed. 
+[ 26-03-2024 17:07:34 ][Info ]: Database Opened. 
+[ 26-03-2024 17:07:40 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 26-03-2024 17:09:35 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 26-03-2024 17:09:41 ][Info ]: Database Closed. 
+[ 26-03-2024 17:30:58 ][Info ]: Database Opened. 
+[ 26-03-2024 17:31:09 ][Error]: UNIQUE constraint failed: Department.id 
+[ 26-03-2024 17:31:35 ][Info ]: Department Deleted for id :  5 
+[ 26-03-2024 17:31:39 ][Info ]: Database Closed. 
+[ 26-03-2024 17:41:36 ][Info ]: Database Opened. 
+[ 26-03-2024 17:41:50 ][Info ]: Database Closed. 
+[ 26-03-2024 17:44:51 ][Info ]: Database Opened. 
+[ 26-03-2024 17:45:16 ][Info ]: Database Closed. 
+[ 26-03-2024 17:47:34 ][Info ]: Database Opened. 
+[ 26-03-2024 17:48:15 ][Info ]: Database Closed. 
+[ 26-03-2024 17:51:23 ][Info ]: Database Opened. 
+[ 26-03-2024 17:51:28 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 26-03-2024 17:51:34 ][Info ]: Database Closed. 
+[ 26-03-2024 18:18:14 ][Info ]: Database Opened. 
+[ 26-03-2024 18:18:26 ][Info ]: Database Closed. 
+[ 26-03-2024 18:21:46 ][Warn ]: 1 attempt 
+[ 26-03-2024 18:21:47 ][Warn ]: 2 attempt 
+[ 26-03-2024 18:21:48 ][Warn ]: 3 attempt 
+[ 26-03-2024 18:21:48 ][Error]: Maximum number of attempts reached for :  wferf 
+[ 26-03-2024 18:21:54 ][Info ]: admin signed in. 
+[ 26-03-2024 18:21:54 ][Info ]: Database Opened. 
+[ 26-03-2024 18:21:56 ][Info ]: Database Closed. 
+[ 26-03-2024 18:28:10 ][Info ]: admin signed in. 
+[ 26-03-2024 18:28:10 ][Info ]: Database Opened. 
+[ 26-03-2024 18:28:12 ][Info ]: Show table Query Fetched. 
+[ 26-03-2024 18:28:19 ][Info ]: Database Closed. 
+[ 26-03-2024 18:28:33 ][Warn ]: 1 attempt 
+[ 26-03-2024 18:28:37 ][Info ]: admin signed in. 
+[ 26-03-2024 18:28:37 ][Info ]: Database Opened. 
+[ 26-03-2024 18:28:46 ][Info ]: select * from department;  : Executed. 
+[ 26-03-2024 18:28:55 ][Error]: no such table: temp 
+[ 26-03-2024 18:28:58 ][Info ]: Database Closed. 
+[ 26-03-2024 18:29:54 ][Info ]: admin signed in. 
+[ 26-03-2024 18:29:54 ][Info ]: Database Opened. 
+[ 26-03-2024 18:30:09 ][Info ]: Database Closed. 
+[ 26-03-2024 18:38:42 ][Info ]: admin signed in. 
+[ 26-03-2024 18:38:42 ][Info ]: Database Opened. 
+[ 26-03-2024 18:39:22 ][Info ]: Database Closed. 

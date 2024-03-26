@@ -20,6 +20,10 @@ void Engineer::insertEngineer() {
 
 	std::string insertQueryEmployee = insertEmployee();
 
+	if (insertQueryEmployee == "Employee already exist") {
+		return;
+	}
+
 	setProgrammingLanguage();
 	setSpecialization();
 
@@ -45,13 +49,7 @@ void Engineer::insertEngineer() {
 void Engineer::deleteEngineer() {
 
 	setId();
-	std::string checkEngineer = "SELECT id FROM Engineer WHERE id = " + std::to_string(getId());
-
-	if (!Database::getInstance().executeQueryRows(checkEngineer)) {
-		std::cout << Database::getInstance().getError() << std::endl;
-	}
-
-	if (int rows = Database::getInstance().getRow(); rows > 0) {
+	if (Database::getInstance().checkExist("Engineer", getId())) {
 		deleteEmployeeById(getId());
 		Log::getInstance().Info("Engineer Deleted for id : ", getId());
 	}
@@ -66,6 +64,7 @@ void Engineer::updateEngineer() {
 
 	int choice;
 	std::string updateQuery = "UPDATE Engineer SET";
+	std::string  checkExistance;
 	bool flag = true;
 
 	std::cout << "1. To update Employee Table related details\n";
@@ -81,11 +80,16 @@ void Engineer::updateEngineer() {
 	case 2:
 		system("cls");
 		int id;
+
 		while (flag) {
 			flag = false;
 			std::cout << "Enter Employee id to update: \n";
 			std::cin >> id;
 
+			if (!Database::getInstance().checkExist("Engineer", getId())) {
+				std::cout << "Engineer Not exist for id: " << id << "\n\n";
+				return;
+			}
 			std::cout << "Please select an attribute to update:\n";
 			std::cout << "1. Programming Language \n";
 			std::cout << "2. Specialization \n";
@@ -107,6 +111,7 @@ void Engineer::updateEngineer() {
 			case 3:
 				return;
 			default:
+				system("cls");
 				std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
 				std::cin.clear();
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -130,6 +135,7 @@ void Engineer::updateEngineer() {
 			std::cout << Database::getInstance().getError() << "\n";
 		break;
 	default:
+		system("cls");
 		std::cout << "Invalid choice Please Enter a number 1 or 2 only\n";
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -171,6 +177,7 @@ void Engineer::viewEngineer() {
 			system("cls");
 			return;
 		default:
+			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -241,6 +248,7 @@ void Engineer::action() {
 			flag = false;
 			break;
 		default:
+			system("cls");
 			std::cerr << "Invalid choice. Please enter a number between 1 and 6.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

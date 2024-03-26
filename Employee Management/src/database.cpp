@@ -153,7 +153,7 @@ bool Database::executeQueryCallback(const std::string& query) {
 int Database::callback(void* data, int argc, char** argv, char** azColName) {
 	++rows;
 	int colWidth = 22;
-	int length;
+	size_t length;
 	std::cout << "----------------------------------------" << "\n";
 	for (int i = 0; i < argc; ++i) {
 		length = strlen(azColName[i]) - 2;
@@ -305,7 +305,7 @@ void Database::userSqlQuery()
 		sqlQuery[i] = std::tolower(sqlQuery[i]);
 	}
 
-	int pos = sqlQuery.find("select");
+	size_t pos = sqlQuery.find("select");
 
 
 	if (pos == 0) {
@@ -375,43 +375,11 @@ void Database::export_to_csv(const std::string& table, const std::filesystem::pa
 	sqlite3_finalize(stmt);
 }
 
-//bool Database::import_from_csv(const std::string& table, const std::filesystem::path& filename) {
-//	int count = 0;
-//	std::ifstream file(filename);
-//	if (!file.is_open()) {
-//		std::cerr << "Failed to open file: " << filename << std::endl;
-//		return false;
-//	}
-//
-//	std::string line, query;
-//	std::getline(file, line);  
-//
-//	while (std::getline(file, line)) {
-//		std::stringstream ss(line);
-//		std::string value;
-//		std::vector<std::string> values;
-//
-//		while (std::getline(ss, value, ',')) {
-//
-//			if (!value.empty() && value.front() == '"' && value.back() == '"') {
-//				value = value.substr(1, value.size() - 2);
-//			}
-//			values.push_back(value);
-//		}
-//
-//		query = "INSERT INTO " + table + " VALUES (";
-//		for (const auto& val : values) {
-//			query += "'" + val + "',";
-//		}
-//		query.pop_back(); 
-//		query += ");";
-//
-//		if (Database::getInstance().executeQuery(query)) {
-//			++count;
-//		}
-//		
-//	}
-//	std::cout << table<< " Imported with "<< count<< " new rows\n\n";
-//	Log::getInstance().Info(table, " Imported with ",count," new rows");
-//	return true;
-//}
+bool Database::checkExist(std::string table, int id) {
+	std::string  checkExistance = "SELECT id FROM "+table +" WHERE id = " + std::to_string(id);
+	Database::getInstance().executeQueryRows(checkExistance);
+	if (int rows = Database::getInstance().getRow(); rows == 0) {
+		return false;
+	}
+	return true;
+}

@@ -5,6 +5,7 @@ using logs::Log;
 
 void Department::setId() {
 	setAttribute("Enter Department Id", id, validateNumeric);
+
 }
 
 void Department::setName() {
@@ -26,6 +27,12 @@ void Department::insertDepartment() {
 	system("cls");
 	std::cout << "Insert Department Details:\n";
 	setId();
+
+	if (Database::getInstance().checkExist("Department", id)) {
+		std::cout << "Department already exist for id: " << id << "\n\n";
+		return;
+	}
+
 	setName();
 	setManagerId();
 	setDescription();
@@ -81,6 +88,7 @@ void Department::deleteDepartment() {
 			system("cls");
 			return;
 		default:
+			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -109,14 +117,17 @@ void Department::updateDepartment() {
 	std::string updateQuery = "UPDATE Department SET";
 	int choice;
 
-
-
 	system("cls");
 	bool flag = true;
 	while (flag) {
 		flag = false;
 		std::cout << "Enter Department id to update: \n";
 		std::cin >> id;
+
+		if (!Database::getInstance().checkExist("Department", id)) {
+			std::cout << "Department Not exist for id: " << id << "\n\n";
+			return;
+		}
 
 		std::cout << "Please select an attribute to update:\n";
 		std::cout << "1. Department Name\n";
@@ -148,6 +159,7 @@ void Department::updateDepartment() {
 			system("cls");
 			return;
 		default:
+			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -211,6 +223,7 @@ void Department::viewDepartment() {
 			system("cls");
 			return;
 		default:
+			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -285,6 +298,7 @@ void Department::action() {
 			flag = false;
 			break;
 		default:
+			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 6.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

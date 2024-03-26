@@ -18,7 +18,7 @@ int main() {
 			return 1;
 		}
 		else {
-			Log::getInstance().Info("Opened Database Succesfully");
+			Log::getInstance().Info("Database Opened.");
 		}
 		system("cls");
 		askPromptMain();

@@ -3,6 +3,9 @@
 
 #include <conio.h>
 #include <iostream>
+#include "log.h"
+
+using logs::Log;
 
 namespace Auth {
 
@@ -27,7 +30,7 @@ namespace Auth {
 		return password;
 	}
 
-	bool authUser() {
+	[[nodiscard]] bool authUser() {
 
 		std::cout << "--------------------Welcome To Employee Database Management System---------------------" << std::endl;
 		std::string username, password;
@@ -40,18 +43,21 @@ namespace Auth {
 			password = getPassword();
 
 			if (username == "admin" && password == "admin") {
-
+				Log::getInstance().Info(username, "signed in.");
 				return true;
 			}
 			else {
 				tryCount++;
 				std::cout << "Wrong Credentials!\n";
-				if (tryCount == 3) {
-					std::cout << "Maxium number of attempts reached!\n";
-					return false;
-				}
+				Log::getInstance().Warn(tryCount, "attempt");
 			}
 		}
+
+		if (tryCount == 3) {
+			std::cout << "Maximum number of attempts reached!\n";
+			Log::getInstance().Error("Maximum number of attempts reached for : ", username);
+		}
+		return false;
 	}
 }
 

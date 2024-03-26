@@ -47,7 +47,7 @@ void Salary::deleteSalary() {
 		std::cout << changes << " row affected \n\n";
 		if (changes != 0) {
 			std::cout << "Salary Deleted Succesfully ! \n\n";
-			Log::getInstance().Info("Salary Deleted for id : ",id);
+			Log::getInstance().Info("Salary Deleted for id : ", id);
 		}
 
 	}
@@ -61,10 +61,17 @@ void Salary::updateSalary() {
 	std::string updateQuery = "UPDATE Salary SET";
 	int choice;
 	system("cls");
+
+	std::cout << "Enter Salary id to update: \n";
+	std::cin >> id;
+
+	if (!Database::getInstance().checkExist("Employee", id)) {
+		std::cout << "Employee Not exist for id: " << id << "\n\n";
+		return;
+	}
+
 	bool flag = true;
 	while (flag) {
-		std::cout << "Enter Salary id to update: \n";
-		std::cin >> id;
 		flag = false;
 
 		std::cout << "Please select an attribute to update:\n";
@@ -88,6 +95,7 @@ void Salary::updateSalary() {
 		case 3:
 			return;
 		default:
+			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -156,7 +164,7 @@ void Salary::viewSalary() {
 		std::cout << Database::getInstance().getError() << std::endl;
 	}
 	else {
-		Log::getInstance().Info(selectQuery," : Executed.");
+		Log::getInstance().Info(selectQuery, " : Executed.");
 	}
 
 };
@@ -175,6 +183,12 @@ void Salary::describeSalary() const
 void Salary::incrementSalary() {
 
 	setId();
+	std::string checkExistance = "SELECT id FROM Employee WHERE id = " + std::to_string(id);
+
+	if (!Database::getInstance().checkExist("Employee", id)) {
+		std::cout << "Employee Not exist for id: " << id << "\n\n";
+		return;
+	}
 	setPercentage();
 
 	std::string updateSalary = "UPDATE Salary SET base_salary = base_salary * " + std::to_string(getPercentage()) + " WHERE id = " + std::to_string(getId()) + "; ";
@@ -183,7 +197,8 @@ void Salary::incrementSalary() {
 		std::cout << Database::getInstance().getError();
 	}
 	else {
-		Log::getInstance().Info("Salary Incremented for id : ",id);
+		std::cout << "Salary Incremented for id : " << id << "\n";
+		Log::getInstance().Info("Salary Incremented for id : ", id);
 	}
 
 }
@@ -202,7 +217,7 @@ void Salary::action() {
 		std::cout << "Enter your choice (1-5): ";
 
 		int choice;
-		
+
 		std::cin >> choice;
 		std::cout << "\n";
 
@@ -228,6 +243,7 @@ void Salary::action() {
 			flag = false;
 			break;
 		default:
+			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

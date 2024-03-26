@@ -66,6 +66,12 @@ void Employee::setDepartmentId() {
 	std::cout << "Enter Employee Details:\n";
 
 	setId();
+
+	if (Database::getInstance().checkExist("Employee", id)) {
+		std::cout << "Employee already exist for id: " << id << "\n\n";
+		return std::string("Employee already exist");
+	}
+
 	setFirstname();
 	setLastname();
 	setDob();
@@ -149,6 +155,12 @@ void Employee::updateEmployee() {
 	system("cls");
 
 	setId();
+
+	if (!Database::getInstance().checkExist("Employee", id)) {
+		std::cout << "Employee Not exist for id: " << id << "\n\n";
+		return;
+	}
+
 	bool flag = true;
 	while (flag) {
 		flag = false;
@@ -169,7 +181,7 @@ void Employee::updateEmployee() {
 
 		std::cin >> choice;
 		std::cout << "\n";
-		std::cout << updateQuery << '\n';
+
 		switch (choice) {
 		case 1:
 			setFirstname();
@@ -219,33 +231,29 @@ void Employee::updateEmployee() {
 			return;
 
 		default:
+			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 12.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			flag = true;
-			executeFlag = false;
 			break;
 		}
 	}
 
 
-	if (executeFlag) {
+	updateQuery = updateQuery + "' WHERE id = " + std::to_string(id) + ";";
 
-		updateQuery = updateQuery + "' WHERE id = " + std::to_string(id) + ";";
-		std::cout << updateQuery << '\n';
-		if (Database::getInstance().executeQuery(updateQuery)) {
-			int changes = sqlite3_changes(Database::getInstance().db);
+	if (Database::getInstance().executeQuery(updateQuery)) {
+		int changes = sqlite3_changes(Database::getInstance().db);
 
-			std::cout << changes << " row affected \n\n";
-			if (changes != 0) {
-				std::cout << "Employee Updated Succesfully ! \n\n";
-				Log::getInstance().Info("Employee Updated for id : ", getId());
-			}
+		std::cout << changes << " row affected \n\n";
+		if (changes != 0) {
+			std::cout << "Employee Updated Succesfully ! \n\n";
+			Log::getInstance().Info("Employee Updated for id : ", getId());
 		}
-		else
-			std::cout << Database::getInstance().getError() << "\n";
-
 	}
+	else
+		std::cout << Database::getInstance().getError() << "\n";
 }
 
 void Employee::viewEmployee() {
@@ -294,6 +302,7 @@ void Employee::viewEmployee() {
 			system("cls");
 			return;
 		default:
+			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
 			flag = true;
 			break;
@@ -321,59 +330,60 @@ void Employee::describeEmployee() const
 
 }
 
-void Employee::action() {
-	bool flag = true;
-
-	int choice;
-
-
-	while (flag) {
-
-
-		std::cout << "Employee Table\n";
-		std::cout << "Please select a value to perform actions:\n";
-		std::cout << "1. Insert\n";
-		std::cout << "2. Delete\n";
-		std::cout << "3. Update\n";
-		std::cout << "4. View\n";
-		std::cout << "5. Describe\n";
-		std::cout << "6. Go back\n";
-		std::cout << "Enter your choice (1-6): ";
-
-		std::cin >> choice;
-		std::cout << "\n";
-
-		switch (choice) {
-		case 1:
-			system("cls");
-			insertEmployee();
-			break;
-		case 2:
-			system("cls");
-			setId();
-			deleteEmployeeById(getId());
-			break;
-		case 3:
-			system("cls");
-			updateEmployee();
-			break;
-		case 4:
-			system("cls");
-			viewEmployee();
-			break;
-		case 5:
-			system("cls");
-			describeEmployee();
-			break;
-		case 6:
-			system("cls");
-			flag = false;
-			break;
-		default:
-			std::cout << "Invalid choice. Please enter a number between 1 and 6.\n";
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			break;
-		}
-	}
-}
+//void Employee::action() {
+//	bool flag = true;
+//
+//	int choice;
+//
+//
+//	while (flag) {
+//
+//
+//		std::cout << "Employee Table\n";
+//		std::cout << "Please select a value to perform actions:\n";
+//		std::cout << "1. Insert\n";
+//		std::cout << "2. Delete\n";
+//		std::cout << "3. Update\n";
+//		std::cout << "4. View\n";
+//		std::cout << "5. Describe\n";
+//		std::cout << "6. Go back\n";
+//		std::cout << "Enter your choice (1-6): ";
+//
+//		std::cin >> choice;
+//		std::cout << "\n";
+//
+//		switch (choice) {
+//		case 1:
+//			system("cls");
+//			insertEmployee();
+//			break;
+//		case 2:
+//			system("cls");
+//			setId();
+//			deleteEmployeeById(getId());
+//			break;
+//		case 3:
+//			system("cls");
+//			updateEmployee();
+//			break;
+//		case 4:
+//			system("cls");
+//			viewEmployee();
+//			break;
+//		case 5:
+//			system("cls");
+//			describeEmployee();
+//			break;
+//		case 6:
+//			system("cls");
+//			flag = false;
+//			break;
+//		default:
+//			system("cls");
+//			std::cout << "Invalid choice. Please enter a number between 1 and 6.\n";
+//			std::cin.clear();
+//			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//			break;
+//		}
+//	}
+//}

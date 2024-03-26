@@ -16,6 +16,10 @@ void Manager::insertManager() {
 
 	std::string insertQueryEmployee = insertEmployee();
 
+	if (insertQueryEmployee == "Employee already exist") {
+		return;
+	}
+
 	setManagementExperience();
 	setProjectTitle();
 
@@ -60,6 +64,7 @@ void Manager::deleteManager() {
 void Manager::updateManager() {
 	int choice;
 	std::string updateQuery = "UPDATE Manager SET";
+
 	bool flag = true;
 	std::cout << "1. To update Employee Table related details\n";
 	std::cout << "2. To update Manager Table related details\n";
@@ -79,6 +84,11 @@ void Manager::updateManager() {
 			flag = false;
 			std::cout << "Enter Employee id to update: \n";
 			std::cin >> id;
+
+			if (!Database::getInstance().checkExist("Manager", id)) {
+				std::cout << "Manager Not exist for id: " << id << "\n\n";
+				return;
+			}
 
 			std::cout << "Please select an attribute to update:\n";
 			std::cout << "1. Manager's Experience\n";
@@ -101,6 +111,7 @@ void Manager::updateManager() {
 			case 3:
 				return;
 			default:
+				system("cls");
 				std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
 				std::cin.clear();
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -124,6 +135,7 @@ void Manager::updateManager() {
 			std::cout << Database::getInstance().getError() << "\n";
 		break;
 	default:
+		system("cls");
 		std::cout << "Invalid choice Please Enter a number 1 or 2 only\n";
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -235,6 +247,7 @@ void Manager::action() {
 			flag = false;
 			break;
 		default:
+			system("cls");
 			std::cerr << "Invalid choice. Please enter a number between 1 and 6.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
