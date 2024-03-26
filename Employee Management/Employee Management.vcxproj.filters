@@ -83,6 +83,9 @@
     <ClInclude Include="include\attributeHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\auth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -257,3 +257,60 @@
 [ 24-03-2024 10:37:56 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus From Employee NATURAL JOIN Salary  : Executed. 
 [ 24-03-2024 10:38:39 ][Info ]: Salary Updated for id :  1 
 [ 24-03-2024 10:39:17 ][Info ]: Database Closed. 
+[ 26-03-2024 09:49:35 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 09:50:16 ][Info ]: Database Closed. 
+[ 26-03-2024 10:17:19 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 10:17:24 ][Info ]: Database Closed. 
+[ 26-03-2024 10:18:05 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 10:18:13 ][Info ]: select * from employee;  : Executed. 
+[ 26-03-2024 10:18:23 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 26-03-2024 10:18:43 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 26-03-2024 10:20:00 ][Info ]: Database Closed. 
+[ 26-03-2024 10:20:53 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 10:20:57 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 26-03-2024 10:21:06 ][Info ]: Database Closed. 
+[ 26-03-2024 10:21:57 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 10:22:02 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 26-03-2024 10:22:24 ][Info ]: select * from employee;  : Executed. 
+[ 26-03-2024 10:22:43 ][Info ]: Database Closed. 
+[ 26-03-2024 10:25:11 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 10:25:21 ][Info ]: select * from employee;  : Executed. 
+[ 26-03-2024 10:25:35 ][Info ]: Database Closed. 
+[ 26-03-2024 10:26:49 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 10:26:59 ][Info ]: select * from department;  : Executed. 
+[ 26-03-2024 10:27:29 ][Info ]: Database Closed. 
+[ 26-03-2024 10:31:51 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 10:31:53 ][Info ]: Database Closed. 
+[ 26-03-2024 10:32:43 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 10:33:10 ][Info ]: Database Closed. 
+[ 26-03-2024 10:57:50 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 10:57:58 ][Error]: no such table: fdf 
+[ 26-03-2024 10:58:06 ][Info ]: Show table Query Fetched. 
+[ 26-03-2024 10:58:28 ][Info ]: select * from employee;  : Executed. 
+[ 26-03-2024 10:58:33 ][Info ]: Employee Exported. 
+[ 26-03-2024 10:58:33 ][Info ]: Engineer Exported. 
+[ 26-03-2024 10:58:33 ][Info ]: Manager Exported. 
+[ 26-03-2024 10:58:33 ][Info ]: Salary Exported. 
+[ 26-03-2024 10:58:33 ][Info ]: Department Exported. 
+[ 26-03-2024 10:59:07 ][Info ]: Department Updated for id :  2 
+[ 26-03-2024 10:59:13 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 26-03-2024 10:59:21 ][Info ]: Department Described. 
+[ 26-03-2024 10:59:32 ][Info ]: Database Closed. 
+[ 26-03-2024 11:03:24 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 11:03:30 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id   : Executed. 
+[ 26-03-2024 11:04:29 ][Info ]: Database Closed. 
+[ 26-03-2024 11:11:55 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 11:12:07 ][Info ]: Show table Query Fetched. 
+[ 26-03-2024 11:15:55 ][Info ]: select * from employee;  : Executed. 
+[ 26-03-2024 11:16:04 ][Info ]: select * from employee;  : Executed. 
+[ 26-03-2024 11:16:31 ][Info ]: Employee Exported. 
+[ 26-03-2024 11:16:56 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 11:17:16 ][Info ]: Salary Described. 
+[ 26-03-2024 11:17:33 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus From Employee NATURAL JOIN Salary  : Executed. 
+[ 26-03-2024 11:17:50 ][Info ]: Salary Incremented for id :  4 
+[ 26-03-2024 11:18:05 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus From Employee NATURAL JOIN Salary WHERE id = 4  : Executed. 
+[ 26-03-2024 12:01:38 ][Info ]: Opened Database Succesfully 
+[ 26-03-2024 12:02:04 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 26-03-2024 12:02:24 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 26-03-2024 12:02:32 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 26-03-2024 12:02:43 ][Info ]: Database Closed. 

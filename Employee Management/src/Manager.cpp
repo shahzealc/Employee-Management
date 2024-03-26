@@ -59,7 +59,8 @@ void Manager::deleteManager() {
 
 void Manager::updateManager() {
 	int choice;
-	std::string updateQuery{};
+	std::string updateQuery = "UPDATE Manager SET";
+	bool flag = true;
 	std::cout << "1. To update Employee Table related details\n";
 	std::cout << "2. To update Manager Table related details\n";
 
@@ -67,42 +68,47 @@ void Manager::updateManager() {
 	std::cin >> choice;
 	switch (choice) {
 	case 1:
+		system("cls");
 		updateEmployee();
 		break;
 	case 2:
-
+		system("cls");
 		int id;
-		std::cout << "Enter Employee id to update: \n";
-		std::cin >> id;
 
-		std::cout << "Please select an attribute to update:\n";
-		std::cout << "1. Manager's Experience\n";
-		std::cout << "2. Project Title\n";
-		std::cout << "3. Exit\n";
-		std::cout << "Enter your choice (1-3): ";
+		while (flag) {
+			flag = false;
+			std::cout << "Enter Employee id to update: \n";
+			std::cin >> id;
 
-		std::cin >> choice;
-		std::cout << "\n";
+			std::cout << "Please select an attribute to update:\n";
+			std::cout << "1. Manager's Experience\n";
+			std::cout << "2. Project Title\n";
+			std::cout << "3. Go Back\n";
+			std::cout << "Enter your choice (1-3): ";
 
-		switch (choice) {
-		case 1:
-			setManagementExperience();
-			updateQuery = "UPDATE Manager SET management_experience = '" + std::to_string(getManagementExperience()) + "' WHERE id = " + std::to_string(id);
-			break;
-		case 2:
-			setProjectTitle();
-			updateQuery = "UPDATE Manager SET project_title= '" + getProjectTitle() + "' WHERE id = " + std::to_string(id);
-			break;
-		case 3:
-			break;
-		default:
-			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			updateManager();
-			break;
+			std::cin >> choice;
+			std::cout << "\n";
+
+			switch (choice) {
+			case 1:
+				setManagementExperience();
+				updateQuery += " management_experience = '" + std::to_string(getManagementExperience()) + "'";
+				break;
+			case 2:
+				setProjectTitle();
+				updateQuery += " project_title= '" + getProjectTitle() + "'";
+				break;
+			case 3:
+				return;
+			default:
+				std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				flag = true;
+				break;
+			}
 		}
-
+		updateQuery += " WHERE id = " + std::to_string(id) + ";";
 		if (Database::getInstance().executeQuery(updateQuery)) {
 
 			int changes = sqlite3_changes(Database::getInstance().db);
@@ -128,44 +134,49 @@ void Manager::updateManager() {
 
 void Manager::viewManager() {
 	std::string selectQuery{};
-
+	bool flag = true;
 	int choice;
+	while (flag) {
+		std::cout << "Please select a column to view a Manager:\n";
+		std::cout << "1. ALL\n";
+		std::cout << "2. Employee Id\n";
+		std::cout << "3. Go Back\n";
 
-	std::cout << "Please select a column to view a Manager:\n";
-	std::cout << "1. ALL\n";
-	std::cout << "2. Employee Id\n";
-	std::cout << "3. Exit\n";
+		std::cout << "Enter your choice (1-3): ";
 
-	std::cout << "Enter your choice (1-3): ";
+		flag = false;
+		std::cin >> choice;
+		std::cout << "\n";
 
-
-	std::cin >> choice;
-	std::cout << "\n";
-
-	switch (choice) {
-	case 1:
-		selectQuery = "SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id ";
-		break;
-	case 2:
-		setId();
-		selectQuery = "SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id AND Employee.id =" + std::to_string(getId());
-		break;
-	case 3:
-		break;
-	default:
-		std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		viewManager();
-		break;
+		switch (choice) {
+		case 1:
+			system("cls");
+			selectQuery = "SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id ";
+			break;
+		case 2:
+			system("cls");
+			setId();
+			selectQuery = "SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id AND Employee.id =" + std::to_string(getId());
+			break;
+		case 3:
+			system("cls");
+			return;
+		default:
+			system("cls");
+			std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			flag = true;
+			break;
+		}
 	}
-
-	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
-		std::cout << Database::getInstance().getError() << std::endl;
-	}
-	else {
-		Log::getInstance().Info(selectQuery, " : Executed.");
-	}
+		if (!Database::getInstance().executeQueryCallback(selectQuery)) {
+			std::cout << Database::getInstance().getError() << std::endl;
+		}
+		else {
+			Log::getInstance().Info(selectQuery, " : Executed.");
+		}
+	
 };
 
 void Manager::describeManager() const
@@ -191,7 +202,7 @@ void Manager::action() {
 		std::cout << "3. Update\n";
 		std::cout << "4. View\n";
 		std::cout << "5. Describe\n";
-		std::cout << "6. Exit\n";
+		std::cout << "6. Go Back\n";
 		std::cout << "Enter your choice (1-6): ";
 
 		int choice;
@@ -200,21 +211,27 @@ void Manager::action() {
 
 		switch (choice) {
 		case 1:
+			system("cls");
 			insertManager();
 			break;
 		case 2:
+			system("cls");
 			deleteManager();
 			break;
 		case 3:
+			system("cls");
 			updateManager();
 			break;
 		case 4:
+			system("cls");
 			viewManager();
 			break;
 		case 5:
+			system("cls");
 			describeManager();
 			break;
 		case 6:
+			system("cls");
 			flag = false;
 			break;
 		default:

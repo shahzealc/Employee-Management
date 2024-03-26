@@ -32,8 +32,8 @@ void Engineer::insertEngineer() {
 	Salary s1;
 	std::string insertQuerySalary = s1.insertSalaryById(Employee::getId());
 
-	if (Database::getInstance().executeQuery(insertQueryEmployee) && Database::getInstance().executeQuery(insertQueryEngineer) && 
-			Database::getInstance().executeQuery(insertQuerySalary)) {
+	if (Database::getInstance().executeQuery(insertQueryEmployee) && Database::getInstance().executeQuery(insertQueryEngineer) &&
+		Database::getInstance().executeQuery(insertQuerySalary)) {
 		std::cout << "Inserted Engineer Succesfully ! \n\n";
 		Log::getInstance().Info("Engineer Inserted for id : ", getId());
 	}
@@ -65,7 +65,9 @@ void Engineer::deleteEngineer() {
 void Engineer::updateEngineer() {
 
 	int choice;
-	std::string updateQuery{};
+	std::string updateQuery = "UPDATE Engineer SET";
+	bool flag = true;
+
 	std::cout << "1. To update Employee Table related details\n";
 	std::cout << "2. To update Engineer Table related details\n";
 
@@ -73,42 +75,46 @@ void Engineer::updateEngineer() {
 	std::cin >> choice;
 	switch (choice) {
 	case 1:
+		system("cls");
 		updateEmployee();
 		break;
 	case 2:
-
+		system("cls");
 		int id;
-		std::cout << "Enter Employee id to update: \n";
-		std::cin >> id;
+		while (flag) {
+			flag = false;
+			std::cout << "Enter Employee id to update: \n";
+			std::cin >> id;
 
-		std::cout << "Please select an attribute to update:\n";
-		std::cout << "1. Programming Language \n";
-		std::cout << "2. Specialization \n";
-		std::cout << "3. Exit \n";
-		std::cout << "Enter your choice (1-3): ";
+			std::cout << "Please select an attribute to update:\n";
+			std::cout << "1. Programming Language \n";
+			std::cout << "2. Specialization \n";
+			std::cout << "3. Go Back \n";
+			std::cout << "Enter your choice (1-3): ";
 
-		std::cin >> choice;
-		std::cout << "\n";
+			std::cin >> choice;
+			std::cout << "\n";
 
-		switch (choice) {
-		case 1:
-			setProgrammingLanguage();
-			updateQuery = "UPDATE Engineer SET programming_language = '" + getProgrammingLanguage() + "' WHERE id = " + std::to_string(id);
-			break;
-		case 2:
-			setSpecialization();
-			updateQuery = "UPDATE Engineer SET specialization= '" + getSpecialization() + "' WHERE id = " + std::to_string(id);
-			break;
-		case 3:
-			break;
-		default:
-			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			updateEngineer();
-			break;
+			switch (choice) {
+			case 1:
+				setProgrammingLanguage();
+				updateQuery += " programming_language = '" + getProgrammingLanguage() + "'";
+				break;
+			case 2:
+				setSpecialization();
+				updateQuery += " specialization= '" + getSpecialization() + "'";
+				break;
+			case 3:
+				return;
+			default:
+				std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				flag = true;
+				break;
+			}
 		}
-
+		updateQuery += " WHERE id = " + std::to_string(id) + ";";
 		if (Database::getInstance().executeQuery(updateQuery)) {
 
 			int changes = sqlite3_changes(Database::getInstance().db);
@@ -137,36 +143,41 @@ void Engineer::viewEngineer() {
 	std::string selectQuery{};
 
 	int choice;
+	bool flag = true;
+	while (flag) {
+		flag = false;
+		std::cout << "Please select a column to view a Manager:\n";
+		std::cout << "1. ALL\n";
+		std::cout << "2. Employee Id\n";
+		std::cout << "3. Go Back\n";
 
-	std::cout << "Please select a column to view a Manager:\n";
-	std::cout << "1. ALL\n";
-	std::cout << "2. Employee Id\n";
-	std::cout << "3. Exit\n";
-
-	std::cout << "Enter your choice (1-3): ";
+		std::cout << "Enter your choice (1-3): ";
 
 
-	std::cin >> choice;
-	std::cout << "\n";
+		std::cin >> choice;
+		std::cout << "\n";
 
-	switch (choice) {
-	case 1:
-		selectQuery = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id ";
-		break;
-	case 2:
-		setId();
-		selectQuery = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id AND Employee.id =" + std::to_string(getId());
-		break;
-	case 3:
-		break;
-	default:
-		std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		viewEngineer();
-		break;
+		switch (choice) {
+		case 1:
+			system("cls");
+			selectQuery = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id ";
+			break;
+		case 2:
+			system("cls");
+			setId();
+			selectQuery = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id AND Employee.id =" + std::to_string(getId());
+			break;
+		case 3:
+			system("cls");
+			return;
+		default:
+			std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			flag = true;
+			break;
+		}
 	}
-
 	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
 		std::cout << Database::getInstance().getError() << std::endl;
 	}
@@ -199,29 +210,34 @@ void Engineer::action() {
 		std::cout << "3. Update\n";
 		std::cout << "4. View\n";
 		std::cout << "5. Describe\n";
-		std::cout << "6. Exit\n";
+		std::cout << "6. Go Back\n";
 		std::cout << "Enter your choice (1-6): ";
-
 
 		std::cin >> choice;
 
 		switch (choice) {
 		case 1:
+			system("cls");
 			insertEngineer();
 			break;
 		case 2:
+			system("cls");
 			deleteEngineer();
 			break;
 		case 3:
+			system("cls");
 			updateEngineer();
 			break;
 		case 4:
+			system("cls");
 			viewEngineer();
 			break;
 		case 5:
+			system("cls");
 			describeEngineer();
 			break;
 		case 6:
+			system("cls");
 			flag = false;
 			break;
 		default:

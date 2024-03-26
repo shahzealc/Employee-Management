@@ -52,35 +52,41 @@ void Department::deleteDepartment() {
 	int choice;
 
 	system("cls");
-	std::cout << "Please select a column to delete an Department:\n";
-	std::cout << "1. ID\n";
-	std::cout << "2. Deptartment Name\n";
-	std::cout << "3. Exit\n";
+	bool flag = true;
+	while (flag) {
+		flag = false;
+		std::cout << "Please select a column to delete an Department:\n";
+		std::cout << "1. ID\n";
+		std::cout << "2. Deptartment Name\n";
+		std::cout << "3. Go Back\n";
 
-	std::cout << "Enter your choice (1-3): ";
+		std::cout << "Enter your choice (1-3): ";
 
 
-	std::cin >> choice;
-	std::cout << "\n";
+		std::cin >> choice;
+		std::cout << "\n";
 
-	switch (choice) {
-	case 1:
-		setId();
-		deleteQuery = "DELETE FROM Department WHERE id = " + std::to_string(getId());
-		break;
-	case 2:
-		setName();
-		deleteQuery = "DELETE FROM Department WHERE name = '" + getName() + "'";
-		break;
-
-	case 3:
-		break;
-	default:
-		std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		deleteDepartment();
-		break;
+		switch (choice) {
+		case 1:
+			system("cls");
+			setId();
+			deleteQuery = "DELETE FROM Department WHERE id = " + std::to_string(getId());
+			break;
+		case 2:
+			system("cls");
+			setName();
+			deleteQuery = "DELETE FROM Department WHERE name = '" + getName() + "'";
+			break;
+		case 3:
+			system("cls");
+			return;
+		default:
+			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			flag = true;
+			break;
+		}
 	}
 
 	if (Database::getInstance().executeQuery(deleteQuery)) {
@@ -102,62 +108,68 @@ void Department::deleteDepartment() {
 void Department::updateDepartment() {
 	std::string updateQuery = "UPDATE Department SET";
 	int choice;
-	bool executeFlag = true;
+
 
 
 	system("cls");
-	std::cout << "Enter Department id to update: \n";
-	std::cin >> id;
+	bool flag = true;
+	while (flag) {
+		flag = false;
+		std::cout << "Enter Department id to update: \n";
+		std::cin >> id;
 
-	std::cout << "Please select an attribute to update:\n";
-	std::cout << "1. Department Name\n";
-	std::cout << "2. Department Manager ID\n";
-	std::cout << "3. Description\n";
-	std::cout << "4. Exit\n";
-	std::cout << "Enter your choice (1-4): ";
+		std::cout << "Please select an attribute to update:\n";
+		std::cout << "1. Department Name\n";
+		std::cout << "2. Department Manager ID\n";
+		std::cout << "3. Description\n";
+		std::cout << "4. Go Back\n";
+		std::cout << "Enter your choice (1-4): ";
 
-	std::cin >> choice;
-	std::cout << "\n";
+		std::cin >> choice;
+		std::cout << "\n";
 
-	switch (choice) {
-	case 1:
-		setName();
-		updateQuery += " name = '" + getName() + "'";
-		break;
-	case 2:
-		setManagerId();
-		updateQuery += " manager_id = " + std::to_string(getManagerId());
-		break;
-	case 3:
-		setDescription();
-		updateQuery += " description = '" + getDescription() + "'";
-		break;
-	case 4:
-		return;
-	default:
-		std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		updateDepartment();
-		executeFlag = false;
-		break;
-	}
-
-	if (executeFlag) {
-		updateQuery += " WHERE id = " + std::to_string(id) + ";";
-		if (Database::getInstance().executeQuery(updateQuery)) {
-			int changes = sqlite3_changes(Database::getInstance().db);
-
-			std::cout << changes << " row affected \n\n";
-			if (changes != 0) {
-				std::cout << "Department Updated Successfully ! \n\n";
-				Log::getInstance().Info("Department Updated for id : ", id);
-			}
-		}
-		else {
-			std::cout << Database::getInstance().getError() << "\n";
+		switch (choice) {
+		case 1:
+			system("cls");
+			setName();
+			updateQuery += " name = '" + getName() + "'";
+			break;
+		case 2:
+			system("cls");
+			setManagerId();
+			updateQuery += " manager_id = " + std::to_string(getManagerId());
+			break;
+		case 3:
+			system("cls");
+			setDescription();
+			updateQuery += " description = '" + getDescription() + "'";
+			break;
+		case 4:
+			system("cls");
+			return;
+		default:
+			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			flag = true;
+			break;
 		}
 	}
+
+	updateQuery += " WHERE id = " + std::to_string(id) + ";";
+	if (Database::getInstance().executeQuery(updateQuery)) {
+		int changes = sqlite3_changes(Database::getInstance().db);
+
+		std::cout << changes << " row affected \n\n";
+		if (changes != 0) {
+			std::cout << "Department Updated Successfully ! \n\n";
+			Log::getInstance().Info("Department Updated for id : ", id);
+		}
+	}
+	else {
+		std::cout << Database::getInstance().getError() << "\n";
+	}
+
 }
 
 void Department::viewDepartment() {
@@ -165,38 +177,46 @@ void Department::viewDepartment() {
 
 	int choice;
 	system("cls");
-	std::cout << "Please select a column to view a Department:\n";
-	std::cout << "1. ALL\n";
-	std::cout << "2. Deptartment Id\n";
-	std::cout << "3. Deptartment Name\n";
-	std::cout << "4. Exit\n";
+	bool flag = true;
+	while (flag) {
+		flag = false;
+		std::cout << "Please select a column to view a Department:\n";
+		std::cout << "1. ALL\n";
+		std::cout << "2. Deptartment Id\n";
+		std::cout << "3. Deptartment Name\n";
+		std::cout << "4. Go Back\n";
 
-	std::cout << "Enter your choice (1-4): ";
+		std::cout << "Enter your choice (1-4): ";
 
 
-	std::cin >> choice;
-	std::cout << "\n";
+		std::cin >> choice;
+		std::cout << "\n";
 
-	switch (choice) {
-	case 1:
-		selectQuery = "SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;";
-		break;
-	case 2:
-		setId();
-		selectQuery = "SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id AND Department.id = " + std::to_string(getId());
-		break;
-	case 3:
-		setName();
-		selectQuery = "SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id AND name = '" + getName() + "'";
-		break;
-	case 4:
-		break;
-	default:
-		std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		viewDepartment();
-		break;
+		switch (choice) {
+		case 1:
+			system("cls");
+			selectQuery = "SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;";
+			break;
+		case 2:
+			system("cls");
+			setId();
+			selectQuery = "SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id AND Department.id = " + std::to_string(getId());
+			break;
+		case 3:
+			system("cls");
+			setName();
+			selectQuery = "SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id AND name = '" + getName() + "'";
+			break;
+		case 4:
+			system("cls");
+			return;
+		default:
+			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			flag = true;
+			break;
+		}
 	}
 
 	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
@@ -232,7 +252,7 @@ void Department::action() {
 		std::cout << "3. Update\n";
 		std::cout << "4. View\n";
 		std::cout << "5. Describe\n";
-		std::cout << "6. Exit\n";
+		std::cout << "6. Go Back\n";
 		std::cout << "Enter your choice (1-6): ";
 
 		int choice;
@@ -241,21 +261,27 @@ void Department::action() {
 
 		switch (choice) {
 		case 1:
+			system("cls");
 			insertDepartment();
 			break;
 		case 2:
+			system("cls");
 			deleteDepartment();
 			break;
 		case 3:
+			system("cls");
 			updateDepartment();
 			break;
 		case 4:
+			system("cls");
 			viewDepartment();
 			break;
 		case 5:
+			system("cls");
 			describeDepartment();
 			break;
 		case 6:
+			system("cls");
 			flag = false;
 			break;
 		default:
