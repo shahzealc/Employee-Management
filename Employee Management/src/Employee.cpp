@@ -53,7 +53,7 @@ void Employee::setManagerId() {
 		manager_id = NULL;
 	}
 }
-
+ 
 void Employee::setDepartmentId() {
 	setAttribute<int>("Department ID (-1 for null)", department_id, validateNumeric);
 	if (department_id == -1) {
@@ -104,14 +104,13 @@ void Employee::setDepartmentId() {
 	return insertQueryEmployee;
 }
 
-void Employee::deleteEmployeeById(int id) {
+void Employee::deleteEmployeeById(int eid) {
 
 	std::string deleteQuery{};
 
+	std::string viewEmployee = "SELECT id,firstname,lastname,email FROM Employee WHERE id = " + std::to_string(eid);
 
-	std::string viewEmployee = "SELECT id,firstname,lastname,email FROM Employee WHERE id = " + std::to_string(id);
-
-	if (!Database::getInstance().executeQueryCallback(viewEmployee)) {
+	if (!Database::getInstance().executeQueryCallback(viewEmployee,false)) {
 		std::cout << Database::getInstance().getError() << std::endl;
 	}
 
@@ -121,7 +120,7 @@ void Employee::deleteEmployeeById(int id) {
 
 	if (confirm == 'Y' || confirm == 'y') {
 
-		deleteQuery = "DELETE FROM Employee WHERE id = " + std::to_string(id);
+		deleteQuery = "DELETE FROM Employee WHERE id = " + std::to_string(eid);
 
 		if (Database::getInstance().executeQuery(deleteQuery)) {
 
@@ -130,7 +129,7 @@ void Employee::deleteEmployeeById(int id) {
 			std::cout << changes << " row affected \n\n";
 			if (changes != 0) {
 				std::cout << "Employee Deleted Succesfully ! \n\n";
-				Log::getInstance().Info("Employee Deleted for id : ", getId());
+				Log::getInstance().Info("Employee Deleted for id : ", eid);
 			}
 
 		}
@@ -139,7 +138,7 @@ void Employee::deleteEmployeeById(int id) {
 			if (Database::getInstance().getError() == errmsg) {
 				std::string_view err = { "Selected Employee is managing different employees, so you can not directly delete this employee !!! " };
 				Database::getInstance().setError(err);
-				Log::getInstance().Warn("Selected Employee is managing different employees : can not delete for id : ", getId());
+				Log::getInstance().Warn("Selected Employee is managing different employees : can not delete for id : ", eid);
 			}
 			std::cout << Database::getInstance().getError() << "\n\n";
 		}
@@ -148,9 +147,8 @@ void Employee::deleteEmployeeById(int id) {
 };
 
 void Employee::updateEmployee() {
-	std::string updateQuery = "UPDATE Employee SET";
+	std::string updateQuery = "UPDATE Employee SET ";
 	int choice;
-	bool executeFlag = true;
 
 	system("cls");
 
@@ -185,7 +183,7 @@ void Employee::updateEmployee() {
 		switch (choice) {
 		case 1:
 			setFirstname();
-			updateQuery = updateQuery + " firstname = '" + getFirstname();
+			updateQuery = updateQuery + "firstname = '" + getFirstname();
 			break;
 		case 2:
 			setLastname();
@@ -256,67 +254,67 @@ void Employee::updateEmployee() {
 		std::cout << Database::getInstance().getError() << "\n";
 }
 
-void Employee::viewEmployee() {
-
-
-	std::string selectQuery{};
-	int choice;
-	system("cls");
-	bool flag = true;
-	while (flag) {
-		flag = false;
-		std::cout << "Please select a column to view an employee:\n";
-		std::cout << "1. ALL\n";
-		std::cout << "2. ID\n";
-		std::cout << "3. Firstname\n";
-		std::cout << "4. Gmail\n";
-		std::cout << "5. Go Back\n";
-
-		std::cout << "Enter your choice (1-5): ";
-
-
-		std::cin >> choice;
-		std::cout << "\n";
-
-		switch (choice) {
-		case 1:
-			system("cls");
-			selectQuery = "SELECT * FROM Employee";
-			break;
-		case 2:
-			system("cls");
-			setId();
-			selectQuery = "SELECT * FROM Employee WHERE id = " + std::to_string(getId());
-			break;
-		case 3:
-			system("cls");
-			setFirstname();
-			selectQuery = "SELECT * FROM Employee WHERE firstname = '" + getFirstname() + "'";
-			break;
-		case 4:
-			system("cls");
-			setEmail();
-			selectQuery = "SELECT * FROM Employee WHERE email = '" + getEmail() + "'";
-			break;
-		case 5:
-			system("cls");
-			return;
-		default:
-			system("cls");
-			std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
-			flag = true;
-			break;
-		}
-	}
-
-	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
-		std::cout << Database::getInstance().getError() << std::endl;
-	}
-	else {
-		Log::getInstance().Info(selectQuery, " : Executed.");
-	}
-
-};
+//void Employee::viewEmployee() {
+//
+//
+//	std::string selectQuery{};
+//	int choice;
+//	system("cls");
+//	bool flag = true;
+//	while (flag) {
+//		flag = false;
+//		std::cout << "Please select a column to view an employee:\n";
+//		std::cout << "1. ALL\n";
+//		std::cout << "2. ID\n";
+//		std::cout << "3. Firstname\n";
+//		std::cout << "4. Gmail\n";
+//		std::cout << "5. Go Back\n";
+//
+//		std::cout << "Enter your choice (1-5): ";
+//
+//
+//		std::cin >> choice;
+//		std::cout << "\n";
+//
+//		switch (choice) {
+//		case 1:
+//			system("cls");
+//			selectQuery = "SELECT * FROM Employee";
+//			break;
+//		case 2:
+//			system("cls");
+//			setId();
+//			selectQuery = "SELECT * FROM Employee WHERE id = " + std::to_string(getId());
+//			break;
+//		case 3:
+//			system("cls");
+//			setFirstname();
+//			selectQuery = "SELECT * FROM Employee WHERE firstname = '" + getFirstname() + "'";
+//			break;
+//		case 4:
+//			system("cls");
+//			setEmail();
+//			selectQuery = "SELECT * FROM Employee WHERE email = '" + getEmail() + "'";
+//			break;
+//		case 5:
+//			system("cls");
+//			return;
+//		default:
+//			system("cls");
+//			std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
+//			flag = true;
+//			break;
+//		}
+//	}
+//
+//	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
+//		std::cout << Database::getInstance().getError() << std::endl;
+//	}
+//	else {
+//		Log::getInstance().Info(selectQuery, " : Executed.");
+//	}
+//
+//};
 
 void Employee::describeEmployee() const
 {

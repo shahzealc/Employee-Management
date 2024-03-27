@@ -9,7 +9,7 @@ bool Database::open(std::filesystem::path dbPath) {
 
 	if (sqlite3_open(dbPath.string().c_str(), &db) == SQLITE_OK) {
 
-		if (!createTables()) {
+		if (!createTables()) { 
 			return false;
 		}
 
@@ -28,7 +28,7 @@ bool Database::open(std::filesystem::path dbPath) {
 
 bool Database::createTables() {
 
-	const char* sql = "CREATE TABLE IF NOT EXISTS Employee ("
+	const char* EMP = "CREATE TABLE IF NOT EXISTS Employee ("
 		"id INTEGER PRIMARY KEY,"
 		"firstname VARCHAR,"
 		"lastname VARCHAR,"
@@ -44,12 +44,12 @@ bool Database::createTables() {
 		"FOREIGN KEY (department_id) REFERENCES Department(id),"
 		"FOREIGN KEY (manager_id) REFERENCES Employee(id));";
 
-	if (!executeQuery(sql))
+	if (!executeQuery(EMP))
 	{
 		return false;
 	}
 
-	const char* sql2 = "CREATE TABLE IF NOT EXISTS Department ("
+	const char* DEPT = "CREATE TABLE IF NOT EXISTS Department ("
 		"id INTEGER PRIMARY KEY,"
 		"name VARCHAR,"
 		"manager_id INTEGER,"
@@ -57,50 +57,45 @@ bool Database::createTables() {
 		"FOREIGN KEY (manager_id) REFERENCES Employee(id) )";
 
 
-	if (!executeQuery(sql2))
+	if (!executeQuery(DEPT))
 	{
 		return false;
 	}
 
-
-
-	const char* sql3 = "CREATE TABLE IF NOT EXISTS Engineer ("
+	const char* ENG = "CREATE TABLE IF NOT EXISTS Engineer ("
 		"id INTEGER PRIMARY KEY,"
 		"programming_language VARCHAR,"
 		"specialization VARCHAR,"
 		"FOREIGN KEY (id) REFERENCES Employee(id) ON DELETE CASCADE )";
 
-	if (!executeQuery(sql3))
+	if (!executeQuery(ENG))
 	{
 		return false;
 	}
 
-
-	const char* sql4 = "CREATE TABLE IF NOT EXISTS Manager ("
+	const char* MANAGER = "CREATE TABLE IF NOT EXISTS Manager ("
 		"id INTEGER PRIMARY KEY,"
 		"management_experience INTEGER,"
 		"project_title VARCHAR,"
 		"FOREIGN KEY (id) REFERENCES Employee(id) ON DELETE CASCADE)";
 
 
-	if (!executeQuery(sql4))
+	if (!executeQuery(MANAGER))
 	{
 		return false;
 	}
 
-
-	const char* sql5 = "CREATE TABLE IF NOT EXISTS Salary ("
+	const char* SALARY = "CREATE TABLE IF NOT EXISTS Salary ("
 		"id INTEGER PRIMARY KEY,"
 		"base_salary REAL,"
 		"bonus REAL,"
 		"amount REAL AS (base_salary + bonus),"
 		"FOREIGN KEY (id) REFERENCES Employee(id) ON DELETE CASCADE)";
 
-	if (!executeQuery(sql5))
+	if (!executeQuery(SALARY))
 	{
 		return false;
 	}
-
 
 	return true;
 }
@@ -134,11 +129,11 @@ bool Database::executeQuery(const std::string& query) {
 	return Error;
 }
 
-bool Database::executeQueryCallback(const std::string& query) {
+bool Database::executeQueryCallback(const std::string& query,bool csv) {
 	char* errMsg = nullptr;
 	rows = 0;
 	int rc = sqlite3_exec(db, query.c_str(), callback, 0, &errMsg);
-	std::cout << rows << " rows returned \n";
+	std::cout << rows << " rows returned \n\n";
 
 	if (rc != SQLITE_OK) {
 		std::string_view err = { errMsg };
@@ -146,6 +141,27 @@ bool Database::executeQueryCallback(const std::string& query) {
 		Log::getInstance().Error(errMsg);
 		//sqlite3_free(errMsg);
 		return false;
+	}
+
+	if (csv && rows>0) {
+
+		char input;
+		std::cout << "Need this data in csv format? Press Y for Yes or N for No: ";
+		std::cin >> input;
+		if (input == 'Y' || input == 'y') {
+			std::string path = "exports/";
+			std::string userFileName;
+			std::cout << "Enter Filename : ";
+			std::cin >> userFileName;
+			path = path + userFileName + ".csv";
+			if (Database::getInstance().export_to_csv(query, path)) {
+				system("cls");
+				std::cout << "File Exported at " << path << "\n\n";
+			}
+		}
+		else {
+			system("cls");
+		}
 	}
 	return true;
 }
@@ -327,24 +343,47 @@ void Database::userSqlQuery()
 
 }
 
-void Database::export_to_csv(const std::string& table, const std::filesystem::path& filename) {
+bool Database::exportDatabase() {
+	std::string showQuery = " SELECT name FROM sqlite_schema ;";
+	std::string table = "SELECT * FROM ";
+	std::string path="backup/";
+	sqlite3_stmt* stmt = nullptr;
+	int rc = sqlite3_prepare_v2(db, showQuery.c_str(), -1, &stmt, nullptr);
+
+	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+		table += reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+		path = path + reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)) + ".csv";
+		std::cout << table<<"\n";
+		std::cout << path << "\n";
+		
+		if (!Database::getInstance().export_to_csv(table, path)) {
+			std::cout << getError() << "\n\n";
+			return false;
+		}
+		table = "SELECT * FROM ";
+		path = "backup/";
+	}
+	
+	return true;
+}
+
+bool Database::export_to_csv(const std::string& query, const std::filesystem::path& filename) {
 	std::ofstream file(filename);
 	if (!file.is_open()) {
 		std::cerr << "Failed to open file: " << filename << std::endl;
-		return;
+		return false;
 	}
 
-	std::string query = "SELECT * FROM " + table + ";";
 	if (!Database::getInstance().executeQuery(query)) {
 		std::cerr << "Failed to execute query." << std::endl;
-		return;
+		return false;
 	}
 
 	sqlite3_stmt* stmt = nullptr;
 	int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
 	if (rc != SQLITE_OK) {
 		std::cerr << "Failed to prepare statement: " << sqlite3_errmsg(db) << std::endl;
-		return;
+		return false;
 	}
 
 	int columns = sqlite3_column_count(stmt);
@@ -368,11 +407,13 @@ void Database::export_to_csv(const std::string& table, const std::filesystem::pa
 
 	if (rc != SQLITE_DONE) {
 		std::cout << getError() << "\n\n";
+		return false;
 	}
 	else {
-		Log::getInstance().Info(table,"Exported.");
+		//Log::getInstance().Info(table,"Exported.");
 	}
 	sqlite3_finalize(stmt);
+	return true;
 }
 
 bool Database::checkExist(std::string table, int id) {

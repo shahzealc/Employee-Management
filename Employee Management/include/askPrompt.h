@@ -12,11 +12,27 @@
 
 void askPromptTable() {
 	std::map<int, std::pair<std::string, std::function<void()>>> tableOptions = {
-		{1, {"Department", []() { system("cls"); Department d1; d1.action(); }}},
-		{2, {"Salary", []() { system("cls"); Salary s1; s1.action(); }}},
-		{3, {"Engineer", []() { system("cls"); Engineer en1; en1.action(); }}},
-		{4, {"Manager", []() { system("cls"); Manager m1; m1.action(); }}},
-		{5, {"Main Menu", []() {system("cls"); }}}
+	{1, {"Department", []() {
+		system("cls");
+		std::unique_ptr<Department> d1 = std::make_unique<Department>();
+		d1->action();
+	}}},
+	{2, {"Salary", []() {
+		system("cls");
+		std::unique_ptr<Salary> s1 = std::make_unique<Salary>();
+		s1->action();
+	}}},
+	{3, {"Engineer", []() {
+		system("cls");
+		std::unique_ptr<Engineer> en1 = std::make_unique<Engineer>();
+		en1->action();
+	}}},
+	{4, {"Manager", []() {
+		system("cls");
+		std::unique_ptr<Manager> m1 = std::make_unique<Manager>();
+		m1->action();
+	}}},
+	{5, {"Main Menu", []() { system("cls"); }}}
 	};
 
 	bool flag = true;
@@ -60,12 +76,14 @@ void askPromptMain() {
 	   {5, {"Run Custom Query", []() { system("cls"); Database::getInstance().userSqlQuery(); }}},
 	   {6, {"Backup Database", []() {
 				system("cls");
-				Database::getInstance().export_to_csv("Employee", "backup/Employee.csv");
-				Database::getInstance().export_to_csv("Engineer", "backup/Engineer.csv");
-				Database::getInstance().export_to_csv("Manager", "backup/Manager.csv");
-				Database::getInstance().export_to_csv("Salary", "backup/Salary.csv");
-				Database::getInstance().export_to_csv("Department", "backup/Department.csv");
-				std::cout << "All Tables Backed up successfully.\n";
+				if (Database::getInstance().exportDatabase()) {
+					std::cout << "All Tables Backed up successfully.\n";
+				}
+				//Database::getInstance().export_to_csv("Engineer", "backup/Engineer.csv");
+				//Database::getInstance().export_to_csv("Manager", "backup/Manager.csv");
+				//Database::getInstance().export_to_csv("Salary", "backup/Salary.csv");
+				//Database::getInstance().export_to_csv("Department", "backup/Department.csv");
+				
 			}
 			}},
 	   {7, {"Exit", []() {system("cls"); }}}

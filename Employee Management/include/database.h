@@ -22,7 +22,7 @@ public:
     }
 
     bool executeQuery(const std::string& query);
-    bool executeQueryCallback(const std::string& query);
+    bool executeQueryCallback(const std::string& query,bool csv = true);
     int getRow() const;
     std::string_view getError() const;
     void setError(std::string_view& errorMessage);
@@ -32,7 +32,8 @@ public:
     void deleteTableQuery();
     void userSqlQuery();
     bool checkExist(std::string table, int id);
-    void export_to_csv(const std::string& table, const std::filesystem::path& filename);
+    bool exportDatabase();
+    bool export_to_csv(const std::string& table, const std::filesystem::path& filename);
 
 private:
     Database() {}

@@ -121,7 +121,7 @@ void Salary::updateSalary() {
 };
 
 void Salary::viewSalary() {
-	std::string selectQuery{};
+	std::string selectQuery = "SELECT id,firstname,lastname,email,amount,base_salary,bonus From Employee NATURAL JOIN Salary";
 
 	int choice;
 	bool flag = true;
@@ -131,9 +131,10 @@ void Salary::viewSalary() {
 		std::cout << "Please select a column to view a Salary:\n";
 		std::cout << "1. ALL\n";
 		std::cout << "2. Employee Id\n";
-		std::cout << "3. Go Back\n";
+		std::cout << "3. Order By column name\n";
+		std::cout << "4. Go Back\n";
 
-		std::cout << "Enter your choice (1-3): ";
+		std::cout << "Enter your choice (1-4): ";
 
 		std::cin >> choice;
 		std::cout << "\n";
@@ -141,19 +142,52 @@ void Salary::viewSalary() {
 		switch (choice) {
 		case 1:
 			system("cls");
-			selectQuery = "SELECT id,firstname,lastname,email,amount,base_salary,bonus From Employee NATURAL JOIN Salary";
 			break;
 		case 2:
 			system("cls");
 			setId();
-			selectQuery = "SELECT id,firstname,lastname,email,amount,base_salary,bonus From Employee NATURAL JOIN Salary WHERE id = " + std::to_string(getId());
+			selectQuery += " WHERE id = " + std::to_string(getId());
 			break;
 		case 3:
+		{
+			system("cls");
+			int choice;
+			std::cout << "Select column to order by:\n";
+			std::cout << "1. Base Salary\n";
+			std::cout << "2. Amount\n";
+			std::cin >> choice;
+
+			std::string orderByColumnName;
+			switch (choice) {
+			case 1:
+				orderByColumnName = "base_salary";
+				break;
+			case 2:
+				orderByColumnName = "amount";
+				break;
+			default:
+				std::cout << "Invalid input!\n";
+				break;
+			}
+
+			if (!orderByColumnName.empty()) {
+				int orderDirection;
+				std::cout << "Select order direction:\n";
+				std::cout << "1. Ascending\n";
+				std::cout << "2. Descending\n";
+				std::cin >> orderDirection;
+
+				std::string orderDirectionStr = (orderDirection == 1) ? "ASC" : "DESC";
+				selectQuery += " ORDER BY " + orderByColumnName + " " + orderDirectionStr;
+			}
+			break;
+		}
+		case 4:
 			system("cls");
 			return;
 		default:
 			system("cls");
-			std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
+			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			flag = true;

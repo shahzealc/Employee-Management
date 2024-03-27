@@ -33,8 +33,8 @@ void Engineer::insertEngineer() {
 		specialization + "'" +
 		");";
 
-	Salary s1;
-	std::string insertQuerySalary = s1.insertSalaryById(Employee::getId());
+	auto s1 = std::make_unique<Salary>();
+	std::string insertQuerySalary = s1->insertSalaryById(Employee::getId());
 
 	if (Database::getInstance().executeQuery(insertQueryEmployee) && Database::getInstance().executeQuery(insertQueryEngineer) &&
 		Database::getInstance().executeQuery(insertQuerySalary)) {
@@ -79,15 +79,15 @@ void Engineer::updateEngineer() {
 		break;
 	case 2:
 		system("cls");
-		int id;
+		int eid;
 
 		while (flag) {
 			flag = false;
 			std::cout << "Enter Employee id to update: \n";
-			std::cin >> id;
+			std::cin >> eid;
 
-			if (!Database::getInstance().checkExist("Engineer", getId())) {
-				std::cout << "Engineer Not exist for id: " << id << "\n\n";
+			if (!Database::getInstance().checkExist("Engineer", eid)) {
+				std::cout << "Engineer Not exist for id: " << eid << "\n\n";
 				return;
 			}
 			std::cout << "Please select an attribute to update:\n";
@@ -119,7 +119,7 @@ void Engineer::updateEngineer() {
 				break;
 			}
 		}
-		updateQuery += " WHERE id = " + std::to_string(id) + ";";
+		updateQuery += " WHERE id = " + std::to_string(eid) + ";";
 		if (Database::getInstance().executeQuery(updateQuery)) {
 
 			int changes = sqlite3_changes(Database::getInstance().db);
@@ -155,9 +155,10 @@ void Engineer::viewEngineer() {
 		std::cout << "Please select a column to view a Manager:\n";
 		std::cout << "1. ALL\n";
 		std::cout << "2. Employee Id\n";
-		std::cout << "3. Go Back\n";
+		std::cout << "3. Order by column\n";
+		std::cout << "4. Go Back\n";
 
-		std::cout << "Enter your choice (1-3): ";
+		std::cout << "Enter your choice (1-4): ";
 
 
 		std::cin >> choice;
@@ -174,11 +175,51 @@ void Engineer::viewEngineer() {
 			selectQuery = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id AND Employee.id =" + std::to_string(getId());
 			break;
 		case 3:
+		{
+			selectQuery = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id";
+			system("cls");
+			int choice;
+			std::cout << "Select column to order by:\n";
+			std::cout << "1. Firstname\n";
+			std::cout << "2. Lastname\n";
+			std::cout << "3. Date of Joining\n";
+
+			std::cin >> choice;
+
+			std::string orderByColumnName;
+			switch (choice) {
+			case 1:
+				orderByColumnName = "firstname";
+				break;
+			case 2:
+				orderByColumnName = "lastname";
+				break;
+			case 3:
+				orderByColumnName = "doj";
+				break;
+			default:
+				std::cout << "Invalid input!\n";
+				break;
+			}
+
+			if (!orderByColumnName.empty()) {
+				int orderDirection;
+				std::cout << "Select order direction:\n";
+				std::cout << "1. Ascending\n";
+				std::cout << "2. Descending\n";
+				std::cin >> orderDirection;
+
+				std::string orderDirectionStr = (orderDirection == 1) ? "ASC" : "DESC";
+				selectQuery += " ORDER BY " + orderByColumnName + " " + orderDirectionStr;
+			}
+			break;
+		}
+		case 4:
 			system("cls");
 			return;
 		default:
 			system("cls");
-			std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
+			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			flag = true;

@@ -28,8 +28,8 @@ void Manager::insertManager() {
 		+ std::to_string(management_experience) + ",'"
 		+ project_title + "');";
 
-	Salary s1;
-	std::string insertQuerySalary = s1.insertSalaryById(Employee::getId());
+	auto s1 = std::make_unique<Salary>();
+	std::string insertQuerySalary = s1->insertSalaryById(Employee::getId());
 
 	if (Database::getInstance().executeQuery(insertQueryEmployee) && Database::getInstance().executeQuery(insertQueryManager) &&
 			Database::getInstance().executeQuery(insertQuerySalary)) {
@@ -152,9 +152,11 @@ void Manager::viewManager() {
 		std::cout << "Please select a column to view a Manager:\n";
 		std::cout << "1. ALL\n";
 		std::cout << "2. Employee Id\n";
-		std::cout << "3. Go Back\n";
+		std::cout << "3. Employees under Manager\n";
+		std::cout << "4. Order by column\n";
+		std::cout << "5. Go Back\n";
 
-		std::cout << "Enter your choice (1-3): ";
+		std::cout << "Enter your choice (1-5): ";
 
 		flag = false;
 		std::cin >> choice;
@@ -172,10 +174,60 @@ void Manager::viewManager() {
 			break;
 		case 3:
 			system("cls");
+			setId();
+			selectQuery = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id = Engineer.id AND manager_id =" + std::to_string(getId());
+			break;
+		case 4:
+		{
+			selectQuery = "SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id";
+			system("cls");
+			int choice;
+			std::cout << "Select column to order by:\n";
+			std::cout << "1. Firstname\n";
+			std::cout << "2. Lastname\n";
+			std::cout << "3. Date of Joining\n";
+			std::cout << "4. Experience\n";
+
+
+			std::cin >> choice;
+
+			std::string orderByColumnName;
+			switch (choice) {
+			case 1:
+				orderByColumnName = "firstname";
+				break;
+			case 2:
+				orderByColumnName = "lastname";
+				break;
+			case 3:
+				orderByColumnName = "doj";
+				break;
+			case 4:
+				orderByColumnName = "management_experience";
+				break;
+			default:
+				std::cout << "Invalid input!\n";
+				break;
+			}
+
+			if (!orderByColumnName.empty()) {
+				int orderDirection;
+				std::cout << "Select order direction:\n";
+				std::cout << "1. Ascending\n";
+				std::cout << "2. Descending\n";
+				std::cin >> orderDirection;
+
+				std::string orderDirectionStr = (orderDirection == 1) ? "ASC" : "DESC";
+				selectQuery += " ORDER BY " + orderByColumnName + " " + orderDirectionStr;
+			}
+			break;
+		}
+		case 5:
+			system("cls");
 			return;
 		default:
 			system("cls");
-			std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
+			std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			flag = true;
