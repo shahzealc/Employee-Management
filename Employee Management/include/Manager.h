@@ -22,10 +22,10 @@ public:
 	void setManagementExperience();
 	void setProjectTitle();
 
-	void insertManager();
-	void deleteManager();
-	void updateManager();
-	void viewManager();
+	bool insertManager();
+	bool deleteManager();
+	bool updateManager();
+	bool viewManager();
 
 	void describeManager() const;
 

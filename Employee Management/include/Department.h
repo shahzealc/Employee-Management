@@ -24,10 +24,10 @@ public:
     void setManagerId();
     void setDescription();
 
-    void insertDepartment();
-    void deleteDepartment();
-    void updateDepartment();
-    void viewDepartment();
+    bool insertDepartment();
+    bool deleteDepartment();
+    bool updateDepartment();
+    bool viewDepartment();
 
     void describeDepartment() const;
 

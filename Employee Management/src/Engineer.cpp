@@ -16,12 +16,11 @@ void Engineer::setSpecialization()
 	std::cin >> specialization;
 }
 
-void Engineer::insertEngineer() {
+bool Engineer::insertEngineer() {
 
-	std::string insertQueryEmployee = insertEmployee();
 
-	if (insertQueryEmployee == "Employee already exist") {
-		return;
+	if (!insertEmployee()) {
+		return false;
 	}
 
 	setProgrammingLanguage();
@@ -34,38 +33,43 @@ void Engineer::insertEngineer() {
 		");";
 
 	auto s1 = std::make_unique<Salary>();
-	std::string insertQuerySalary = s1->insertSalaryById(Employee::getId());
 
-	if (Database::getInstance().executeQuery(insertQueryEmployee) && Database::getInstance().executeQuery(insertQueryEngineer) &&
-		Database::getInstance().executeQuery(insertQuerySalary)) {
-		std::cout << "Inserted Engineer Succesfully ! \n\n";
+	if (Database::getInstance().executeQuery(insertQueryEngineer) && s1->insertSalaryById(Employee::getId())) {
+		std::cout << "\033[32mInserted Engineer Succesfully ! \033[0m\n\n";
 		Log::getInstance().Info("Engineer Inserted for id : ", getId());
+		return true;
 	}
-	else
+	else {
 		std::cout << Database::getInstance().getError() << "\n\n";
-
+		return false;
+	}
 };
 
-void Engineer::deleteEngineer() {
+bool Engineer::deleteEngineer() {
 
 	setId();
 	if (Database::getInstance().checkExist("Engineer", getId())) {
-		deleteEmployeeById(getId());
-		Log::getInstance().Info("Engineer Deleted for id : ", getId());
+		if (deleteEmployeeById(getId())) {
+			Log::getInstance().Info("Engineer Deleted for id : ", getId());
+			return true;
+		}
+		return false;
 	}
 	else {
-		std::cout << "Engineer Not exist" << "\n\n";
+		std::cout << "\033[33mEngineer Not exist\033[0m" << "\n\n";
 		Log::getInstance().Warn("Engineer not exist for id : ", getId());
+		return false;
 	}
 
 };
 
-void Engineer::updateEngineer() {
+bool Engineer::updateEngineer() {
 
 	int choice;
 	std::string updateQuery = "UPDATE Engineer SET";
 	std::string  checkExistance;
 	bool flag = true;
+	int eid{};
 
 	std::cout << "1. To update Employee Table related details\n";
 	std::cout << "2. To update Engineer Table related details\n";
@@ -75,11 +79,11 @@ void Engineer::updateEngineer() {
 	switch (choice) {
 	case 1:
 		system("cls");
-		updateEmployee();
+		if (updateEmployee())
+			return true;
 		break;
 	case 2:
 		system("cls");
-		int eid;
 
 		while (flag) {
 			flag = false;
@@ -87,8 +91,8 @@ void Engineer::updateEngineer() {
 			std::cin >> eid;
 
 			if (!Database::getInstance().checkExist("Engineer", eid)) {
-				std::cout << "Engineer Not exist for id: " << eid << "\n\n";
-				return;
+				std::cout << "\033[33mEngineer Not exist for id: " << eid << "\033[0m\n\n";
+				return false;
 			}
 			std::cout << "Please select an attribute to update:\n";
 			std::cout << "1. Programming Language \n";
@@ -109,7 +113,7 @@ void Engineer::updateEngineer() {
 				updateQuery += " specialization= '" + getSpecialization() + "'";
 				break;
 			case 3:
-				return;
+				return true;
 			default:
 				system("cls");
 				std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
@@ -124,15 +128,18 @@ void Engineer::updateEngineer() {
 
 			int changes = sqlite3_changes(Database::getInstance().db);
 
-			std::cout << changes << " row affected \n\n";
+			std::cout <<"\033[32m" << changes << " row affected \033[0m\n\n";
 			if (changes != 0) {
-				std::cout << "Engineer Updated Succesfully ! \n\n";
+				std::cout << "\033[32mEngineer Updated Succesfully ! \033[0m\n\n";
 				Log::getInstance().Info("Engineer Updated for id : ", getId());
+				return true;
 			}
 
 		}
-		else
+		else {
 			std::cout << Database::getInstance().getError() << "\n";
+			return false;
+		}
 		break;
 	default:
 		system("cls");
@@ -141,10 +148,10 @@ void Engineer::updateEngineer() {
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		break;
 	}
-
+	return false;
 };
 
-void Engineer::viewEngineer() {
+bool Engineer::viewEngineer() {
 
 	std::string selectQuery{};
 
@@ -178,16 +185,16 @@ void Engineer::viewEngineer() {
 		{
 			selectQuery = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id";
 			system("cls");
-			int choice;
+			int choice2;
 			std::cout << "Select column to order by:\n";
 			std::cout << "1. Firstname\n";
 			std::cout << "2. Lastname\n";
 			std::cout << "3. Date of Joining\n";
 
-			std::cin >> choice;
+			std::cin >> choice2;
 
 			std::string orderByColumnName;
-			switch (choice) {
+			switch (choice2) {
 			case 1:
 				orderByColumnName = "firstname";
 				break;
@@ -216,7 +223,7 @@ void Engineer::viewEngineer() {
 		}
 		case 4:
 			system("cls");
-			return;
+			return true;
 		default:
 			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
@@ -228,9 +235,11 @@ void Engineer::viewEngineer() {
 	}
 	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
 		std::cout << Database::getInstance().getError() << std::endl;
+		return false;
 	}
 	else {
 		Log::getInstance().Info(selectQuery, " : Executed.");
+		return true;
 	}
 
 };

@@ -24,8 +24,8 @@ public:
     bool executeQuery(const std::string& query);
     bool executeQueryCallback(const std::string& query,bool csv = true);
     int getRow() const;
-    std::string_view getError() const;
-    void setError(std::string_view& errorMessage);
+    std::string getError() const;
+    void setError(std::string& errorMessage);
     bool executeQueryRows(const std::string& query);
     void createTableQuery();
     void showTables();
@@ -44,8 +44,8 @@ private:
     Database(const Database&) = delete;
     Database& operator=(const Database&) = delete;
 
-    std::string_view dbName{};
-    std::string_view Error{};
+    std::string dbName{};
+    std::string Error{};
     static int rows;
     static int callback(void* data, int argc, char** argv, char** azColName);
     static int callbackRows(void* data, int argc, char** argv, char** azColName);

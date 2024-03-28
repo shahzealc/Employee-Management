@@ -23,14 +23,14 @@ public:
     void setBonus();
     void setPercentage();
 
-    std::string insertSalaryById(int id);
-    void deleteSalary();
-    void updateSalary();
-    void viewSalary();
+    bool insertSalaryById(int id);
+    bool deleteSalary();
+    bool updateSalary();
+    bool viewSalary();
 
     void describeSalary() const;
 
-    void incrementSalary();
+    bool incrementSalary();
 
     void action();
 

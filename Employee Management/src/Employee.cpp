@@ -61,15 +61,15 @@ void Employee::setDepartmentId() {
 	}
 }
 
-[[nodiscard]] std::string Employee::insertEmployee() {
+bool Employee::insertEmployee() {
 	system("cls");
 	std::cout << "Enter Employee Details:\n";
 
 	setId();
 
 	if (Database::getInstance().checkExist("Employee", id)) {
-		std::cout << "Employee already exist for id: " << id << "\n\n";
-		return std::string("Employee already exist");
+		std::cout << "\033[33mEmployee already exist for id: " << id << "\033[0m\n\n";
+		return false;
 	}
 
 	setFirstname();
@@ -100,11 +100,16 @@ void Employee::setDepartmentId() {
 		w_location + "', " +
 		managerIdString + ", " +
 		departmentIdString + ");";
-
-	return insertQueryEmployee;
+	if (Database::getInstance().executeQuery(insertQueryEmployee)) {
+		return true;
+	}
+	else {
+		std::cout << Database::getInstance().getError() << "\n\n";
+		return false;
+	}
 }
 
-void Employee::deleteEmployeeById(int eid) {
+bool Employee::deleteEmployeeById(int eid) {
 
 	std::string deleteQuery{};
 
@@ -112,9 +117,10 @@ void Employee::deleteEmployeeById(int eid) {
 
 	if (!Database::getInstance().executeQueryCallback(viewEmployee,false)) {
 		std::cout << Database::getInstance().getError() << std::endl;
+		return false;
 	}
 
-	std::cout << "Enter Y: to delete this Employee\nEnter N: to exit\n\n";
+	std::cout << "\033[36mEnter Y: to delete this Employee\nEnter N: to exit\033[0m\n";
 	char confirm;
 	std::cin >> confirm;
 
@@ -126,27 +132,29 @@ void Employee::deleteEmployeeById(int eid) {
 
 			int changes = sqlite3_changes(Database::getInstance().db);
 
-			std::cout << changes << " row affected \n\n";
+			std::cout <<"\033[32m" << changes << " row affected \033[0m\n\n";
 			if (changes != 0) {
-				std::cout << "Employee Deleted Succesfully ! \n\n";
+				std::cout << "\033[32mEmployee Deleted Succesfully ! \033[0m\n\n";
 				Log::getInstance().Info("Employee Deleted for id : ", eid);
+				return true;
 			}
 
 		}
 		else {
 			std::string_view errmsg = "FOREIGN KEY constraint failed";
 			if (Database::getInstance().getError() == errmsg) {
-				std::string_view err = { "Selected Employee is managing different employees, so you can not directly delete this employee !!! " };
+				std::string err = { "Selected Employee is managing different employees, so you can not directly delete this employee !!! " };
 				Database::getInstance().setError(err);
 				Log::getInstance().Warn("Selected Employee is managing different employees : can not delete for id : ", eid);
 			}
 			std::cout << Database::getInstance().getError() << "\n\n";
+			return false;
 		}
 	}
 
 };
 
-void Employee::updateEmployee() {
+bool Employee::updateEmployee() {
 	std::string updateQuery = "UPDATE Employee SET ";
 	int choice;
 
@@ -155,8 +163,8 @@ void Employee::updateEmployee() {
 	setId();
 
 	if (!Database::getInstance().checkExist("Employee", id)) {
-		std::cout << "Employee Not exist for id: " << id << "\n\n";
-		return;
+		std::cout << "\033[33mEmployee Not exist for id: " << id << "\033[0m\n\n";
+		return false;
 	}
 
 	bool flag = true;
@@ -226,8 +234,8 @@ void Employee::updateEmployee() {
 			updateQuery = updateQuery + "department_id = " + std::to_string(department_id);
 			break;
 		case 12:
-			return;
-
+			return true;
+			
 		default:
 			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 12.\n";
@@ -244,14 +252,16 @@ void Employee::updateEmployee() {
 	if (Database::getInstance().executeQuery(updateQuery)) {
 		int changes = sqlite3_changes(Database::getInstance().db);
 
-		std::cout << changes << " row affected \n\n";
+		std::cout << "\033[32m" << changes << " row affected \033[0m\n\n";
 		if (changes != 0) {
-			std::cout << "Employee Updated Succesfully ! \n\n";
+			std::cout << "\033[32mEmployee Updated Succesfully ! \033[0m\n\n";
 			Log::getInstance().Info("Employee Updated for id : ", getId());
+			return true;
 		}
 	}
 	else
 		std::cout << Database::getInstance().getError() << "\n";
+	return false;
 }
 
 //void Employee::viewEmployee() {

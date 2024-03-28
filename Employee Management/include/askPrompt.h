@@ -79,11 +79,6 @@ void askPromptMain() {
 				if (Database::getInstance().exportDatabase()) {
 					std::cout << "All Tables Backed up successfully.\n";
 				}
-				//Database::getInstance().export_to_csv("Engineer", "backup/Engineer.csv");
-				//Database::getInstance().export_to_csv("Manager", "backup/Manager.csv");
-				//Database::getInstance().export_to_csv("Salary", "backup/Salary.csv");
-				//Database::getInstance().export_to_csv("Department", "backup/Department.csv");
-				
 			}
 			}},
 	   {7, {"Exit", []() {system("cls"); }}}

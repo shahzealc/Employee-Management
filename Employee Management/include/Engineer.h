@@ -23,10 +23,10 @@ public:
 	void setProgrammingLanguage();
 	void setSpecialization();
 
-	void insertEngineer();
-	void deleteEngineer();
-	void updateEngineer();
-	void viewEngineer();
+	bool insertEngineer();
+	bool deleteEngineer();
+	bool updateEngineer();
+	bool viewEngineer();
 
 	void describeEngineer() const;
 

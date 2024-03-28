@@ -12,12 +12,10 @@ void Manager::setProjectTitle() {
 	std::getline(std::cin, project_title);
 }
 
-void Manager::insertManager() {
+bool Manager::insertManager() {
 
-	std::string insertQueryEmployee = insertEmployee();
-
-	if (insertQueryEmployee == "Employee already exist") {
-		return;
+	if (!insertEmployee()) {
+		return false;
 	}
 
 	setManagementExperience();
@@ -29,41 +27,47 @@ void Manager::insertManager() {
 		+ project_title + "');";
 
 	auto s1 = std::make_unique<Salary>();
-	std::string insertQuerySalary = s1->insertSalaryById(Employee::getId());
 
-	if (Database::getInstance().executeQuery(insertQueryEmployee) && Database::getInstance().executeQuery(insertQueryManager) &&
-			Database::getInstance().executeQuery(insertQuerySalary)) {
-		std::cout << "Inserted Manager Succesfully ! \n\n";
+	if (Database::getInstance().executeQuery(insertQueryManager) && s1->insertSalaryById(Employee::getId())) {
+		std::cout << "\033[32mInserted Manager Succesfully ! \033[0m\n\n";
 		Log::getInstance().Info("Manager Inserted for id : ", getId());
+		return true;
 	}
-	else
+	else {
 		std::cout << Database::getInstance().getError() << "\n\n";
+		return false;
+	}
 
 };
 
-void Manager::deleteManager() {
+bool Manager::deleteManager() {
 
 	setId();
 	std::string checkManager = "SELECT id FROM Manager WHERE id = " + std::to_string(getId());
 
 	if (!Database::getInstance().executeQueryRows(checkManager)) {
 		std::cout << Database::getInstance().getError() << std::endl;
+		return false;
 	}
 
 	if (int rows = Database::getInstance().getRow(); rows > 0) {
-		deleteEmployeeById(getId());
-		Log::getInstance().Info("Manager Deleted for id : ", getId());
+		if (deleteEmployeeById(getId())) {
+			Log::getInstance().Info("Manager Deleted for id : ", getId());
+			return true;
+		}
 	}
 	else {
-		std::cout << "Manager Not exist" << "\n\n";
+		std::cout << "\033[33mManager Not exist" << "\033[0m\n\n";
 		Log::getInstance().Warn("Manager Not exist for id : ", getId());
+		return false;
 	}
-
+	return false;
 };
 
-void Manager::updateManager() {
+bool Manager::updateManager() {
 	int choice;
 	std::string updateQuery = "UPDATE Manager SET";
+	int eid{};
 
 	bool flag = true;
 	std::cout << "1. To update Employee Table related details\n";
@@ -74,20 +78,24 @@ void Manager::updateManager() {
 	switch (choice) {
 	case 1:
 		system("cls");
-		updateEmployee();
+		if (updateEmployee()) {
+			return true;
+		}
+		else {
+			return false;
+		}
 		break;
 	case 2:
 		system("cls");
-		int id;
 
 		while (flag) {
 			flag = false;
 			std::cout << "Enter Employee id to update: \n";
-			std::cin >> id;
+			std::cin >> eid;
 
-			if (!Database::getInstance().checkExist("Manager", id)) {
-				std::cout << "Manager Not exist for id: " << id << "\n\n";
-				return;
+			if (!Database::getInstance().checkExist("Manager", eid)) {
+				std::cout << "\033[33mManager Not exist for id: " << eid << "\033[0m\n\n";
+				return false;
 			}
 
 			std::cout << "Please select an attribute to update:\n";
@@ -109,7 +117,7 @@ void Manager::updateManager() {
 				updateQuery += " project_title= '" + getProjectTitle() + "'";
 				break;
 			case 3:
-				return;
+				return true;
 			default:
 				system("cls");
 				std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
@@ -119,20 +127,23 @@ void Manager::updateManager() {
 				break;
 			}
 		}
-		updateQuery += " WHERE id = " + std::to_string(id) + ";";
+		updateQuery += " WHERE id = " + std::to_string(eid) + ";";
 		if (Database::getInstance().executeQuery(updateQuery)) {
 
 			int changes = sqlite3_changes(Database::getInstance().db);
 
 			std::cout << changes << " row affected \n\n";
 			if (changes != 0) {
-				std::cout << "Manager Updated Succesfully ! \n\n";
+				std::cout << "\033[32mManager Updated Succesfully ! \033[0m\n\n";
 				Log::getInstance().Info("Manager Updated for id : ", getId());
+				return true;
 			}
 
 		}
-		else
+		else {
 			std::cout << Database::getInstance().getError() << "\n";
+			return false;
+		}
 		break;
 	default:
 		system("cls");
@@ -141,10 +152,10 @@ void Manager::updateManager() {
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		break;
 	}
-
+	return false;
 };
 
-void Manager::viewManager() {
+bool Manager::viewManager() {
 	std::string selectQuery{};
 	bool flag = true;
 	int choice;
@@ -181,7 +192,7 @@ void Manager::viewManager() {
 		{
 			selectQuery = "SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id";
 			system("cls");
-			int choice;
+			int choice2;
 			std::cout << "Select column to order by:\n";
 			std::cout << "1. Firstname\n";
 			std::cout << "2. Lastname\n";
@@ -189,10 +200,10 @@ void Manager::viewManager() {
 			std::cout << "4. Experience\n";
 
 
-			std::cin >> choice;
+			std::cin >> choice2;
 
 			std::string orderByColumnName;
-			switch (choice) {
+			switch (choice2) {
 			case 1:
 				orderByColumnName = "firstname";
 				break;
@@ -224,7 +235,7 @@ void Manager::viewManager() {
 		}
 		case 5:
 			system("cls");
-			return;
+			return true;
 		default:
 			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
@@ -234,13 +245,15 @@ void Manager::viewManager() {
 			break;
 		}
 	}
-		if (!Database::getInstance().executeQueryCallback(selectQuery)) {
-			std::cout << Database::getInstance().getError() << std::endl;
-		}
-		else {
-			Log::getInstance().Info(selectQuery, " : Executed.");
-		}
-	
+	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
+		std::cout << Database::getInstance().getError() << std::endl;
+		return false;
+	}
+	else {
+		Log::getInstance().Info(selectQuery, " : Executed.");
+		return true;
+	}
+
 };
 
 void Manager::describeManager() const

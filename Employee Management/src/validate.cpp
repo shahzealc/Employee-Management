@@ -10,6 +10,11 @@ bool validateNumeric(const std::string& str) {
     return std::regex_match(str, pattern);
 }
 
+bool validateFloatNumeric(const std::string& str) {
+    std::regex pattern("^\\d*\\.?\\d+$");
+    return std::regex_match(str, pattern);
+}
+
 bool validateEmail(const std::string& email) {
 
     std::regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");

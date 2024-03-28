@@ -9,6 +9,6 @@ protected:
 		Database::getInstance().createTables();
 	}
 
-	Department dept1{11,"HR",2,"HR Test department"};
+	Department dept1{10,"HR",2,"HR Test department"};
 
 };

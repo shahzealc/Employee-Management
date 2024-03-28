@@ -478,3 +478,72 @@
 [ 27-03-2024 18:09:28 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id ORDER BY firstname ASC  : Executed. 
 [ 27-03-2024 18:09:35 ][Error]: near "SETlastname": syntax error 
 [ 27-03-2024 18:09:49 ][Info ]: Database Closed. 
+[ 28-03-2024 11:18:17 ][Info ]: admin signed in. 
+[ 28-03-2024 11:18:17 ][Info ]: Database Opened. 
+[ 28-03-2024 11:18:28 ][Info ]: Salary Updated for id :  1 
+[ 28-03-2024 11:18:37 ][Info ]: Salary Updated for id :  1 
+[ 28-03-2024 11:18:49 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus From Employee NATURAL JOIN Salary  : Executed. 
+[ 28-03-2024 11:18:56 ][Info ]: Salary Updated for id :  1 
+[ 28-03-2024 11:19:08 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus From Employee NATURAL JOIN Salary  : Executed. 
+[ 28-03-2024 11:19:11 ][Info ]: Database Closed. 
+[ 28-03-2024 11:59:06 ][Info ]: admin signed in. 
+[ 28-03-2024 11:59:06 ][Info ]: Database Opened. 
+[ 28-03-2024 11:59:16 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id   : Executed. 
+[ 28-03-2024 11:59:30 ][Info ]: Database Closed. 
+[ 28-03-2024 12:45:02 ][Info ]: admin signed in. 
+[ 28-03-2024 12:45:02 ][Info ]: Database Opened. 
+[ 28-03-2024 12:45:21 ][Error]: near "seklect": syntax error 
+[ 28-03-2024 12:45:35 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 28-03-2024 12:45:41 ][Info ]: Database Closed. 
+[ 28-03-2024 12:54:56 ][Warn ]: 1 attempt 
+[ 28-03-2024 12:55:00 ][Info ]: admin signed in. 
+[ 28-03-2024 12:55:00 ][Info ]: Database Opened. 
+[ 28-03-2024 12:55:36 ][Info ]: Department Inserted for id :  6 
+[ 28-03-2024 12:55:52 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 28-03-2024 12:56:43 ][Warn ]: 1 attempt 
+[ 28-03-2024 12:56:45 ][Info ]: admin signed in. 
+[ 28-03-2024 12:56:45 ][Info ]: Database Opened. 
+[ 28-03-2024 12:56:52 ][Info ]: Department Inserted for id :  11 
+[ 28-03-2024 12:57:00 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 28-03-2024 14:06:04 ][Info ]: admin signed in. 
+[ 28-03-2024 14:06:04 ][Info ]: Database Opened. 
+[ 28-03-2024 14:06:23 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 28-03-2024 14:06:56 ][Info ]: Database Closed. 
+[ 28-03-2024 14:32:18 ][Warn ]: 1 attempt 
+[ 28-03-2024 14:32:20 ][Info ]: admin signed in. 
+[ 28-03-2024 14:32:20 ][Info ]: Database Opened. 
+[ 28-03-2024 14:32:43 ][Info ]: Department Inserted for id :  5 
+[ 28-03-2024 14:32:50 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 28-03-2024 14:32:59 ][Info ]: Department Updated for id :  5 
+[ 28-03-2024 14:33:05 ][Info ]: Department Deleted for id :  5 
+[ 28-03-2024 14:38:48 ][Info ]: Database Closed. 
+[ 28-03-2024 14:38:55 ][Info ]: admin signed in. 
+[ 28-03-2024 14:38:55 ][Info ]: Database Opened. 
+[ 28-03-2024 14:39:14 ][Info ]: Salary Updated for id :  1 
+[ 28-03-2024 14:39:24 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus From Employee NATURAL JOIN Salary  : Executed. 
+[ 28-03-2024 14:39:39 ][Info ]: Salary Incremented for id :  2 
+[ 28-03-2024 14:39:46 ][Info ]: Database Closed. 
+[ 28-03-2024 14:43:05 ][Warn ]: 1 attempt 
+[ 28-03-2024 14:43:10 ][Warn ]: 2 attempt 
+[ 28-03-2024 14:43:12 ][Info ]: admin signed in. 
+[ 28-03-2024 14:43:12 ][Info ]: Database Opened. 
+[ 28-03-2024 14:43:22 ][Info ]: Database Closed. 
+[ 28-03-2024 15:48:10 ][Info ]: admin signed in. 
+[ 28-03-2024 15:48:10 ][Info ]: Database Opened. 
+[ 28-03-2024 15:48:23 ][Warn ]: Engineer not exist for id :  12 
+[ 28-03-2024 15:49:00 ][Info ]: Engineer Deleted for id :  1 
+[ 28-03-2024 15:49:06 ][Info ]: Database Closed. 
+[ 28-03-2024 15:56:39 ][Info ]: admin signed in. 
+[ 28-03-2024 15:56:39 ][Info ]: Database Opened. 
+[ 28-03-2024 15:57:09 ][Info ]: Department Inserted for id :  11 
+[ 28-03-2024 15:57:23 ][Info ]: Department Deleted for id :  11 
+[ 28-03-2024 15:58:29 ][Info ]: Engineer Inserted for id :  123 
+[ 28-03-2024 15:58:39 ][Info ]: Employee Updated for id :  123 
+[ 28-03-2024 15:58:54 ][Info ]: Engineer Updated for id :  123 
+[ 28-03-2024 15:59:04 ][Info ]: Employee Deleted for id :  123 
+[ 28-03-2024 15:59:04 ][Info ]: Engineer Deleted for id :  123 
+[ 28-03-2024 15:59:21 ][Info ]: Database Closed. 
+[ 28-03-2024 16:00:05 ][Warn ]: 1 attempt 
+[ 28-03-2024 16:08:06 ][Info ]: admin signed in. 
+[ 28-03-2024 16:08:06 ][Info ]: Database Opened. 
+[ 28-03-2024 16:08:09 ][Info ]: Database Closed. 

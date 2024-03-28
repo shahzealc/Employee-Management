@@ -102,14 +102,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="departmentFixer.h" />
-    <ClInclude Include="employeeFixer.h" />
-    <ClInclude Include="engineerFixer.h" />
-    <ClInclude Include="managerFixer.h" />
+    <ClInclude Include="fixers\departmentFixer.h" />
+    <ClInclude Include="fixers\employeeFixer.h" />
+    <ClInclude Include="fixers\engineerFixer.h" />
+    <ClInclude Include="fixers\managerFixer.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="salaryFixer.h" />
+    <ClInclude Include="fixers\salaryFixer.h" />
+    <ClInclude Include="tests\pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="tests\databaseTesters.cpp" />
+    <ClCompile Include="tests\departmentTesters.cpp" />
+    <ClCompile Include="tests\empTesters.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -117,6 +121,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="tests\engineerTesters.cpp" />
+    <ClCompile Include="tests\managerTesters.cpp" />
+    <ClCompile Include="tests\salaryTesters.cpp" />
+    <ClCompile Include="tests\validatorTesters.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Employee Management\Employee Management.vcxproj">

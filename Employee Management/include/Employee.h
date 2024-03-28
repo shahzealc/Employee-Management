@@ -51,13 +51,13 @@ public:
     void setManagerId();
     void setDepartmentId();
 
-    std::string insertEmployee();
-    void deleteEmployeeById(int) ;
-    void updateEmployee();
-    void viewEmployee();
+    bool insertEmployee();
+    bool deleteEmployeeById(int) ;
+    bool updateEmployee();
+    //void viewEmployee();
     void describeEmployee() const;
 
-    void action();
+    //void action();
 
 private:
 

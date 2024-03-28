@@ -19,7 +19,7 @@ bool Database::open(std::filesystem::path dbPath) {
 		return true;
 	}
 	else {
-		std::string_view err = { "Failed to open database" };
+		std::string err = { "Failed to open database" };
 		setError(err);
 		Log::getInstance().Error("Failed to open database.");
 		return false;
@@ -115,17 +115,17 @@ bool Database::executeQuery(const std::string& query) {
 	int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &errMsg);
 
 	if (rc != SQLITE_OK) {
-		std::string_view err = { errMsg };
+		std::string err = { errMsg };
 		setError(err);
 		Log::getInstance().Error(errMsg);
-		//sqlite3_free(errMsg);
+		sqlite3_free(errMsg);
 		return false;
 	}
 
 	return true;
 }
 
-[[nodiscard]] std::string_view Database::getError() const  {
+[[nodiscard]] std::string Database::getError() const  {
 	return Error;
 }
 
@@ -133,13 +133,13 @@ bool Database::executeQueryCallback(const std::string& query,bool csv) {
 	char* errMsg = nullptr;
 	rows = 0;
 	int rc = sqlite3_exec(db, query.c_str(), callback, 0, &errMsg);
-	std::cout << rows << " rows returned \n\n";
+	std::cout <<"\033[32m" << rows << " rows returned\033[0m \n\n";
 
 	if (rc != SQLITE_OK) {
-		std::string_view err = { errMsg };
+		std::string err = { errMsg };
 		setError(err);
 		Log::getInstance().Error(errMsg);
-		//sqlite3_free(errMsg);
+		sqlite3_free(errMsg);
 		return false;
 	}
 
@@ -185,10 +185,10 @@ bool Database::executeQueryRows(const std::string& query) {
 	int rc = sqlite3_exec(db, query.c_str(), callbackRows, 0, &errMsg);
 
 	if (rc != SQLITE_OK) {
-		std::string_view err = { errMsg };
+		std::string err = { errMsg };
 		setError(err);
 		Log::getInstance().Error(errMsg);
-		//sqlite3_free(errMsg);
+		sqlite3_free(errMsg);
 		return false;
 	}
 	return true;
@@ -203,8 +203,8 @@ int Database::callbackRows(void* data, int argc, char** argv, char** azColName) 
 	return rows;
 }
 
-void Database::setError(std::string_view& errorMessage) {
-	Error = errorMessage;
+void Database::setError(std::string& errorMessage) {
+	Error = std::string("\033[31m") + errorMessage + "\033[0m";
 }
 
 void Database::createTableQuery() {

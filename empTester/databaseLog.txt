@@ -1,30 +1,6 @@
-[ 20-03-2024 18:47:16 ][Error]: near "employee": syntax error 
-[ 21-03-2024 09:44:22 ][Error]: near "employee": syntax error 
-[ 21-03-2024 09:44:38 ][Error]: near "employee": syntax error 
-[ 21-03-2024 09:47:10 ][Error]: near "employee": syntax error 
-[ 21-03-2024 10:05:07 ][Error]: near "employee": syntax error 
-[ 21-03-2024 10:08:49 ][Error]: near "employee": syntax error 
-[ 21-03-2024 10:29:09 ][Error]: near "employee": syntax error 
-[ 21-03-2024 10:32:43 ][Error]: near "employee": syntax error 
-[ 21-03-2024 10:37:21 ][Error]: near "employee": syntax error 
-[ 21-03-2024 12:20:12 ][Error]: near "employee": syntax error 
-[ 21-03-2024 12:21:04 ][Info ]: Database Closed. 
-[ 21-03-2024 12:57:59 ][Info ]: Database Closed. 
-[ 21-03-2024 14:32:54 ][Error]: near "employee": syntax error 
-[ 21-03-2024 14:32:54 ][Info ]: Department Exported. 
-[ 22-03-2024 09:47:26 ][Error]: FOREIGN KEY constraint failed 
-[ 22-03-2024 09:50:32 ][Error]: FOREIGN KEY constraint failed 
-[ 22-03-2024 09:50:52 ][Error]: FOREIGN KEY constraint failed 
-[ 22-03-2024 09:51:14 ][Error]: FOREIGN KEY constraint failed 
-[ 22-03-2024 09:51:24 ][Error]: FOREIGN KEY constraint failed 
-[ 22-03-2024 09:52:19 ][Error]: FOREIGN KEY constraint failed 
-[ 22-03-2024 09:53:41 ][Error]: FOREIGN KEY constraint failed 
-[ 22-03-2024 09:54:58 ][Error]: FOREIGN KEY constraint failed 
-[ 22-03-2024 09:55:29 ][Info ]: Database Closed. 
-[ 22-03-2024 09:55:41 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
-[ 22-03-2024 09:56:23 ][Error]: FOREIGN KEY constraint failed 
-[ 22-03-2024 09:56:39 ][Error]: FOREIGN KEY constraint failed 
-[ 22-03-2024 09:57:31 ][Info ]: Database Closed. 
-[ 22-03-2024 09:58:19 ][Info ]: Database Closed. 
-[ 23-03-2024 17:25:16 ][Info ]: Database Closed. 
-[ 26-03-2024 15:29:25 ][Info ]: Database Closed. 
+[ 28-03-2024 16:52:13 ][Info ]: Database Closed. 
+[ 28-03-2024 16:54:11 ][Error]: FOREIGN KEY constraint failed 
+[ 28-03-2024 16:58:02 ][Info ]: Database Closed. 
+[ 28-03-2024 16:58:40 ][Error]: near "select": syntax error 
+[ 28-03-2024 16:58:54 ][Info ]: Database Closed. 
+[ 28-03-2024 17:13:52 ][Info ]: Database Closed. 

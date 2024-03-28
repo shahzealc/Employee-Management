@@ -7,11 +7,11 @@ void Salary::setId() {
 }
 
 void Salary::setBaseSalary() {
-	setAttribute("Enter Base", base_salary, validateNumeric);
+	setAttribute("Enter Base", base_salary, validateFloatNumeric);
 }
 
 void Salary::setBonus() {
-	setAttribute("Enter Bonus", bonus, validateNumeric);
+	setAttribute("Enter Bonus", bonus, validateFloatNumeric);
 }
 
 void Salary::setPercentage() {
@@ -19,21 +19,27 @@ void Salary::setPercentage() {
 	percentage = (percentage / 100) + 1;
 }
 
-[[nodiscard]] std::string Salary::insertSalaryById(int id) {
+bool Salary::insertSalaryById(int eid) {
 
 	setBaseSalary();
 	setBonus();
 
 	std::string insertQuery = "INSERT INTO Salary (id, base_salary, bonus) VALUES ("
-		+ std::to_string(id) + ", '" +
+		+ std::to_string(eid) + ", '" +
 		std::to_string(base_salary) + "', '" +
 		std::to_string(bonus) + "');";
 
-	return insertQuery;
+	if (Database::getInstance().executeQuery(insertQuery)) {
+		return true;
+	}
+	else {
+		std::cout << Database::getInstance().getError() << "\n\n";
+		return false;
+	}
 
 };
 
-void Salary::deleteSalary() {
+bool Salary::deleteSalary() {
 
 	system("cls");
 
@@ -44,19 +50,22 @@ void Salary::deleteSalary() {
 
 		int changes = sqlite3_changes(Database::getInstance().db);
 
-		std::cout << changes << " row affected \n\n";
+		std::cout <<"\033[32m" << changes << " row affected \033[0m\n\n";
 		if (changes != 0) {
-			std::cout << "Salary Deleted Succesfully ! \n\n";
+			std::cout << "\033[32mSalary Deleted Succesfully ! \033[0m\n\n";
 			Log::getInstance().Info("Salary Deleted for id : ", id);
+			return true;
 		}
 
 	}
-	else
+	else {
 		std::cout << Database::getInstance().getError() << "\n";
+	}
+	return false;
 
 };
 
-void Salary::updateSalary() {
+bool Salary::updateSalary() {
 
 	std::string updateQuery = "UPDATE Salary SET";
 	int choice;
@@ -66,8 +75,8 @@ void Salary::updateSalary() {
 	std::cin >> id;
 
 	if (!Database::getInstance().checkExist("Employee", id)) {
-		std::cout << "Employee Not exist for id: " << id << "\n\n";
-		return;
+		std::cout << "\033[33mEmployee Not exist for id: " << id << "\033[0m\n\n";
+		return false;
 	}
 
 	bool flag = true;
@@ -93,7 +102,7 @@ void Salary::updateSalary() {
 			updateQuery += " bonus = '" + std::to_string(getBonus()) + "'";
 			break;
 		case 3:
-			return;
+			return true;
 		default:
 			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
@@ -108,19 +117,47 @@ void Salary::updateSalary() {
 
 		int changes = sqlite3_changes(Database::getInstance().db);
 
-		std::cout << changes << " row affected \n\n";
+		std::cout << "\033[32m" << changes << " row affected \033[0m\n\n";
 		if (changes != 0) {
-			std::cout << "Salary Updated Succesfully ! \n\n";
+			std::cout << "\033[32mSalary Updated Succesfully ! \033[0m\n\n";
 			Log::getInstance().Info("Salary Updated for id : ", id);
+			return true;
 		}
 
 	}
-	else
+	else {
 		std::cout << Database::getInstance().getError() << "\n";
+	}
+	return false;
 
 };
 
-void Salary::viewSalary() {
+bool Salary::incrementSalary() {
+
+	setId();
+	std::string checkExistance = "SELECT id FROM Employee WHERE id = " + std::to_string(id);
+
+	if (!Database::getInstance().checkExist("Employee", id)) {
+		std::cout << "\033[33mEmployee Not exist for id: " << id << "\033[0m\n\n";
+		return false;
+	}
+	setPercentage();
+
+	std::string updateSalary = "UPDATE Salary SET base_salary = base_salary * " + std::to_string(getPercentage()) + " WHERE id = " + std::to_string(getId()) + "; ";
+
+	if (!Database::getInstance().executeQuery(updateSalary)) {
+		std::cout << Database::getInstance().getError();
+		return false;
+	}
+	else {
+		std::cout << "\033[32mSalary Incremented for id : " << id << "\033[0m\n\n";
+		Log::getInstance().Info("Salary Incremented for id : ", id);
+		return true;
+	}
+	return false;
+}
+
+bool Salary::viewSalary() {
 	std::string selectQuery = "SELECT id,firstname,lastname,email,amount,base_salary,bonus From Employee NATURAL JOIN Salary";
 
 	int choice;
@@ -151,14 +188,14 @@ void Salary::viewSalary() {
 		case 3:
 		{
 			system("cls");
-			int choice;
+			int choice2;
 			std::cout << "Select column to order by:\n";
 			std::cout << "1. Base Salary\n";
 			std::cout << "2. Amount\n";
-			std::cin >> choice;
+			std::cin >> choice2;
 
 			std::string orderByColumnName;
-			switch (choice) {
+			switch (choice2) {
 			case 1:
 				orderByColumnName = "base_salary";
 				break;
@@ -184,7 +221,7 @@ void Salary::viewSalary() {
 		}
 		case 4:
 			system("cls");
-			return;
+			return true;
 		default:
 			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
@@ -196,9 +233,11 @@ void Salary::viewSalary() {
 	}
 	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
 		std::cout << Database::getInstance().getError() << std::endl;
+		return false;
 	}
 	else {
 		Log::getInstance().Info(selectQuery, " : Executed.");
+		return true;
 	}
 
 };
@@ -212,29 +251,6 @@ void Salary::describeSalary() const
 	else {
 		Log::getInstance().Info("Salary Described.");
 	}
-}
-
-void Salary::incrementSalary() {
-
-	setId();
-	std::string checkExistance = "SELECT id FROM Employee WHERE id = " + std::to_string(id);
-
-	if (!Database::getInstance().checkExist("Employee", id)) {
-		std::cout << "Employee Not exist for id: " << id << "\n\n";
-		return;
-	}
-	setPercentage();
-
-	std::string updateSalary = "UPDATE Salary SET base_salary = base_salary * " + std::to_string(getPercentage()) + " WHERE id = " + std::to_string(getId()) + "; ";
-
-	if (!Database::getInstance().executeQuery(updateSalary)) {
-		std::cout << Database::getInstance().getError();
-	}
-	else {
-		std::cout << "Salary Incremented for id : " << id << "\n";
-		Log::getInstance().Info("Salary Incremented for id : ", id);
-	}
-
 }
 
 void Salary::action() {

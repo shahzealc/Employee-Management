@@ -23,14 +23,14 @@ void Department::setDescription() {
 	setAttribute("Enter Department Description", description, validateAlphabetic);
 }
 
-void Department::insertDepartment() {
+bool Department::insertDepartment() {
 	system("cls");
 	std::cout << "Insert Department Details:\n";
 	setId();
 
 	if (Database::getInstance().checkExist("Department", id)) {
-		std::cout << "Department already exist for id: " << id << "\n\n";
-		return;
+		std::cout << "\033[33mDepartment already exist for id: " << id << "\033[0m\n\n";
+		return false;
 	}
 
 	setName();
@@ -46,14 +46,17 @@ void Department::insertDepartment() {
 		description + "');";
 
 	if (Database::getInstance().executeQuery(insertQuery)) {
-		std::cout << "Inserted Department Successfully! \n\n";
+		std::cout << "\033[32mInserted Department Successfully! \033[0m\n\n";
 		Log::getInstance().Info("Department Inserted for id : ", id);
+		return true;
 	}
-	else
+	else {
 		std::cout << Database::getInstance().getError() << "\n";
+		return false;
+	}
 };
 
-void Department::deleteDepartment() {
+bool Department::deleteDepartment() {
 	std::string deleteQuery{};
 
 	int choice;
@@ -86,7 +89,7 @@ void Department::deleteDepartment() {
 			break;
 		case 3:
 			system("cls");
-			return;
+			return true;
 		default:
 			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
@@ -101,19 +104,22 @@ void Department::deleteDepartment() {
 
 		int changes = sqlite3_changes(Database::getInstance().db);
 
-		std::cout << changes << " row affected \n\n";
+		std::cout << "\033[32m" << changes << " row affected \033[0m\n\n";
 		if (changes != 0) {
-			std::cout << "Department Deleted Succesfully ! \n\n";
+			std::cout << "\033[32mDepartment Deleted Succesfully ! \033[0m\n\n";
 			Log::getInstance().Info("Department Deleted for id : ", id);
+			return true;
 		}
 
 	}
-	else
+	else {
 		std::cout << Database::getInstance().getError() << "\n";
+		return false;
+	}
 
 };
 
-void Department::updateDepartment() {
+bool Department::updateDepartment() {
 	std::string updateQuery = "UPDATE Department SET";
 	int choice;
 
@@ -125,8 +131,8 @@ void Department::updateDepartment() {
 		std::cin >> id;
 
 		if (!Database::getInstance().checkExist("Department", id)) {
-			std::cout << "Department Not exist for id: " << id << "\n\n";
-			return;
+			std::cout << "\033[33mDepartment Not exist for id: " << id << "\033[0m\n\n";
+			return false;
 		}
 
 		std::cout << "Please select an attribute to update:\n";
@@ -157,7 +163,7 @@ void Department::updateDepartment() {
 			break;
 		case 4:
 			system("cls");
-			return;
+			return true;
 		default:
 			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
@@ -172,19 +178,21 @@ void Department::updateDepartment() {
 	if (Database::getInstance().executeQuery(updateQuery)) {
 		int changes = sqlite3_changes(Database::getInstance().db);
 
-		std::cout << changes << " row affected \n\n";
+		std::cout << "\033[32m" << changes << " row affected \033[0m\n\n";
 		if (changes != 0) {
-			std::cout << "Department Updated Successfully ! \n\n";
+			std::cout << "\033[32mDepartment Updated Successfully ! \033[0m\n\n";
 			Log::getInstance().Info("Department Updated for id : ", id);
+			return true;
 		}
 	}
 	else {
 		std::cout << Database::getInstance().getError() << "\n";
+		return false;
 	}
 
 }
 
-void Department::viewDepartment() {
+bool Department::viewDepartment() {
 	std::string selectQuery{};
 
 	int choice;
@@ -221,7 +229,7 @@ void Department::viewDepartment() {
 			break;
 		case 4:
 			system("cls");
-			return;
+			return true;
 		default:
 			system("cls");
 			std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
@@ -234,9 +242,11 @@ void Department::viewDepartment() {
 
 	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
 		std::cout << Database::getInstance().getError() << std::endl;
+		return false;
 	}
 	else {
 		Log::getInstance().Info(selectQuery, " : Executed.");
+		return true;
 	}
 
 };

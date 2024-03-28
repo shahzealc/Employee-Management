@@ -17,6 +17,6 @@ bool validatePhoneNumber(const std::string& phoneNumber);
 
 bool validateDateOfBirth(const std::string& dob);
 
-
+bool validateFloatNumeric(const std::string& str);
 
 #endif // !validate_flag
