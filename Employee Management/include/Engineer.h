@@ -5,6 +5,7 @@
 #include "../sqlite/sqlite3.h"
 #include "log.h"
 #include "Salary.h"
+#include "controllers/engineerController.h"
 
 class Engineer : public Employee {
 public:

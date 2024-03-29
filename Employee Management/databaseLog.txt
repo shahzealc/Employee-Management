@@ -547,3 +547,86 @@
 [ 28-03-2024 16:08:06 ][Info ]: admin signed in. 
 [ 28-03-2024 16:08:06 ][Info ]: Database Opened. 
 [ 28-03-2024 16:08:09 ][Info ]: Database Closed. 
+[ 29-03-2024 09:42:36 ][Warn ]: 1 attempt 
+[ 29-03-2024 09:42:40 ][Info ]: admin signed in. 
+[ 29-03-2024 09:42:40 ][Info ]: Database Opened. 
+[ 29-03-2024 09:43:03 ][Info ]: Department Inserted for id :  5 
+[ 29-03-2024 09:43:16 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 29-03-2024 09:43:28 ][Info ]: Department Updated for id :  5 
+[ 29-03-2024 09:53:20 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 29-03-2024 09:53:25 ][Info ]: Database Closed. 
+[ 29-03-2024 12:49:29 ][Info ]: admin signed in. 
+[ 29-03-2024 12:49:29 ][Info ]: Database Opened. 
+[ 29-03-2024 12:49:39 ][Info ]: Department Deleted for id :  5 
+[ 29-03-2024 12:49:54 ][Info ]: Department Inserted for id :  5 
+[ 29-03-2024 12:50:01 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 29-03-2024 12:50:06 ][Info ]: Database Closed. 
+[ 29-03-2024 12:54:37 ][Info ]: admin signed in. 
+[ 29-03-2024 12:54:37 ][Info ]: Database Opened. 
+[ 29-03-2024 12:54:45 ][Info ]: Department Deleted for id :  0 
+[ 29-03-2024 12:54:51 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 29-03-2024 12:54:54 ][Info ]: Database Closed. 
+[ 29-03-2024 12:59:58 ][Info ]: admin signed in. 
+[ 29-03-2024 12:59:58 ][Info ]: Database Opened. 
+[ 29-03-2024 13:00:06 ][Info ]: Department Inserted for id :  5 
+[ 29-03-2024 13:00:23 ][Info ]: Department Updated for id :  5 
+[ 29-03-2024 13:00:30 ][Info ]: SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;  : Executed. 
+[ 29-03-2024 13:00:34 ][Info ]: Database Closed. 
+[ 29-03-2024 14:05:57 ][Info ]: admin signed in. 
+[ 29-03-2024 14:05:57 ][Info ]: Database Opened. 
+[ 29-03-2024 14:06:04 ][Info ]: Department Viewed for all :  0 
+[ 29-03-2024 14:06:09 ][Info ]: Department Viewed for id :  3 
+[ 29-03-2024 14:06:15 ][Info ]: Department Viewed for name :  0 
+[ 29-03-2024 14:06:20 ][Info ]: Database Closed. 
+[ 29-03-2024 14:22:13 ][Info ]: admin signed in. 
+[ 29-03-2024 14:22:13 ][Info ]: Database Opened. 
+[ 29-03-2024 14:22:32 ][Info ]: Department Inserted for id :  6 
+[ 29-03-2024 14:22:47 ][Info ]: Department Updated for id :  6 
+[ 29-03-2024 14:22:52 ][Info ]: Department Viewed for all :  0 
+[ 29-03-2024 14:22:55 ][Info ]: Department Deleted for id :  6 
+[ 29-03-2024 14:23:03 ][Info ]: Department Viewed for all :  0 
+[ 29-03-2024 14:23:07 ][Info ]: Department Described. 
+[ 29-03-2024 14:23:12 ][Info ]: Database Closed. 
+[ 29-03-2024 17:24:46 ][Warn ]: 1 attempt 
+[ 29-03-2024 17:24:49 ][Info ]: admin signed in. 
+[ 29-03-2024 17:24:49 ][Info ]: Database Opened. 
+[ 29-03-2024 17:25:12 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus FROM Employee NATURAL JOIN Salary WHERE id = 1  : Executed. 
+[ 29-03-2024 17:25:21 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus FROM Employee NATURAL JOIN Salary  : Executed. 
+[ 29-03-2024 17:25:29 ][Info ]: Salary Updated for id :  11 
+[ 29-03-2024 17:25:40 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus FROM Employee NATURAL JOIN Salary  : Executed. 
+[ 29-03-2024 17:25:46 ][Info ]: Database Closed. 
+[ 29-03-2024 17:29:36 ][Info ]: admin signed in. 
+[ 29-03-2024 17:29:36 ][Info ]: Database Opened. 
+[ 29-03-2024 17:29:48 ][Info ]: Salary Incremented for id :  11 
+[ 29-03-2024 17:30:02 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus FROM Employee NATURAL JOIN Salary  : Executed. 
+[ 29-03-2024 17:30:05 ][Info ]: Database Closed. 
+[ 29-03-2024 17:48:15 ][Info ]: admin signed in. 
+[ 29-03-2024 17:48:15 ][Info ]: Database Opened. 
+[ 29-03-2024 17:49:36 ][Info ]: Engineer Inserted for id :  12 
+[ 29-03-2024 17:49:49 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id AND Employee.id =12  : Executed. 
+[ 29-03-2024 17:50:04 ][Info ]: Employee Updated for id :  12 
+[ 29-03-2024 17:50:16 ][Info ]: Employee Updated for id :  12 
+[ 29-03-2024 17:50:26 ][Info ]: Engineer Updated for id :  12 
+[ 29-03-2024 17:50:37 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 29-03-2024 17:51:14 ][Info ]: Employee Deleted for id :  12 
+[ 29-03-2024 17:51:14 ][Info ]: Engineer Deleted for id :  12 
+[ 29-03-2024 17:51:20 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 29-03-2024 17:51:24 ][Info ]: Database Closed. 
+[ 29-03-2024 18:08:26 ][Warn ]: 1 attempt 
+[ 29-03-2024 18:08:30 ][Warn ]: 2 attempt 
+[ 29-03-2024 18:08:33 ][Info ]: admin signed in. 
+[ 29-03-2024 18:08:33 ][Info ]: Database Opened. 
+[ 29-03-2024 18:09:46 ][Info ]: Manager Inserted for id :  12 
+[ 29-03-2024 18:10:04 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id   : Executed. 
+[ 29-03-2024 18:10:13 ][Info ]: Employee Updated for id :  12 
+[ 29-03-2024 18:10:21 ][Info ]: Manager Updated for id :  12 
+[ 29-03-2024 18:10:44 ][Info ]: Manager Updated for id :  12 
+[ 29-03-2024 18:11:18 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id AND Employee.id =12  : Executed. 
+[ 29-03-2024 18:11:25 ][Info ]: Database Closed. 
+[ 29-03-2024 18:11:53 ][Warn ]: 1 attempt 
+[ 29-03-2024 18:11:55 ][Info ]: admin signed in. 
+[ 29-03-2024 18:11:55 ][Info ]: Database Opened. 
+[ 29-03-2024 18:12:03 ][Info ]: Employee Deleted for id :  12 
+[ 29-03-2024 18:12:03 ][Info ]: Manager Deleted for id :  12 
+[ 29-03-2024 18:12:09 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id   : Executed. 
+[ 29-03-2024 18:12:13 ][Info ]: Database Closed. 

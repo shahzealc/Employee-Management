@@ -7,6 +7,7 @@
 #include "log.h"
 #include "validate.h"
 #include "attributeHelper.h"
+#include "controllers/departmentController.h"
 
 class Department {
 public:

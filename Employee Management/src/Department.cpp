@@ -1,6 +1,5 @@
 #include "../include/Department.h"
 
-
 using logs::Log;
 
 void Department::setId() {
@@ -28,8 +27,8 @@ bool Department::insertDepartment() {
 	std::cout << "Insert Department Details:\n";
 	setId();
 
-	if (Database::getInstance().checkExist("Department", id)) {
-		std::cout << "\033[33mDepartment already exist for id: " << id << "\033[0m\n\n";
+	if (Database::getInstance().checkExist("Department", getId())) {
+		std::cout << "\033[33mDepartment already exist for id: " << getId() << "\033[0m\n\n";
 		return false;
 	}
 
@@ -37,30 +36,17 @@ bool Department::insertDepartment() {
 	setManagerId();
 	setDescription();
 
-	std::string managerIdString = (manager_id != NULL) ? std::to_string(manager_id) : "NULL";
-
-	std::string insertQuery = "INSERT INTO Department (id, name, manager_id, description) VALUES ("
-		+ std::to_string(id) + ", '" +
-		name + "', " +
-		managerIdString + ", '" +
-		description + "');";
-
-	if (Database::getInstance().executeQuery(insertQuery)) {
-		std::cout << "\033[32mInserted Department Successfully! \033[0m\n\n";
-		Log::getInstance().Info("Department Inserted for id : ", id);
+	if (DepartmentController::insertDepartmentController(*this))
 		return true;
-	}
-	else {
-		std::cout << Database::getInstance().getError() << "\n";
-		return false;
-	}
-};
+
+	return false;
+
+}
 
 bool Department::deleteDepartment() {
-	std::string deleteQuery{};
 
 	int choice;
-
+	bool controllerResult;
 	system("cls");
 	bool flag = true;
 	while (flag) {
@@ -80,12 +66,12 @@ bool Department::deleteDepartment() {
 		case 1:
 			system("cls");
 			setId();
-			deleteQuery = "DELETE FROM Department WHERE id = " + std::to_string(getId());
+			controllerResult = DepartmentController::deleteDepartmentController(*this, "id");
 			break;
 		case 2:
 			system("cls");
 			setName();
-			deleteQuery = "DELETE FROM Department WHERE name = '" + getName() + "'";
+			controllerResult = DepartmentController::deleteDepartmentController(*this, "name");
 			break;
 		case 3:
 			system("cls");
@@ -99,34 +85,21 @@ bool Department::deleteDepartment() {
 			break;
 		}
 	}
-
-	if (Database::getInstance().executeQuery(deleteQuery)) {
-
-		int changes = sqlite3_changes(Database::getInstance().db);
-
-		std::cout << "\033[32m" << changes << " row affected \033[0m\n\n";
-		if (changes != 0) {
-			std::cout << "\033[32mDepartment Deleted Succesfully ! \033[0m\n\n";
-			Log::getInstance().Info("Department Deleted for id : ", id);
-			return true;
-		}
-
-	}
-	else {
-		std::cout << Database::getInstance().getError() << "\n";
-		return false;
-	}
+	return controllerResult;
 
 };
 
 bool Department::updateDepartment() {
-	std::string updateQuery = "UPDATE Department SET";
 	int choice;
 
+	bool controllerResult;
 	system("cls");
 	bool flag = true;
+
 	while (flag) {
+
 		flag = false;
+
 		std::cout << "Enter Department id to update: \n";
 		std::cin >> id;
 
@@ -149,17 +122,17 @@ bool Department::updateDepartment() {
 		case 1:
 			system("cls");
 			setName();
-			updateQuery += " name = '" + getName() + "'";
+			controllerResult = DepartmentController::updateDepartmentController(*this, "name");
 			break;
 		case 2:
 			system("cls");
 			setManagerId();
-			updateQuery += " manager_id = " + std::to_string(getManagerId());
+			controllerResult = DepartmentController::updateDepartmentController(*this, "manager_id");
 			break;
 		case 3:
 			system("cls");
 			setDescription();
-			updateQuery += " description = '" + getDescription() + "'";
+			controllerResult = DepartmentController::updateDepartmentController(*this, "description");
 			break;
 		case 4:
 			system("cls");
@@ -174,28 +147,13 @@ bool Department::updateDepartment() {
 		}
 	}
 
-	updateQuery += " WHERE id = " + std::to_string(id) + ";";
-	if (Database::getInstance().executeQuery(updateQuery)) {
-		int changes = sqlite3_changes(Database::getInstance().db);
-
-		std::cout << "\033[32m" << changes << " row affected \033[0m\n\n";
-		if (changes != 0) {
-			std::cout << "\033[32mDepartment Updated Successfully ! \033[0m\n\n";
-			Log::getInstance().Info("Department Updated for id : ", id);
-			return true;
-		}
-	}
-	else {
-		std::cout << Database::getInstance().getError() << "\n";
-		return false;
-	}
-
+	return controllerResult;
 }
 
 bool Department::viewDepartment() {
-	std::string selectQuery{};
-
 	int choice;
+	bool controllerResult;
+
 	system("cls");
 	bool flag = true;
 	while (flag) {
@@ -207,25 +165,23 @@ bool Department::viewDepartment() {
 		std::cout << "4. Go Back\n";
 
 		std::cout << "Enter your choice (1-4): ";
-
-
 		std::cin >> choice;
 		std::cout << "\n";
 
 		switch (choice) {
 		case 1:
 			system("cls");
-			selectQuery = "SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id;";
+			controllerResult = DepartmentController::viewDepartmentController(*this, "all");
 			break;
 		case 2:
 			system("cls");
 			setId();
-			selectQuery = "SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id AND Department.id = " + std::to_string(getId());
+			controllerResult = DepartmentController::viewDepartmentController(*this, "id");
 			break;
 		case 3:
 			system("cls");
 			setName();
-			selectQuery = "SELECT department.id,name,description,firstname as manager_name from Department LEFT JOIN Employee where Department.manager_id=Employee.id AND name = '" + getName() + "'";
+			controllerResult = DepartmentController::viewDepartmentController(*this, "name");
 			break;
 		case 4:
 			system("cls");
@@ -239,17 +195,9 @@ bool Department::viewDepartment() {
 			break;
 		}
 	}
+	return controllerResult;
 
-	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
-		std::cout << Database::getInstance().getError() << std::endl;
-		return false;
-	}
-	else {
-		Log::getInstance().Info(selectQuery, " : Executed.");
-		return true;
-	}
-
-};
+}
 
 void Department::describeDepartment() const
 {

@@ -4,3 +4,24 @@
 [ 28-03-2024 16:58:40 ][Error]: near "select": syntax error 
 [ 28-03-2024 16:58:54 ][Info ]: Database Closed. 
 [ 28-03-2024 17:13:52 ][Info ]: Database Closed. 
+[ 29-03-2024 18:20:08 ][Error]: FOREIGN KEY constraint failed 
+[ 29-03-2024 18:21:07 ][Info ]: Department Inserted for id :  10 
+[ 29-03-2024 18:21:07 ][Info ]: Department Updated for id :  10 
+[ 29-03-2024 18:21:07 ][Info ]: Department Deleted for id :  10 
+[ 29-03-2024 18:21:55 ][Info ]: Department Inserted for id :  10 
+[ 29-03-2024 18:21:55 ][Info ]: Department Updated for id :  10 
+[ 29-03-2024 18:21:55 ][Info ]: Department Deleted for id :  10 
+[ 29-03-2024 18:24:50 ][Info ]: Department Inserted for id :  10 
+[ 29-03-2024 18:24:50 ][Info ]: Department Updated for id :  10 
+[ 29-03-2024 18:24:50 ][Info ]: Department Deleted for id :  10 
+[ 29-03-2024 18:24:50 ][Error]: near "WHERE": syntax error 
+[ 29-03-2024 18:24:50 ][Info ]: Employee Deleted for id :  1001 
+[ 29-03-2024 18:25:14 ][Info ]: Department Inserted for id :  10 
+[ 29-03-2024 18:25:14 ][Info ]: Department Updated for id :  10 
+[ 29-03-2024 18:25:14 ][Info ]: Department Deleted for id :  10 
+[ 29-03-2024 18:25:14 ][Info ]: Employee Deleted for id :  1001 
+[ 29-03-2024 18:25:37 ][Info ]: Department Inserted for id :  10 
+[ 29-03-2024 18:25:37 ][Info ]: Department Updated for id :  10 
+[ 29-03-2024 18:25:37 ][Info ]: Department Deleted for id :  10 
+[ 29-03-2024 18:25:37 ][Info ]: Employee Updated for id :  1001 
+[ 29-03-2024 18:25:37 ][Info ]: Employee Deleted for id :  1001 

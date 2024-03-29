@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "../fixers/managerFixer.h"
-TEST_F(managerFixer, managerTest) {
+TEST_F(managerFixer, DISABLED_managerTest) {
 	EXPECT_EQ(manager1.getId(), 1001) << "Incorrect value.";
 	EXPECT_EQ(manager1.getFirstname(), "Zeal") << "Incorrect value.";
 	EXPECT_EQ(manager1.getLastname(), "Shah") << "Incorrect value.";

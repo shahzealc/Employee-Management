@@ -6,6 +6,7 @@
 #include "log.h"
 #include "validate.h"
 #include "attributeHelper.h"
+#include "../include/controllers/salaryController.h"
 
 class Salary {
 public:

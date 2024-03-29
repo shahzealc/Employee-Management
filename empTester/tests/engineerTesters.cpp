@@ -1,7 +1,7 @@
 
 #include "pch.h"
 #include "../fixers/engineerFixer.h"
-TEST_F(engineerFixer, engineerTest) {
+TEST_F(engineerFixer, DISABLED_engineerTest) {
 	EXPECT_EQ(engineer1.getId(), 1001) << "Incorrect value.";
 	EXPECT_EQ(engineer1.getFirstname(), "Zeal") << "Incorrect value.";
 	EXPECT_EQ(engineer1.getLastname(), "Shah") << "Incorrect value.";

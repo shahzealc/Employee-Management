@@ -13,7 +13,6 @@ void Manager::setProjectTitle() {
 }
 
 bool Manager::insertManager() {
-
 	if (!insertEmployee()) {
 		return false;
 	}
@@ -21,27 +20,10 @@ bool Manager::insertManager() {
 	setManagementExperience();
 	setProjectTitle();
 
-	std::string insertQueryManager = "INSERT INTO Manager(id, management_experience , project_title) VALUES ("
-		+ std::to_string(Employee::getId()) + ","
-		+ std::to_string(management_experience) + ",'"
-		+ project_title + "');";
-
-	auto s1 = std::make_unique<Salary>();
-
-	if (Database::getInstance().executeQuery(insertQueryManager) && s1->insertSalaryById(Employee::getId())) {
-		std::cout << "\033[32mInserted Manager Succesfully ! \033[0m\n\n";
-		Log::getInstance().Info("Manager Inserted for id : ", getId());
-		return true;
-	}
-	else {
-		std::cout << Database::getInstance().getError() << "\n\n";
-		return false;
-	}
-
-};
+	return ManagerController::insertManagerController(*this);
+}
 
 bool Manager::deleteManager() {
-
 	setId();
 	std::string checkManager = "SELECT id FROM Manager WHERE id = " + std::to_string(getId());
 
@@ -62,11 +44,12 @@ bool Manager::deleteManager() {
 		return false;
 	}
 	return false;
-};
+}
 
 bool Manager::updateManager() {
 	int choice;
-	std::string updateQuery = "UPDATE Manager SET";
+	bool controllerResult{};
+	std::string updateQuery = "UPDATE Manager SET ";
 	int eid{};
 
 	bool flag = true;
@@ -110,50 +93,33 @@ bool Manager::updateManager() {
 			switch (choice) {
 			case 1:
 				setManagementExperience();
-				updateQuery += " management_experience = '" + std::to_string(getManagementExperience()) + "'";
+				controllerResult = ManagerController::updateManagerController(*this, "management_experience");
 				break;
 			case 2:
 				setProjectTitle();
-				updateQuery += " project_title= '" + getProjectTitle() + "'";
+				controllerResult = ManagerController::updateManagerController(*this, "project_title");
 				break;
 			case 3:
 				return true;
 			default:
 				system("cls");
-				std::cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+				std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
 				std::cin.clear();
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 				flag = true;
 				break;
 			}
 		}
-		updateQuery += " WHERE id = " + std::to_string(eid) + ";";
-		if (Database::getInstance().executeQuery(updateQuery)) {
-
-			int changes = sqlite3_changes(Database::getInstance().db);
-
-			std::cout << changes << " row affected \n\n";
-			if (changes != 0) {
-				std::cout << "\033[32mManager Updated Succesfully ! \033[0m\n\n";
-				Log::getInstance().Info("Manager Updated for id : ", getId());
-				return true;
-			}
-
-		}
-		else {
-			std::cout << Database::getInstance().getError() << "\n";
-			return false;
-		}
 		break;
 	default:
 		system("cls");
-		std::cout << "Invalid choice Please Enter a number 1 or 2 only\n";
+		std::cout << "Invalid choice. Please enter a number 1 or 2 only\n";
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		break;
 	}
-	return false;
-};
+	return controllerResult;
+}
 
 bool Manager::viewManager() {
 	std::string selectQuery{};
@@ -198,7 +164,6 @@ bool Manager::viewManager() {
 			std::cout << "2. Lastname\n";
 			std::cout << "3. Date of Joining\n";
 			std::cout << "4. Experience\n";
-
 
 			std::cin >> choice2;
 
@@ -245,16 +210,8 @@ bool Manager::viewManager() {
 			break;
 		}
 	}
-	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
-		std::cout << Database::getInstance().getError() << std::endl;
-		return false;
-	}
-	else {
-		Log::getInstance().Info(selectQuery, " : Executed.");
-		return true;
-	}
-
-};
+	return ManagerController::viewManagerController(selectQuery);
+}
 
 void Manager::describeManager() const
 {

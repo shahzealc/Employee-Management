@@ -4,6 +4,7 @@
 #include "log.h"
 #include "validate.h"
 #include "Salary.h"
+#include "controllers/managerController.h"
 
 class Manager : public Employee {
 public:

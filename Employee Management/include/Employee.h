@@ -10,6 +10,7 @@
 #include "database.h"
 #include "validate.h"
 #include "log.h"
+#include "../include/controllers/employeeController.h"
 
 //#include "validate.h"
 //enum class Gender { Male, Female, Other };

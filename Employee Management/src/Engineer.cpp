@@ -18,7 +18,6 @@ void Engineer::setSpecialization()
 
 bool Engineer::insertEngineer() {
 
-
 	if (!insertEmployee()) {
 		return false;
 	}
@@ -26,38 +25,23 @@ bool Engineer::insertEngineer() {
 	setProgrammingLanguage();
 	setSpecialization();
 
-	std::string insertQueryEngineer = "INSERT INTO Engineer (id, programming_language,specialization) VALUES ("
-		+ std::to_string(getId()) + ", '" +
-		programming_language + "', '" +
-		specialization + "'" +
-		");";
-
-	auto s1 = std::make_unique<Salary>();
-
-	if (Database::getInstance().executeQuery(insertQueryEngineer) && s1->insertSalaryById(Employee::getId())) {
-		std::cout << "\033[32mInserted Engineer Succesfully ! \033[0m\n\n";
-		Log::getInstance().Info("Engineer Inserted for id : ", getId());
-		return true;
-	}
-	else {
-		std::cout << Database::getInstance().getError() << "\n\n";
-		return false;
-	}
+	return EngineerController::insertEngineerController(*this);
+	
 };
 
 bool Engineer::deleteEngineer() {
 
 	setId();
 	if (Database::getInstance().checkExist("Engineer", getId())) {
-		if (deleteEmployeeById(getId())) {
-			Log::getInstance().Info("Engineer Deleted for id : ", getId());
-			return true;
-		}
-		return false;
+
+		return EngineerController::deleteEngineerController(*this, "id");
+
 	}
 	else {
+
 		std::cout << "\033[33mEngineer Not exist\033[0m" << "\n\n";
 		Log::getInstance().Warn("Engineer not exist for id : ", getId());
+
 		return false;
 	}
 
@@ -66,6 +50,8 @@ bool Engineer::deleteEngineer() {
 bool Engineer::updateEngineer() {
 
 	int choice;
+	bool controllerResult{};
+
 	std::string updateQuery = "UPDATE Engineer SET";
 	std::string  checkExistance;
 	bool flag = true;
@@ -106,11 +92,11 @@ bool Engineer::updateEngineer() {
 			switch (choice) {
 			case 1:
 				setProgrammingLanguage();
-				updateQuery += " programming_language = '" + getProgrammingLanguage() + "'";
+				controllerResult = EngineerController::updateEngineerController(*this, "programming_language");
 				break;
 			case 2:
 				setSpecialization();
-				updateQuery += " specialization= '" + getSpecialization() + "'";
+				controllerResult = EngineerController::updateEngineerController(*this, "specialization");
 				break;
 			case 3:
 				return true;
@@ -123,23 +109,7 @@ bool Engineer::updateEngineer() {
 				break;
 			}
 		}
-		updateQuery += " WHERE id = " + std::to_string(eid) + ";";
-		if (Database::getInstance().executeQuery(updateQuery)) {
-
-			int changes = sqlite3_changes(Database::getInstance().db);
-
-			std::cout <<"\033[32m" << changes << " row affected \033[0m\n\n";
-			if (changes != 0) {
-				std::cout << "\033[32mEngineer Updated Succesfully ! \033[0m\n\n";
-				Log::getInstance().Info("Engineer Updated for id : ", getId());
-				return true;
-			}
-
-		}
-		else {
-			std::cout << Database::getInstance().getError() << "\n";
-			return false;
-		}
+		
 		break;
 	default:
 		system("cls");
@@ -148,25 +118,23 @@ bool Engineer::updateEngineer() {
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		break;
 	}
-	return false;
+	return controllerResult;
 };
 
 bool Engineer::viewEngineer() {
-
 	std::string selectQuery{};
 
 	int choice;
 	bool flag = true;
 	while (flag) {
 		flag = false;
-		std::cout << "Please select a column to view a Manager:\n";
+		std::cout << "Please select a column to view an Engineer:\n";
 		std::cout << "1. ALL\n";
 		std::cout << "2. Employee Id\n";
 		std::cout << "3. Order by column\n";
 		std::cout << "4. Go Back\n";
 
 		std::cout << "Enter your choice (1-4): ";
-
 
 		std::cin >> choice;
 		std::cout << "\n";
@@ -233,16 +201,8 @@ bool Engineer::viewEngineer() {
 			break;
 		}
 	}
-	if (!Database::getInstance().executeQueryCallback(selectQuery)) {
-		std::cout << Database::getInstance().getError() << std::endl;
-		return false;
-	}
-	else {
-		Log::getInstance().Info(selectQuery, " : Executed.");
-		return true;
-	}
-
-};
+	return EngineerController::viewEngineerController(selectQuery);
+}
 
 void Engineer::describeEngineer() const
 {
