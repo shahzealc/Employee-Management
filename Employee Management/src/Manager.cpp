@@ -19,8 +19,11 @@ bool Manager::insertManager() {
 
 	setManagementExperience();
 	setProjectTitle();
+	
+	Salary s1;
+	auto s2 = s1.insertSalaryById(getId());
 
-	return ManagerController::insertManagerController(*this);
+	return ManagerController::insertManagerController(*this,s2);
 }
 
 bool Manager::deleteManager() {

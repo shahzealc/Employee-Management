@@ -24,8 +24,11 @@ bool Engineer::insertEngineer() {
 
 	setProgrammingLanguage();
 	setSpecialization();
+	
+	Salary s1;
+	auto s2 = s1.insertSalaryById(getId());
 
-	return EngineerController::insertEngineerController(*this);
+	return EngineerController::insertEngineerController(*this,s2);
 	
 };
 

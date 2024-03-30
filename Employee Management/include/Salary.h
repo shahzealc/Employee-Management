@@ -24,7 +24,7 @@ public:
     void setBonus();
     void setPercentage();
 
-    bool insertSalaryById(int id);
+    Salary insertSalaryById(int id);
     bool deleteSalary();
     bool updateSalary();
     bool viewSalary();

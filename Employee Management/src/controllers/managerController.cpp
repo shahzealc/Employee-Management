@@ -2,16 +2,14 @@
 
 using logs::Log;
 
-bool ManagerController::insertManagerController(Manager& manager) {
+bool ManagerController::insertManagerController(Manager& manager,Salary& salary) {
 
     std::string insertQueryManager = "INSERT INTO Manager(id, management_experience , project_title) VALUES ("
         + std::to_string(manager.getId()) + ","
         + std::to_string(manager.getManagementExperience()) + ",'"
         + manager.getProjectTitle() + "');";
 
-    auto s1 = std::make_unique<Salary>();
-
-    if (Database::getInstance().executeQuery(insertQueryManager) && s1->insertSalaryById(manager.getId())) {
+    if (Database::getInstance().executeQuery(insertQueryManager) && SalaryController::insertSalaryController(salary)) {
         std::cout << "\033[32mInserted Manager Successfully ! \033[0m\n\n";
         Log::getInstance().Info("Manager Inserted for id : ", manager.getId());
         return true;
@@ -24,24 +22,20 @@ bool ManagerController::insertManagerController(Manager& manager) {
 }
 
 bool ManagerController::deleteManagerController(Manager& manager, std::string attribute) {
-    std::string deleteQuery{};
-    if (attribute == "id") {
-        deleteQuery = "DELETE FROM Manager WHERE id = " + std::to_string(manager.getId());
-    }
+   
+        if (!EmployeeController::deleteEmployeeController(manager, "id")) {
+            std::cout << Database::getInstance().getError() << "\n";
+            return false;
+        }
 
-    if (!Database::getInstance().executeQuery(deleteQuery)) {
-        std::cout << Database::getInstance().getError() << "\n";
-        return false;
-    }
+        int changes = sqlite3_changes(Database::getInstance().db);
 
-    int changes = sqlite3_changes(Database::getInstance().db);
-
-    std::cout << "\033[32m" << changes << " row affected \033[0m\n\n";
-    if (changes != 0) {
-        std::cout << "\033[32mManager Deleted Successfully ! \033[0m\n\n";
-        Log::getInstance().Info("Manager Deleted for id : ", manager.getId());
-        return true;
-    }
+        std::cout << "\033[32m" << changes << " row affected \033[0m\n\n";
+        if (changes != 0) {
+            std::cout << "\033[32mManager Deleted Successfully ! \033[0m\n\n";
+            Log::getInstance().Info("Manager Deleted for id : ", manager.getId());
+            return true;
+        }
 
     return false;
 }

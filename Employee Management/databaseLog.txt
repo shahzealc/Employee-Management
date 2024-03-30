@@ -630,3 +630,28 @@
 [ 29-03-2024 18:12:03 ][Info ]: Manager Deleted for id :  12 
 [ 29-03-2024 18:12:09 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id   : Executed. 
 [ 29-03-2024 18:12:13 ][Info ]: Database Closed. 
+[ 30-03-2024 09:04:46 ][Info ]: admin signed in. 
+[ 30-03-2024 09:04:46 ][Info ]: Database Opened. 
+[ 30-03-2024 09:05:13 ][Info ]: Department Deleted for id :  5 
+[ 30-03-2024 09:05:46 ][Info ]: Department Viewed for all :  5 
+[ 30-03-2024 09:06:32 ][Info ]: Database Closed. 
+[ 30-03-2024 09:06:46 ][Info ]: admin signed in. 
+[ 30-03-2024 09:06:46 ][Info ]: Database Opened. 
+[ 30-03-2024 09:07:58 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id ORDER BY doj ASC  : Executed. 
+[ 30-03-2024 09:08:04 ][Info ]: Database Closed. 
+[ 30-03-2024 10:08:07 ][Info ]: admin signed in. 
+[ 30-03-2024 10:08:07 ][Info ]: Database Opened. 
+[ 30-03-2024 10:08:45 ][Info ]: Engineer Inserted for id :  1212 
+[ 30-03-2024 10:08:52 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 30-03-2024 10:08:57 ][Info ]: Database Closed. 
+[ 30-03-2024 10:11:39 ][Info ]: admin signed in. 
+[ 30-03-2024 10:11:39 ][Info ]: Database Opened. 
+[ 30-03-2024 10:12:18 ][Info ]: Manager Inserted for id :  12122 
+[ 30-03-2024 10:12:24 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id   : Executed. 
+[ 30-03-2024 10:12:30 ][Warn ]: Manager Not exist for id :  12121 
+[ 30-03-2024 10:12:38 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id   : Executed. 
+[ 30-03-2024 10:12:44 ][Info ]: Employee Deleted for id :  12122 
+[ 30-03-2024 10:12:44 ][Info ]: Manager Deleted for id :  12122 
+[ 30-03-2024 10:12:55 ][Info ]: Employee Deleted for id :  1212 
+[ 30-03-2024 10:12:55 ][Info ]: Engineer Deleted for id :  1212 
+[ 30-03-2024 10:12:59 ][Info ]: Database Closed. 

@@ -20,16 +20,12 @@ void Salary::setPercentage() {
 	percentage = (percentage / 100) + 1;
 }
 
-bool Salary::insertSalaryById(int eid) {
+Salary Salary::insertSalaryById(int eid) {
 	id = eid;
 	setBaseSalary();
 	setBonus();
 
-	if (SalaryController::insertSalaryController(*this))
-		return true;
-
-	return false;
-
+	return *this;
 };
 
 bool Salary::deleteSalary() {

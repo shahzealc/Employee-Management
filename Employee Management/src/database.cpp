@@ -353,8 +353,6 @@ bool Database::exportDatabase() {
 	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
 		table += reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
 		path = path + reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)) + ".csv";
-		std::cout << table<<"\n";
-		std::cout << path << "\n";
 		
 		if (!Database::getInstance().export_to_csv(table, path)) {
 			std::cout << getError() << "\n\n";
