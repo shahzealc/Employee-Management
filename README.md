@@ -2,62 +2,118 @@
 
 This project is an Employee Database Management System implemented in C++. It provides functionalities to manage various aspects of employee data, including departments, salaries, engineers, and managers.
 
-## Components
+## ER Diagram of Project
 
-The project consists of the following components:
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/diagram.png)
 
-### 1. Employee
+## Inheritance
 
-- Manages basic information about employees, such as ID, name, email, and date of birth.
+In this project, the Employee class serves as the base class, which is inherited by the Engineer and Manager classes. This inheritance allows for the reuse of common attributes and methods defined in the Employee class while also allowing each subclass to have its own specialized attributes and methods.
 
-### 2. Engineer
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/Inheritance.png)
 
-- Inherits from the Employee class and adds specific information for engineers, such as specialization and years of experience.
+## Classes
 
-### 3. Manager
+### 1. Employee Class (Base Class)
 
-- Inherits from the Employee class and includes additional details specific to managers, such as department and team size.
+The Employee class defines common attributes such as id, firstname, lastname, dob, mobile, email, address, gender, doj, w_location, manager_id, and department_id. It also includes methods for CRUD operations on employee records.
 
-### 4. Department
+### 2. Engineer Class
 
-- Stores information related to departments, including department ID and name.
+The Engineer class inherits from the Employee class and adds specialized attributes such as programming_language and specialization. It also includes methods specific to engineers, such as CRUD operations on engineer records.
 
-### 5. Salary
+### 3. Manager Class
 
-- Manages salary-related data for employees, including base salary, bonus, and total salary.
+-The Manager class also inherits from the Employee class and adds specialized attributes such as management_experience and project_title. It includes methods specific to managers, such as CRUD operations on manager records.
 
-### 6. Database
+### 4. Department Class
 
-- Handles database operations, including table creation, deletion, data manipulation, and user queries.
+The Department component handles department-related data within the organization. It includes attributes such as name, manager_id, and description. The Department class provides methods for CRUD operations on department records.
 
-### 7. Log
+### 5. Salary Class
 
-- Provides logging functionalities, including logging errors, warnings, and information.
+The Salary component is responsible for managing salary-related information for employees. It includes attributes such as base_salary, bonus, and amount, and provides methods for CRUD operations on salary records. 
 
-### 8. Validation
+## Features of Project:
 
-- Contains functions for input validation, such as validating alphabetic, numeric, email, phone number, and date of birth inputs.
+### 1. CRUD Operations:
 
-### 9. Prompt
+Efficiently manage employee data with functionalities for creating, reading, updating, and deleting records.
 
-- Implements functions for user prompts and interactions, including actions on tables and the main menu.
+### 2. Authentication:
 
-## Features
+Users(DBA) can securely log in with a maximum of 3 login attempts for added security.
+Future Scope: Introducing permission levels (e.g., read, read/update, read/update/delete) to enable varying levels of authorization for DBAs.
 
-- Creation, deletion, and manipulation of tables (employees, engineers, managers, departments, and salaries).
-- User-friendly prompts for performing actions on tables and navigating the main menu.
-- Input validation to ensure data integrity and prevent errors.
-- Logging of errors, warnings, and information for debugging and monitoring purposes.
-- Export to CSV, export data from tables to CSV files, making it easier to share or analyze data using spreadsheet software.
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/auth.png)
 
-## Usage
+### 3. Table Operations:
 
-To use the Employee Database Management System, follow these steps:
+Options for create, display, delete, and describe database tables.
 
-1. Compile the project using a C++ compiler.
-2. Run the executable file generated after compilation.
-3. Follow the on-screen prompts to perform various actions on tables and navigate the main menu.
-4. Input data as requested and observe the system's responses.
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/tableOptions.png)
+
+### 4. Custom Queries:
+Option for executing personalized SQL queries to retrieve specific record with different constraints.
+
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/customQuery.png)
+
+### 5. Backup:
+
+User can take back up all existing tables into CSV format files stored in a “Backup” folder for data preservation.
+
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/backupDeptExample.png)
+
+### 6. Input Validation:
+
+Ensure data integrity by validating each input fields.
+
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/inputValidations.png)
+
+### 7. Confirmation Prompt:
+
+Confirmation prompt is displayed before deleting a record to ensure user confirmation.
+
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/confirmDelete.png)
+
+### 8. Sorting Options:
+
+Sort records based on user-selected fields in ascending or descending order.
+
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/orderbyQuery.png)
+
+### 9. Check Existence:
+
+Before adding a record, the system checks if the ID already exists. If it does, no further input is requested.
+
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/checkID_Insert.png)
+
+Similarly, when updating a record, the system checks if the ID exists. If it doesn't, no further input is requested.
+
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/checkID_Update.png)
+
+### 10. Increment Salary:
+Enables salary increments for employees by applying a specified percentage to their base salary, resulting in an updated total salary.
+
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/incrementSalary.png)
+
+### 11. Export to CSV:
+
+After viewing a record, you have the option to save it in CSV format by specifying a file name. The saved file is stored in the 'exports' folder.
+
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/exportQuery.png)
+
+### 12. Logging System:
+
+Each and every events are logged in “databaseLog.txt” file that helps to track and monitors the errors, warnings and information.
+
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/logs.png)
+
+## GTest Integration
+
+Integrated Google Test (GTest) for unit testing of each functionality to ensure robustness and reliability.
+
+![diagram](https://github.com/shahzealc/Employee-Management/blob/master/Employee%20Management/screenshots/GTest.png)
 
 ## Requirements
 
