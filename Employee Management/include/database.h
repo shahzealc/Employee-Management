@@ -19,7 +19,7 @@ public:
     static Database& getInstance() {
         static Database DB;
         return DB;
-    }
+    }   
 
     bool executeQuery(const std::string& query);
     bool executeQueryCallback(const std::string& query,bool csv = true);

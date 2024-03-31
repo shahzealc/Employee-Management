@@ -48,7 +48,7 @@ namespace Auth {
 			}
 			else {
 				tryCount++;
-				std::cout << "Wrong Credentials!\n";
+				std::cout << "Wrong Credentials!\n\n";
 				Log::getInstance().Warn(tryCount, "attempt");
 			}
 		}

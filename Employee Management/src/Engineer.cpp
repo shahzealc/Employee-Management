@@ -35,9 +35,29 @@ bool Engineer::insertEngineer() {
 bool Engineer::deleteEngineer() {
 
 	setId();
-	if (Database::getInstance().checkExist("Engineer", getId())) {
+	std::string checkEngineer = "SELECT id FROM Engineer WHERE id = " + std::to_string(getId());
 
-		return EngineerController::deleteEngineerController(*this, "id");
+	if (!Database::getInstance().executeQueryRows(checkEngineer)) {
+		std::cout << Database::getInstance().getError() << std::endl;
+		return false;
+	}
+
+	if (int rows = Database::getInstance().getRow(); rows > 0) {
+		std::string viewEmployee = "SELECT id,firstname,lastname,email FROM Employee WHERE id = " + std::to_string(getId());
+
+		if (!Database::getInstance().executeQueryCallback(viewEmployee, false)) {
+			std::cout << Database::getInstance().getError() << std::endl;
+			return false;
+		}
+
+		std::cout << "\033[36mEnter Y: to delete this Employee\nEnter N: to exit\033[0m\n";
+		char confirm;
+		std::cin >> confirm;
+
+		if (confirm == 'Y' || confirm == 'y') {
+			return EngineerController::deleteEngineerController(*this, "id");
+		}
+		
 
 	}
 	else {

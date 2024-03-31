@@ -655,3 +655,31 @@
 [ 30-03-2024 10:12:55 ][Info ]: Employee Deleted for id :  1212 
 [ 30-03-2024 10:12:55 ][Info ]: Engineer Deleted for id :  1212 
 [ 30-03-2024 10:12:59 ][Info ]: Database Closed. 
+[ 30-03-2024 11:04:35 ][Info ]: admin signed in. 
+[ 30-03-2024 11:04:35 ][Info ]: Database Opened. 
+[ 30-03-2024 11:04:47 ][Info ]: Database Closed. 
+[ 30-03-2024 11:05:13 ][Info ]: admin signed in. 
+[ 30-03-2024 11:05:13 ][Info ]: Database Opened. 
+[ 30-03-2024 11:05:17 ][Info ]: Database Closed. 
+[ 31-03-2024 09:22:50 ][Info ]: admin signed in. 
+[ 31-03-2024 09:22:50 ][Info ]: Database Opened. 
+[ 31-03-2024 09:39:45 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id ORDER BY doj ASC  : Executed. 
+[ 31-03-2024 09:39:49 ][Info ]: Database Closed. 
+[ 31-03-2024 10:47:11 ][Warn ]: 1 attempt 
+[ 31-03-2024 10:47:15 ][Warn ]: 2 attempt 
+[ 31-03-2024 10:47:35 ][Info ]: admin signed in. 
+[ 31-03-2024 10:47:35 ][Info ]: Database Opened. 
+[ 31-03-2024 10:48:52 ][Info ]: select * from salary where base_salary between 20000 and 40000;  : Executed. 
+[ 31-03-2024 11:11:16 ][Warn ]: 1 attempt 
+[ 31-03-2024 11:11:18 ][Info ]: admin signed in. 
+[ 31-03-2024 11:11:18 ][Info ]: Database Opened. 
+[ 31-03-2024 11:12:16 ][Info ]: Engineer Inserted for id :  1 
+[ 31-03-2024 11:12:31 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 31-03-2024 11:13:06 ][Info ]: Employee Deleted for id :  1 
+[ 31-03-2024 11:13:06 ][Info ]: Engineer Deleted for id :  1 
+[ 31-03-2024 11:13:25 ][Warn ]: Engineer not exist for id :  1 
+[ 31-03-2024 11:13:28 ][Warn ]: Engineer not exist for id :  2 
+[ 31-03-2024 11:15:29 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id ORDER BY firstname ASC  : Executed. 
+[ 31-03-2024 11:15:46 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus FROM Employee NATURAL JOIN Salary ORDER BY base_salary ASC  : Executed. 
+[ 31-03-2024 11:16:05 ][Info ]: Salary Incremented for id :  2 
+[ 31-03-2024 11:16:36 ][Info ]: Database Closed. 

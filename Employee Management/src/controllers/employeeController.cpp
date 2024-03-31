@@ -36,9 +36,9 @@ bool EmployeeController::deleteEmployeeController(Employee& employee, std::strin
 
 		int changes = sqlite3_changes(Database::getInstance().db);
 
-		std::cout << "\033[32m" << changes << " row affected \033[0m\n\n";
+		//std::cout << "\033[32m" << changes << " row affected \033[0m\n\n";
 		if (changes != 0) {
-			std::cout << "\033[32mEmployee Deleted Succesfully ! \033[0m\n\n";
+			/*std::cout << "\033[32mEmployee Deleted Succesfully ! \033[0m\n\n";*/
 			Log::getInstance().Info("Employee Deleted for id : ", employee.getId());
 			return true;
 		}
