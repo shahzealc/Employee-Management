@@ -20,10 +20,10 @@ public:
     int getManagerId() const { return manager_id; }
     std::string getDescription() const { return description; }
 
-    void setId();
-    void setName();
-    void setManagerId();
-    void setDescription();
+    bool setId();
+    bool setName();
+    bool setManagerId();
+    bool setDescription();
 
     bool insertDepartment();
     bool deleteDepartment();

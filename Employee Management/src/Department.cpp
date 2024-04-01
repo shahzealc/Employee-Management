@@ -2,43 +2,44 @@
 
 using logs::Log;
 
-void Department::setId() {
-	setAttribute("Enter Department Id", id, validateNumeric);
+bool Department::setId() {
+	return setAttribute("Enter Department Id", id, validateNumeric);
 
 }
 
-void Department::setName() {
-	setAttribute("Enter Department Name", name, validateAlphabetic);
+bool Department::setName() {
+	return setAttribute("Enter Department Name", name, validateAlphabetic);
 }
 
-void Department::setManagerId() {
-	setAttribute<int>("Enter Department Manager ID (-1 for null)", manager_id, validateNumeric);
+bool Department::setManagerId() {
+	auto res = setAttribute<int>("Enter Department Manager ID (-1 for null)", manager_id, validateNumeric);
 	if (manager_id == -1) {
 		manager_id = NULL;
 	}
+	return res;
 }
 
-void Department::setDescription() {
-	setAttribute("Enter Department Description", description, validateAlphabetic);
+bool Department::setDescription() {
+	return setAttribute("Enter Department Description", description, validateAlphabetic);
 }
 
 bool Department::insertDepartment() {
 	system("cls");
 	std::cout << "Insert Department Details:\n";
-	setId();
+	if (!setId()) {
+		return false;
+	}
 
 	if (Database::getInstance().checkExist("Department", getId())) {
 		std::cout << "\033[33mDepartment already exist for id: " << getId() << "\033[0m\n\n";
 		return false;
 	}
 
-	setName();
-	setManagerId();
-	setDescription();
-
-	if (DepartmentController::insertDepartmentController(*this))
-		return true;
-
+	if (setName() && setManagerId() && setDescription()) {
+		if (DepartmentController::insertDepartmentController(*this))
+			return true;
+	}
+	
 	return false;
 
 }
@@ -46,7 +47,7 @@ bool Department::insertDepartment() {
 bool Department::deleteDepartment() {
 
 	int choice;
-	bool controllerResult;
+	bool controllerResult{};
 	system("cls");
 	bool flag = true;
 	while (flag) {
@@ -65,12 +66,14 @@ bool Department::deleteDepartment() {
 		switch (choice) {
 		case 1:
 			system("cls");
-			setId();
+			if (!setId())
+				return false;
 			controllerResult = DepartmentController::deleteDepartmentController(*this, "id");
 			break;
 		case 2:
-			system("cls");
-			setName();
+			system("cls");			
+			if (!setName())
+				return false;
 			controllerResult = DepartmentController::deleteDepartmentController(*this, "name");
 			break;
 		case 3:
@@ -100,8 +103,9 @@ bool Department::updateDepartment() {
 
 		flag = false;
 
-		std::cout << "Enter Department id to update: \n";
-		std::cin >> id;
+		if (!setId()) {
+			return false;
+		}
 
 		if (!Database::getInstance().checkExist("Department", id)) {
 			std::cout << "\033[33mDepartment Not exist for id: " << id << "\033[0m\n\n";
@@ -121,17 +125,23 @@ bool Department::updateDepartment() {
 		switch (choice) {
 		case 1:
 			system("cls");
-			setName();
+			if (!setName()) {
+				return false;
+			}
 			controllerResult = DepartmentController::updateDepartmentController(*this, "name");
 			break;
 		case 2:
 			system("cls");
-			setManagerId();
+			if (!setManagerId()) {
+				return false;
+			}
 			controllerResult = DepartmentController::updateDepartmentController(*this, "manager_id");
 			break;
 		case 3:
 			system("cls");
-			setDescription();
+			if (!setDescription()) {
+				return false;
+			}
 			controllerResult = DepartmentController::updateDepartmentController(*this, "description");
 			break;
 		case 4:

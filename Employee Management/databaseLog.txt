@@ -683,3 +683,28 @@
 [ 31-03-2024 11:15:46 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus FROM Employee NATURAL JOIN Salary ORDER BY base_salary ASC  : Executed. 
 [ 31-03-2024 11:16:05 ][Info ]: Salary Incremented for id :  2 
 [ 31-03-2024 11:16:36 ][Info ]: Database Closed. 
+[ 01-04-2024 11:22:40 ][Warn ]: 1 attempt 
+[ 01-04-2024 11:22:49 ][Info ]: admin signed in. 
+[ 01-04-2024 11:22:49 ][Info ]: Database Opened. 
+[ 01-04-2024 11:22:57 ][Info ]: Department Viewed for all :  0 
+[ 01-04-2024 11:23:00 ][Info ]: Database Closed. 
+[ 01-04-2024 14:44:35 ][Warn ]: 1 attempt 
+[ 01-04-2024 14:44:39 ][Info ]: admin signed in. 
+[ 01-04-2024 14:44:39 ][Info ]: Database Opened. 
+[ 01-04-2024 14:45:05 ][Info ]: Database Closed. 
+[ 01-04-2024 15:18:59 ][Warn ]: 1 attempt 
+[ 01-04-2024 15:19:02 ][Info ]: admin signed in. 
+[ 01-04-2024 15:19:02 ][Info ]: Database Opened. 
+[ 01-04-2024 15:19:31 ][Info ]: Database Closed. 
+[ 01-04-2024 15:24:20 ][Info ]: admin signed in. 
+[ 01-04-2024 15:24:20 ][Info ]: Database Opened. 
+[ 01-04-2024 15:25:01 ][Error]: FOREIGN KEY constraint failed 
+[ 01-04-2024 15:25:36 ][Info ]: select * from employee;  : Executed. 
+[ 01-04-2024 15:26:21 ][Info ]: Employee Deleted for id :  12 
+[ 01-04-2024 15:26:31 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 01-04-2024 15:26:54 ][Error]: no such table: employeel 
+[ 01-04-2024 15:27:08 ][Info ]: select * from employee;  : Executed. 
+[ 01-04-2024 15:28:08 ][Info ]: Employee Deleted for id :  12 
+[ 01-04-2024 15:28:32 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id   : Executed. 
+[ 01-04-2024 15:28:48 ][Info ]: select * from employee;  : Executed. 
+[ 01-04-2024 15:28:53 ][Info ]: Database Closed. 

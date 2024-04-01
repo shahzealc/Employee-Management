@@ -233,3 +233,110 @@
 [ 30-03-2024 10:57:59 ][Info ]: Manager Deleted for id :  1001 
 [ 30-03-2024 10:57:59 ][Info ]: Salary Updated for id :  1 
 [ 30-03-2024 10:57:59 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:45:51 ][Error]: FOREIGN KEY constraint failed 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:45:51 ][Error]: FOREIGN KEY constraint failed 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:45:51 ][Error]: database is locked 
+[ 01-04-2024 12:46:10 ][Error]: database is locked 
+[ 01-04-2024 12:46:10 ][Error]: database is locked 
+[ 01-04-2024 12:46:10 ][Error]: database is locked 
+[ 01-04-2024 12:46:10 ][Error]: database is locked 
+[ 01-04-2024 12:46:10 ][Error]: database is locked 
+[ 01-04-2024 12:46:10 ][Error]: database is locked 
+[ 01-04-2024 12:46:10 ][Error]: database is locked 
+[ 01-04-2024 12:46:10 ][Error]: FOREIGN KEY constraint failed 
+[ 01-04-2024 12:46:10 ][Error]: database is locked 
+[ 01-04-2024 12:46:10 ][Error]: database is locked 
+[ 01-04-2024 12:46:10 ][Error]: database is locked 
+[ 01-04-2024 12:46:11 ][Error]: FOREIGN KEY constraint failed 
+[ 01-04-2024 12:46:11 ][Error]: database is locked 
+[ 01-04-2024 12:46:11 ][Error]: database is locked 
+[ 01-04-2024 12:46:11 ][Error]: database is locked 
+[ 01-04-2024 12:46:11 ][Error]: database is locked 
+[ 01-04-2024 12:46:34 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 12:46:34 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 12:46:34 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 12:46:34 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 12:46:34 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 12:46:34 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 12:46:34 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 12:46:34 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 12:46:34 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 12:46:34 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 12:46:34 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 12:46:34 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 12:46:34 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 12:46:34 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 12:46:34 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 12:46:56 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 12:46:56 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 12:46:56 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 12:46:56 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 12:46:56 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 12:46:56 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 12:46:56 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 12:46:56 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 12:46:56 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 12:46:56 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 12:46:56 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 12:46:56 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 12:46:56 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 12:46:56 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 12:46:56 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 15:05:23 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 15:05:23 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 15:05:23 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 15:05:23 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 15:05:23 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 15:05:24 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 15:05:24 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 15:05:24 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 15:05:24 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 15:05:24 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 15:05:24 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 15:05:24 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 15:05:24 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 15:05:24 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 15:05:24 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 15:30:37 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 15:30:37 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 15:30:37 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 15:30:37 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 15:30:37 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 15:30:37 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 15:30:37 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 15:30:37 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 15:30:37 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 15:30:37 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 15:30:37 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 15:30:37 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 15:30:37 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 15:30:37 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 15:30:37 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 15:36:04 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 15:36:04 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 15:36:04 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 15:36:04 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 15:36:04 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 15:36:04 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 15:36:04 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 15:36:04 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 15:36:04 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 15:36:04 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 15:36:04 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 15:36:04 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 15:36:04 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 15:36:04 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 15:36:04 ][Info ]: Salary Incremented for id :  1 

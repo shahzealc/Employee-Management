@@ -3,17 +3,19 @@
 
 using logs::Log;
 
-void Engineer::setProgrammingLanguage()
+bool Engineer::setProgrammingLanguage()
 {
-	std::cout << "Enter Programming Language (seperated by comma if multiple) : ";
+	std::cout << "Enter Programming Language (seperated by space if multiple) : ";
 	std::cin.ignore();
 	std::getline(std::cin, programming_language);
+	return true;
 }
 
-void Engineer::setSpecialization()
+bool Engineer::setSpecialization()
 {
 	std::cout << "Enter Specialization : ";
 	std::cin >> specialization;
+	return true;
 }
 
 bool Engineer::insertEngineer() {
@@ -22,19 +24,20 @@ bool Engineer::insertEngineer() {
 		return false;
 	}
 
-	setProgrammingLanguage();
-	setSpecialization();
-	
-	Salary s1;
-	auto s2 = s1.insertSalaryById(getId());
-
-	return EngineerController::insertEngineerController(*this,s2);
-	
+	if (setProgrammingLanguage() && setSpecialization()) {
+		Salary s1;
+		if (s1.insertSalaryById(getId()))
+			return EngineerController::insertEngineerController(*this, s1);
+	}
+	EmployeeController::deleteEmployeeController(*this, "id");
+	return false;
 };
 
 bool Engineer::deleteEngineer() {
 
-	setId();
+	if (!setId())
+		return false;
+
 	std::string checkEngineer = "SELECT id FROM Engineer WHERE id = " + std::to_string(getId());
 
 	if (!Database::getInstance().executeQueryRows(checkEngineer)) {
@@ -57,7 +60,7 @@ bool Engineer::deleteEngineer() {
 		if (confirm == 'Y' || confirm == 'y') {
 			return EngineerController::deleteEngineerController(*this, "id");
 		}
-		
+
 
 	}
 	else {
@@ -88,8 +91,7 @@ bool Engineer::updateEngineer() {
 	switch (choice) {
 	case 1:
 		system("cls");
-		if (updateEmployee())
-			return true;
+		return updateEmployee();
 		break;
 	case 2:
 		system("cls");
@@ -114,11 +116,13 @@ bool Engineer::updateEngineer() {
 
 			switch (choice) {
 			case 1:
-				setProgrammingLanguage();
+				if (!setProgrammingLanguage())
+					return false;
 				controllerResult = EngineerController::updateEngineerController(*this, "programming_language");
 				break;
 			case 2:
-				setSpecialization();
+				if (!setSpecialization())
+					return false;
 				controllerResult = EngineerController::updateEngineerController(*this, "specialization");
 				break;
 			case 3:
@@ -132,7 +136,7 @@ bool Engineer::updateEngineer() {
 				break;
 			}
 		}
-		
+
 		break;
 	default:
 		system("cls");

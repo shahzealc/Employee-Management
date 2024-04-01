@@ -39,18 +39,18 @@ public:
     int getManagerId() const { return manager_id; }
     int getDepartmentId() const { return department_id; }
 
-    void setId();
-    void setFirstname();
-    void setLastname();
-    void setDob();
-    void setMobile();
-    void setEmail();
-    void setAddress();
-    void setGender();
-    void setDoj();
-    void setWLocation();
-    void setManagerId();
-    void setDepartmentId();
+    bool setId();
+    bool setFirstname();
+    bool setLastname();
+    bool setDob();
+    bool setMobile();
+    bool setEmail();
+    bool setAddress();
+    bool setGender();
+    bool setDoj();
+    bool setWLocation();
+    bool setManagerId();
+    bool setDepartmentId();
 
     bool insertEmployee();
     bool deleteEmployeeById(int) ;

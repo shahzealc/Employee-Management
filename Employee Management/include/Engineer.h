@@ -21,8 +21,8 @@ public:
 	std::string getProgrammingLanguage() const { return programming_language; }
 	std::string getSpecialization() const { return specialization; }
 
-	void setProgrammingLanguage();
-	void setSpecialization();
+	bool setProgrammingLanguage();
+	bool setSpecialization();
 
 	bool insertEngineer();
 	bool deleteEngineer();

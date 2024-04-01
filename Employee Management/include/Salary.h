@@ -2,6 +2,7 @@
 #define salary_flag
 
 #include <iostream>
+#include <optional>
 #include "database.h"
 #include "log.h"
 #include "validate.h"
@@ -19,12 +20,12 @@ public:
     float getBonus() const { return bonus; }
     float getPercentage() const { return percentage; }
 
-    void setId();
-    void setBaseSalary();
-    void setBonus();
-    void setPercentage();
+    bool setId();
+    bool setBaseSalary();
+    bool setBonus();
+    bool setPercentage();
 
-    Salary insertSalaryById(int id);
+    bool insertSalaryById(int id);
     bool deleteSalary();
     bool updateSalary();
     bool viewSalary();

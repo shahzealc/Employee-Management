@@ -2,14 +2,15 @@
 
 using logs::Log;
 
-void Manager::setManagementExperience() {
-	setAttribute("Enter Manager Experience in years", management_experience, validateNumeric);
+bool Manager::setManagementExperience() {
+	return setAttribute("Enter Manager Experience in years", management_experience, validateNumeric);
 }
 
-void Manager::setProjectTitle() {
+bool Manager::setProjectTitle() {
 	std::cout << "Enter Manager's Project Title: ";
 	std::cin.ignore();
 	std::getline(std::cin, project_title);
+	return true;
 }
 
 bool Manager::insertManager() {
@@ -17,17 +18,22 @@ bool Manager::insertManager() {
 		return false;
 	}
 
-	setManagementExperience();
-	setProjectTitle();
+	if (setManagementExperience() && setProjectTitle()) {
+		Salary s1;
+		if (s1.insertSalaryById(getId()))
+			return ManagerController::insertManagerController(*this, s1);
+	}
 	
-	Salary s1;
-	auto s2 = s1.insertSalaryById(getId());
+	EmployeeController::deleteEmployeeController(*this, "id");
 
-	return ManagerController::insertManagerController(*this,s2);
+	return false;
 }
 
 bool Manager::deleteManager() {
-	setId();
+
+	if (!setId())
+		return false;
+
 	std::string checkManager = "SELECT id FROM Manager WHERE id = " + std::to_string(getId());
 
 	if (!Database::getInstance().executeQueryRows(checkManager)) {
@@ -80,12 +86,7 @@ bool Manager::updateManager() {
 	switch (choice) {
 	case 1:
 		system("cls");
-		if (updateEmployee()) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return updateEmployee();
 		break;
 	case 2:
 		system("cls");
@@ -111,11 +112,13 @@ bool Manager::updateManager() {
 
 			switch (choice) {
 			case 1:
-				setManagementExperience();
+				if (!setManagementExperience())
+					return false;
 				controllerResult = ManagerController::updateManagerController(*this, "management_experience");
 				break;
 			case 2:
-				setProjectTitle();
+				if (!setProjectTitle())
+					return false;
 				controllerResult = ManagerController::updateManagerController(*this, "project_title");
 				break;
 			case 3:

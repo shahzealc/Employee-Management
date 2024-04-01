@@ -20,8 +20,8 @@ public:
 	int getManagementExperience() const { return management_experience; }
 	std::string getProjectTitle() const { return project_title; }
 
-	void setManagementExperience();
-	void setProjectTitle();
+	bool setManagementExperience();
+	bool setProjectTitle();
 
 	bool insertManager();
 	bool deleteManager();

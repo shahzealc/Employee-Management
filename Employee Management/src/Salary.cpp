@@ -3,29 +3,30 @@
 
 using logs::Log;
 
-void Salary::setId() {
-	setAttribute("Enter Employee Id", id, validateNumeric);
+bool Salary::setId() {
+	return setAttribute("Enter Employee Id", id, validateNumeric);
 }
 
-void Salary::setBaseSalary() {
-	setAttribute("Enter Base", base_salary, validateFloatNumeric);
+bool Salary::setBaseSalary() {
+	return setAttribute("Enter Base", base_salary, validateFloatNumeric);
 }
 
-void Salary::setBonus() {
-	setAttribute("Enter Bonus", bonus, validateFloatNumeric);
+bool Salary::setBonus() {
+	return setAttribute("Enter Bonus", bonus, validateFloatNumeric);
 }
 
-void Salary::setPercentage() {
-	setAttribute("Enter Increment Percentage", percentage, validateNumeric);
+bool Salary::setPercentage() {
+	auto res = setAttribute("Enter Increment Percentage", percentage, validateNumeric);
 	percentage = (percentage / 100) + 1;
+	return res;
 }
 
-Salary Salary::insertSalaryById(int eid) {
+bool Salary::insertSalaryById(int eid) {
 	id = eid;
-	setBaseSalary();
-	setBonus();
-
-	return *this;
+	if (setBaseSalary() && setBonus()) {
+		return true;
+	}
+	return false;
 };
 
 bool Salary::deleteSalary() {
@@ -33,7 +34,7 @@ bool Salary::deleteSalary() {
 	system("cls");
 
 	setId();
-	
+
 	if (SalaryController::deleteSalaryController(*this, "id"))
 		return true;
 
@@ -70,11 +71,13 @@ bool Salary::updateSalary() {
 
 		switch (choice) {
 		case 1:
-			setBaseSalary();
+			if (!setBaseSalary())
+				return false;
 			controllerResult = SalaryController::updateSalaryController(*this, "base_salary");
 			break;
 		case 2:
-			setBonus();
+			if(!setBonus())
+				return false;
 			controllerResult = SalaryController::updateSalaryController(*this, "bonus");
 			break;
 		case 3:
@@ -93,7 +96,8 @@ bool Salary::updateSalary() {
 
 bool Salary::incrementSalary() {
 
-	setId();
+	if (!setId())
+		return false;
 	std::string checkExistance = "SELECT id FROM Employee WHERE id = " + std::to_string(id);
 
 	if (!Database::getInstance().checkExist("Employee", id)) {
