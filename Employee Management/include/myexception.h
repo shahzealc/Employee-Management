@@ -19,19 +19,6 @@ public:
 
 };
 
-class StringException :public MyException {
-
-public:
-	StringException(std::string str) :MyException{ str } {	}
-
-};
-
-class DateException :public MyException {
-
-public:
-	DateException(std::string str) :MyException{ str } {	}
-};
-
 class FileException :public MyException {
 
 public:

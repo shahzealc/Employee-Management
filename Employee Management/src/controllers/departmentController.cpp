@@ -3,6 +3,7 @@
 using logs::Log;
 
 bool DepartmentController::insertDepartmentController(Department& dept) {
+	//takes object of dept class and executes the query by taking attribbutes value from dept object.
 
 	std::string managerIdString = (dept.getManagerId() != NULL) ? std::to_string(dept.getManagerId()) : "NULL";
 
@@ -24,12 +25,17 @@ bool DepartmentController::insertDepartmentController(Department& dept) {
 };
 
 bool DepartmentController::deleteDepartmentController(Department& dept, std::string attribute) {
+	//deletes the department based on the attribute field from the function.
+
 	std::string deleteQuery{};
 	if (attribute == "id") {
 		deleteQuery = "DELETE FROM Department WHERE id = " + std::to_string(dept.getId());
 	}
-	else {
+	else if(attribute =="name"){
 		deleteQuery = "DELETE FROM Department WHERE name = '" + dept.getName() + "'";
+	}
+	else {
+		return false;
 	}
 
 	if (Database::getInstance().executeQuery(deleteQuery)) {
@@ -42,6 +48,9 @@ bool DepartmentController::deleteDepartmentController(Department& dept, std::str
 			Log::getInstance().Info("Department Deleted for id : ", dept.getId());
 			return true;
 		}
+		else {
+			return false;
+		}
 
 	}
 	else {
@@ -51,6 +60,8 @@ bool DepartmentController::deleteDepartmentController(Department& dept, std::str
 }
 
 bool DepartmentController::updateDepartmentController(Department& dept, std::string attribute) {
+	//updates dept by taking dept object and updates particular field passed to function
+
 	std::string updateQuery = "UPDATE Department SET ";
 	if (attribute == "name") {
 		updateQuery += "name = '" + dept.getName() + "'";

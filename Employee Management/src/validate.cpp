@@ -1,5 +1,7 @@
 #include "../include/validate.h"
 
+//validators for accepting different types of inputs
+
 bool validateAlphabetic(const std::string& str) {
     std::regex pattern("^[A-Za-z ]+$");
     return std::regex_match(str, pattern);

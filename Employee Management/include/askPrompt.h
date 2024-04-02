@@ -11,27 +11,33 @@
 #include <string>
 
 void askPromptTable() {
+
 	std::map<int, std::pair<std::string, std::function<void()>>> tableOptions = {
+
 	{1, {"Department", []() {
 		system("cls");
 		std::unique_ptr<Department> d1 = std::make_unique<Department>();
 		d1->action();
 	}}},
+
 	{2, {"Salary", []() {
 		system("cls");
 		std::unique_ptr<Salary> s1 = std::make_unique<Salary>();
 		s1->action();
 	}}},
+
 	{3, {"Engineer", []() {
 		system("cls");
 		std::unique_ptr<Engineer> en1 = std::make_unique<Engineer>();
 		en1->action();
 	}}},
+
 	{4, {"Manager", []() {
 		system("cls");
 		std::unique_ptr<Manager> m1 = std::make_unique<Manager>();
 		m1->action();
 	}}},
+
 	{5, {"Main Menu", []() { system("cls"); }}}
 	};
 

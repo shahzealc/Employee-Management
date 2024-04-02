@@ -38,7 +38,6 @@ public:
 private:
     Database() {}
     ~Database() {
-        //sqlite3_close(db);
         close();
     }
     Database(const Database&) = delete;

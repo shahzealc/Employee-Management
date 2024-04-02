@@ -22,6 +22,7 @@ bool Salary::setPercentage() {
 }
 
 bool Salary::insertSalaryById(int eid) {
+	//takes user input for salary details
 	id = eid;
 	if (setBaseSalary() && setBonus()) {
 		return true;
@@ -29,18 +30,18 @@ bool Salary::insertSalaryById(int eid) {
 	return false;
 };
 
-bool Salary::deleteSalary() {
-
-	system("cls");
-
-	setId();
-
-	if (SalaryController::deleteSalaryController(*this, "id"))
-		return true;
-
-	return false;
-
-};
+//bool Salary::deleteSalary() {
+//
+//	system("cls");
+//
+//	setId();
+//
+//	if (SalaryController::deleteSalaryController(*this, "id")) 
+//		return true;
+//
+//	return false;
+//
+//};
 
 bool Salary::updateSalary() {
 	int choice;
@@ -51,7 +52,7 @@ bool Salary::updateSalary() {
 	std::cout << "Enter Salary id to update: \n";
 	std::cin >> id;
 
-	if (!Database::getInstance().checkExist("Salary", id)) {
+	if (!Database::getInstance().checkExist("Salary", id)) { //check for existance of salary
 		std::cout << "\033[33mSalary Not exist for id: " << id << "\033[0m\n\n";
 		return false;
 	}
@@ -73,12 +74,12 @@ bool Salary::updateSalary() {
 		case 1:
 			if (!setBaseSalary())
 				return false;
-			controllerResult = SalaryController::updateSalaryController(*this, "base_salary");
+			controllerResult = SalaryController::updateSalaryController(*this, "base_salary"); //passes to controller for updating salary
 			break;
 		case 2:
 			if(!setBonus())
 				return false;
-			controllerResult = SalaryController::updateSalaryController(*this, "bonus");
+			controllerResult = SalaryController::updateSalaryController(*this, "bonus"); //passes to controller for updating salary
 			break;
 		case 3:
 			return true;
@@ -98,14 +99,13 @@ bool Salary::incrementSalary() {
 
 	if (!setId())
 		return false;
-	std::string checkExistance = "SELECT id FROM Employee WHERE id = " + std::to_string(id);
 
-	if (!Database::getInstance().checkExist("Employee", id)) {
+	if (!Database::getInstance().checkExist("Employee", id)) { //check existance 
 		std::cout << "\033[33mEmployee Not exist for id: " << id << "\033[0m\n\n";
 		return false;
 	}
 	setPercentage();
-	if (SalaryController::incrementSalaryController(*this))
+	if (SalaryController::incrementSalaryController(*this)) //passes to controller for salary increment
 		return true;
 
 	return false;

@@ -4,7 +4,6 @@ using logs::Log;
 
 bool Department::setId() {
 	return setAttribute("Enter Department Id", id, validateNumeric);
-
 }
 
 bool Department::setName() {
@@ -20,23 +19,27 @@ bool Department::setManagerId() {
 }
 
 bool Department::setDescription() {
-	return setAttribute("Enter Department Description", description, validateAlphabetic);
+	std::cout << "Description: ";
+	std::cin.ignore();
+	std::getline(std::cin, description);
+	return true;
 }
 
 bool Department::insertDepartment() {
+	//takes the detail for department entity
 	system("cls");
 	std::cout << "Insert Department Details:\n";
 	if (!setId()) {
 		return false;
 	}
 
-	if (Database::getInstance().checkExist("Department", getId())) {
+	if (Database::getInstance().checkExist("Department", getId())) { //checks existance for department
 		std::cout << "\033[33mDepartment already exist for id: " << getId() << "\033[0m\n\n";
 		return false;
 	}
 
 	if (setName() && setManagerId() && setDescription()) {
-		if (DepartmentController::insertDepartmentController(*this))
+		if (DepartmentController::insertDepartmentController(*this)) //passes to controller for inserting department
 			return true;
 	}
 	
@@ -45,7 +48,7 @@ bool Department::insertDepartment() {
 }
 
 bool Department::deleteDepartment() {
-
+	//takes input for deleting department 
 	int choice;
 	bool controllerResult{};
 	system("cls");
@@ -68,13 +71,13 @@ bool Department::deleteDepartment() {
 			system("cls");
 			if (!setId())
 				return false;
-			controllerResult = DepartmentController::deleteDepartmentController(*this, "id");
+			controllerResult = DepartmentController::deleteDepartmentController(*this, "id"); //passes to controller for deleting department
 			break;
 		case 2:
 			system("cls");			
 			if (!setName())
 				return false;
-			controllerResult = DepartmentController::deleteDepartmentController(*this, "name");
+			controllerResult = DepartmentController::deleteDepartmentController(*this, "name"); //passes to controller for deleting department
 			break;
 		case 3:
 			system("cls");
@@ -93,6 +96,7 @@ bool Department::deleteDepartment() {
 };
 
 bool Department::updateDepartment() {
+	//takes input for updating department 
 	int choice;
 
 	bool controllerResult;
@@ -128,21 +132,21 @@ bool Department::updateDepartment() {
 			if (!setName()) {
 				return false;
 			}
-			controllerResult = DepartmentController::updateDepartmentController(*this, "name");
+			controllerResult = DepartmentController::updateDepartmentController(*this, "name"); //passes to controller for updating dept
 			break;
 		case 2:
 			system("cls");
 			if (!setManagerId()) {
 				return false;
 			}
-			controllerResult = DepartmentController::updateDepartmentController(*this, "manager_id");
+			controllerResult = DepartmentController::updateDepartmentController(*this, "manager_id"); //passes to controller for updating dept
 			break;
 		case 3:
 			system("cls");
 			if (!setDescription()) {
 				return false;
 			}
-			controllerResult = DepartmentController::updateDepartmentController(*this, "description");
+			controllerResult = DepartmentController::updateDepartmentController(*this, "description"); //passes to controller for updating dept
 			break;
 		case 4:
 			system("cls");
@@ -161,6 +165,7 @@ bool Department::updateDepartment() {
 }
 
 bool Department::viewDepartment() {
+	//takes input for viewing department 
 	int choice;
 	bool controllerResult;
 
@@ -181,17 +186,17 @@ bool Department::viewDepartment() {
 		switch (choice) {
 		case 1:
 			system("cls");
-			controllerResult = DepartmentController::viewDepartmentController(*this, "all");
+			controllerResult = DepartmentController::viewDepartmentController(*this, "all"); //passes to controller for viewing dept
 			break;
 		case 2:
 			system("cls");
 			setId();
-			controllerResult = DepartmentController::viewDepartmentController(*this, "id");
+			controllerResult = DepartmentController::viewDepartmentController(*this, "id"); //passes to controller for viewing dept
 			break;
 		case 3:
 			system("cls");
 			setName();
-			controllerResult = DepartmentController::viewDepartmentController(*this, "name");
+			controllerResult = DepartmentController::viewDepartmentController(*this, "name"); //passes to controller for viewing dept
 			break;
 		case 4:
 			system("cls");
@@ -209,9 +214,8 @@ bool Department::viewDepartment() {
 
 }
 
-void Department::describeDepartment() const
-{
-
+void Department::describeDepartment() const{
+	//describes dept
 	if (!Database::getInstance().executeQueryCallback("pragma table_info('Department');")) {
 		std::cout << Database::getInstance().getError();
 	}
@@ -222,6 +226,7 @@ void Department::describeDepartment() const
 }
 
 void Department::action() {
+	//takes user input for different action
 	bool flag = true;
 
 	while (flag) {

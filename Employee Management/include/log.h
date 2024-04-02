@@ -49,8 +49,6 @@ namespace logs {
 				}
 			}
 
-			/*std::cout << "\n";*/
-
 		}
 
 		template <typename t1, typename... args>

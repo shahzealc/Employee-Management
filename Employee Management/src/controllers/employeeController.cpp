@@ -3,6 +3,8 @@
 using logs::Log;
 
 bool EmployeeController::insertEmployeeController(Employee& employee) {
+	//takes object of employee class and executes the query by taking attribbutes value from employee object.
+
 	std::string managerIdString = (employee.getManagerId() != NULL) ? std::to_string(employee.getManagerId()) : "NULL";
 	std::string departmentIdString = (employee.getDepartmentId() != NULL) ? std::to_string(employee.getDepartmentId()) : "NULL";
 
@@ -29,23 +31,31 @@ bool EmployeeController::insertEmployeeController(Employee& employee) {
 };
 
 bool EmployeeController::deleteEmployeeController(Employee& employee, std::string attribute) {
+	//deletes the employee record based on the employee object passed.
+	std::string deleteQuery{};
 
-	std::string deleteQuery = "DELETE FROM Employee WHERE id = " + std::to_string(employee.getId());
+	if (attribute == "id")
+		deleteQuery = "DELETE FROM Employee WHERE id = " + std::to_string(employee.getId());
+	else
+		return false;
 
 	if (Database::getInstance().executeQuery(deleteQuery)) {
 
 		int changes = sqlite3_changes(Database::getInstance().db);
 
-		//std::cout << "\033[32m" << changes << " row affected \033[0m\n\n";
 		if (changes != 0) {
-			/*std::cout << "\033[32mEmployee Deleted Succesfully ! \033[0m\n\n";*/
 			Log::getInstance().Info("Employee Deleted for id : ", employee.getId());
 			return true;
+		}
+		else {
+			return false;
 		}
 
 	}
 	else {
-		std::string_view errmsg = "FOREIGN KEY constraint failed";
+		//if the employee is managing different employee then it would give error "FOREIGN KEY constraint failed" while deleting
+		//so redirecting this error to user-friendly error so that user can understand the message.
+		std::string errmsg = std::string("\033[31m") + "FOREIGN KEY constraint failed" + "\033[0m";
 		if (Database::getInstance().getError() == errmsg) {
 			std::string err = { "Selected Employee is managing different employees, so you can not directly delete this employee !!! " };
 			Database::getInstance().setError(err);
@@ -57,6 +67,7 @@ bool EmployeeController::deleteEmployeeController(Employee& employee, std::strin
 }
 
 bool EmployeeController::updateEmployeeController(Employee& employee, std::string attribute) {
+	//updates employee by taking employee object and updates particular field passed to function
 
 	std::string updateQuery = "UPDATE Employee SET ";
 	if (attribute == "firstname") {

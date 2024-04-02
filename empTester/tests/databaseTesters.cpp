@@ -11,10 +11,12 @@ TEST(TestDB, TestCreateTables) {
 
 TEST(TestDB, TestExecuteQuery) {
     EXPECT_TRUE(Database::getInstance().executeQuery("SELECT * FROM Employee;")) << "Execute Query error";
+
+    EXPECT_FALSE(Database::getInstance().executeQuery("SELECT abc from emp;")); //false
 }
 
 TEST(TestDB, TestExportToCSV) {
-    EXPECT_TRUE(Database::getInstance().export_to_csv("SELECT * FROM Department", "department.csv")) << "Export to CSV error";
+    EXPECT_TRUE(Database::getInstance().export_to_csv("SELECT * FROM Department", "Department.csv")) << "Export to CSV error";
 }
 
 TEST(TestDB, TestExportDatabase) {

@@ -37,10 +37,12 @@ namespace Auth {
 		int tryCount = 0;
 
 		while (tryCount < 3) {
+
 			std::cout << "Enter Username:";
 			std::getline(std::cin, username);
+
 			std::cout << "Enter password:";
-			password = getPassword();
+			password = getPassword(); //gets the password without printing the password on console by replacing it with '*'
 
 			if (username == "admin" && password == "admin") {
 				Log::getInstance().Info(username, "signed in.");
@@ -48,16 +50,18 @@ namespace Auth {
 			}
 			else {
 				tryCount++;
-				std::cout << "Wrong Credentials!\n\n";
+				std::cout << "\033[31mWrong Credentials!\033[0m\n\n";
 				Log::getInstance().Warn(tryCount, "attempt");
 			}
 		}
 
 		if (tryCount == 3) {
-			std::cout << "Maximum number of attempts reached!\n";
+			std::cout << "\033[31mMaximum number of attempts reached!\033[0m\n";
 			Log::getInstance().Error("Maximum number of attempts reached for : ", username);
 		}
+
 		return false;
+
 	}
 }
 

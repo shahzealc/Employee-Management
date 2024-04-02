@@ -340,3 +340,786 @@
 [ 01-04-2024 15:36:04 ][Info ]: Manager Deleted for id :  1001 
 [ 01-04-2024 15:36:04 ][Info ]: Salary Updated for id :  1 
 [ 01-04-2024 15:36:04 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 16:46:21 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 16:46:21 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 16:46:21 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 16:46:21 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 16:46:21 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:46:21 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 16:46:21 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 16:46:21 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:46:21 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 16:46:21 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 16:46:21 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 16:46:21 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:46:21 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 16:46:21 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 16:46:21 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 16:47:04 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 16:47:04 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 16:47:04 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 16:47:04 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 16:47:04 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:47:04 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 16:47:04 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 16:47:04 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:47:04 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 16:47:04 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 16:47:04 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 16:47:04 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:47:04 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 16:47:04 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 16:47:04 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 16:47:17 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 16:47:17 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 16:47:17 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 16:47:17 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 16:47:17 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:47:17 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 16:47:17 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 16:47:17 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:47:17 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 16:47:17 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 16:47:17 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 16:47:17 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:47:17 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 16:47:17 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 16:47:17 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 16:49:08 ][Error]: no such table: emp 
+[ 01-04-2024 16:49:08 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 16:49:08 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 16:49:08 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 16:49:08 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 16:49:08 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:49:08 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 16:49:08 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 16:49:08 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:49:08 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 16:49:08 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 16:49:08 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 16:49:08 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:49:08 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 16:49:08 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 16:49:08 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 16:50:25 ][Error]: no such table: emp 
+[ 01-04-2024 16:50:25 ][Error]: no such table: Depart 
+[ 01-04-2024 16:50:25 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 16:50:25 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 16:50:25 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 16:50:25 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 16:50:25 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:50:25 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 16:50:25 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 16:50:25 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:50:25 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 16:50:25 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 16:50:25 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 16:50:25 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:50:25 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 16:50:25 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 16:50:25 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 16:53:28 ][Error]: no such table: emp 
+[ 01-04-2024 16:53:28 ][Error]: no such table: Depart 
+[ 01-04-2024 16:53:28 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 16:53:28 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 16:53:28 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 16:53:28 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 16:53:29 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:53:29 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 16:53:29 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 16:53:29 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:53:29 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 16:53:29 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 16:53:29 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 16:53:29 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:53:29 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 16:53:29 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 16:53:29 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 16:55:13 ][Error]: no such table: emp 
+[ 01-04-2024 16:55:13 ][Error]: no such table: Depart 
+[ 01-04-2024 16:55:13 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 16:55:13 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 16:55:13 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 16:55:13 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 16:55:13 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 16:55:13 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:55:13 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 16:55:13 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 16:55:13 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:55:13 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 16:55:13 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 16:55:13 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 16:55:13 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:55:13 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 16:55:13 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 16:55:13 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 16:56:31 ][Error]: no such table: emp 
+[ 01-04-2024 16:56:31 ][Error]: no such table: Depart 
+[ 01-04-2024 16:56:31 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 16:56:31 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 16:56:31 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 16:56:31 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 16:56:31 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 16:56:31 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:56:31 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 16:56:31 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 16:56:31 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:56:31 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 16:56:31 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 16:56:31 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 16:56:31 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:56:31 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 16:56:31 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 16:56:31 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 16:57:01 ][Error]: no such table: emp 
+[ 01-04-2024 16:57:01 ][Error]: no such table: Depart 
+[ 01-04-2024 16:57:01 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 16:57:01 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 16:57:01 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 16:57:01 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 16:57:01 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 16:57:01 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:57:01 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 16:57:01 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 16:57:01 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:57:01 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 16:57:01 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 16:57:01 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 16:57:01 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:57:01 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 16:57:01 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 16:57:02 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 16:57:33 ][Error]: no such table: emp 
+[ 01-04-2024 16:57:33 ][Error]: no such table: Depart 
+[ 01-04-2024 16:57:33 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 16:57:33 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 16:57:33 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 16:57:33 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 16:57:33 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 16:57:33 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:57:33 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 16:57:33 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 16:57:33 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:57:33 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 16:57:33 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 16:57:33 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 16:57:33 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:57:33 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 16:57:33 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 16:57:33 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 16:59:04 ][Error]: no such table: emp 
+[ 01-04-2024 16:59:04 ][Error]: no such table: Depart 
+[ 01-04-2024 16:59:05 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 16:59:05 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 16:59:05 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 16:59:05 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 16:59:05 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 16:59:05 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:59:05 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 16:59:05 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 16:59:05 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:59:05 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 16:59:05 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 16:59:05 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 16:59:05 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:59:05 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 16:59:05 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 16:59:05 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 16:59:34 ][Error]: no such table: emp 
+[ 01-04-2024 16:59:34 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 16:59:34 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 16:59:35 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 16:59:35 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 16:59:35 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 16:59:35 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:59:35 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 16:59:35 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 16:59:35 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:59:35 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 16:59:35 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 16:59:35 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 16:59:35 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 16:59:35 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 16:59:35 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 16:59:35 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:01:02 ][Error]: no such table: emp 
+[ 01-04-2024 17:01:02 ][Error]: no such table: Depart 
+[ 01-04-2024 17:01:02 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:01:02 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 17:01:02 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:01:02 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:01:02 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:01:02 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:01:02 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:01:02 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:01:02 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:01:02 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:01:02 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:01:02 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:01:02 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:01:02 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:01:02 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:01:02 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:03:02 ][Error]: no such table: emp 
+[ 01-04-2024 17:03:02 ][Error]: no such table: Depart 
+[ 01-04-2024 17:03:02 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:03:02 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 17:03:02 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:03:02 ][Error]: FOREIGN KEY constraint failed 
+[ 01-04-2024 17:03:02 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:03:02 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:03:02 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:03:02 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:03:02 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:03:02 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:03:02 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:03:02 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:03:02 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:03:02 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:03:02 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:03:02 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:03:02 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:04:31 ][Error]: no such table: emp 
+[ 01-04-2024 17:04:31 ][Error]: no such table: Depart 
+[ 01-04-2024 17:04:31 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:04:31 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 17:04:31 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:04:31 ][Error]: FOREIGN KEY constraint failed 
+[ 01-04-2024 17:04:31 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:04:31 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:04:31 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:04:31 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:04:31 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:04:31 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:04:31 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:04:31 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:04:31 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:04:31 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:04:31 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:04:31 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:04:31 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:04:39 ][Error]: no such table: emp 
+[ 01-04-2024 17:04:39 ][Error]: no such table: Depart 
+[ 01-04-2024 17:04:39 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:04:39 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 17:04:39 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:04:39 ][Error]: FOREIGN KEY constraint failed 
+[ 01-04-2024 17:04:39 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:04:39 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:04:39 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:04:39 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:04:39 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:04:39 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:04:39 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:04:39 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:04:39 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:04:39 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:04:39 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:04:39 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:04:39 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:06:17 ][Error]: no such table: emp 
+[ 01-04-2024 17:06:17 ][Error]: no such table: Depart 
+[ 01-04-2024 17:06:17 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:06:17 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 17:06:17 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:06:17 ][Error]: FOREIGN KEY constraint failed 
+[ 01-04-2024 17:06:17 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:06:18 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:06:18 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:06:18 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:06:18 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:06:18 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:06:18 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:06:18 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:06:18 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:06:18 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:06:18 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:06:18 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:06:18 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:07:52 ][Error]: no such table: emp 
+[ 01-04-2024 17:07:52 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:07:52 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:07:52 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:07:52 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:07:52 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:07:52 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:07:52 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:07:52 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:07:52 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:07:52 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:07:52 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:07:52 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:07:52 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:07:52 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:07:52 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:10:16 ][Error]: no such table: emp 
+[ 01-04-2024 17:10:16 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:10:16 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:10:16 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:10:16 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 01-04-2024 17:10:16 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:10:16 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:10:16 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:10:16 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:10:17 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:10:17 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:10:17 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:10:17 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:10:17 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:10:17 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:10:17 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:10:17 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:10:27 ][Error]: no such table: emp 
+[ 01-04-2024 17:10:27 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:10:27 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:10:27 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:10:27 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 01-04-2024 17:10:27 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:10:27 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:10:27 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:10:27 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:10:27 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:10:27 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:10:27 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:10:27 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:10:27 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:10:27 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:10:27 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:10:27 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:12:01 ][Error]: no such table: emp 
+[ 01-04-2024 17:12:01 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:12:01 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:12:01 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:12:01 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:12:01 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:12:01 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:12:01 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:12:01 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:12:01 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:12:01 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:12:01 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:12:01 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:12:01 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:12:01 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:12:01 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:12:01 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:13:06 ][Error]: no such table: emp 
+[ 01-04-2024 17:13:06 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:13:06 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:13:06 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:13:06 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:13:06 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:13:06 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:13:06 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:13:06 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:13:06 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:13:06 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:13:06 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:13:06 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:13:06 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:13:06 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:13:06 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:13:06 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:22:25 ][Error]: no such table: emp 
+[ 01-04-2024 17:22:25 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:22:25 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:22:25 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:22:25 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:22:25 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:22:25 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:22:25 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:22:25 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:22:25 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:22:25 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:22:25 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:22:25 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:22:25 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:22:25 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:22:25 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:22:25 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:23:26 ][Error]: no such table: emp 
+[ 01-04-2024 17:23:26 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:23:26 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:23:26 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:23:26 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:23:26 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:23:26 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:23:26 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:23:26 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:23:26 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:23:26 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:23:26 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:23:26 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:23:26 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:23:26 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:23:26 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:27:10 ][Error]: no such table: emp 
+[ 01-04-2024 17:27:10 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:27:10 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:27:10 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:27:10 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:27:10 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:27:10 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:27:10 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 01-04-2024 17:27:10 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:27:10 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:27:10 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:27:10 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:27:10 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:27:10 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:27:10 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:27:10 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:27:10 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:27:56 ][Error]: no such table: emp 
+[ 01-04-2024 17:27:56 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:27:56 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:27:56 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:27:56 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:27:56 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:27:56 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:27:56 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 01-04-2024 17:27:56 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:27:56 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:27:56 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:27:56 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:27:56 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:27:56 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:27:56 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:27:56 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:27:56 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:27:56 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:28:48 ][Error]: no such table: emp 
+[ 01-04-2024 17:28:48 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:28:48 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:28:48 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:28:48 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:28:48 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:28:48 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:28:48 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 01-04-2024 17:28:48 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:28:48 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:28:48 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:28:48 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:28:48 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:28:48 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:28:48 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:28:48 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:28:49 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:28:49 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:30:29 ][Error]: no such table: emp 
+[ 01-04-2024 17:30:29 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:30:29 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:30:29 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:30:29 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 01-04-2024 17:30:29 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:30:29 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:30:29 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:30:29 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:30:29 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 01-04-2024 17:30:29 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:30:29 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:30:29 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:30:29 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:30:29 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:30:29 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:30:29 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:30:29 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:30:29 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:30:29 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:31:31 ][Error]: no such table: emp 
+[ 01-04-2024 17:31:31 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:31:31 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 17:31:31 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:31:31 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:31:31 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:31:31 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 01-04-2024 17:31:31 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:31:31 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:31:32 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:31:32 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:31:32 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 01-04-2024 17:31:32 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:31:32 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:31:32 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:31:32 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:31:32 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:31:32 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:31:32 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:31:32 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:31:32 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:31:32 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:33:54 ][Error]: no such table: emp 
+[ 01-04-2024 17:33:54 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:33:54 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 17:33:54 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:33:54 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:33:54 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:33:54 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 01-04-2024 17:33:54 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:33:54 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:33:54 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:33:54 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:33:54 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 01-04-2024 17:33:54 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:33:54 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:33:54 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:33:54 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:33:54 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:33:54 ][Error]: UNIQUE constraint failed: Manager.id 
+[ 01-04-2024 17:33:54 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:33:54 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:33:54 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:33:54 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:33:54 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:33:54 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:34:09 ][Error]: no such table: emp 
+[ 01-04-2024 17:34:09 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:34:09 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 17:34:09 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:34:09 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:34:09 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:34:09 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 01-04-2024 17:34:09 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:34:09 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:34:09 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:34:09 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:34:09 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 01-04-2024 17:34:09 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:34:09 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:34:09 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:34:09 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:34:09 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:34:09 ][Error]: UNIQUE constraint failed: Manager.id 
+[ 01-04-2024 17:34:09 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:34:09 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:34:09 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:34:09 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:34:09 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:34:09 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 17:38:50 ][Error]: no such table: emp 
+[ 01-04-2024 17:38:50 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 17:38:50 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 17:38:50 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 17:38:50 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:38:50 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 17:38:50 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 01-04-2024 17:38:50 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 17:38:50 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:38:50 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:38:50 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 17:38:50 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 01-04-2024 17:38:50 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 17:38:50 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:38:50 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:38:50 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 17:38:50 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 17:38:50 ][Error]: UNIQUE constraint failed: Manager.id 
+[ 01-04-2024 17:38:50 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 17:38:50 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:38:50 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 17:38:50 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 17:38:50 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 17:38:50 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 17:38:50 ][Info ]: Salary Incremented for id :  1 
+[ 01-04-2024 18:00:40 ][Error]: no such table: emp 
+[ 01-04-2024 18:00:40 ][Info ]: Department Inserted for id :  10 
+[ 01-04-2024 18:00:40 ][Error]: UNIQUE constraint failed: Department.id 
+[ 01-04-2024 18:00:40 ][Info ]: Department Updated for id :  10 
+[ 01-04-2024 18:00:40 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 18:00:40 ][Info ]: Department Deleted for id :  10 
+[ 01-04-2024 18:00:40 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 01-04-2024 18:00:40 ][Info ]: Employee Updated for id :  1001 
+[ 01-04-2024 18:00:40 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 18:00:40 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 18:00:40 ][Info ]: Engineer Inserted for id :  1001 
+[ 01-04-2024 18:00:40 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 01-04-2024 18:00:40 ][Info ]: Engineer Updated for id :  1001 
+[ 01-04-2024 18:00:40 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 18:00:40 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 18:00:40 ][Info ]: Engineer Deleted for id :  1001 
+[ 01-04-2024 18:00:40 ][Info ]: Manager Inserted for id :  1001 
+[ 01-04-2024 18:00:40 ][Error]: UNIQUE constraint failed: Manager.id 
+[ 01-04-2024 18:00:40 ][Info ]: Manager Updated for id :  1001 
+[ 01-04-2024 18:00:40 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 18:00:40 ][Info ]: Employee Deleted for id :  1001 
+[ 01-04-2024 18:00:40 ][Info ]: Manager Deleted for id :  1001 
+[ 01-04-2024 18:00:40 ][Info ]: Salary Updated for id :  1 
+[ 01-04-2024 18:00:40 ][Error]: near "WHERE": syntax error 
+[ 01-04-2024 18:00:40 ][Info ]: Salary Incremented for id :  1 
+[ 02-04-2024 14:43:30 ][Error]: no such table: emp 
+[ 02-04-2024 14:43:30 ][Info ]: Department Inserted for id :  10 
+[ 02-04-2024 14:43:30 ][Error]: UNIQUE constraint failed: Department.id 
+[ 02-04-2024 14:43:30 ][Info ]: Department Updated for id :  10 
+[ 02-04-2024 14:43:30 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 14:43:30 ][Info ]: Department Deleted for id :  10 
+[ 02-04-2024 14:43:30 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 02-04-2024 14:43:30 ][Info ]: Employee Updated for id :  1001 
+[ 02-04-2024 14:43:30 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 14:43:30 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 14:43:30 ][Info ]: Engineer Inserted for id :  1001 
+[ 02-04-2024 14:43:30 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 02-04-2024 14:43:30 ][Info ]: Engineer Updated for id :  1001 
+[ 02-04-2024 14:43:30 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 14:43:30 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 14:43:30 ][Info ]: Engineer Deleted for id :  1001 
+[ 02-04-2024 14:43:30 ][Info ]: Manager Inserted for id :  1001 
+[ 02-04-2024 14:43:30 ][Error]: UNIQUE constraint failed: Manager.id 
+[ 02-04-2024 14:43:30 ][Info ]: Manager Updated for id :  1001 
+[ 02-04-2024 14:43:30 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 14:43:30 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 14:43:30 ][Info ]: Manager Deleted for id :  1001 
+[ 02-04-2024 14:43:30 ][Info ]: Salary Updated for id :  1 
+[ 02-04-2024 14:43:30 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 14:43:30 ][Info ]: Salary Incremented for id :  1 
+[ 02-04-2024 14:45:56 ][Error]: no such table: emp 
+[ 02-04-2024 14:45:56 ][Info ]: Department Inserted for id :  10 
+[ 02-04-2024 14:45:56 ][Error]: UNIQUE constraint failed: Department.id 
+[ 02-04-2024 14:45:56 ][Info ]: Department Updated for id :  10 
+[ 02-04-2024 14:45:56 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 14:45:56 ][Info ]: Department Deleted for id :  10 
+[ 02-04-2024 14:45:56 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 02-04-2024 14:45:56 ][Info ]: Employee Updated for id :  1001 
+[ 02-04-2024 14:45:56 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 14:45:56 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 14:45:56 ][Info ]: Engineer Inserted for id :  1001 
+[ 02-04-2024 14:45:56 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 02-04-2024 14:45:56 ][Info ]: Engineer Updated for id :  1001 
+[ 02-04-2024 14:45:56 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 14:45:56 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 14:45:56 ][Info ]: Engineer Deleted for id :  1001 
+[ 02-04-2024 14:45:56 ][Info ]: Manager Inserted for id :  1001 
+[ 02-04-2024 14:45:56 ][Error]: UNIQUE constraint failed: Manager.id 
+[ 02-04-2024 14:45:56 ][Info ]: Manager Updated for id :  1001 
+[ 02-04-2024 14:45:56 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 14:45:56 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 14:45:56 ][Info ]: Manager Deleted for id :  1001 
+[ 02-04-2024 14:45:56 ][Info ]: Salary Updated for id :  1 
+[ 02-04-2024 14:45:56 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 14:45:56 ][Info ]: Salary Incremented for id :  1 
+[ 02-04-2024 16:57:08 ][Error]: no such table: emp 
+[ 02-04-2024 16:57:08 ][Info ]: Department Inserted for id :  10 
+[ 02-04-2024 16:57:08 ][Error]: UNIQUE constraint failed: Department.id 
+[ 02-04-2024 16:57:08 ][Info ]: Department Updated for id :  10 
+[ 02-04-2024 16:57:08 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 16:57:08 ][Info ]: Department Deleted for id :  10 
+[ 02-04-2024 16:57:08 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 02-04-2024 16:57:08 ][Info ]: Employee Updated for id :  1001 
+[ 02-04-2024 16:57:08 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 16:57:08 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 16:57:08 ][Info ]: Engineer Inserted for id :  1001 
+[ 02-04-2024 16:57:08 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 02-04-2024 16:57:08 ][Info ]: Engineer Updated for id :  1001 
+[ 02-04-2024 16:57:08 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 16:57:08 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 16:57:08 ][Info ]: Engineer Deleted for id :  1001 
+[ 02-04-2024 16:57:08 ][Info ]: Manager Inserted for id :  1001 
+[ 02-04-2024 16:57:08 ][Error]: UNIQUE constraint failed: Manager.id 
+[ 02-04-2024 16:57:08 ][Info ]: Manager Updated for id :  1001 
+[ 02-04-2024 16:57:08 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 16:57:08 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 16:57:08 ][Info ]: Manager Deleted for id :  1001 
+[ 02-04-2024 16:57:08 ][Info ]: Salary Updated for id :  1 
+[ 02-04-2024 16:57:08 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 16:57:08 ][Info ]: Salary Incremented for id :  1 
+[ 02-04-2024 17:48:21 ][Error]: no such table: emp 
+[ 02-04-2024 17:48:21 ][Info ]: Department Inserted for id :  10 
+[ 02-04-2024 17:48:21 ][Error]: UNIQUE constraint failed: Department.id 
+[ 02-04-2024 17:48:21 ][Info ]: Department Updated for id :  10 
+[ 02-04-2024 17:48:21 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:48:21 ][Info ]: Department Deleted for id :  10 
+[ 02-04-2024 17:48:21 ][Info ]: Department Deleted for id :  10 
+[ 02-04-2024 17:48:21 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 02-04-2024 17:48:21 ][Info ]: Employee Updated for id :  1001 
+[ 02-04-2024 17:48:21 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:48:21 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 17:48:21 ][Info ]: Engineer Inserted for id :  1001 
+[ 02-04-2024 17:48:21 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 02-04-2024 17:48:21 ][Info ]: Engineer Updated for id :  1001 
+[ 02-04-2024 17:48:21 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:48:21 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 17:48:21 ][Info ]: Engineer Deleted for id :  1001 
+[ 02-04-2024 17:48:21 ][Info ]: Manager Inserted for id :  1001 
+[ 02-04-2024 17:48:21 ][Error]: UNIQUE constraint failed: Manager.id 
+[ 02-04-2024 17:48:21 ][Info ]: Manager Updated for id :  1001 
+[ 02-04-2024 17:48:21 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:48:21 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 17:48:21 ][Info ]: Manager Deleted for id :  1001 
+[ 02-04-2024 17:48:21 ][Info ]: Salary Updated for id :  1 
+[ 02-04-2024 17:48:21 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:48:21 ][Info ]: Salary Incremented for id :  1 
+[ 02-04-2024 17:48:56 ][Error]: no such table: emp 
+[ 02-04-2024 17:48:56 ][Info ]: Department Inserted for id :  10 
+[ 02-04-2024 17:48:56 ][Error]: UNIQUE constraint failed: Department.id 
+[ 02-04-2024 17:48:56 ][Info ]: Department Updated for id :  10 
+[ 02-04-2024 17:48:56 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:48:56 ][Info ]: Department Deleted for id :  10 
+[ 02-04-2024 17:48:56 ][Info ]: Department Deleted for id :  10 
+[ 02-04-2024 17:48:56 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 02-04-2024 17:48:56 ][Info ]: Employee Updated for id :  1001 
+[ 02-04-2024 17:48:56 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:48:56 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 17:48:56 ][Info ]: Engineer Inserted for id :  1001 
+[ 02-04-2024 17:48:56 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 02-04-2024 17:48:56 ][Info ]: Engineer Updated for id :  1001 
+[ 02-04-2024 17:48:56 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:48:56 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 17:48:56 ][Info ]: Engineer Deleted for id :  1001 
+[ 02-04-2024 17:48:56 ][Info ]: Manager Inserted for id :  1001 
+[ 02-04-2024 17:48:56 ][Error]: UNIQUE constraint failed: Manager.id 
+[ 02-04-2024 17:48:56 ][Info ]: Manager Updated for id :  1001 
+[ 02-04-2024 17:48:56 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:48:56 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 17:48:56 ][Info ]: Manager Deleted for id :  1001 
+[ 02-04-2024 17:48:56 ][Info ]: Salary Updated for id :  1 
+[ 02-04-2024 17:48:56 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:48:56 ][Info ]: Salary Incremented for id :  1 
+[ 02-04-2024 17:49:51 ][Error]: no such table: emp 
+[ 02-04-2024 17:49:51 ][Info ]: Department Inserted for id :  10 
+[ 02-04-2024 17:49:51 ][Error]: UNIQUE constraint failed: Department.id 
+[ 02-04-2024 17:49:51 ][Info ]: Department Updated for id :  10 
+[ 02-04-2024 17:49:51 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:49:51 ][Info ]: Department Deleted for id :  10 
+[ 02-04-2024 17:49:51 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 02-04-2024 17:49:51 ][Info ]: Employee Updated for id :  1001 
+[ 02-04-2024 17:49:51 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:49:51 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 17:49:51 ][Info ]: Engineer Inserted for id :  1001 
+[ 02-04-2024 17:49:51 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 02-04-2024 17:49:51 ][Info ]: Engineer Updated for id :  1001 
+[ 02-04-2024 17:49:51 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:49:51 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 17:49:51 ][Info ]: Engineer Deleted for id :  1001 
+[ 02-04-2024 17:49:51 ][Info ]: Manager Inserted for id :  1001 
+[ 02-04-2024 17:49:51 ][Error]: UNIQUE constraint failed: Manager.id 
+[ 02-04-2024 17:49:51 ][Info ]: Manager Updated for id :  1001 
+[ 02-04-2024 17:49:51 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:49:51 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 17:49:51 ][Info ]: Manager Deleted for id :  1001 
+[ 02-04-2024 17:49:51 ][Info ]: Salary Updated for id :  1 
+[ 02-04-2024 17:49:51 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 17:49:51 ][Info ]: Salary Incremented for id :  1 
+[ 02-04-2024 18:23:55 ][Error]: no such table: emp 
+[ 02-04-2024 18:23:55 ][Info ]: Department Inserted for id :  10 
+[ 02-04-2024 18:23:55 ][Error]: UNIQUE constraint failed: Department.id 
+[ 02-04-2024 18:23:55 ][Info ]: Department Updated for id :  10 
+[ 02-04-2024 18:23:55 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 18:23:55 ][Info ]: Department Deleted for id :  10 
+[ 02-04-2024 18:23:55 ][Error]: UNIQUE constraint failed: Employee.id 
+[ 02-04-2024 18:23:55 ][Info ]: Employee Updated for id :  1001 
+[ 02-04-2024 18:23:55 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 18:23:55 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 18:23:55 ][Info ]: Engineer Inserted for id :  1001 
+[ 02-04-2024 18:23:55 ][Error]: UNIQUE constraint failed: Engineer.id 
+[ 02-04-2024 18:23:55 ][Info ]: Engineer Updated for id :  1001 
+[ 02-04-2024 18:23:55 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 18:23:55 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 18:23:55 ][Info ]: Engineer Deleted for id :  1001 
+[ 02-04-2024 18:23:55 ][Info ]: Manager Inserted for id :  1001 
+[ 02-04-2024 18:23:55 ][Error]: UNIQUE constraint failed: Manager.id 
+[ 02-04-2024 18:23:55 ][Info ]: Manager Updated for id :  1001 
+[ 02-04-2024 18:23:55 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 18:23:55 ][Info ]: Employee Deleted for id :  1001 
+[ 02-04-2024 18:23:55 ][Info ]: Manager Deleted for id :  1001 
+[ 02-04-2024 18:23:55 ][Info ]: Salary Updated for id :  1 
+[ 02-04-2024 18:23:55 ][Error]: near "WHERE": syntax error 
+[ 02-04-2024 18:23:55 ][Info ]: Salary Incremented for id :  1 

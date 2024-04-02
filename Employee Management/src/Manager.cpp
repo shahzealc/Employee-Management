@@ -14,6 +14,7 @@ bool Manager::setProjectTitle() {
 }
 
 bool Manager::insertManager() {
+	//first inserts employee and then inserts extra details of manager and salary.
 	if (!insertEmployee()) {
 		return false;
 	}
@@ -21,10 +22,10 @@ bool Manager::insertManager() {
 	if (setManagementExperience() && setProjectTitle()) {
 		Salary s1;
 		if (s1.insertSalaryById(getId()))
-			return ManagerController::insertManagerController(*this, s1);
+			return ManagerController::insertManagerController(*this, s1); //passes to controller for inserting manager
 	}
-	
-	EmployeeController::deleteEmployeeController(*this, "id");
+
+	EmployeeController::deleteEmployeeController(*this, "id"); //deletes employee if error occured while inserting manager or salary
 
 	return false;
 }
@@ -34,40 +35,29 @@ bool Manager::deleteManager() {
 	if (!setId())
 		return false;
 
-	std::string checkManager = "SELECT id FROM Manager WHERE id = " + std::to_string(getId());
-
-	if (!Database::getInstance().executeQueryRows(checkManager)) {
-		std::cout << Database::getInstance().getError() << std::endl;
-		return false;
-	}
-
-	if (int rows = Database::getInstance().getRow(); rows > 0) {
-
-		std::string viewEmployee = "SELECT id,firstname,lastname,email FROM Employee WHERE id = " + std::to_string(getId());
-
-		if (!Database::getInstance().executeQueryCallback(viewEmployee, false)) {
-			std::cout << Database::getInstance().getError() << std::endl;
-			return false;
-		}
-
-		std::cout << "\033[36mEnter Y: to delete this Employee\nEnter N: to exit\033[0m\n";
-		char confirm;
-		std::cin >> confirm;
-
-		if (confirm == 'Y' || confirm == 'y') {
-			return ManagerController::deleteManagerController(*this, "id");
-		}
-
-		if (deleteEmployeeById(getId())) {
-			Log::getInstance().Info("Manager Deleted for id : ", getId());
-			return true;
-		}
-	}
-	else {
+	if (!Database::getInstance().checkExist("Manager", getId())) { //check existance of manager
 		std::cout << "\033[33mManager Not exist" << "\033[0m\n\n";
 		Log::getInstance().Warn("Manager Not exist for id : ", getId());
 		return false;
 	}
+	
+	//lets user see the detail of employee he/she trying to delete
+	std::string viewEmployee = "SELECT id,firstname,lastname,email FROM Employee WHERE id = " + std::to_string(getId());
+
+	if (!Database::getInstance().executeQueryCallback(viewEmployee, false)) {
+		std::cout << Database::getInstance().getError() << std::endl;
+		return false;
+	}
+
+	//asks user to confirm the delete.
+	std::cout << "\033[36mEnter Y: to delete this Employee\nEnter N: to exit\033[0m\n";
+	char confirm;
+	std::cin >> confirm;
+
+	if (confirm == 'Y' || confirm == 'y') {
+		return ManagerController::deleteManagerController(*this, "id");
+	}
+
 	return false;
 }
 
@@ -86,9 +76,9 @@ bool Manager::updateManager() {
 	switch (choice) {
 	case 1:
 		system("cls");
-		return updateEmployee();
+		return updateEmployee(); //for updating employee related data
 		break;
-	case 2:
+	case 2:  //for updating manager related data
 		system("cls");
 
 		while (flag) {
@@ -96,7 +86,7 @@ bool Manager::updateManager() {
 			std::cout << "Enter Employee id to update: \n";
 			std::cin >> eid;
 
-			if (!Database::getInstance().checkExist("Manager", eid)) {
+			if (!Database::getInstance().checkExist("Manager", eid)) { //check existance for manager
 				std::cout << "\033[33mManager Not exist for id: " << eid << "\033[0m\n\n";
 				return false;
 			}
@@ -114,12 +104,12 @@ bool Manager::updateManager() {
 			case 1:
 				if (!setManagementExperience())
 					return false;
-				controllerResult = ManagerController::updateManagerController(*this, "management_experience");
+				controllerResult = ManagerController::updateManagerController(*this, "management_experience"); //passes to controller for updating manager
 				break;
 			case 2:
 				if (!setProjectTitle())
 					return false;
-				controllerResult = ManagerController::updateManagerController(*this, "project_title");
+				controllerResult = ManagerController::updateManagerController(*this, "project_title"); //passes to controller for updating manager
 				break;
 			case 3:
 				return true;

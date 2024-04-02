@@ -7,15 +7,14 @@
 
 template<typename T, typename Validator>
 bool setAttribute(const std::string& attributeName, T& attribute, Validator validator) {
-
-	
+	//set the value for given attribute if validator passes and within limit of 3 wrong limit
 	auto attempt{ 0 };
 
 	while (attempt < 3) {
 		++attempt;
 		std::cout << attributeName << ": ";
 		std::string input;
-		std::cin >> input;
+		std::cin >> input;		
 		//std::getline(std::cin, input);
 
 		if (validator(input)) {
@@ -33,6 +32,7 @@ bool setAttribute(const std::string& attributeName, T& attribute, Validator vali
 		else {
 			std::cout << "\033[31mInvalid input! Please try again.\033[0m\n";
 		}
+		
 	}
 
 	std::cout << "\033[31mMaximum attempts reached!\033[0m\n";

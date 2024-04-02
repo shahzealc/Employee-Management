@@ -10,5 +10,5 @@ protected:
     }
 
     Department dept1{ 10, "HR", 2, "HR Test department" };
-    Department dept2{ 10, "Test", 2, "HR Test department" };
+    Department dept2{ 10, "Test", 100, "HR Test department" };
 };

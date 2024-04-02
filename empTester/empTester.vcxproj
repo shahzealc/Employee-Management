@@ -132,6 +132,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="backup\Department.csv" />
+    <None Include="backup\Employee.csv" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

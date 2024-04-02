@@ -66,6 +66,7 @@ bool Employee::setDepartmentId() {
 }
 
 bool Employee::insertEmployee() {
+	//takes user input for employee details 
 	system("cls");
 
 	std::cout << "Enter Employee Details:\n";
@@ -74,13 +75,14 @@ bool Employee::insertEmployee() {
 		return false;
 	}
 
-	if (Database::getInstance().checkExist("Employee", id)) {
+	if (Database::getInstance().checkExist("Employee", id)) { //check existance for existing employee
 		std::cout << "\033[33mEmployee already exist for id: " << id << "\033[0m\n\n";
 		return false;
 	}
 
 	if (setFirstname() && setLastname() && setDob() && setMobile() && setEmail() && setAddress() && setGender() && setDoj() && setWLocation() && setManagerId() && setDepartmentId())
-		return EmployeeController::insertEmployeeController(*this);
+		return EmployeeController::insertEmployeeController(*this); //passes to controller for inserting employee
+	
 	return false;
 }
 
@@ -88,8 +90,7 @@ bool Employee::deleteEmployeeById(int eid) {
 
 	id = eid;
 
-	std::string deleteQuery{};
-
+	//lets user see the detail of employee he/she trying to delete
 	std::string viewEmployee = "SELECT id,firstname,lastname,email FROM Employee WHERE id = " + std::to_string(id);
 
 	if (!Database::getInstance().executeQueryCallback(viewEmployee, false)) {
@@ -97,19 +98,20 @@ bool Employee::deleteEmployeeById(int eid) {
 		return false;
 	}
 
+	//asks user to confirm the delete.
 	std::cout << "\033[36mEnter Y: to delete this Employee\nEnter N: to exit\033[0m\n";
 	char confirm;
 	std::cin >> confirm;
 
 	if (confirm == 'Y' || confirm == 'y') {
-		if (EmployeeController::deleteEmployeeController(*this, "id"))
+		if (EmployeeController::deleteEmployeeController(*this, "id")) //passes to controller for deleting employee
 			return true;
 	}
 	return false;
 };
 
 bool Employee::updateEmployee() {
-
+	//takes user input for updating employee
 	int choice;
 	bool controllerResult;
 
@@ -119,7 +121,7 @@ bool Employee::updateEmployee() {
 		return false;
 	}
 
-	if (!Database::getInstance().checkExist("Employee", id)) {
+	if (!Database::getInstance().checkExist("Employee", id)) { //check if the employee exits or not 
 		std::cout << "\033[33mEmployee Not exist for id: " << id << "\033[0m\n\n";
 		return false;
 	}
@@ -150,7 +152,7 @@ bool Employee::updateEmployee() {
 			if (!setFirstname()) {
 				return false;
 			}
-			controllerResult = EmployeeController::updateEmployeeController(*this, "firstname");
+			controllerResult = EmployeeController::updateEmployeeController(*this, "firstname"); //passes to controller for updating employee
 			break;
 		case 2:
 			if (!setLastname()) {
@@ -280,9 +282,8 @@ bool Employee::updateEmployee() {
 //
 //};
 
-void Employee::describeEmployee() const
-{
-
+void Employee::describeEmployee() const{
+	//gives structure for employee table
 	if (!Database::getInstance().executeQueryCallback("pragma table_info('Employee');")) {
 		std::cout << Database::getInstance().getError();
 	}

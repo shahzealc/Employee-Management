@@ -13,7 +13,7 @@ bool Database::open(std::filesystem::path dbPath) {
 			return false;
 		}
 
-		std::string pragmaQuery = { "PRAGMA foreign_keys = ON;" };
+		std::string pragmaQuery = { "PRAGMA foreign_keys = ON;" }; //to turn on foriegn key use
 		executeQuery(pragmaQuery);
 
 		return true;
@@ -109,7 +109,8 @@ void Database::close() {
 }
 
 bool Database::executeQuery(const std::string& query) {
-	
+	//executes query expect select
+
 	char* errMsg = nullptr;
 
 	int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &errMsg);
@@ -130,10 +131,14 @@ bool Database::executeQuery(const std::string& query) {
 }
 
 bool Database::executeQueryCallback(const std::string& query,bool csv) {
+	//executes select queries
+
 	char* errMsg = nullptr;
 	rows = 0;
+
 	int rc = sqlite3_exec(db, query.c_str(), callback, 0, &errMsg);
-	std::cout <<"\033[32m" << rows << " rows returned\033[0m \n\n";
+
+	std::cout <<"\033[32m" << rows << " rows returned\033[0m \n\n"; 
 
 	if (rc != SQLITE_OK) {
 		std::string err = { errMsg };
@@ -143,6 +148,7 @@ bool Database::executeQueryCallback(const std::string& query,bool csv) {
 		return false;
 	}
 
+	//for generating CSV of result
 	if (csv && rows>0) {
 
 		char input;
@@ -167,19 +173,23 @@ bool Database::executeQueryCallback(const std::string& query,bool csv) {
 }
 
 int Database::callback(void* data, int argc, char** argv, char** azColName) {
+	//prints the result of select query
 	++rows;
 	int colWidth = 22;
 	size_t length;
-	std::cout << "----------------------------------------" << "\n";
+
+	// all this for printing it nicely on console
+	std::cout << "|------------------------------------------------------------------------------------------------------------|" << "\n";
 	for (int i = 0; i < argc; ++i) {
 		length = strlen(azColName[i]) - 2;
-		std::cout << " " << azColName[i] << std::setw(colWidth - length) << ": " << (argv[i] ? argv[i] : "NULL") << "\n";
+		std::cout << "|" << azColName[i] << std::setw(colWidth - length) << "| " << (argv[i] ? argv[i] : "NULL") << std::setw(86 - strlen(argv[i] ? argv[i] : "NULL"))<< "|\n";
 	}
-	std::cout << "----------------------------------------" << "\n";
+	std::cout << "|------------------------------------------------------------------------------------------------------------|" << "\n";
 	return 0;
 }
 
 bool Database::executeQueryRows(const std::string& query) {
+	//for only getting the number of rows executed by query
 	char* errMsg = nullptr;
 	rows = 0;
 	int rc = sqlite3_exec(db, query.c_str(), callbackRows, 0, &errMsg);
@@ -195,6 +205,7 @@ bool Database::executeQueryRows(const std::string& query) {
 }
 
 int Database::callbackRows(void* data, int argc, char** argv, char** azColName) {
+	//just increments rows for executeQueryRows
 	++rows;
 	return 0;
 }
@@ -208,7 +219,7 @@ void Database::setError(std::string& errorMessage) {
 }
 
 void Database::createTableQuery() {
-
+	//creates table 
 	std::string tableName;
 	std::cout << "Enter table name: ";
 	std::cin >> tableName;
@@ -224,7 +235,7 @@ void Database::createTableQuery() {
 		std::cout << "Enter column type: ";
 		std::cin >> columnType;
 
-		std::cout << "Enter column constraints : ";
+		std::cout << "Enter column constraints (e.g., PRIMARY KEY, UNIQUE, NOT NULL, etc.): ";
 		std::cin.ignore();
 		std::getline(std::cin, constraints);
 
@@ -233,6 +244,23 @@ void Database::createTableQuery() {
 		std::cout << "Add another column? (y/n): ";
 		std::cin >> choice;
 	} while (choice == 'y' || choice == 'Y');
+
+	char fkChoice;
+	do {
+		std::string columnName, refTable, refColumn;
+		std::cout << "Enter column name for foreign key: ";
+		std::cin >> columnName;
+		std::cout << "Enter referenced table name: ";
+		std::cin >> refTable;
+		std::cout << "Enter referenced column name: ";
+		std::cin >> refColumn;
+
+		std::string fkConstraint = "FOREIGN KEY (" + columnName + ") REFERENCES " + refTable + "(" + refColumn + ")";
+		columns.push_back(fkConstraint);
+
+		std::cout << "Add another foreign key? (y/n): ";
+		std::cin >> fkChoice;
+	} while (fkChoice == 'y' || fkChoice == 'Y');
 
 	for (int i = 0; i < columns.size(); ++i) {
 		sql += columns[i];
@@ -243,13 +271,12 @@ void Database::createTableQuery() {
 	sql += ");";
 
 	if (executeQuery(sql)) {
-		Log::getInstance().Info(tableName, " created.");
+		Log::getInstance().Info(tableName + " created.");
 	}
-
 }
 
 void Database::showTables(){
-
+	//shows all the available table in existing DB
 	std::string showQuery = " SELECT name FROM sqlite_schema ;";
 	if (!executeQueryCallback(showQuery))
 		std::cout << getError() << "\n\n";
@@ -259,7 +286,7 @@ void Database::showTables(){
 }
 
 void Database::deleteTableQuery() {
-
+	//Delete or Truncate table 
 	system("cls");
 	int input;
 	std::cout << "Enter 1 to Drop table or Enter 2 to Delete data within the table:";
@@ -308,9 +335,8 @@ void Database::deleteTableQuery() {
 
 }
 
-void Database::userSqlQuery()
-{
-
+void Database::userSqlQuery(){
+	//custom user sql query executor
 	std::string sqlQuery;
 
 	std::cout << "Enter sql query : ";
@@ -344,6 +370,7 @@ void Database::userSqlQuery()
 }
 
 bool Database::exportDatabase() {
+	//exports all the existing DB tables to backup folder
 	std::string showQuery = " SELECT name FROM sqlite_schema ;";
 	std::string table = "SELECT * FROM ";
 	std::string path="backup/";
@@ -366,6 +393,7 @@ bool Database::exportDatabase() {
 }
 
 bool Database::export_to_csv(const std::string& query, const std::filesystem::path& filename) {
+	//exports all the result from the specified query 
 	std::ofstream file(filename);
 	if (!file.is_open()) {
 		std::cerr << "Failed to open file: " << filename << std::endl;
@@ -415,6 +443,7 @@ bool Database::export_to_csv(const std::string& query, const std::filesystem::pa
 }
 
 bool Database::checkExist(std::string table, int id) {
+	//check existance of an entity in table
 	std::string  checkExistance = "SELECT id FROM "+table +" WHERE id = " + std::to_string(id);
 	Database::getInstance().executeQueryRows(checkExistance);
 	if (int rows = Database::getInstance().getRow(); rows == 0) {

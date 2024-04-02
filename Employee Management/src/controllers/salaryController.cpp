@@ -3,6 +3,7 @@
 using logs::Log;
 
 bool SalaryController::insertSalaryController(Salary& salary) {
+	//takes object of salary class and executes the query by taking attribbutes value from salary object.
 
 	std::string insertQuery = "INSERT INTO Salary (id, base_salary, bonus) VALUES ("
 		+ std::to_string(salary.getId()) + ", '" +
@@ -19,32 +20,33 @@ bool SalaryController::insertSalaryController(Salary& salary) {
 	
 };
 
-bool SalaryController::deleteSalaryController(Salary& salary, std::string attribute) {
-
-	if (attribute == "id") {
-
-		std::string deleteQuery = "DELETE FROM Salary WHERE id = " + std::to_string(salary.getId());
-
-		if (Database::getInstance().executeQuery(deleteQuery)) {
-
-			int changes = sqlite3_changes(Database::getInstance().db);
-
-			std::cout << "\033[32m" << changes << " row affected \033[0m\n\n";
-			if (changes != 0) {
-				std::cout << "\033[32mSalary Deleted Succesfully ! \033[0m\n\n";
-				Log::getInstance().Info("Salary Deleted for id : ", salary.getId());
-				return true;
-			}
-
-		}
-		else {
-			std::cout << Database::getInstance().getError() << "\n";
-		}
-	}
-	return false;
-}
+//bool SalaryController::deleteSalaryController(Salary& salary, std::string attribute) {
+//
+//	if (attribute == "id") {
+//
+//		std::string deleteQuery = "DELETE FROM Salary WHERE id = " + std::to_string(salary.getId());
+//
+//		if (Database::getInstance().executeQuery(deleteQuery)) {
+//
+//			int changes = sqlite3_changes(Database::getInstance().db);
+//
+//			std::cout << "\033[32m" << changes << " row affected \033[0m\n\n";
+//			if (changes != 0) {
+//				std::cout << "\033[32mSalary Deleted Succesfully ! \033[0m\n\n";
+//				Log::getInstance().Info("Salary Deleted for id : ", salary.getId());
+//				return true;
+//			}
+//
+//		}
+//		else {
+//			std::cout << Database::getInstance().getError() << "\n";
+//		}
+//	}
+//	return false;
+//}
 
 bool SalaryController::updateSalaryController(Salary& salary, std::string attribute) {
+	//updates salary by taking salary object and updates particular field passed to function
 
 	std::string updateQuery = "UPDATE Salary SET ";
 	if (attribute == "base_salary") {
@@ -84,8 +86,8 @@ bool SalaryController::viewSalaryController(std::string selectQuery) {
 	}
 }
 
-bool SalaryController::incrementSalaryController(Salary& salary)
-{
+bool SalaryController::incrementSalaryController(Salary& salary){
+	//increments salary by taking salary object 
 
 	std::string updateSalary = "UPDATE Salary SET base_salary = base_salary * " + std::to_string(salary.getPercentage()) + " WHERE id = " + std::to_string(salary.getId()) + "; ";
 

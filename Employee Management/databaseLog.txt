@@ -708,3 +708,69 @@
 [ 01-04-2024 15:28:32 ][Info ]: SELECT * FROM Employee NATURAL JOIN Manager WHERE Employee.id==Manager.id   : Executed. 
 [ 01-04-2024 15:28:48 ][Info ]: select * from employee;  : Executed. 
 [ 01-04-2024 15:28:53 ][Info ]: Database Closed. 
+[ 01-04-2024 16:03:38 ][Warn ]: 1 attempt 
+[ 01-04-2024 16:03:42 ][Info ]: admin signed in. 
+[ 01-04-2024 16:03:42 ][Info ]: Database Opened. 
+[ 01-04-2024 16:04:08 ][Info ]: Database Closed. 
+[ 01-04-2024 16:13:02 ][Info ]: admin signed in. 
+[ 01-04-2024 16:13:02 ][Info ]: Database Opened. 
+[ 01-04-2024 16:14:00 ][Info ]: Database Closed. 
+[ 01-04-2024 17:06:28 ][Info ]: admin signed in. 
+[ 01-04-2024 17:06:28 ][Info ]: Database Opened. 
+[ 01-04-2024 17:06:48 ][Info ]: Database Closed. 
+[ 02-04-2024 14:10:54 ][Info ]: admin signed in. 
+[ 02-04-2024 14:10:54 ][Info ]: Database Opened. 
+[ 02-04-2024 14:11:08 ][Info ]: Database Closed. 
+[ 02-04-2024 14:12:27 ][Info ]: admin signed in. 
+[ 02-04-2024 14:12:27 ][Info ]: Database Opened. 
+[ 02-04-2024 14:13:05 ][Info ]: Database Closed. 
+[ 02-04-2024 14:36:34 ][Info ]: admin signed in. 
+[ 02-04-2024 14:36:34 ][Info ]: Database Opened. 
+[ 02-04-2024 14:36:52 ][Info ]: Show table Query Fetched. 
+[ 02-04-2024 14:37:05 ][Info ]: Show table Query Fetched. 
+[ 02-04-2024 14:38:02 ][Info ]: Database Closed. 
+[ 02-04-2024 15:17:00 ][Info ]: admin signed in. 
+[ 02-04-2024 15:17:00 ][Info ]: Database Opened. 
+[ 02-04-2024 15:17:06 ][Info ]: Show table Query Fetched. 
+[ 02-04-2024 15:17:15 ][Info ]: Database Closed. 
+[ 02-04-2024 15:18:01 ][Warn ]: 1 attempt 
+[ 02-04-2024 15:18:01 ][Warn ]: 2 attempt 
+[ 02-04-2024 15:18:02 ][Warn ]: 3 attempt 
+[ 02-04-2024 15:18:02 ][Error]: Maximum number of attempts reached for :  ad 
+[ 02-04-2024 15:20:21 ][Warn ]: 1 attempt 
+[ 02-04-2024 15:20:22 ][Warn ]: 2 attempt 
+[ 02-04-2024 15:20:23 ][Warn ]: 3 attempt 
+[ 02-04-2024 15:20:23 ][Error]: Maximum number of attempts reached for :  ad 
+[ 02-04-2024 15:33:28 ][Info ]: admin signed in. 
+[ 02-04-2024 15:33:28 ][Info ]: Database Opened. 
+[ 02-04-2024 15:33:45 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 02-04-2024 15:33:50 ][Info ]: Database Closed. 
+[ 02-04-2024 15:34:08 ][Warn ]: 1 attempt 
+[ 02-04-2024 15:34:10 ][Warn ]: 2 attempt 
+[ 02-04-2024 15:34:12 ][Info ]: admin signed in. 
+[ 02-04-2024 15:34:12 ][Info ]: Database Opened. 
+[ 02-04-2024 15:34:31 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 02-04-2024 15:40:11 ][Warn ]: 1 attempt 
+[ 02-04-2024 15:40:13 ][Info ]: admin signed in. 
+[ 02-04-2024 15:40:13 ][Info ]: Database Opened. 
+[ 02-04-2024 15:40:27 ][Info ]: Department Viewed for all :  1 
+[ 02-04-2024 15:40:30 ][Info ]: Database Closed. 
+[ 02-04-2024 15:41:12 ][Info ]: admin signed in. 
+[ 02-04-2024 15:41:12 ][Info ]: Database Opened. 
+[ 02-04-2024 15:41:22 ][Info ]: Department Viewed for all :  0 
+[ 02-04-2024 15:41:28 ][Info ]: Database Closed. 
+[ 02-04-2024 15:42:54 ][Info ]: admin signed in. 
+[ 02-04-2024 15:42:54 ][Info ]: Database Opened. 
+[ 02-04-2024 15:43:05 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 02-04-2024 15:43:09 ][Info ]: Database Closed. 
+[ 02-04-2024 17:04:16 ][Info ]: admin signed in. 
+[ 02-04-2024 17:04:16 ][Info ]: Database Opened. 
+[ 02-04-2024 17:05:08 ][Info ]: Engineer Inserted for id :  12 
+[ 02-04-2024 17:05:27 ][Info ]: SELECT * FROM Employee NATURAL JOIN Engineer WHERE Employee.id==Engineer.id   : Executed. 
+[ 02-04-2024 17:05:48 ][Info ]: SELECT id,firstname,lastname,email,amount,base_salary,bonus FROM Employee NATURAL JOIN Salary  : Executed. 
+[ 02-04-2024 17:05:52 ][Info ]: Database Closed. 
+[ 02-04-2024 17:53:22 ][Info ]: admin signed in. 
+[ 02-04-2024 17:53:22 ][Info ]: Database Opened. 
+[ 02-04-2024 17:53:38 ][Warn ]: Engineer not exist for id :  2 
+[ 02-04-2024 17:53:49 ][Info ]: Show table Query Fetched. 
+[ 02-04-2024 17:53:58 ][Error]: FOREIGN KEY constraint failed 

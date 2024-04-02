@@ -10,18 +10,19 @@ using logs::Log;
 
 int main() {
 
+	//Authenticating user
 	if (Auth::authUser()) {
 
 		std::filesystem::path dbPath = "employee.db";
+
 		if (!Database::getInstance().open(dbPath)) {
-			std::cerr << "Error opening database: " << Database::getInstance().getError() << "\n";
-			return 1;
+			std::cout << "Error opening database: " << Database::getInstance().getError() << "\n";
 		}
 		else {
 			Log::getInstance().Info("Database Opened.");
+			system("cls");
+			askPromptMain();
 		}
-		system("cls");
-		askPromptMain();
 		Database::getInstance().close();
 
 	}

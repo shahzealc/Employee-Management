@@ -19,6 +19,7 @@ bool Engineer::setSpecialization()
 }
 
 bool Engineer::insertEngineer() {
+	//first inserts employee and then inserts extra details of engineer and salary.
 
 	if (!insertEmployee()) {
 		return false;
@@ -26,49 +27,38 @@ bool Engineer::insertEngineer() {
 
 	if (setProgrammingLanguage() && setSpecialization()) {
 		Salary s1;
-		if (s1.insertSalaryById(getId()))
-			return EngineerController::insertEngineerController(*this, s1);
+		if (s1.insertSalaryById(getId())) 
+			return EngineerController::insertEngineerController(*this, s1); //passes to controller for inserting engineer
 	}
-	EmployeeController::deleteEmployeeController(*this, "id");
+	EmployeeController::deleteEmployeeController(*this, "id"); //deletes employee if error occured while inserting engineer or salary
 	return false;
 };
 
 bool Engineer::deleteEngineer() {
-
+	
 	if (!setId())
 		return false;
 
-	std::string checkEngineer = "SELECT id FROM Engineer WHERE id = " + std::to_string(getId());
+	if (!Database::getInstance().checkExist("Engineer", getId())) { //check existance of engineer
+		std::cout << "\033[33mEngineer Not exist\033[0m" << "\n\n";
+		Log::getInstance().Warn("Engineer not exist for id : ", getId());
+		return false;
+	}
 
-	if (!Database::getInstance().executeQueryRows(checkEngineer)) {
+	//lets user see the detail of employee he/she trying to delete
+	std::string viewEmployee = "SELECT id,firstname,lastname,email FROM Employee WHERE id = " + std::to_string(getId());
+	if (!Database::getInstance().executeQueryCallback(viewEmployee, false)) {
 		std::cout << Database::getInstance().getError() << std::endl;
 		return false;
 	}
 
-	if (int rows = Database::getInstance().getRow(); rows > 0) {
-		std::string viewEmployee = "SELECT id,firstname,lastname,email FROM Employee WHERE id = " + std::to_string(getId());
+	//asks user to confirm the delete.
+	std::cout << "\033[36mEnter Y: to delete this Employee\nEnter N: to exit\033[0m\n";
+	char confirm;
+	std::cin >> confirm;
 
-		if (!Database::getInstance().executeQueryCallback(viewEmployee, false)) {
-			std::cout << Database::getInstance().getError() << std::endl;
-			return false;
-		}
-
-		std::cout << "\033[36mEnter Y: to delete this Employee\nEnter N: to exit\033[0m\n";
-		char confirm;
-		std::cin >> confirm;
-
-		if (confirm == 'Y' || confirm == 'y') {
-			return EngineerController::deleteEngineerController(*this, "id");
-		}
-
-
-	}
-	else {
-
-		std::cout << "\033[33mEngineer Not exist\033[0m" << "\n\n";
-		Log::getInstance().Warn("Engineer not exist for id : ", getId());
-
-		return false;
+	if (confirm == 'Y' || confirm == 'y') {
+		return EngineerController::deleteEngineerController(*this, "id");
 	}
 
 };
@@ -91,9 +81,9 @@ bool Engineer::updateEngineer() {
 	switch (choice) {
 	case 1:
 		system("cls");
-		return updateEmployee();
+		return updateEmployee(); //for updating employee related data
 		break;
-	case 2:
+	case 2: //for updating Engineer related data
 		system("cls");
 
 		while (flag) {
@@ -101,7 +91,7 @@ bool Engineer::updateEngineer() {
 			std::cout << "Enter Employee id to update: \n";
 			std::cin >> eid;
 
-			if (!Database::getInstance().checkExist("Engineer", eid)) {
+			if (!Database::getInstance().checkExist("Engineer", eid)) { //check existance for engineer
 				std::cout << "\033[33mEngineer Not exist for id: " << eid << "\033[0m\n\n";
 				return false;
 			}
@@ -118,12 +108,12 @@ bool Engineer::updateEngineer() {
 			case 1:
 				if (!setProgrammingLanguage())
 					return false;
-				controllerResult = EngineerController::updateEngineerController(*this, "programming_language");
+				controllerResult = EngineerController::updateEngineerController(*this, "programming_language"); //passes to controller for updating engineer
 				break;
 			case 2:
 				if (!setSpecialization())
 					return false;
-				controllerResult = EngineerController::updateEngineerController(*this, "specialization");
+				controllerResult = EngineerController::updateEngineerController(*this, "specialization"); //passes to controller for updating engineer
 				break;
 			case 3:
 				return true;
