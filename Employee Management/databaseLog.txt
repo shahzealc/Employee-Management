@@ -774,3 +774,19 @@
 [ 02-04-2024 17:53:38 ][Warn ]: Engineer not exist for id :  2 
 [ 02-04-2024 17:53:49 ][Info ]: Show table Query Fetched. 
 [ 02-04-2024 17:53:58 ][Error]: FOREIGN KEY constraint failed 
+[ 02-04-2024 18:24:47 ][Info ]: admin signed in. 
+[ 02-04-2024 18:24:47 ][Info ]: Database Opened. 
+[ 02-04-2024 18:25:04 ][Info ]: select * from employee;  : Executed. 
+[ 02-04-2024 18:25:10 ][Info ]: Database Closed. 
+[ 02-04-2024 18:26:19 ][Info ]: admin signed in. 
+[ 02-04-2024 18:26:19 ][Info ]: Database Opened. 
+[ 02-04-2024 18:26:27 ][Info ]: Show table Query Fetched. 
+[ 02-04-2024 18:26:39 ][Info ]: Database Closed. 
+[ 02-04-2024 18:27:23 ][Info ]: admin signed in. 
+[ 02-04-2024 18:27:23 ][Info ]: Database Opened. 
+[ 02-04-2024 18:28:02 ][Info ]: select * from salary where base_salary between 20000 and 5000;  : Executed. 
+[ 02-04-2024 18:28:26 ][Info ]: select * from salary where base_salary between 20000 and 50000;  : Executed. 
+[ 02-04-2024 18:29:27 ][Info ]: select * from salary natural join employee where base_salary between 20000 and 50000;  : Executed. 
+[ 03-04-2024 09:47:53 ][Info ]: admin signed in. 
+[ 03-04-2024 09:47:53 ][Info ]: Database Opened. 
+[ 03-04-2024 09:47:58 ][Info ]: Database Closed. 
